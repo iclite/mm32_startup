@@ -1,5 +1,9 @@
 # MM32 Startup Libraries / MM32 启动库
 
+MM32 C language startup library, supports IAR, KEIL (ARMCC, ARMCLANG) and GCC.
+
+MM32 C 语言启动库，支持 IAR、KEIL（ARMCC、ARMCLANG）和 GCC。
+
 This repository contains / 本仓库包含：
  - startup files / 启动文件
  - header files / 头文件

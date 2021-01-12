@@ -35,6 +35,7 @@
 #elif defined ( __GNUC__ )
     extern uint32_t         _estack;
     #define __initial_sp    _estack
+    extern void _start (void);
     void *vector_table[]    __attribute__((section(".vector_table"))) = {
         (void *)(&__initial_sp),
 
@@ -67,11 +68,10 @@
 /// Reset Handler
 ///
 ////////////////////////////////////////////////////////////////////////////////
-void main();
 void Reset_Handler(void)
 {
 #if defined ( __GNUC__ )
-    main();
+    _start();
 #elif defined ( __CC_ARM ) || (defined (__ARMCC_VERSION) && (__ARMCC_VERSION >= 6010050))
     __main();
 #elif defined ( __ICCARM__ )

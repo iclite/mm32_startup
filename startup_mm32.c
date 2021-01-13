@@ -10,8 +10,8 @@
 ////////////////////////////////////////////////////////////////////////////////
 #if defined ( __ICCARM__ )
     #pragma segment  = "CSTACK"
-    #pragma section  = ".intvec"
-    #pragma location = ".intvec"
+    #pragma section  = "vector_table"
+    #pragma location = "vector_table"
     const intvec_elem __vector_table[]    = {
         { .__ptr = __sfe("CSTACK")},
 

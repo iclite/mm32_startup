@@ -5,63 +5,41 @@
 
 ////////////////////////////////////////////////////////////////////////////////
 ///
-/// IAR Compiler
+/// Compiler Configuration
 ///
 ////////////////////////////////////////////////////////////////////////////////
 #if defined ( __ICCARM__ )
-    #pragma segment  = "CSTACK"
-    #pragma section  = ".vector_table"
-    #pragma location = ".vector_table"
-    const intvec_elem __vector_table[]    = {
-        { .__ptr = __sfe("CSTACK")},
-
-////////////////////////////////////////////////////////////////////////////////
-///
-/// ARM Compiler 4/5 || ARM Compiler 6 (armclang)
-///
-////////////////////////////////////////////////////////////////////////////////
+    #pragma segment  = "CSTACK"                                                 // IAR
+    #define __initial_sp __sfe("CSTACK")
+    extern void __iar_program_start(void);
 #elif defined ( __CC_ARM ) || (defined (__ARMCC_VERSION) && (__ARMCC_VERSION >= 6010050))
-    extern uint32_t         Image$$ARM_LIB_STACK$$ZI$$Limit;
-    #define __initial_sp    Image$$ARM_LIB_STACK$$ZI$$Limit
+    extern uint32_t         Image$$ARM_LIB_STACK$$ZI$$Limit;                    // KEIL
+    #define __initial_sp    &Image$$ARM_LIB_STACK$$ZI$$Limit
     extern void __main      (void) __attribute__((noreturn));
-    const intvec_elem vector_table[] __attribute__((section(".vector_table"))) = {
-        { .__ptr = &__initial_sp},
-
-////////////////////////////////////////////////////////////////////////////////
-///
-/// GNU Compiler
-///
-////////////////////////////////////////////////////////////////////////////////
 #elif defined ( __GNUC__ )
-    extern uint32_t         _estack;
-    #define __initial_sp    _estack
+    extern uint32_t         _estack;                                            // GNU
+    #define __initial_sp    &_estack
     extern void _start      (void);
-    void *vector_table[]    __attribute__((section(".vector_table"))) = {
-        (void *)(&__initial_sp),
-
-////////////////////////////////////////////////////////////////////////////////
-///
-/// Unknown Compiler
-///
-////////////////////////////////////////////////////////////////////////////////
 #else
-    #error ("Error: Unknown Compiler!")
+    #error ("Error: Unknown Compiler!")                                         // UNKNOWN
 #endif
 
+////////////////////////////////////////////////////////////////////////////////
+///
+/// Interrupt Vector Table
+///
+////////////////////////////////////////////////////////////////////////////////
+const intvec_elem __vector_table[] __attribute__((section(".vector_table"))) = {
+    { .__ptr = __initial_sp },
 
-////////////////////////////////////////////////////////////////////////////////
-///
-/// Chip Handlers
-///
-////////////////////////////////////////////////////////////////////////////////
 #if defined(__CORTEX_M_CORE_HANDLERS__)
-        __CORTEX_M_CORE_HANDLERS__
+    __CORTEX_M_CORE_HANDLERS__
 #endif
 
 #if defined(__MM32_IRQ_HANDLERS__)
-        __MM32_IRQ_HANDLERS__
+    __MM32_IRQ_HANDLERS__
 #endif
-    };
+};
 
 ////////////////////////////////////////////////////////////////////////////////
 ///

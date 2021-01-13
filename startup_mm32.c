@@ -12,7 +12,7 @@
     #pragma segment  = "CSTACK"                                                 // IAR
     #define __initial_sp __sfe("CSTACK")
     extern void __iar_program_start(void);
-#elif defined ( __CC_ARM ) || (defined (__ARMCC_VERSION) && (__ARMCC_VERSION >= 6010050))
+#elif defined ( __CC_ARM ) || (defined ( __ARMCC_VERSION ) && ( __ARMCC_VERSION >= 6010050 ))
     extern uint32_t         Image$$ARM_LIB_STACK$$ZI$$Limit;                    // KEIL
     #define __initial_sp    &Image$$ARM_LIB_STACK$$ZI$$Limit
     extern void __main      (void) __attribute__((noreturn));
@@ -32,11 +32,11 @@
 const intvec_elem __vector_table[] __attribute__((section(".vector_table"))) = {
     { .__ptr = __initial_sp },
 
-#if defined(__CORTEX_M_CORE_HANDLERS__)
+#if defined( __CORTEX_M_CORE_HANDLERS__ )
     __CORTEX_M_CORE_HANDLERS__
 #endif
 
-#if defined(__MM32_IRQ_HANDLERS__)
+#if defined( __MM32_IRQ_HANDLERS__ )
     __MM32_IRQ_HANDLERS__
 #endif
 };
@@ -50,7 +50,7 @@ void Reset_Handler(void)
 {
 #if defined ( __ICCARM__ )
     __iar_program_start();
-#elif defined ( __CC_ARM ) || (defined (__ARMCC_VERSION) && (__ARMCC_VERSION >= 6010050))
+#elif defined ( __CC_ARM ) || (defined ( __ARMCC_VERSION ) && ( __ARMCC_VERSION >= 6010050 ))
     __main();
 #elif defined ( __GNUC__ )
     _start();

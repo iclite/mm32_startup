@@ -23,9 +23,9 @@
 #elif defined ( __CC_ARM ) || (defined (__ARMCC_VERSION) && (__ARMCC_VERSION >= 6010050))
     extern uint32_t         Image$$ARM_LIB_STACK$$ZI$$Limit;
     #define __initial_sp    Image$$ARM_LIB_STACK$$ZI$$Limit
-    extern void __main      (void) __attribute__((noreturn))                    ///< PreeMain (C library entry point)
-    void *vector_table[]    __attribute__((section ("RESET"))) = {
-        (void *)(&__initial_sp),
+    extern void __main      (void) __attribute__((noreturn));
+    const intvec_elem vector_table[] __attribute__((section("vector_table"))) = {
+        { .__ptr = &__initial_sp},
 
 ////////////////////////////////////////////////////////////////////////////////
 ///
@@ -35,7 +35,7 @@
 #elif defined ( __GNUC__ )
     extern uint32_t         _estack;
     #define __initial_sp    _estack
-    extern void _start (void);
+    extern void _start      (void);
     void *vector_table[]    __attribute__((section(".vector_table"))) = {
         (void *)(&__initial_sp),
 
@@ -70,12 +70,12 @@
 ////////////////////////////////////////////////////////////////////////////////
 void Reset_Handler(void)
 {
-#if defined ( __GNUC__ )
-    _start();
+#if defined ( __ICCARM__ )
+    __iar_program_start();
 #elif defined ( __CC_ARM ) || (defined (__ARMCC_VERSION) && (__ARMCC_VERSION >= 6010050))
     __main();
-#elif defined ( __ICCARM__ )
-    __iar_program_start();
+#elif defined ( __GNUC__ )
+    _start();
 #else
     #error "Error: Unknown Compiler!"
 #endif

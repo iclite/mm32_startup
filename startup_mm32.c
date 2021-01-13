@@ -10,8 +10,8 @@
 ////////////////////////////////////////////////////////////////////////////////
 #if defined ( __ICCARM__ )
     #pragma segment  = "CSTACK"
-    #pragma section  = "vector_table"
-    #pragma location = "vector_table"
+    #pragma section  = ".vector_table"
+    #pragma location = ".vector_table"
     const intvec_elem __vector_table[]    = {
         { .__ptr = __sfe("CSTACK")},
 
@@ -24,7 +24,7 @@
     extern uint32_t         Image$$ARM_LIB_STACK$$ZI$$Limit;
     #define __initial_sp    Image$$ARM_LIB_STACK$$ZI$$Limit
     extern void __main      (void) __attribute__((noreturn));
-    const intvec_elem vector_table[] __attribute__((section("vector_table"))) = {
+    const intvec_elem vector_table[] __attribute__((section(".vector_table"))) = {
         { .__ptr = &__initial_sp},
 
 ////////////////////////////////////////////////////////////////////////////////

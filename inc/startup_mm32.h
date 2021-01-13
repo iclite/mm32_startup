@@ -146,7 +146,4 @@ void UART2_IRQHandler                       (void);
                                             UART1_IRQHandler,               \
                                             UART2_IRQHandler
 
-void __iar_program_start(void);
-int  __low_level_init(void);
-
 #endif // __STARTUP_MM32_H__

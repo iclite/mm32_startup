@@ -76,7 +76,7 @@ void SysTick_Handler(void)
 ////////////////////////////////////////////////////////////////////////////////
 EM_MCUID DBGMCU_GetDEVID()
 {
-    if ((SCB->CPUID & SCB_CPUID_PARTNO_Msk) == CORTEX_PARTNO_M3) {
+    if ((SCB->CPUID & SCB_CPUID_PARTNO_Msk) == CORTEX_M3_PARTNO) {
         RCC->APB1ENR &= ~RCC_APB1ENR_PWR;
         RCC->APB1ENR |= RCC_APB1ENR_PWR;
     }
@@ -97,7 +97,7 @@ EM_MCUID DBGMCU_GetDEVID()
         return emMCUID_MM32L373;        // emMCUID_MM3N1;
     case MCUID_MM3M1:
         return emMCUID_MM32F103_OLD; 	// emMCUID_MM3M1;
-    default: 
+    default:
         return Unknown;
     }
 }
@@ -126,28 +126,17 @@ EM_MCUID SystemInit(EM_SystemClock ClockSource, EM_SYSTICK tickEn , AppTick_fun 
         while(1); // Flash Latency not in range.
     }
 
-#if defined(RCC_CR_PLLON)    
-    // PLL on
-    if ((ClockSource & 0x000F0) >> 4 == 2) {
-        RCC->CR |= ((ClockSource & 0x0F000) << 14);
-        RCC->CR |= ((ClockSource & 0x00F00) << 12);
-        RCC->CR |= RCC_CR_PLLON;
-        while (!(RCC->CR & RCC_CR_PLLRDY)); // Wait for PLL ready!
-    }
-#endif
-
-#if defined(USB)
-    RCC->CFGR |= (1 << RCC_CFGR_USBPRE_Pos) & RCC_CFGR_USBPRE;   
-#endif
-    
     // Set Oscillator
     if ((ClockSource & 0x0000F) == 0) {                                         // HSI
 #if defined(RCC_CR_HSI_72M)
-        (((ClockSource & 0xF0000) >> 16) == 1) ?  (RCC->CR &= ~RCC_CR_HSI_72M) : 
-                                                (RCC->CR |=  RCC_CR_HSI_72M);
-#endif                                     
+        (((ClockSource & 0xF0000) >> 16) == 1) ? (RCC->CR &= ~RCC_CR_HSI_72M) :
+                                                 (RCC->CR |=  RCC_CR_HSI_72M);
+#endif
         RCC->CR |= RCC_CR_HSION;
         while (!(RCC->CR & RCC_CR_HSIRDY)); // Wait for HSI clock ready!
+#if defined(RCC_CFGR_PLLSRC)
+        RCC->CFGR &= ~RCC_CFGR_PLLSRC;
+#endif
     } else if ((ClockSource & 0x0000F) == 1) {                                  // HSE
         RCC->CR |= RCC_CR_HSEON;
         while (!(RCC->CR & RCC_CR_HSERDY));                                     // Wait for PLL ready!
@@ -160,7 +149,21 @@ EM_MCUID SystemInit(EM_SystemClock ClockSource, EM_SYSTICK tickEn , AppTick_fun 
     } else {
         while (1);                                                              // Clock Source not in range
     }
-    
+
+#if defined(RCC_CR_PLLON)
+    // PLL on
+    if ((ClockSource & 0x000F0) >> 4 == 2) {
+        RCC->CR |= ((ClockSource & 0x0F000) << 14);
+        RCC->CR |= ((ClockSource & 0x00F00) << 12);
+        RCC->CR |= RCC_CR_PLLON;
+        while (!(RCC->CR & RCC_CR_PLLRDY)); // Wait for PLL ready!
+    }
+#endif
+
+#if defined(USB)
+    RCC->CFGR |= (1 << RCC_CFGR_USBPRE_Pos) & RCC_CFGR_USBPRE;
+#endif
+
     // AHB, APB1, APB2
     RCC->CFGR |= RCC_CFGR_HPRE_DIV1;
     RCC->CFGR |= RCC_CFGR_PPRE1_DIV1;
@@ -170,10 +173,10 @@ EM_MCUID SystemInit(EM_SystemClock ClockSource, EM_SYSTICK tickEn , AppTick_fun 
     // Clock Switch to
     RCC->CFGR |= (((ClockSource & 0x000F0) >> 4) << RCC_CFGR_SW_Pos) & RCC_CFGR_SW;
     while (((RCC->CFGR & RCC_CFGR_SWS) >> 2) != ((ClockSource & 0x000F0) >> 4));
-    
+
     if (tickEn && pCallback != NULL)
         AppTickPtr = pCallback;
-    
+
     if (tickEn) {
         u32 clock = 8000000;
         u32 pre   = 1000000;
@@ -193,7 +196,7 @@ EM_MCUID SystemInit(EM_SystemClock ClockSource, EM_SYSTICK tickEn , AppTick_fun 
     } else {
         SysTick->CTRL &= ~SysTick_CTRL_ENABLE_Msk;
     }
-    
+
 #if (__CORTEX_M == 3U)
     #ifdef VECT_TAB_SRAM
         SCB->VTOR = SRAM_BASE | VECT_TAB_OFFSET; /* Vector Table Relocation in Internal SRAM. */
@@ -201,7 +204,7 @@ EM_MCUID SystemInit(EM_SystemClock ClockSource, EM_SYSTICK tickEn , AppTick_fun 
         SCB->VTOR = FLASH_BASE | VECT_TAB_OFFSET; /* Vector Table Relocation in Internal FLASH. */
     #endif
 #endif
-    
+
     return DBGMCU_GetDEVID();
 }
 

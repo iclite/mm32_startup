@@ -42,8 +42,11 @@
 
 #define IDCODE_DEVID_MASK       (0x00000FFFU)
 #define COREID_MASK             (0x00000070U)
-#define CORTEX_PARTNO_M0        (0x0000C200U)
-#define CORTEX_PARTNO_M3        (0x0000C240U)
+#define CORTEX_M0_PARTNO        (0x0000C200U)   // Cortex-M0 r0p0
+#define CORTEX_M3_PARTNO        (0x0000C230U)   // Cortex-M3 r1p1/r2p0/r2p1
+#define CORTEX_M4_PARTNO        (0x0000C240U)   // Cortex-M4 r0p1
+#define CORTEX_M7_PARTNO        (0x0000C270U)   // Cortex-M7 r0p2/r1p0/r1p1/r1p2
+#define CORTEX_M23_PARTNO       (0x0000D200U)   // Cortex-M23 r1p0
 #define MCUID_MM0N1             (0xCC568091U)
 #define MCUID_MM0P1             (0xCC56A091U)
 #define MCUID_MM0P2             (0xCC56A097U)

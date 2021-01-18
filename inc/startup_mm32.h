@@ -100,50 +100,50 @@ void UART2_IRQHandler                       (void);
 ///                          CONSTRUCT VECTOR TABLE
 ///
 ////////////////////////////////////////////////////////////////////////////////
-#define __CORTEX_M_CORE_HANDLERS__          Reset_Handler,                  \
-                                            NMI_Handler,                    \
-                                            HardFault_Handler,              \
-                                            MemManage_Handler,              \
-                                            BusFault_Handler,               \
-                                            UsageFault_Handler,             \
-                                            0,                              \
-                                            0,                              \
-                                            0,                              \
-                                            0,                              \
-                                            SVC_Handler,                    \
-                                            DebugMon_Handler,               \
-                                            0,                              \
-                                            PendSV_Handler,                 \
-                                            SysTick_Handler,
+#define __CORTEX_M_CORE_HANDLERS__          { Reset_Handler },                 \
+                                            { NMI_Handler },                   \
+                                            { HardFault_Handler },             \
+                                            { MemManage_Handler },             \
+                                            { BusFault_Handler },              \
+                                            { UsageFault_Handler },            \
+                                            { 0 },                             \
+                                            { 0 },                             \
+                                            { 0 },                             \
+                                            { 0 },                             \
+                                            { SVC_Handler },                   \
+                                            { DebugMon_Handler },              \
+                                            { 0 },                             \
+                                            { PendSV_Handler },                \
+                                            { SysTick_Handler },
 
-#define __MM32_IRQ_HANDLERS__               WDG_IRQHandler,                 \
-                                            PVD_IRQHandler,                 \
-                                            PWM_IRQHandler,                 \
-                                            FLASH_IRQHandler,               \
-                                            RCC_IRQHandler,                 \
-                                            EXTI0_1_IRQHandler,             \
-                                            EXTI2_3_IRQHandler,             \
-                                            EXTI4_15_IRQHandler,            \
-                                            HWDIV_IRQHandler,               \
-                                            DMA1_Channel1_IRQHandler,       \
-                                            DMA1_Channel2_3_IRQHandler,     \
-                                            DMA1_Channel4_5_IRQHandler,     \
-                                            ADC_COMP_IRQHandler,            \
-                                            TIM1_BRK_UP_TRG_COM_IRQHandler, \
-                                            TIM1_CC_IRQHandler,             \
-                                            TIM2_IRQHandler,                \
-                                            TIM3_IRQHandler,                \
-                                            0,                              \
-                                            0,                              \
-                                            TIM14_IRQHandler,               \
-                                            0,                              \
-                                            TIM16_IRQHandler,               \
-                                            TIM17_IRQHandler,               \
-                                            I2C1_IRQHandler,                \
-                                            0,                              \
-                                            SPI1_IRQHandler,                \
-                                            SPI2_IRQHandler,                \
-                                            UART1_IRQHandler,               \
-                                            UART2_IRQHandler
+#define __MM32_IRQ_HANDLERS__               { WDG_IRQHandler },                \
+                                            { PVD_IRQHandler },                \
+                                            { PWM_IRQHandler },                \
+                                            { FLASH_IRQHandler },              \
+                                            { RCC_IRQHandler },                \
+                                            { EXTI0_1_IRQHandler },            \
+                                            { EXTI2_3_IRQHandler },            \
+                                            { EXTI4_15_IRQHandler },           \
+                                            { HWDIV_IRQHandler },              \
+                                            { DMA1_Channel1_IRQHandler },      \
+                                            { DMA1_Channel2_3_IRQHandler },    \
+                                            { DMA1_Channel4_5_IRQHandler },    \
+                                            { ADC_COMP_IRQHandler },           \
+                                            { TIM1_BRK_UP_TRG_COM_IRQHandler },\
+                                            { TIM1_CC_IRQHandler },            \
+                                            { TIM2_IRQHandler },               \
+                                            { TIM3_IRQHandler },               \
+                                            { 0 },                             \
+                                            { 0 },                             \
+                                            { TIM14_IRQHandler },              \
+                                            { 0 },                             \
+                                            { TIM16_IRQHandler },              \
+                                            { TIM17_IRQHandler },              \
+                                            { I2C1_IRQHandler },               \
+                                            { 0 },                             \
+                                            { SPI1_IRQHandler },               \
+                                            { SPI2_IRQHandler },               \
+                                            { UART1_IRQHandler },              \
+                                            { UART2_IRQHandler }
 
 #endif // __STARTUP_MM32_H__

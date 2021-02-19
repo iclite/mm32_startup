@@ -231,10 +231,7 @@
 #define ADDR_OVERRUN                    ADC_CHDR_OVERRUN
 #define ADDR_VALID                      ADC_CHDR_VALID
 #define ADDR_DATA                       ADC_CHDR_DATA
-
-////////////////////////////////////////////////////////////////////////////////
-/// @brief Version compatibility definition
-////////////////////////////////////////////////////////////////////////////////
+#if defined(AES_BASE)
     #define AES_KEYR0                   AES_KEYRn                               ///< AES Key Register 0
     #define AES_KEYR1                   AES_KEYRn                               ///< AES Key Register 1
     #define AES_KEYR2                   AES_KEYRn                               ///< AES Key Register 2
@@ -248,131 +245,135 @@
     #define AES_IVR1                    AES_IVRn                                ///< AES Initialization Vector Register 1
     #define AES_IVR2                    AES_IVRn                                ///< AES Initialization Vector Register 2
     #define AES_IVR3                    AES_IVRn                                ///< AES Initialization Vector Register 3
-
-
-#if defined(__MM3N1) || defined(__MM3O1) || defined(__MM0P1) || defined(__MM0Q1) || defined(__MM0S1)  ||  defined(__MM0T1)
-#define CRC_DR_DR                       CRC_DR_DATA
-#define CRC_IDR_IDR                     CRC_IDR_DATA
 #endif
+
+#if defined(CRC_BASE)
+    #define CRC_DR_DR                   CRC_DR_DATA
+    #define CRC_IDR_IDR                 CRC_IDR_DATA
+#endif
+#if defined(CRS_BASE)
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief Version compatibility definition
 ////////////////////////////////////////////////////////////////////////////////
-#define CRS_CR_SYNCOKIE                 CRS_CR_OKIE
-#define CRS_CR_SYNCWARNIE               CRS_CR_WARNIE
-#define CRS_CR_ESYNCIE                  CRS_CR_EXPTIE
-#define CRS_CR_CEN                      CRS_CR_CNTEN
-#define CRS_CFGR_SYNCDIV                CRS_CFGR_DIV
-#define CRS_CFGR_SYNCSRC                CRS_CFGR_SRC
-#define CRS_CFGR_SYNCPOL                CRS_CFGR_POL
-#define CRS_ISR_SYNCOKF                 CRS_ISR_OKIF
-#define CRS_ISR_SYNCWARNF               CRS_ISR_WARNIF
-#define CRS_ISR_ERRF                    CRS_ISR_ERRIF
-#define CRS_ISR_ESYNCF                  CRS_ISR_EXPTIF
-#define CRS_ISR_SYNCERR                 CRS_ISR_ERR
-#define CRS_ISR_SYNCMISS                CRS_ISR_MISS
-#define CRS_ISR_TRIMOVF                 CRS_ISR_OVERFLOW
-#define CRS_ICR_SYNCOKC                 CRS_ICR_OK
-#define CRS_ICR_SYNCWARNC               CRS_ICR_WARN
-#define CRS_ICR_ERRC                    CRS_ICR_ERR
-#define CRS_ICR_ESYNCC                  CRS_ICR_EXPT
+    #define CRS_CR_SYNCOKIE             CRS_CR_OKIE
+    #define CRS_CR_SYNCWARNIE           CRS_CR_WARNIE
+    #define CRS_CR_ESYNCIE              CRS_CR_EXPTIE
+    #define CRS_CR_CEN                  CRS_CR_CNTEN
+    #define CRS_CFGR_SYNCDIV            CRS_CFGR_DIV
+    #define CRS_CFGR_SYNCSRC            CRS_CFGR_SRC
+    #define CRS_CFGR_SYNCPOL            CRS_CFGR_POL
+    #define CRS_ISR_SYNCOKF             CRS_ISR_OKIF
+    #define CRS_ISR_SYNCWARNF           CRS_ISR_WARNIF
+    #define CRS_ISR_ERRF                CRS_ISR_ERRIF
+    #define CRS_ISR_ESYNCF              CRS_ISR_EXPTIF
+    #define CRS_ISR_SYNCERR             CRS_ISR_ERR
+    #define CRS_ISR_SYNCMISS            CRS_ISR_MISS
+    #define CRS_ISR_TRIMOVF             CRS_ISR_OVERFLOW
+    #define CRS_ICR_SYNCOKC             CRS_ICR_OK
+    #define CRS_ICR_SYNCWARNC           CRS_ICR_WARN
+    #define CRS_ICR_ERRC                CRS_ICR_ERR
+    #define CRS_ICR_ESYNCC              CRS_ICR_EXPT
 
-#define CRS_IT_SYNCOK                   CRS_ISR_SYNCOKF                         ///< SYNC event OK
-#define CRS_IT_SYNCWARN                 CRS_ISR_SYNCWARNF                       ///< SYNC warning
-#define CRS_IT_ERR                      CRS_CR_ERRIE                            ///< error
-#define CRS_IT_ESYNC                    CRS_ISR_ESYNCF                          ///< Expected SYNC
-#define CRS_IT_TRIMOVF                  CRS_ISR_TRIMOVF                         ///< Trimming overflow or underflow
-#define CRS_IT_SYNCERR                  CRS_ISR_SYNCERR                         ///< SYNC error
-#define CRS_IT_SYNCMISS                 CRS_ISR_SYNCMISS                        ///< SYNC missed
+    #define CRS_IT_SYNCOK               CRS_ISR_SYNCOKF                         ///< SYNC event OK
+    #define CRS_IT_SYNCWARN             CRS_ISR_SYNCWARNF                       ///< SYNC warning
+    #define CRS_IT_ERR                  CRS_CR_ERRIE                            ///< error
+    #define CRS_IT_ESYNC                CRS_ISR_ESYNCF                          ///< Expected SYNC
+    #define CRS_IT_TRIMOVF              CRS_ISR_TRIMOVF                         ///< Trimming overflow or underflow
+    #define CRS_IT_SYNCERR              CRS_ISR_SYNCERR                         ///< SYNC error
+    #define CRS_IT_SYNCMISS             CRS_ISR_SYNCMISS                        ///< SYNC missed
 
-#define CRS_FLAG_SYNCOK                 CRS_ISR_SYNCOKF                         ///< SYNC event OK
-#define CRS_FLAG_SYNCWARN               CRS_ISR_SYNCWARNF                       ///< SYNC warning
-#define CRS_FLAG_ERR                    CRS_ISR_ERRF                            ///< error
-#define CRS_FLAG_ESYNC                  CRS_ISR_ESYNCF                          ///< Expected SYNC
-#define CRS_FLAG_TRIMOVF                CRS_ISR_TRIMOVF                         ///< Trimming overflow or underflow
-#define CRS_FLAG_SYNCERR                CRS_ISR_SYNCERR                         ///< SYNC error
-#define CRS_FLAG_SYNCMISS               CRS_ISR_SYNCMISS                        ///< SYNC missed
+    #define CRS_FLAG_SYNCOK             CRS_ISR_SYNCOKF                         ///< SYNC event OK
+    #define CRS_FLAG_SYNCWARN           CRS_ISR_SYNCWARNF                       ///< SYNC warning
+    #define CRS_FLAG_ERR                CRS_ISR_ERRF                            ///< error
+    #define CRS_FLAG_ESYNC              CRS_ISR_ESYNCF                          ///< Expected SYNC
+    #define CRS_FLAG_TRIMOVF            CRS_ISR_TRIMOVF                         ///< Trimming overflow or underflow
+    #define CRS_FLAG_SYNCERR            CRS_ISR_SYNCERR                         ///< SYNC error
+    #define CRS_FLAG_SYNCMISS           CRS_ISR_SYNCMISS                        ///< SYNC missed
+#endif
+
+#if defined(DMA1_BASE) || defined(DMA2_BASE)
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief Version compatibility definition
 ////////////////////////////////////////////////////////////////////////////////
-#define DMA_CCR1_EN                     DMA_CCR_EN
-#define DMA_CCR1_DIR                    DMA_CCR_DIR
-#define DMA_CCR1_CIRC                   DMA_CCR_CIRC
-#define DMA_CCR1_PINC                   DMA_CCR_PINC
-#define DMA_CCR1_MINC                   DMA_CCR_MINC
-#define DMA_CCR1_PSIZE_0                DMA_CCR_PSIZE
-#define DMA_CCR1_MSIZE_0                DMA_CCR_MSIZE
-#define DMA_CCR1_PL0                    DMA_CCR_PL
-#define DMA_CCR1_MEM2MEM                DMA_CCR_M2M
+    #define DMA_CCR1_EN                 DMA_CCR_EN
+    #define DMA_CCR1_DIR                DMA_CCR_DIR
+    #define DMA_CCR1_CIRC               DMA_CCR_CIRC
+    #define DMA_CCR1_PINC               DMA_CCR_PINC
+    #define DMA_CCR1_MINC               DMA_CCR_MINC
+    #define DMA_CCR1_PSIZE_0            DMA_CCR_PSIZE
+    #define DMA_CCR1_MSIZE_0            DMA_CCR_MSIZE
+    #define DMA_CCR1_PL0                DMA_CCR_PL
+    #define DMA_CCR1_MEM2MEM            DMA_CCR_M2M
 
 
-#define DMA_IT_TC                       DMA_CCR_TCIE                            //(0x00000002U)
-#define DMA_IT_HT                       DMA_CCR_HTIE                            //(0x00000004U)
-#define DMA_IT_TE                       DMA_CCR_TEIE                            //(0x00000008U)
+    #define DMA_IT_TC                   DMA_CCR_TCIE                            //(0x00000002U)
+    #define DMA_IT_HT                   DMA_CCR_HTIE                            //(0x00000004U)
+    #define DMA_IT_TE                   DMA_CCR_TEIE                            //(0x00000008U)
 
-#define DMA1_IT_GL1                     DMA_IFCR_CGIF1                          //(0x00000001U)
-#define DMA1_IT_TC1                     DMA_IFCR_CTCIF1                         //(0x00000002U)
-#define DMA1_IT_HT1                     DMA_IFCR_CHTIF1                         //(0x00000004U)
-#define DMA1_IT_TE1                     DMA_IFCR_CTEIF1                         //(0x00000008U)
-#define DMA1_IT_GL2                     DMA_IFCR_CGIF2                          //(0x00000010U)
-#define DMA1_IT_TC2                     DMA_IFCR_CTCIF2                         //(0x00000020U)
-#define DMA1_IT_HT2                     DMA_IFCR_CHTIF2                         //(0x00000040U)
-#define DMA1_IT_TE2                     DMA_IFCR_CTEIF2                         //(0x00000080U)
-#define DMA1_IT_GL3                     DMA_IFCR_CGIF3                          //(0x00000100U)
-#define DMA1_IT_TC3                     DMA_IFCR_CTCIF3                         //(0x00000200U)
-#define DMA1_IT_HT3                     DMA_IFCR_CHTIF3                         //(0x00000400U)
-#define DMA1_IT_TE3                     DMA_IFCR_CTEIF3                         //(0x00000800U)
-#define DMA1_IT_GL4                     DMA_IFCR_CGIF4                          //(0x00001000U)
-#define DMA1_IT_TC4                     DMA_IFCR_CTCIF4                         //(0x00002000U)
-#define DMA1_IT_HT4                     DMA_IFCR_CHTIF4                         //(0x00004000U)
-#define DMA1_IT_TE4                     DMA_IFCR_CTEIF4                         //(0x00008000U)
-#define DMA1_IT_GL5                     DMA_IFCR_CGIF5                          //(0x00010000U)
-#define DMA1_IT_TC5                     DMA_IFCR_CTCIF5                         //(0x00020000U)
-#define DMA1_IT_HT5                     DMA_IFCR_CHTIF5                         //(0x00040000U)
-#define DMA1_IT_TE5                     DMA_IFCR_CTEIF5                         //(0x00080000U)
+    #define DMA1_IT_GL1                 DMA_IFCR_CGIF1                          //(0x00000001U)
+    #define DMA1_IT_TC1                 DMA_IFCR_CTCIF1                         //(0x00000002U)
+    #define DMA1_IT_HT1                 DMA_IFCR_CHTIF1                         //(0x00000004U)
+    #define DMA1_IT_TE1                 DMA_IFCR_CTEIF1                         //(0x00000008U)
+    #define DMA1_IT_GL2                 DMA_IFCR_CGIF2                          //(0x00000010U)
+    #define DMA1_IT_TC2                 DMA_IFCR_CTCIF2                         //(0x00000020U)
+    #define DMA1_IT_HT2                 DMA_IFCR_CHTIF2                         //(0x00000040U)
+    #define DMA1_IT_TE2                 DMA_IFCR_CTEIF2                         //(0x00000080U)
+    #define DMA1_IT_GL3                 DMA_IFCR_CGIF3                          //(0x00000100U)
+    #define DMA1_IT_TC3                 DMA_IFCR_CTCIF3                         //(0x00000200U)
+    #define DMA1_IT_HT3                 DMA_IFCR_CHTIF3                         //(0x00000400U)
+    #define DMA1_IT_TE3                 DMA_IFCR_CTEIF3                         //(0x00000800U)
+    #define DMA1_IT_GL4                 DMA_IFCR_CGIF4                          //(0x00001000U)
+    #define DMA1_IT_TC4                 DMA_IFCR_CTCIF4                         //(0x00002000U)
+    #define DMA1_IT_HT4                 DMA_IFCR_CHTIF4                         //(0x00004000U)
+    #define DMA1_IT_TE4                 DMA_IFCR_CTEIF4                         //(0x00008000U)
+    #define DMA1_IT_GL5                 DMA_IFCR_CGIF5                          //(0x00010000U)
+    #define DMA1_IT_TC5                 DMA_IFCR_CTCIF5                         //(0x00020000U)
+    #define DMA1_IT_HT5                 DMA_IFCR_CHTIF5                         //(0x00040000U)
+    #define DMA1_IT_TE5                 DMA_IFCR_CTEIF5                         //(0x00080000U)
 
-#if defined(__MM3N1)
-#define DMA1_IT_GL6                     DMA_IFCR_CGIF6                          //(0x00100000U)
-#define DMA1_IT_TC6                     DMA_IFCR_CTCIF6                         //(0x00200000U)
-#define DMA1_IT_HT6                     DMA_IFCR_CHTIF6                         //(0x00400000U)
-#define DMA1_IT_TE6                     DMA_IFCR_CTEIF6                         //(0x00800000U)
-#define DMA1_IT_GL7                     DMA_IFCR_CGIF7                          //(0x01000000U)
-#define DMA1_IT_TC7                     DMA_IFCR_CTCIF7                         //(0x02000000U)
-#define DMA1_IT_HT7                     DMA_IFCR_CHTIF7                         //(0x04000000U)
-#define DMA1_IT_TE7                     DMA_IFCR_CTEIF7                         //(0x08000000U)
+    #if defined(__MM3N1)
+    #define DMA1_IT_GL6                 DMA_IFCR_CGIF6                          //(0x00100000U)
+    #define DMA1_IT_TC6                 DMA_IFCR_CTCIF6                         //(0x00200000U)
+    #define DMA1_IT_HT6                 DMA_IFCR_CHTIF6                         //(0x00400000U)
+    #define DMA1_IT_TE6                 DMA_IFCR_CTEIF6                         //(0x00800000U)
+    #define DMA1_IT_GL7                 DMA_IFCR_CGIF7                          //(0x01000000U)
+    #define DMA1_IT_TC7                 DMA_IFCR_CTCIF7                         //(0x02000000U)
+    #define DMA1_IT_HT7                 DMA_IFCR_CHTIF7                         //(0x04000000U)
+    #define DMA1_IT_TE7                 DMA_IFCR_CTEIF7                         //(0x08000000U)
+    #endif
+
+    #define DMA1_FLAG_GL1               DMA_ISR_GIF1                            //(0x00000001U)
+    #define DMA1_FLAG_TC1               DMA_ISR_TCIF1                           //(0x00000002U)
+    #define DMA1_FLAG_HT1               DMA_ISR_HTIF1                           //(0x00000004U)
+    #define DMA1_FLAG_TE1               DMA_ISR_TEIF1                           //(0x00000008U)
+    #define DMA1_FLAG_GL2               DMA_ISR_GIF2                            //(0x00000010U)
+    #define DMA1_FLAG_TC2               DMA_ISR_TCIF2                           //(0x00000020U)
+    #define DMA1_FLAG_HT2               DMA_ISR_HTIF2                           //(0x00000040U)
+    #define DMA1_FLAG_TE2               DMA_ISR_TEIF2                           //(0x00000080U)
+    #define DMA1_FLAG_GL3               DMA_ISR_GIF3                            //(0x00000100U)
+    #define DMA1_FLAG_TC3               DMA_ISR_TCIF3                           //(0x00000200U)
+    #define DMA1_FLAG_HT3               DMA_ISR_HTIF3                           //(0x00000400U)
+    #define DMA1_FLAG_TE3               DMA_ISR_TEIF3                           //(0x00000800U)
+    #define DMA1_FLAG_GL4               DMA_ISR_GIF4                            //(0x00001000U)
+    #define DMA1_FLAG_TC4               DMA_ISR_TCIF4                           //(0x00002000U)
+    #define DMA1_FLAG_HT4               DMA_ISR_HTIF4                           //(0x00004000U)
+    #define DMA1_FLAG_TE4               DMA_ISR_TEIF4                           //(0x00008000U)
+    #define DMA1_FLAG_GL5               DMA_ISR_GIF5                            //(0x00010000U)
+    #define DMA1_FLAG_TC5               DMA_ISR_TCIF5                           //(0x00020000U)
+    #define DMA1_FLAG_HT5               DMA_ISR_HTIF5                           //(0x00040000U)
+    #define DMA1_FLAG_TE5               DMA_ISR_TEIF5                           //(0x00080000U)
+
+    #if defined(__MM3N1)
+    #define DMA1_FLAG_GL6               DMA_ISR_GIF6                            //(0x00100000U)
+    #define DMA1_FLAG_TC6               DMA_ISR_TCIF6                           //(0x00200000U)
+    #define DMA1_FLAG_HT6               DMA_ISR_HTIF6                           //(0x00400000U)
+    #define DMA1_FLAG_TE6               DMA_ISR_TEIF6                           //(0x00800000U)
+    #define DMA1_FLAG_GL7               DMA_ISR_GIF7                            //(0x01000000U)
+    #define DMA1_FLAG_TC7               DMA_ISR_TCIF7                           //(0x02000000U)
+    #define DMA1_FLAG_HT7               DMA_ISR_HTIF7                           //(0x04000000U)
+    #define DMA1_FLAG_TE7               DMA_ISR_TEIF7                           //(0x08000000U)
+    #endif
 #endif
-
-#define DMA1_FLAG_GL1                   DMA_ISR_GIF1                            //(0x00000001U)
-#define DMA1_FLAG_TC1                   DMA_ISR_TCIF1                           //(0x00000002U)
-#define DMA1_FLAG_HT1                   DMA_ISR_HTIF1                           //(0x00000004U)
-#define DMA1_FLAG_TE1                   DMA_ISR_TEIF1                           //(0x00000008U)
-#define DMA1_FLAG_GL2                   DMA_ISR_GIF2                            //(0x00000010U)
-#define DMA1_FLAG_TC2                   DMA_ISR_TCIF2                           //(0x00000020U)
-#define DMA1_FLAG_HT2                   DMA_ISR_HTIF2                           //(0x00000040U)
-#define DMA1_FLAG_TE2                   DMA_ISR_TEIF2                           //(0x00000080U)
-#define DMA1_FLAG_GL3                   DMA_ISR_GIF3                            //(0x00000100U)
-#define DMA1_FLAG_TC3                   DMA_ISR_TCIF3                           //(0x00000200U)
-#define DMA1_FLAG_HT3                   DMA_ISR_HTIF3                           //(0x00000400U)
-#define DMA1_FLAG_TE3                   DMA_ISR_TEIF3                           //(0x00000800U)
-#define DMA1_FLAG_GL4                   DMA_ISR_GIF4                            //(0x00001000U)
-#define DMA1_FLAG_TC4                   DMA_ISR_TCIF4                           //(0x00002000U)
-#define DMA1_FLAG_HT4                   DMA_ISR_HTIF4                           //(0x00004000U)
-#define DMA1_FLAG_TE4                   DMA_ISR_TEIF4                           //(0x00008000U)
-#define DMA1_FLAG_GL5                   DMA_ISR_GIF5                            //(0x00010000U)
-#define DMA1_FLAG_TC5                   DMA_ISR_TCIF5                           //(0x00020000U)
-#define DMA1_FLAG_HT5                   DMA_ISR_HTIF5                           //(0x00040000U)
-#define DMA1_FLAG_TE5                   DMA_ISR_TEIF5                           //(0x00080000U)
-
-#if defined(__MM3N1)
-#define DMA1_FLAG_GL6                   DMA_ISR_GIF6                            //(0x00100000U)
-#define DMA1_FLAG_TC6                   DMA_ISR_TCIF6                           //(0x00200000U)
-#define DMA1_FLAG_HT6                   DMA_ISR_HTIF6                           //(0x00400000U)
-#define DMA1_FLAG_TE6                   DMA_ISR_TEIF6                           //(0x00800000U)
-#define DMA1_FLAG_GL7                   DMA_ISR_GIF7                            //(0x01000000U)
-#define DMA1_FLAG_TC7                   DMA_ISR_TCIF7                           //(0x02000000U)
-#define DMA1_FLAG_HT7                   DMA_ISR_HTIF7                           //(0x04000000U)
-#define DMA1_FLAG_TE7                   DMA_ISR_TEIF7                           //(0x08000000U)
-#endif
-
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief Version compatibility definition
 ////////////////////////////////////////////////////////////////////////////////
@@ -835,7 +836,6 @@
 #define I2C_SDA_SET_UP                  I2C_SETUP_CNT
 #define I2C_ACK_GENERAL_CALL            I2C_GCR_GC
 
-
 #define IWDG_PR_PR                      IWDG_PR_PRE
 #define IWDG_PR_PR_DIV4                 IWDG_PR_PRE_DIV4
 #define IWDG_PR_PR_DIV8                 IWDG_PR_PRE_DIV8
@@ -954,12 +954,11 @@
 #define RCC_APB1Periph_SPI2             RCC_APB1ENR_SPI2
 #define RCC_APB1Periph_WWDG             RCC_APB1ENR_WWDG
 #define RCC_APB1Periph_PWR              RCC_APB1ENR_PWR
-
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief Version compatibility definition
 ////////////////////////////////////////////////////////////////////////////////
 #define SPI_TXREG_TXREG                 SPI_TDR_TDR
-#define SPI_RXREG_RXREG                 SPI_TDR_TDR
+#define SPI_RXREG_RXREG                 SPI_RDR_RDR
 
 #define SPI_CSTAT_TXEPT                 SPI_SR_TXEPT
 #define SPI_CSTAT_RXAVL                 SPI_SR_RXAVL
@@ -1011,9 +1010,7 @@
 #define SPI_GCTL_NSS_SEL                SPI_GCR_NSS
 #define SPI_GCTL_DATA_SEL               SPI_GCR_DWSEL
 
-#if defined(__MM0P1) || defined(__MM0Q1)
-    #define SPI_GCTL_NSSTOG             SPI_GCR_NSSTOG
-#endif
+#define SPI_GCTL_NSSTOG                 SPI_GCR_NSSTOG
 
 #define SPI_CCTL_CPHA                   SPI_CCR_CPHA
 #define SPI_CCTL_CPOL                   SPI_CCR_CPOL
@@ -1022,13 +1019,9 @@
 #define SPI_CCTL_RXEDGE                 SPI_CCR_RXEDGE
 #define SPI_CCTL_TXEDGE                 SPI_CCR_TXEDGE
 
-#if defined(__MM0P1) || defined(__MM0Q1)
-    #define SPI_CCTL_CPHASEL            SPI_CCR_CPHASEL
-#endif
+#define SPI_CCTL_CPHASEL                SPI_CCR_CPHASEL
 
-#if defined(__MM0Q1)
-    #define SPI_CCTL_HISPD              SPI_CCR_HISPD
-#endif
+#define SPI_CCTL_HISPD                  SPI_CCR_HISPD
 
 #define SPI_SPBRG_SPBRG                 SPI_BRR_DIVF
 
@@ -1055,7 +1048,7 @@
 #define TIM_DIER_COMDE                  TIM_DIER_COMDEN
 #define TIM_DIER_TDE                    TIM_DIER_TDEN
 
-#if defined(__MM0P1) || defined(__MM0Q1)
+#if defined(TIM_DIER_CC5IE)
 #define TIM_DIER_CC5IE                  TIM_DIER_CC5IEN
 #define TIM_DIER_CC5DE                  TIM_DIER_CC5DEN
 #endif
@@ -1073,7 +1066,7 @@
 #define TIM_SR_CC3OF                    TIM_SR_CC3O
 #define TIM_SR_CC4OF                    TIM_SR_CC4O
 
-#if defined(__MM0P1) || defined(__MM0Q1)
+#if defined(TIM_SR_CC5I)
 #define TIM_SR_CC5IF                    TIM_SR_CC5I
 #endif
 
@@ -1099,7 +1092,7 @@
 #define TIM_CCER_CC3NE                  TIM_CCER_CC3NEN
 #define TIM_CCER_CC4E                   TIM_CCER_CC4EN
 
-#if defined(__MM0P1) || defined(__MM0Q1)
+#if defined(TIM_CCER_CC5E)
 #define TIM_CCER_CC5E                   TIM_CCER_CC5EN
 #endif
 
@@ -1107,11 +1100,11 @@
 #define TIM_BDTR_AOE                    TIM_BDTR_AOEN
 #define TIM_BDTR_MOE                    TIM_BDTR_MOEN
 
-#if defined(__MM3O1) || defined(__MM0P1) || defined(__MM0Q1)
+#if defined(TIM_BDTR_DOE)
 #define TIM_BDTR_DOE                    TIM_BDTR_DOEN
 #endif
 
-#if defined(__MM0P1) || defined(__MM0Q1)
+#if defined(TIM_CCMR3_OC5FE)
 #define TIM_CCMR3_OC5FE                 TIM_CCMR3_OC5FEN
 #define TIM_CCMR3_OC5PE                 TIM_CCMR3_OC5PEN
 #define TIM_CCMR3_OC5CE                 TIM_CCMR3_OC5CEN
@@ -1127,7 +1120,7 @@
 #define UART_ISR_RXBRK_INTF             UART_ISR_RXBRK
 
 #define UART_IER_TXIEN                  UART_IER_TX
-#define UART_IER_RXIEN                  UART_IER_RXI
+#define UART_IER_RXIEN                  UART_IER_RX
 #define UART_IER_RXOERREN               UART_IER_RXOERR
 #define UART_IER_RXPERREN               UART_IER_RXPERR
 #define UART_IER_RXFERREN               UART_IER_RXFERR
@@ -1151,7 +1144,7 @@
 #define UART_IT_TXIEN                   UART_IER_TX
 
 #define UART_BRR_DIV_MANTISSA           UART_BRR_MANTISSA
-#define UART_BRR_DIV_FRACTION           UART_BRR_FRACTION
+#define UART_BRR_DIV_FRACTION           UART_FRA_FRACTION
 
 #if defined(__MM0P1) || defined(__MM0Q1)
     #define UART_ISR_TXC_INTF           UART_ISR_TXC

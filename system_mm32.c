@@ -22,7 +22,7 @@
 
 // Files includes  -------------------------------------------------------------
 #include <string.h>
-#include "types.h"
+#include "mm32_types.h"
 #include "mm32.h"
 
 #include "system_mm32.h"
@@ -40,7 +40,7 @@
 /// @{
 
 #if defined(__CORTEX_M) && (__CORTEX_M == 3U)
-//	#define VECT_TAB_SRAM
+//  #define VECT_TAB_SRAM
     #define VECT_TAB_OFFSET  0x0000
 #endif
 /// @}
@@ -83,20 +83,20 @@ EM_MCUID DBGMCU_GetDEVID()
 
     switch (DBGMCU->IDCODE) {
     case MCUID_MM0N1:
-        return emMCUID_MM32L073;		// emMCUID_MM0N1;
+        return emMCUID_MM32L073;        // emMCUID_MM0N1;
     case MCUID_MM0P1:
     case MCUID_MM0P2:
-        return emMCUID_MM32SPIN27;		// emMCUID_MM0P1;
+        return emMCUID_MM32SPIN27;      // emMCUID_MM0P1;
     case MCUID_MM0Q1:
-        return emMCUID_MM32F031;		// emMCUID_MM0Q1;
+        return emMCUID_MM32F031;        // emMCUID_MM0Q1;
     case MCUID_MM0M1:
-        return emMCUID_MM32F031_OLD; 	// emMCUID_MM0M1;
+        return emMCUID_MM32F031_OLD;    // emMCUID_MM0M1;
     case MCUID_MM3O1:
         return emMCUID_MM32L395;        // emMCUID_MM3O1;
     case MCUID_MM3N1:
         return emMCUID_MM32L373;        // emMCUID_MM3N1;
     case MCUID_MM3M1:
-        return emMCUID_MM32F103_OLD; 	// emMCUID_MM3M1;
+        return emMCUID_MM32F103_OLD;    // emMCUID_MM3M1;
     default:
         return Unknown;
     }
@@ -210,9 +210,9 @@ EM_MCUID SystemInit(EM_SystemClock ClockSource, EM_SYSTICK tickEn , AppTick_fun 
 
 
 ////////////////////////////////////////////////////////////////////////////////
-//  @brief	System clock configuration
-//  @param	enable: Enable or disable the systick.
-//  @param	callbackPtr: The pointer point to the systick callback function.
+//  @brief  System clock configuration
+//  @param  enable: Enable or disable the systick.
+//  @param  callbackPtr: The pointer point to the systick callback function.
 //  @retval None.
 ////////////////////////////////////////////////////////////////////////////////
 EM_MCUID SetSystemClock(EM_SYSTICK enable , AppTick_fun callbackPtr)

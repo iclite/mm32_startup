@@ -23,7 +23,7 @@
 #define __SYSTEM_MM32_H
 
 // Files includes  -------------------------------------------------------------
-#include "types.h"
+#include "mm32_types.h"
 
 ////////////////////////////////////////////////////////////////////////////////
 /// @defgroup MM32_Example_Layer
@@ -40,23 +40,28 @@
 /// @{
 
 
-#define IDCODE_DEVID_MASK       (0x00000FFFU)
-#define COREID_MASK             (0x00000070U)
-#define CORTEX_M0_PARTNO        (0x0000C200U)   // Cortex-M0 r0p0
-#define CORTEX_M3_PARTNO        (0x0000C230U)   // Cortex-M3 r1p1/r2p0/r2p1
-#define CORTEX_M4_PARTNO        (0x0000C240U)   // Cortex-M4 r0p1
-#define CORTEX_M7_PARTNO        (0x0000C270U)   // Cortex-M7 r0p2/r1p0/r1p1/r1p2
-#define CORTEX_M23_PARTNO       (0x0000D200U)   // Cortex-M23 r1p0
-#define MCUID_MM0N1             (0xCC568091U)
-#define MCUID_MM0P1             (0xCC56A091U)
-#define MCUID_MM0P2             (0xCC56A097U)
-#define MCUID_MM0Q1             (0xCC4460B1U)
-#define MCUID_MM0M1             (0xCC567071U)
-#define MCUID_MM3O1             (0xCC9AA0A1U)
-#define MCUID_MM3M1             (0xCC888045U)
-#define MCUID_MM3N1             (0xCC888047U)
+#define IDCODE_DEVID_MASK               (0x00000FFFU)
+#define COREID_MASK                     (0x00000070U)
+#define CORTEX_M0_PARTNO                (0x0000C200U)   // Cortex-M0 r0p0
+#define CORTEX_M3_PARTNO                (0x0000C230U)   // Cortex-M3 r1p1/r2p0/r2p1
+#define CORTEX_M4_PARTNO                (0x0000C240U)   // Cortex-M4 r0p1
+#define CORTEX_M7_PARTNO                (0x0000C270U)   // Cortex-M7 r0p2/r1p0/r1p1/r1p2
+#define CORTEX_M23_PARTNO               (0x0000D200U)   // Cortex-M23 r1p0
+#define MCUID_MM0N1                     (0xCC568091U)
+#define MCUID_MM0P1                     (0xCC56A091U)
+#define MCUID_MM0P2                     (0xCC56A097U)
+#define MCUID_MM0Q1                     (0xCC4460B1U)
+#define MCUID_MM0M1                     (0xCC567071U)
+#define MCUID_MM3O1                     (0xCC9AA0A1U)
+#define MCUID_MM3M1                     (0xCC888045U)
+#define MCUID_MM3N1                     (0xCC888047U)
 
-#define HSE_VALUE               CLOCK
+#ifndef CLOCK
+    #warning "\"CLOCK\" macro is undefined!"
+    #define CLOCK                       (8000000U)
+#endif
+
+#define HSE_VALUE                       CLOCK
 
 /// @}
 
@@ -69,14 +74,14 @@
 /// @anchor EM_MCUID
 ////////////////////////////////////////////////////////////////////////////////
 typedef enum {
-	Unknown,
-	emMCUID_MM32L073,
-	emMCUID_MM32SPIN27,
-	emMCUID_MM32F031,
-	emMCUID_MM32F031_OLD,
-	emMCUID_MM32L395,
-	emMCUID_MM32F103_OLD,
-	emMCUID_MM32L373
+    Unknown,
+    emMCUID_MM32L073,
+    emMCUID_MM32SPIN27,
+    emMCUID_MM32F031,
+    emMCUID_MM32F031_OLD,
+    emMCUID_MM32L395,
+    emMCUID_MM32F103_OLD,
+    emMCUID_MM32L373
 }EM_MCUID;
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -84,8 +89,8 @@ typedef enum {
 /// @anchor EM_SYSTICK
 ////////////////////////////////////////////////////////////////////////////////
 typedef enum {
-	emSYSTICK_Off,
-	emSYSTICK_On = !emSYSTICK_Off
+    emSYSTICK_Off,
+    emSYSTICK_On = !emSYSTICK_Off
 } EM_SYSTICK;
 
 
@@ -93,24 +98,23 @@ typedef enum {
 /// @brief  System clock configuration
 ////////////////////////////////////////////////////////////////////////////////
 typedef enum {
-#if defined(__MM3N1) || defined(__MM0N1) || defined(__MM0P1) || defined(__MM0S1)
                                         //  Flash_Latency   Mul Div Sw  Src
-    SYSCLK_HSI_6d       = 0x00000,      //	            0   0   0   0   0
-    SYSCLK_HSI_12MHz    = 0x00020,      //	            0   0   0   2   0
-    SYSCLK_HSI_24MHz    = 0x01020,      //	            0   1   0   2   0
-    SYSCLK_HSI_48MHz    = 0x13020,      //	            1   3   0   2   0
-    SYSCLK_HSI_72MHz    = 0x25020,      //	            2   5   0   2   0
-    SYSCLK_HSI_96MHz    = 0x37020,      //	            3   7   0   2   0
-    SYSCLK_HSE_1x       = 0x00011,      //	            0   0   0   1   1
-    SYSCLK_HSE_3x       = 0x02021,      //	            0   2   0   2   1
-    SYSCLK_HSE_4x       = 0x13021,      //	            1   3   0   2   1
-    SYSCLK_HSE_6x       = 0x15021,      //	            1   5   0   2   1
-    SYSCLK_HSE_7x       = 0x26021,      //	            2   6   0   2   1
-    SYSCLK_HSE_9x       = 0x28021,      //	            2   8   0   2   1
-    SYSCLK_HSE_12x      = 0x3B021,      //	            3   1   0   2   1
+    SYSCLK_HSI_6d       = 0x00000,      //              0   0   0   0   0
+#if defined(__MM3N1) || defined(__MM0N1) || defined(__MM0P1) || defined(__MM0S1)
+    SYSCLK_HSI_12MHz    = 0x00020,      //              0   0   0   2   0
+    SYSCLK_HSI_24MHz    = 0x01020,      //              0   1   0   2   0
+    SYSCLK_HSI_48MHz    = 0x13020,      //              1   3   0   2   0
+    SYSCLK_HSI_72MHz    = 0x25020,      //              2   5   0   2   0
+    SYSCLK_HSI_96MHz    = 0x37020,      //              3   7   0   2   0
+    SYSCLK_HSE_1x       = 0x00011,      //              0   0   0   1   1
+    SYSCLK_HSE_3x       = 0x02021,      //              0   2   0   2   1
+    SYSCLK_HSE_4x       = 0x13021,      //              1   3   0   2   1
+    SYSCLK_HSE_6x       = 0x15021,      //              1   5   0   2   1
+    SYSCLK_HSE_7x       = 0x26021,      //              2   6   0   2   1
+    SYSCLK_HSE_9x       = 0x28021,      //              2   8   0   2   1
+    SYSCLK_HSE_12x      = 0x3B021,      //              3   1   0   2   1
 #endif
 #if defined(__MM0Q1) || defined(__MM0T1)
-    SYSCLK_HSI_6d       = 0x00000,      //              0   0   0   0   0
     SYSCLK_HSE_1x       = 0x00011,      //              0   0   0   1   1
     SYSCLK_HSI_48MHz    = 0x10020,      //              1   0   0   2   0
     SYSCLK_HSI_72MHz    = 0x20020,      //              2   0   0   2   0

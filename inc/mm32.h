@@ -1049,7 +1049,7 @@ typedef struct {
     __IO uint32_t GROUP17_ACR;
     __IO uint32_t GROUP18_ACR;
     __IO uint32_t GROUP19_ACR;
-    __IO uint32_t GROUP1_ACR;
+    __IO uint32_t GROUP1_AMR;
     __IO uint32_t GROUP2_AMR;
     __IO uint32_t GROUP3_AMR;
     __IO uint32_t GROUP4_AMR;
@@ -1136,7 +1136,7 @@ typedef struct {
     __IO uint32_t GROUP17_ACR;
     __IO uint32_t GROUP18_ACR;
     __IO uint32_t GROUP19_ACR;
-    __IO uint32_t GROUP1_ACR;
+    __IO uint32_t GROUP1_AMR;
     __IO uint32_t GROUP2_AMR;
     __IO uint32_t GROUP3_AMR;
     __IO uint32_t GROUP4_AMR;

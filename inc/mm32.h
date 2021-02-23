@@ -349,229 +349,249 @@ typedef enum IRQn {
 #endif
 
 ////////////////////////////////////////////////////////////////////////////////
-/// @brief  MM32 MCU Memory/Peripherals mapping
+/// @brief MM32 BUS Base Address Definition
 ////////////////////////////////////////////////////////////////////////////////
-#define FLASH_BASE                      (0x08000000U)                           ///< FLASH base address in the alias region
-#define SRAM_BASE                       (0x20000000U)                           ///< SRAM base address in the alias region
-#define PERIPH_BASE                     (0x40000000U)                           ///< Peripheral base address in the alias region
 
-#if defined(__MM3O1)
-    #define EEPROM_BASE                 (0x08100000U)                           ///< EEPROM base address in the alias region
-#endif
+#define APB1_BASE                       (0x40000000U)
+#define APB2_BASE                       (0x40010000U)
+#define AHB1_BASE                       (0x40020000U)
+#define AHB2_BASE                       (0x48000000U)
+#define AHB3_BASE                       (0x60000000U)
+
+#define AHB_BASE                        AHB1_BASE
 
 #if defined(__MM3N1) || defined(__MM3O1)
     #define SRAM_BITBAND_BASE           (0x22000000U)                           ///< Peripheral base address in the bit-band region
     #define PERIPH_BITBAND_BASE         (0x42000000U)                           ///< SRAM base address in the bit-band region
 #endif
 
-#define APB1PERIPH_BASE                 (0x40000000U)
-#define APB2PERIPH_BASE                 (0x40010000U)
-#define AHBPERIPH_BASE                  (0x40020000U)
-#define APB3PERIPH_BASE                 (0x40030000U)
-#define AHB2PERIPH_BASE                 (0x48000000U)
+////////////////////////////////////////////////////////////////////////////////
+/// @brief SRAM Base Address Definition
+////////////////////////////////////////////////////////////////////////////////
+#define SRAM_BASE                       (0x20000000U)                           ///< Base Address: SRAM base 0x20000000
+
+////////////////////////////////////////////////////////////////////////////////
+/// @brief FLASH Base Address Definition
+////////////////////////////////////////////////////////////////////////////////
+#define FLASH_BASE                      (0x08000000U)                           ///< Base Address: Main Flash 0x08000000
+
+////////////////////////////////////////////////////////////////////////////////
+/// @brief EEPROM Base Address Definition
+////////////////////////////////////////////////////////////////////////////////
+#if defined(__MM3O1)
+    #define EEPROM_BASE                 (0x08100000U)                           ///< Base Address: EEPROM base 0x08100000U
+#endif
+
 
 
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief ADC Base Address Definition
 ////////////////////////////////////////////////////////////////////////////////
-#define ADC1_BASE                       (0x40012400)                            ///< Base Address: APB2 0x40012400
+#define ADC1_BASE                       (0x40012400U)                           ///< Base Address: APB2 0x40012400
 
 #if defined(__MM3N1) || defined(__MM0P1) || defined(__MM3U1)
-    #define ADC2_BASE                   (0x40012800)                            ///< Base Address: APB2 0x40012800
+    #define ADC2_BASE                   (0x40012800U)                           ///< Base Address: APB2 0x40012800
 #endif
 
 #if defined(__MM3U1)
-    #define ADC3_BASE                   (0x40014C00)                            ///< Base Address: APB2 0x40014C00
+    #define ADC3_BASE                   (0x40014C00U)                           ///< Base Address: APB2 0x40014C00
 #endif
 
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief AES Base Address Definition
 ////////////////////////////////////////////////////////////////////////////////
 #if defined(__MM3N1) || defined(__MM0N1) || defined(__MM3O1)
-    #define AES_BASE                    (0x40026000)                            ///< Base Address: AHB 0x40026000
+    #define AES_BASE                    (0x40026000U)                           ///< Base Address: AHB 0x40026000
 #endif
 
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief BKP Base Address Definition
 ////////////////////////////////////////////////////////////////////////////////
 #if defined(__MM3N1)
-    #define BKP_BASE                    (0x40006C00)                            ///< Base Address: APB1 0x40006C00
+    #define BKP_BASE                    (0x40006C00U)                           ///< Base Address: APB1 0x40006C00
 #endif
 
 #if defined(__MM0N1) || defined(__MM0P1)
-    #define BKP_BASE                    (0x4000280C)                            ///< Base Address: APB1 0x4000280C
+    #define BKP_BASE                    (0x4000280CU)                           ///< Base Address: APB1 0x4000280C
 #endif
 
 #if defined(__MM3O1)
-    #define BKP_BASE                    (0x40002824)                            ///< Base Address: APB1 0x40002824
+    #define BKP_BASE                    (0x40002824U)                           ///< Base Address: APB1 0x40002824
 #endif
 
 #if defined(__MM0S1)
-    #define BKP_BASE                    (0x40002840)                            ///< Base Address: APB1 0x40002840
+    #define BKP_BASE                    (0x40002840U)                           ///< Base Address: APB1 0x40002840
 #endif
 
 #if defined(__MM3U1)
-    #define BKP_BASE                    (0x4000283C)                            ///< Base Address: APB1 0x4000283C
+    #define BKP_BASE                    (0x4000283CU)                           ///< Base Address: APB1 0x4000283C
+#endif
+
+////////////////////////////////////////////////////////////////////////////////
+/// @brief CACHE Base Address Definition
+////////////////////////////////////////////////////////////////////////////////
+#if defined(__MM3U1)
+    #define CACHE_BASE                  (0x40016000U)                           ///< Base Address: APB2 0x40016000
 #endif
 
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief CAN Base Address Definition
 ////////////////////////////////////////////////////////////////////////////////
 #if defined(__MM3N1) || defined(__MM0N1) || defined(__MM3O1) || defined(__MM0S1) || defined(__MM3U1)
-    #define CAN1_BASE                   (0x40006400)                            ///< Base Address: APB1 0x40006400
+    #define CAN1_BASE                   (0x40006400U)                           ///< Base Address: APB1 0x40006400
 #endif
 
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief COMP Base Address Definition
 ////////////////////////////////////////////////////////////////////////////////
 #if defined(__MM0N1) || defined(__MM0P1) || defined(__MM0Q1) || defined(__MM0S1)
-    #define COMP_BASE                   (0x40013C00)                            ///< Base Address: APB2 0x40013C00
+    #define COMP_BASE                   (0x40013C00U)                           ///< Base Address: APB2 0x40013C00
 #endif
 
 #if defined(__MM3O1)
-    #define COMP_BASE                   (0x4001001C)                            ///< Base Address: APB2 0x4001001C
+    #define COMP_BASE                   (0x4001001CU)                           ///< Base Address: APB2 0x4001001C
 #endif
 
 #if defined(__MM3U1)
-    #define COMP_BASE                   (0x40014000)                            ///< Base Address: APB2 0x40014000
+    #define COMP_BASE                   (0x40014000U)                           ///< Base Address: APB2 0x40014000
 #endif
 
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief CRC Base Address Definition
 ////////////////////////////////////////////////////////////////////////////////
 #if defined(__MM3N1) || defined(__MM3O1) || defined(__MM0P1) || defined(__MM0Q1) || defined(__MM0S1) || defined(__MM0T1) || defined(__MM3U1)
-    #define CRC_BASE                    (0x40023000)                            ///< Base Address: AHB 0x40023000
+    #define CRC_BASE                    (0x40023000U)                           ///< Base Address: AHB 0x40023000
 #endif
 
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief CRS Base Address Definition
 ////////////////////////////////////////////////////////////////////////////////
 #if defined(__MM0N1) || defined(__MM3O1) || defined(__MM0S1) || defined(__MM3U1)
-    #define CRS_BASE                    (0x40006C00)                            ///< Base Address: APB1 0x40006C00
+    #define CRS_BASE                    (0x40006C00U)                           ///< Base Address: APB1 0x40006C00
 #endif
 
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief DAC Base Address Definition
 ////////////////////////////////////////////////////////////////////////////////
 #if defined(__MM3N1) || defined(__MM3U1)
-    #define DAC_BASE                    (0x40007400)                            ///< Base Address: APB1 0x40007400
+    #define DAC_BASE                    (0x40007400U)                           ///< Base Address: APB1 0x40007400
 #endif
 
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief DBG Base Address Definition
 ////////////////////////////////////////////////////////////////////////////////
 #if defined(__MM3N1) || defined(__MM3O1) || defined(__MM3U1)
-    #define DBG_BASE                    (0x40007080)                            ///< Base Address: APB1 0x40007080
+    #define DBG_BASE                    (0x40007080U)                           ///< Base Address: APB1 0x40007080
 #endif
 
 #if defined(__MM0N1) || defined(__MM0P1) || defined(__MM0Q1) || defined(__MM0S1) || defined(__MM0T1)
-    #define DBG_BASE                    (0x40013400)                            ///< Base Address: APB2 0x40013400
+    #define DBG_BASE                    (0x40013400U)                           ///< Base Address: APB2 0x40013400
 #endif
 
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief DIV Base Address Definition
 ////////////////////////////////////////////////////////////////////////////////
 #if defined(__MM0P1) || defined(__MM0Q1) || defined(__MM0S1)
-    #define DIV_BASE                    (0x40030000)                            ///< Base Address: APB3 0x40030000
+    #define DIV_BASE                    (0x40030000U)                           ///< Base Address: AHB 0x40030000
 #endif
 
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief DMA Base Address Definition
 ////////////////////////////////////////////////////////////////////////////////
 #if defined(__MM3N1) || defined(__MM0N1) ||defined(__MM3O1) || defined(__MM0P1) || defined(__MM0Q1) || defined(__MM0S1) || defined(__MM3U1)
-    #define DMA1_BASE                   (0x40020000)                            ///< Base Address: AHB 0x40020000
-    #define DMA1_Channel1_BASE          (0x40020008)                            ///< Base Address: AHB 0x40020008
-    #define DMA1_Channel2_BASE          (0x4002001C)                            ///< Base Address: AHB 0x4002001C
-    #define DMA1_Channel3_BASE          (0x40020030)                            ///< Base Address: AHB 0x40020030
-    #define DMA1_Channel4_BASE          (0x40020044)                            ///< Base Address: AHB 0x40020044
-    #define DMA1_Channel5_BASE          (0x40020058)                            ///< Base Address: AHB 0x40020058
+    #define DMA1_BASE                   (0x40020000U)                           ///< Base Address: AHB 0x40020000
+    #define DMA1_Channel1_BASE          (0x40020008U)                           ///< Base Address: AHB 0x40020008
+    #define DMA1_Channel2_BASE          (0x4002001CU)                           ///< Base Address: AHB 0x4002001C
+    #define DMA1_Channel3_BASE          (0x40020030U)                           ///< Base Address: AHB 0x40020030
+    #define DMA1_Channel4_BASE          (0x40020044U)                           ///< Base Address: AHB 0x40020044
+    #define DMA1_Channel5_BASE          (0x40020058U)                           ///< Base Address: AHB 0x40020058
 #endif
 
 #if defined(__MM3N1) || defined(__MM3U1)
-    #define DMA1_Channel6_BASE          (0x4002006C)                            ///< Base Address: AHB 0x4002006C
-    #define DMA1_Channel7_BASE          (0x40020080)                            ///< Base Address: AHB 0x40020080
+    #define DMA1_Channel6_BASE          (0x4002006CU)                           ///< Base Address: AHB 0x4002006C
+    #define DMA1_Channel7_BASE          (0x40020080U)                           ///< Base Address: AHB 0x40020080
 #endif
 
 #if defined(__MM3O1)
-    #define DMA2_BASE                   (0x40020400)                            ///< Base Address: AHB 0x40020400
-    #define DMA2_Channel1_BASE          (0x40020408)                            ///< Base Address: AHB 0x40020408
-    #define DMA2_Channel2_BASE          (0x4002041C)                            ///< Base Address: AHB 0x4002041C
-    #define DMA2_Channel3_BASE          (0x40020430)                            ///< Base Address: AHB 0x40020430
-    #define DMA2_Channel4_BASE          (0x40020444)                            ///< Base Address: AHB 0x40020444
-    #define DMA2_Channel5_BASE          (0x40020458)                            ///< Base Address: AHB 0x40020458
+    #define DMA2_BASE                   (0x40020400U)                           ///< Base Address: AHB 0x40020400
+    #define DMA2_Channel1_BASE          (0x40020408U)                           ///< Base Address: AHB 0x40020408
+    #define DMA2_Channel2_BASE          (0x4002041CU)                           ///< Base Address: AHB 0x4002041C
+    #define DMA2_Channel3_BASE          (0x40020430U)                           ///< Base Address: AHB 0x40020430
+    #define DMA2_Channel4_BASE          (0x40020444U)                           ///< Base Address: AHB 0x40020444
+    #define DMA2_Channel5_BASE          (0x40020458U)                           ///< Base Address: AHB 0x40020458
 #endif
-
-////////////////////////////////////////////////////////////////////////////////
-/// @brief EXTI Base Address Definition
-////////////////////////////////////////////////////////////////////////////////
-#define EXTI_BASE                       (0x40010000)                            ///< Base Address: 0x40010000
 
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief ETH Base Address Definition
 ////////////////////////////////////////////////////////////////////////////////
 #if defined(__MM3O1) || defined(__MM3U1)
-    #define ETH_BASE                    (0x40028000)                            ///< Base Address: AHB1 0x40028000
+    #define ETH_BASE                    (0x40028000U)                           ///< Base Address: AHB1 0x40028000
 #endif
 
 ////////////////////////////////////////////////////////////////////////////////
-/// @brief FLASH Base Address Definition
+/// @brief EXTI Base Address Definition
 ////////////////////////////////////////////////////////////////////////////////
-#define FLASH_REG_BASE                  (0x40022000)                            ///< Base Address: AHB 0x40022000
+#define EXTI_BASE                       (0x40010000U)                           ///< Base Address: 0x40010000
+
+////////////////////////////////////////////////////////////////////////////////
+/// @brief FLASH Register Base Address Definition
+////////////////////////////////////////////////////////////////////////////////
+#define FLASH_REG_BASE                  (0x40022000U)                           ///< Base Address: AHB 0x40022000
 
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief GPIO Base Address Definition
 ////////////////////////////////////////////////////////////////////////////////
 #if defined(__MM3N1)
-    #define GPIOA_BASE                  (0x40010800)                            ///< Base Address: APB2 0x40010800
-    #define GPIOB_BASE                  (0x40010C00)                            ///< Base Address: APB2 0x40010C00
-    #define GPIOC_BASE                  (0x40011000)                            ///< Base Address: APB2 0x40011000
-    #define GPIOD_BASE                  (0x40011400)                            ///< Base Address: APB2 0x40011400
+    #define GPIOA_BASE                  (0x40010800U)                           ///< Base Address: APB2 0x40010800
+    #define GPIOB_BASE                  (0x40010C00U)                           ///< Base Address: APB2 0x40010C00
+    #define GPIOC_BASE                  (0x40011000U)                           ///< Base Address: APB2 0x40011000
+    #define GPIOD_BASE                  (0x40011400U)                           ///< Base Address: APB2 0x40011400
 #endif
 
 #if defined(__MM0N1) || defined(__MM3O1) || defined(__MM0P1) || defined(__MM0Q1) || defined(__MM0S1)
-    #define GPIOA_BASE                  (0x48000000)                            ///< Base Address: AHB2 0x48000000
-    #define GPIOB_BASE                  (0x48000400)                            ///< Base Address: AHB2 0x48000400
-    #define GPIOC_BASE                  (0x48000800)                            ///< Base Address: AHB2 0x48000800
-    #define GPIOD_BASE                  (0x48000C00)                            ///< Base Address: AHB2 0x48000C00
+    #define GPIOA_BASE                  (0x48000000U)                           ///< Base Address: AHB2 0x48000000
+    #define GPIOB_BASE                  (0x48000400U)                           ///< Base Address: AHB2 0x48000400
+    #define GPIOC_BASE                  (0x48000800U)                           ///< Base Address: AHB2 0x48000800
+    #define GPIOD_BASE                  (0x48000C00U)                           ///< Base Address: AHB2 0x48000C00
     #if defined(__MM3O1)
-        #define GPIOE_BASE              (0x48001000)                            ///< Base Address: AHB2 0x48001000
+        #define GPIOE_BASE              (0x48001000U)                           ///< Base Address: AHB2 0x48001000
     #endif
 #endif
 
 #if defined(__MM0T1)
-    #define GPIOA_BASE                  (0x48000000)                            ///< Base Address: 0x48000000
-    #define GPIOB_BASE                  (0x48000400)                            ///< Base Address: 0x48000400
+    #define GPIOA_BASE                  (0x48000000U)                           ///< Base Address: 0x48000000
+    #define GPIOB_BASE                  (0x48000400U)                           ///< Base Address: 0x48000400
 #endif
 
 #if defined(__MM3U1)
-    #define GPIOA_BASE                  (0x40040000)                            ///< Base Address: AHB1 0x40040000
-    #define GPIOB_BASE                  (0x40040400)                            ///< Base Address: AHB1 0x40040400
-    #define GPIOC_BASE                  (0x40040800)                            ///< Base Address: AHB1 0x40040800
-    #define GPIOD_BASE                  (0x40040C00)                            ///< Base Address: AHB1 0x40040C00
-    #define GPIOE_BASE                  (0x40041000)                            ///< Base Address: AHB1 0x40041000
-    #define GPIOF_BASE                  (0x40041400)                            ///< Base Address: AHB1 0x40041400
-    #define GPIOG_BASE                  (0x40041800)                            ///< Base Address: AHB1 0x40041800
-    #define GPIOH_BASE                  (0x40041C00)                            ///< Base Address: AHB1 0x40041C00
+    #define GPIOA_BASE                  (0x40040000U)                           ///< Base Address: AHB1 0x40040000
+    #define GPIOB_BASE                  (0x40040400U)                           ///< Base Address: AHB1 0x40040400
+    #define GPIOC_BASE                  (0x40040800U)                           ///< Base Address: AHB1 0x40040800
+    #define GPIOD_BASE                  (0x40040C00U)                           ///< Base Address: AHB1 0x40040C00
+    #define GPIOE_BASE                  (0x40041000U)                           ///< Base Address: AHB1 0x40041000
+    #define GPIOF_BASE                  (0x40041400U)                           ///< Base Address: AHB1 0x40041400
+    #define GPIOG_BASE                  (0x40041800U)                           ///< Base Address: AHB1 0x40041800
+    #define GPIOH_BASE                  (0x40041C00U)                           ///< Base Address: AHB1 0x40041C00
 #endif
 
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief I2C Base Address Definition
 ////////////////////////////////////////////////////////////////////////////////
-#define I2C1_BASE                       (0x40005400)                            ///< Base Address: APB1 0x40005400
+#define I2C1_BASE                       (0x40005400U)                           ///< Base Address: APB1 0x40005400
 #if defined(__MM3N1) || defined(__MM3O1) || defined(__MM3U1)
-    #define I2C2_BASE                   (0x40005800)                            ///< Base Address: APB1 0x40005800
+    #define I2C2_BASE                   (0x40005800U)                           ///< Base Address: APB1 0x40005800
 #endif
 
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief IWDG Base Address Definition
 ////////////////////////////////////////////////////////////////////////////////
-#define IWDG_BASE                       (0x40003000)                            ///< Base Address: APB1 0x40003000
+#define IWDG_BASE                       (0x40003000U)                           ///< Base Address: APB1 0x40003000
 
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief OPAMP Base Address Definition
 ////////////////////////////////////////////////////////////////////////////////
 #if defined(__MM0P1)
-    #define OPAMP_BASE                  (0x40013C10)                            ///< Base Address: APB2 0x40013C10
+    #define OPAMP_BASE                  (0x40013C10U)                           ///< Base Address: APB2 0x40013C10
 #endif
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -584,85 +604,90 @@ typedef enum IRQn {
 /// @brief OTG_FS Base Address Definition
 ////////////////////////////////////////////////////////////////////////////////
 #if defined(__MM3O1) || defined(__MM3U1)
-    #define OTG_FS_BASE                 (0x50000000)
+    #define OTG_FS_BASE                 (0x50000000U)
 #endif
 
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief PWM Base Address Definition
 ////////////////////////////////////////////////////////////////////////////////
 #if defined(__MM0P1) || defined(__MM0Q1)
-    #define PWM_BASE                    (0x40016400)                            ///< Base Address: APB2 0x40016400
+    #define PWM_BASE                    (0x40016400U)                           ///< Base Address: APB2 0x40016400
 #endif
 
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief PWR Base Address Definition
 ////////////////////////////////////////////////////////////////////////////////
-#define PWR_BASE                        (0x40007000)                            ///< Base Address: APB1 0x40007000
+#define PWR_BASE                        (0x40007000U)                           ///< Base Address: APB1 0x40007000
 
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief RCC Base Address Definition
 ////////////////////////////////////////////////////////////////////////////////
-#define RCC_BASE                        (0x40021000)                            ///< Base Address: AHB 0x40021000
+#define RCC_BASE                        (0x40021000U)                           ///< Base Address: AHB 0x40021000
 
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief RTC Base Address Definition
 ////////////////////////////////////////////////////////////////////////////////
 #if defined(__MM3N1) || defined(__MM3O1) || defined(__MM0S1) || defined(__MM3U1)
-    #define RTC_BASE                    (0x40002800)                            ///< Base Address: APB1 0x40002800
+    #define RTC_BASE                    (0x40002800U)                           ///< Base Address: APB1 0x40002800
 #endif
+
+////////////////////////////////////////////////////////////////////////////////
+/// @brief SDIO Base Address Definition
+////////////////////////////////////////////////////////////////////////////////
+#define SDIO_BASE                       (0x40018000U)                           ///< Base Address: APB2 0x40018000
 
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief SPI Base Address Definition
 ////////////////////////////////////////////////////////////////////////////////
-#define SPI1_BASE                       (0x40003000)                            ///< Base Address: APB2 0x40003000
+#define SPI1_BASE                       (0x40003000U)                           ///< Base Address: APB2 0x40003000
 
 #if defined(__MM3N1) || defined(__MM0N1) || defined(__MM0P1) || defined(__MM0Q1) || defined(__MM3O1) || defined(__MM0S1) || defined(__MM3U1)
-    #define SPI2_BASE                   (0x40003800)                            ///< Base Address: APB1 0x40003800
+    #define SPI2_BASE                   (0x40003800U)                           ///< Base Address: APB1 0x40003800
 #endif
 
 #if defined(__MM3O1) || defined(__MM3U1)
-    #define SPI3_BASE                   (0x40003C00)                            ///< Base Address: APB1 0x40003C00
+    #define SPI3_BASE                   (0x40003C00U)                           ///< Base Address: APB1 0x40003C00
 #endif
 
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief SQRT Base Address Definition
 ////////////////////////////////////////////////////////////////////////////////
 #if defined(__MM0P1)
-    #define SQRT_BASE                   (0x40030400)                            ///< Base Address: APB3 0x40030400
+    #define SQRT_BASE                   (0x40030400U)                           ///< Base Address: AHB1 0x40030400
 #endif
 
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief TIM Base Address Definition
 ////////////////////////////////////////////////////////////////////////////////
-#define TIM1_BASE                       (0x40012C00)                            ///< Base Address: APB2 0x40012C00
-#define TIM3_BASE                       (0x40000400)                            ///< Base Address: APB1 0x40000400
+#define TIM1_BASE                       (0x40012C00U)                           ///< Base Address: APB2 0x40012C00
+#define TIM3_BASE                       (0x40000400U)                           ///< Base Address: APB1 0x40000400
 
 #if !defined(__MM0T1)
-    #define TIM2_BASE                   (0x40000000)                            ///< Base Address: APB1 0x40000000
+    #define TIM2_BASE                   (0x40000000U)                           ///< Base Address: APB1 0x40000000
 #endif
 
 #if defined(__MM3N1) || defined(__MM3O1) || defined(__MM3U1)
-    #define TIM4_BASE                   (0x40000800)                            ///< Base Address: APB1 0x40000800
+    #define TIM4_BASE                   (0x40000800U)                           ///< Base Address: APB1 0x40000800
 #endif
 
 #if defined(__MM3O1) || defined(__MM3U1)
-    #define TIM5_BASE                   (0x40000C00)                            ///< Base Address: APB1 0x40000C00
-    #define TIM6_BASE                   (0x40001000)                            ///< Base Address: APB1 0x40001000
-    #define TIM7_BASE                   (0x40001400)                            ///< Base Address: APB1 0x40001400
-    #define TIM8_BASE                   (0x40013400)                            ///< Base Address: APB2 0x40013400
+    #define TIM5_BASE                   (0x40000C00U)                           ///< Base Address: APB1 0x40000C00
+    #define TIM6_BASE                   (0x40001000U)                           ///< Base Address: APB1 0x40001000
+    #define TIM7_BASE                   (0x40001400U)                           ///< Base Address: APB1 0x40001400
+    #define TIM8_BASE                   (0x40013400U)                           ///< Base Address: APB2 0x40013400
 #endif
 
 #if defined(__MM0P1)
-    #define TIM8_BASE                   (0x40010800)                            ///< Base Address: APB2 0x40010800
+    #define TIM8_BASE                   (0x40010800U)                           ///< Base Address: APB2 0x40010800
 #endif
 
 #if defined(__MM0N1) || defined(__MM0P1) || defined(__MM0Q1) || defined(__MM0S1) || defined(__MM0T1)
-    #define TIM14_BASE                  (0x40014000)                            ///< Base Address: APB2 0x40014000
+    #define TIM14_BASE                  (0x40014000U)                           ///< Base Address: APB2 0x40014000
 #endif
 
 #if defined(__MM0N1) || defined(__MM0P1) || defined(__MM0Q1) || defined(__MM0S1)
-    #define TIM16_BASE                  (0x40014400)                            ///< Base Address: APB2 0x40014400
-    #define TIM17_BASE                  (0x40014800)                            ///< Base Address: APB2 0x40014800
+    #define TIM16_BASE                  (0x40014400U)                           ///< Base Address: APB2 0x40014400
+    #define TIM17_BASE                  (0x40014800U)                           ///< Base Address: APB2 0x40014800
 #endif
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -685,10 +710,10 @@ typedef enum IRQn {
 #endif
 
 ////////////////////////////////////////////////////////////////////////////////
-/// @brief USB Base Address Definition
+/// @brief SYSCFG Base Address Definition
 ////////////////////////////////////////////////////////////////////////////////
-#if defined(__MM3N1) || defined(__MM0N1) || defined(__MM3O1) || defined(__MM0S1)
-    #define USB_BASE                    (0x40005C00)                            ///< Base Address: APB1 0x40005C00
+#if defined(__MM0N1) || defined(__MM3O1) || defined(__MM0P1) || defined(__MM0Q1) || defined(__MM0S1) || defined(__MM0T1) || defined(__MM3U1)
+    #define SYSCFG_BASE                 (0x40010000U)                           ///< Base Address: APB2 0x40010000
 #endif
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -697,100 +722,107 @@ typedef enum IRQn {
 #define UID_BASE                        (0x1FFFF7E8U)                           ///< Unique device ID register base address
 
 ////////////////////////////////////////////////////////////////////////////////
+/// @brief USB Base Address Definition
+////////////////////////////////////////////////////////////////////////////////
+#if defined(__MM3N1) || defined(__MM0N1) || defined(__MM3O1) || defined(__MM0S1)
+    #define USB_BASE                    (0x40005C00U)                           ///< Base Address: APB1 0x40005C00
+#endif
+
+////////////////////////////////////////////////////////////////////////////////
 /// @brief WWDG Base Address Definition
 ////////////////////////////////////////////////////////////////////////////////
-#define WWDG_BASE                       (0x40002C00)                            ///< Base Address: APB1 0x40002C00
+#define WWDG_BASE                       (0x40002C00U)                           ///< Base Address: APB1 0x40002C00
 
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief Analog-to-Digital Converter register
 ////////////////////////////////////////////////////////////////////////////////
 typedef struct {
-    __IO u32 DR;                                                                ///< ADC data register,                             offset: 0x00
-    __IO u32 CFGR;                                                              ///< ADC configuration register,                    offset: 0x04
-    __IO u32 CR;                                                                ///< ADC control register,                          offset: 0x08
+    __IO uint32_t DR;                                                           ///< ADC data register,                             offset: 0x00
+    __IO uint32_t CFGR;                                                         ///< ADC configuration register,                    offset: 0x04
+    __IO uint32_t CR;                                                           ///< ADC control register,                          offset: 0x08
 #if defined(__MM0T1)
-    __IO u32 RESERVED0;
+    __IO uint32_t RESERVED0;
 #else
-    __IO u32 CHSR;                                                              ///< ADC channel selection register,                offset: 0x0C
+    __IO uint32_t CHSR;                                                         ///< ADC channel selection register,                offset: 0x0C
 #endif
-    __IO u32 CMPR;                                                              ///< ADC window compare register,                   offset: 0x10
-    __IO u32 SR;                                                                ///< ADC status register,                           offset: 0x14
-    __IO u32 CH0DR;                                                             ///< ADC channel0 data register,                    offset: 0x18
-    __IO u32 CH1DR;                                                             ///< ADC channel1 data register,                    offset: 0x1C
-    __IO u32 CH2DR;                                                             ///< ADC channel2 data register,                    offset: 0x20
-    __IO u32 CH3DR;                                                             ///< ADC channel3 data register,                    offset: 0x24
-    __IO u32 CH4DR;                                                             ///< ADC channel4 data register,                    offset: 0x28
-    __IO u32 CH5DR;                                                             ///< ADC channel5 data register,                    offset: 0x2C
-    __IO u32 CH6DR;                                                             ///< ADC channel6 data register,                    offset: 0x30
-    __IO u32 CH7DR;                                                             ///< ADC channel7 data register,                    offset: 0x34
-    __IO u32 CH8DR;                                                             ///< ADC channel8 data register,                    offset: 0x38
+    __IO uint32_t CMPR;                                                         ///< ADC window compare register,                   offset: 0x10
+    __IO uint32_t SR;                                                           ///< ADC status register,                           offset: 0x14
+    __IO uint32_t CH0DR;                                                        ///< ADC channel0 data register,                    offset: 0x18
+    __IO uint32_t CH1DR;                                                        ///< ADC channel1 data register,                    offset: 0x1C
+    __IO uint32_t CH2DR;                                                        ///< ADC channel2 data register,                    offset: 0x20
+    __IO uint32_t CH3DR;                                                        ///< ADC channel3 data register,                    offset: 0x24
+    __IO uint32_t CH4DR;                                                        ///< ADC channel4 data register,                    offset: 0x28
+    __IO uint32_t CH5DR;                                                        ///< ADC channel5 data register,                    offset: 0x2C
+    __IO uint32_t CH6DR;                                                        ///< ADC channel6 data register,                    offset: 0x30
+    __IO uint32_t CH7DR;                                                        ///< ADC channel7 data register,                    offset: 0x34
+    __IO uint32_t CH8DR;                                                        ///< ADC channel8 data register,                    offset: 0x38
 #if defined(__MM0N1) || defined(__MM0P1) || defined(__MM0Q1)
-    __IO u32 CH9DR;                                                             ///< ADC channel9 data register,                    offset: 0x3C
-    __IO u32 CH10DR;                                                            ///< ADC channel10 data register,                   offset: 0x40
-    __IO u32 CH11DR;                                                            ///< ADC channel11 data register,                   offset: 0x44
+    __IO uint32_t CH9DR;                                                        ///< ADC channel9 data register,                    offset: 0x3C
+    __IO uint32_t CH10DR;                                                       ///< ADC channel10 data register,                   offset: 0x40
+    __IO uint32_t CH11DR;                                                       ///< ADC channel11 data register,                   offset: 0x44
 #endif
 #if defined(__MM0P1)
-    __IO u32 RESERVED0;
-    __IO u32 RESERVED1;
+    __IO uint32_t RESERVED0;
+    __IO uint32_t RESERVED1;
 #endif
 #if defined(__MM0Q1)
-    __IO u32 CH12DR;                                                            ///< ADC channel12 data register,                   offset: 0x48
-    __IO u32 RESERVED0;
+    __IO uint32_t CH12DR;                                                       ///< ADC channel12 data register,                   offset: 0x48
+    __IO uint32_t RESERVED0;
 #endif
 #if defined(__MM0S1)
-    __IO u32 CH9DR;                                                             ///< ADC channel9 data register,                    offset: 0x3C
-    __IO u32 RESERVED0;
-    __IO u32 RESERVED1;
-    __IO u32 RESERVED2;
-    __IO u32 RESERVED3;
+    __IO uint32_t CH9DR;                                                        ///< ADC channel9 data register,                    offset: 0x3C
+    __IO uint32_t RESERVED0;
+    __IO uint32_t RESERVED1;
+    __IO uint32_t RESERVED2;
+    __IO uint32_t RESERVED3;
 #endif
 #if defined(__MM0T1)
-    __IO u32 RESERVED1;
-    __IO u32 RESERVED2;
-    __IO u32 RESERVED3;
-    __IO u32 RESERVED4;
-    __IO u32 RESERVED5;
-    __IO u32 RESERVED6;
-    __IO u32 RESERVED7;
-    __IO u32 RESERVED8;
+    __IO uint32_t RESERVED1;
+    __IO uint32_t RESERVED2;
+    __IO uint32_t RESERVED3;
+    __IO uint32_t RESERVED4;
+    __IO uint32_t RESERVED5;
+    __IO uint32_t RESERVED6;
+    __IO uint32_t RESERVED7;
+    __IO uint32_t RESERVED8;
 #endif
 #if defined(__MM0P1) || defined(__MM0Q1) || defined(__MM0S1) || defined(__MM0T1)
     #if defined(__MM0P1) || defined(__MM0Q1) || defined(__MM0S1)
-    __IO u32 CH14DR;                                                            ///< ADC channel14 data register,                   offset: 0x50
-    __IO u32 CH15DR;                                                            ///< ADC channel15 data register,                   offset: 0x54
-    __IO u32 SREXT;                                                             ///< ADC Extended Status Register,                  offset: 0x58
+    __IO uint32_t CH14DR;                                                       ///< ADC channel14 data register,                   offset: 0x50
+    __IO uint32_t CH15DR;                                                       ///< ADC channel15 data register,                   offset: 0x54
+    __IO uint32_t SREXT;                                                        ///< ADC Extended Status Register,                  offset: 0x58
     #endif
     #if defined(__MM0S1) || defined(__MM0T1)
-    __IO u32 CHANY0;                                                            ///< Arbitrary channel channel selection register 0,      offset: 0x5C
-    __IO u32 CHANY1;                                                            ///< Arbitrary channel channel selection register 1,      offset: 0x60
-    __IO u32 ANY_CFG;                                                           ///< Arbitrary channel configuration register,            offset: 0x64
-    __IO u32 ANY_CR;                                                            ///< Arbitrary channel control register,                  offset: 0x68
+    __IO uint32_t CHANY0;                                                       ///< Arbitrary channel channel selection register 0,      offset: 0x5C
+    __IO uint32_t CHANY1;                                                       ///< Arbitrary channel channel selection register 1,      offset: 0x60
+    __IO uint32_t ANY_CFG;                                                      ///< Arbitrary channel configuration register,            offset: 0x64
+    __IO uint32_t ANY_CR;                                                       ///< Arbitrary channel control register,                  offset: 0x68
     #endif
 #endif
 #if defined(__MM3U1)
-    __IO u32 CH9DR;                                                             ///< ADC channel9 data register,                    offset: 0x3C
-    __IO u32 CH10DR;                                                            ///< ADC channel9 data register,                    offset: 0x40
-    __IO u32 CH11DR;                                                            ///< ADC channel9 data register,                    offset: 0x44
-    __IO u32 CH12DR;                                                            ///< ADC channel9 data register,                    offset: 0x48
-    __IO u32 CH13DR;                                                            ///< ADC channel9 data register,                    offset: 0x4C
-    __IO u32 CH14DR;                                                            ///< ADC channel10 data register,                   offset: 0x50
-    __IO u32 CH15DR;                                                            ///< ADC channel11 data register,                   offset: 0x54
-    __IO u32 STA_EXT;                                                           ///< ADC channel11 data register,                   offset: 0x58
-    __IO u32 CHANY0;                                                            ///< ADC channel11 data register,                   offset: 0x5C
-    __IO u32 CHANY1;                                                            ///< ADC channel11 data register,                   offset: 0x60
-    __IO u32 ANY_CFG;                                                           ///< ADC channel11 data register,                   offset: 0x64
-    __IO u32 ANY_CR;                                                            ///< ADC channel11 data register,                   offset: 0x68
-    __IO u32 SMPR1;                                                             ///< ADC channel11 data register,                   offset: 0x70
-    __IO u32 SMPR2;                                                             ///< ADC channel11 data register,                   offset: 0x74
-    __IO u32 JOFR0;                                                             ///< ADC channel11 data register,                   offset: 0x7C
-    __IO u32 JOFR1;                                                             ///< ADC channel11 data register,                   offset: 0x80
-    __IO u32 JOFR2;                                                             ///< ADC channel11 data register,                   offset: 0x84
-    __IO u32 JOFR3;                                                             ///< ADC channel11 data register,                   offset: 0x88
-    __IO u32 JDATA;                                                             ///< ADC channel11 data register,                   offset: 0x8C
-    __IO u32 JDR0;                                                              ///< ADC channel11 data register,                   offset: 0xB0
-    __IO u32 JDR1;                                                              ///< ADC channel11 data register,                   offset: 0xB4
-    __IO u32 JDR2;                                                              ///< ADC channel11 data register,                   offset: 0xB8
-    __IO u32 JDR3;                                                              ///< ADC channel11 data register,                   offset: 0xBC
+    __IO uint32_t CH9DR;                                                        ///< ADC channel9 data register,                    offset: 0x3C
+    __IO uint32_t CH10DR;                                                       ///< ADC channel9 data register,                    offset: 0x40
+    __IO uint32_t CH11DR;                                                       ///< ADC channel9 data register,                    offset: 0x44
+    __IO uint32_t CH12DR;                                                       ///< ADC channel9 data register,                    offset: 0x48
+    __IO uint32_t CH13DR;                                                       ///< ADC channel9 data register,                    offset: 0x4C
+    __IO uint32_t CH14DR;                                                       ///< ADC channel10 data register,                   offset: 0x50
+    __IO uint32_t CH15DR;                                                       ///< ADC channel11 data register,                   offset: 0x54
+    __IO uint32_t STA_EXT;                                                      ///< ADC channel11 data register,                   offset: 0x58
+    __IO uint32_t CHANY0;                                                       ///< ADC channel11 data register,                   offset: 0x5C
+    __IO uint32_t CHANY1;                                                       ///< ADC channel11 data register,                   offset: 0x60
+    __IO uint32_t ANY_CFG;                                                      ///< ADC channel11 data register,                   offset: 0x64
+    __IO uint32_t ANY_CR;                                                       ///< ADC channel11 data register,                   offset: 0x68
+    __IO uint32_t SMPR1;                                                        ///< ADC channel11 data register,                   offset: 0x70
+    __IO uint32_t SMPR2;                                                        ///< ADC channel11 data register,                   offset: 0x74
+    __IO uint32_t JOFR0;                                                        ///< ADC channel11 data register,                   offset: 0x7C
+    __IO uint32_t JOFR1;                                                        ///< ADC channel11 data register,                   offset: 0x80
+    __IO uint32_t JOFR2;                                                        ///< ADC channel11 data register,                   offset: 0x84
+    __IO uint32_t JOFR3;                                                        ///< ADC channel11 data register,                   offset: 0x88
+    __IO uint32_t JDATA;                                                        ///< ADC channel11 data register,                   offset: 0x8C
+    __IO uint32_t JDR0;                                                         ///< ADC channel11 data register,                   offset: 0xB0
+    __IO uint32_t JDR1;                                                         ///< ADC channel11 data register,                   offset: 0xB4
+    __IO uint32_t JDR2;                                                         ///< ADC channel11 data register,                   offset: 0xB8
+    __IO uint32_t JDR3;                                                         ///< ADC channel11 data register,                   offset: 0xBC
 #endif
 } ADC_TypeDef;
 
@@ -802,22 +834,22 @@ typedef struct {
 /// @brief Advanced Encryption Standard
 ////////////////////////////////////////////////////////////////////////////////
 typedef struct {
-    __IO u32 CR;                                                                ///< AES control register,                  offset: 0x00
-    __IO u32 SR;                                                                ///< AES status register,                   offset: 0x04
-    __IO u32 DINR;                                                              ///< AES data input register,               offset: 0x08
-    __IO u32 DOUTR;                                                             ///< AES data output register,              offset: 0x0C
-    __IO u32 KEYR0;                                                             ///< AES key register 0,                    offset: 0x10
-    __IO u32 KEYR1;                                                             ///< AES key register 1,                    offset: 0x14
-    __IO u32 KEYR2;                                                             ///< AES key register 2,                    offset: 0x18
-    __IO u32 KEYR3;                                                             ///< AES key register 3,                    offset: 0x1C
-    __IO u32 IVR0;                                                              ///< AES initialization vector register 0,  offset: 0x20
-    __IO u32 IVR1;                                                              ///< AES initialization vector register 1,  offset: 0x24
-    __IO u32 IVR2;                                                              ///< AES initialization vector register 2,  offset: 0x28
-    __IO u32 IVR3;                                                              ///< AES initialization vector register 3,  offset: 0x2C
-    __IO u32 KEYR4;                                                             ///< AES key register 4,                    offset: 0x30
-    __IO u32 KEYR5;                                                             ///< AES key register 5,                    offset: 0x34
-    __IO u32 KEYR6;                                                             ///< AES key register 6,                    offset: 0x38
-    __IO u32 KEYR7;                                                             ///< AES key register 7,                    offset: 0x3C
+    __IO uint32_t CR;                                                           ///< AES control register,                  offset: 0x00
+    __IO uint32_t SR;                                                           ///< AES status register,                   offset: 0x04
+    __IO uint32_t DINR;                                                         ///< AES data input register,               offset: 0x08
+    __IO uint32_t DOUTR;                                                        ///< AES data output register,              offset: 0x0C
+    __IO uint32_t KEYR0;                                                        ///< AES key register 0,                    offset: 0x10
+    __IO uint32_t KEYR1;                                                        ///< AES key register 1,                    offset: 0x14
+    __IO uint32_t KEYR2;                                                        ///< AES key register 2,                    offset: 0x18
+    __IO uint32_t KEYR3;                                                        ///< AES key register 3,                    offset: 0x1C
+    __IO uint32_t IVR0;                                                         ///< AES initialization vector register 0,  offset: 0x20
+    __IO uint32_t IVR1;                                                         ///< AES initialization vector register 1,  offset: 0x24
+    __IO uint32_t IVR2;                                                         ///< AES initialization vector register 2,  offset: 0x28
+    __IO uint32_t IVR3;                                                         ///< AES initialization vector register 3,  offset: 0x2C
+    __IO uint32_t KEYR4;                                                        ///< AES key register 4,                    offset: 0x30
+    __IO uint32_t KEYR5;                                                        ///< AES key register 5,                    offset: 0x34
+    __IO uint32_t KEYR6;                                                        ///< AES key register 6,                    offset: 0x38
+    __IO uint32_t KEYR7;                                                        ///< AES key register 7,                    offset: 0x3C
 } AES_TypeDef;
 #endif
 
@@ -828,21 +860,21 @@ typedef struct {
 #define BKP_NUMBER  10
 
 typedef struct {
-    __IO u32 RESERVED0;                                                         ///< Reserved,                                      offset: 0x00
-    __IO u32 DR1;                                                               ///< BKP data register 1,                           offset: 0x04
-    __IO u32 DR2;                                                               ///< BKP data register 2,                           offset: 0x08
-    __IO u32 DR3;                                                               ///< BKP data register 3,                           offset: 0x0C
-    __IO u32 DR4;                                                               ///< BKP data register 4,                           offset: 0x10
-    __IO u32 DR5;                                                               ///< BKP data register 5,                           offset: 0x14
-    __IO u32 DR6;                                                               ///< BKP data register 6,                           offset: 0x18
-    __IO u32 DR7;                                                               ///< BKP data register 7,                           offset: 0x1C
-    __IO u32 DR8;                                                               ///< BKP data register 8,                           offset: 0x20
-    __IO u32 DR9;                                                               ///< BKP data register 9,                           offset: 0x24
-    __IO u32 DR10;                                                              ///< BKP data register 10,                          offset: 0x28
+    __IO uint32_t RESERVED0;                                                    ///< Reserved,                                      offset: 0x00
+    __IO uint32_t DR1;                                                          ///< BKP data register 1,                           offset: 0x04
+    __IO uint32_t DR2;                                                          ///< BKP data register 2,                           offset: 0x08
+    __IO uint32_t DR3;                                                          ///< BKP data register 3,                           offset: 0x0C
+    __IO uint32_t DR4;                                                          ///< BKP data register 4,                           offset: 0x10
+    __IO uint32_t DR5;                                                          ///< BKP data register 5,                           offset: 0x14
+    __IO uint32_t DR6;                                                          ///< BKP data register 6,                           offset: 0x18
+    __IO uint32_t DR7;                                                          ///< BKP data register 7,                           offset: 0x1C
+    __IO uint32_t DR8;                                                          ///< BKP data register 8,                           offset: 0x20
+    __IO uint32_t DR9;                                                          ///< BKP data register 9,                           offset: 0x24
+    __IO uint32_t DR10;                                                         ///< BKP data register 10,                          offset: 0x28
 #if defined(__MM3N1)
-    __IO u32 RTCCR;                                                             ///< RTC clock calibration register,                offset: 0x2C
-    __IO u32 CR;                                                                ///< BKP control register,                          offset: 0x30
-    __IO u32 CSR;                                                               ///< BKP control/status register,                   offset: 0x34
+    __IO uint32_t RTCCR;                                                        ///< RTC clock calibration register,                offset: 0x2C
+    __IO uint32_t CR;                                                           ///< BKP control register,                          offset: 0x30
+    __IO uint32_t CSR;                                                          ///< BKP control/status register,                   offset: 0x34
 #endif
 } BKP_TypeDef;
 #endif
@@ -851,27 +883,27 @@ typedef struct {
 #define BKP_NUMBER  20
 
 typedef struct {
-    __IO u32 RESERVED0;                                                         ///< Reserved,                                      offset: 0x00
-    __IO u32 DR1;                                                               ///< BKP data register 1,                           offset: 0x04
-    __IO u32 DR2;                                                               ///< BKP data register 2,                           offset: 0x08
-    __IO u32 DR3;                                                               ///< BKP data register 3,                           offset: 0x0C
-    __IO u32 DR4;                                                               ///< BKP data register 4,                           offset: 0x10
-    __IO u32 DR5;                                                               ///< BKP data register 5,                           offset: 0x14
-    __IO u32 DR6;                                                               ///< BKP data register 6,                           offset: 0x18
-    __IO u32 DR7;                                                               ///< BKP data register 7,                           offset: 0x1C
-    __IO u32 DR8;                                                               ///< BKP data register 8,                           offset: 0x20
-    __IO u32 DR9;                                                               ///< BKP data register 9,                           offset: 0x24
-    __IO u32 DR10;                                                              ///< BKP data register 10                           offset: 0x28
-    __IO u32 DR11;                                                              ///< BKP data register 11,                          offset: 0x2C
-    __IO u32 DR12;                                                              ///< BKP data register 12,                          offset: 0x30
-    __IO u32 DR13;                                                              ///< BKP data register 13,                          offset: 0x34
-    __IO u32 DR14;                                                              ///< BKP data register 14,                          offset: 0x38
-    __IO u32 DR15;                                                              ///< BKP data register 15,                          offset: 0x3C
-    __IO u32 DR16;                                                              ///< BKP data register 16,                          offset: 0x40
-    __IO u32 DR17;                                                              ///< BKP data register 17,                          offset: 0x44
-    __IO u32 DR18;                                                              ///< BKP data register 18,                          offset: 0x48
-    __IO u32 DR19;                                                              ///< BKP data register 19,                          offset: 0x4C
-    __IO u32 DR20;                                                              ///< BKP data register 20,                          offset: 0x50
+    __IO uint32_t RESERVED0;                                                    ///< Reserved,                                      offset: 0x00
+    __IO uint32_t DR1;                                                          ///< BKP data register 1,                           offset: 0x04
+    __IO uint32_t DR2;                                                          ///< BKP data register 2,                           offset: 0x08
+    __IO uint32_t DR3;                                                          ///< BKP data register 3,                           offset: 0x0C
+    __IO uint32_t DR4;                                                          ///< BKP data register 4,                           offset: 0x10
+    __IO uint32_t DR5;                                                          ///< BKP data register 5,                           offset: 0x14
+    __IO uint32_t DR6;                                                          ///< BKP data register 6,                           offset: 0x18
+    __IO uint32_t DR7;                                                          ///< BKP data register 7,                           offset: 0x1C
+    __IO uint32_t DR8;                                                          ///< BKP data register 8,                           offset: 0x20
+    __IO uint32_t DR9;                                                          ///< BKP data register 9,                           offset: 0x24
+    __IO uint32_t DR10;                                                         ///< BKP data register 10                           offset: 0x28
+    __IO uint32_t DR11;                                                         ///< BKP data register 11,                          offset: 0x2C
+    __IO uint32_t DR12;                                                         ///< BKP data register 12,                          offset: 0x30
+    __IO uint32_t DR13;                                                         ///< BKP data register 13,                          offset: 0x34
+    __IO uint32_t DR14;                                                         ///< BKP data register 14,                          offset: 0x38
+    __IO uint32_t DR15;                                                         ///< BKP data register 15,                          offset: 0x3C
+    __IO uint32_t DR16;                                                         ///< BKP data register 16,                          offset: 0x40
+    __IO uint32_t DR17;                                                         ///< BKP data register 17,                          offset: 0x44
+    __IO uint32_t DR18;                                                         ///< BKP data register 18,                          offset: 0x48
+    __IO uint32_t DR19;                                                         ///< BKP data register 19,                          offset: 0x4C
+    __IO uint32_t DR20;                                                         ///< BKP data register 20,                          offset: 0x50
 } BKP_TypeDef;
 #endif
 
@@ -879,30 +911,30 @@ typedef struct {
 #define BKP_NUMBER  20
 
 typedef struct {
-    __IO u32 RESERVED0;                                                         ///< Reserved,                                      offset: 0x00
-    __IO u32 DR1;                                                               ///< BKP data register 1,                           offset: 0x04
-    __IO u32 DR2;                                                               ///< BKP data register 2,                           offset: 0x08
-    __IO u32 DR3;                                                               ///< BKP data register 3,                           offset: 0x0C
-    __IO u32 DR4;                                                               ///< BKP data register 4,                           offset: 0x10
-    __IO u32 DR5;                                                               ///< BKP data register 5,                           offset: 0x14
-    __IO u32 DR6;                                                               ///< BKP data register 6,                           offset: 0x18
-    __IO u32 DR7;                                                               ///< BKP data register 7,                           offset: 0x1C
-    __IO u32 DR8;                                                               ///< BKP data register 8,                           offset: 0x20
-    __IO u32 DR9;                                                               ///< BKP data register 9,                           offset: 0x24
-    __IO u32 DR10;                                                              ///< BKP data register 10                           offset: 0x28
-    __IO u32 RTCCR;                                                             ///< RTC clock calibration register,                offset: 0x2C
-    __IO u32 CR;                                                                ///< BKP control register,                          offset: 0x30
-    __IO u32 CSR;                                                               ///< BKP control/status register,                   offset: 0x34
-    __IO u32 DR11;                                                              ///< BKP data register 11,                          offset: 0x38
-    __IO u32 DR12;                                                              ///< BKP data register 12,                          offset: 0x3C
-    __IO u32 DR13;                                                              ///< BKP data register 13,                          offset: 0x40
-    __IO u32 DR14;                                                              ///< BKP data register 14,                          offset: 0x44
-    __IO u32 DR15;                                                              ///< BKP data register 15,                          offset: 0x48
-    __IO u32 DR16;                                                              ///< BKP data register 16,                          offset: 0x4C
-    __IO u32 DR17;                                                              ///< BKP data register 17,                          offset: 0x50
-    __IO u32 DR18;                                                              ///< BKP data register 18,                          offset: 0x54
-    __IO u32 DR19;                                                              ///< BKP data register 19,                          offset: 0x58
-    __IO u32 DR20;                                                              ///< BKP data register 20,                          offset: 0x5C
+    __IO uint32_t RESERVED0;                                                    ///< Reserved,                                      offset: 0x00
+    __IO uint32_t DR1;                                                          ///< BKP data register 1,                           offset: 0x04
+    __IO uint32_t DR2;                                                          ///< BKP data register 2,                           offset: 0x08
+    __IO uint32_t DR3;                                                          ///< BKP data register 3,                           offset: 0x0C
+    __IO uint32_t DR4;                                                          ///< BKP data register 4,                           offset: 0x10
+    __IO uint32_t DR5;                                                          ///< BKP data register 5,                           offset: 0x14
+    __IO uint32_t DR6;                                                          ///< BKP data register 6,                           offset: 0x18
+    __IO uint32_t DR7;                                                          ///< BKP data register 7,                           offset: 0x1C
+    __IO uint32_t DR8;                                                          ///< BKP data register 8,                           offset: 0x20
+    __IO uint32_t DR9;                                                          ///< BKP data register 9,                           offset: 0x24
+    __IO uint32_t DR10;                                                         ///< BKP data register 10                           offset: 0x28
+    __IO uint32_t RTCCR;                                                        ///< RTC clock calibration register,                offset: 0x2C
+    __IO uint32_t CR;                                                           ///< BKP control register,                          offset: 0x30
+    __IO uint32_t CSR;                                                          ///< BKP control/status register,                   offset: 0x34
+    __IO uint32_t DR11;                                                         ///< BKP data register 11,                          offset: 0x38
+    __IO uint32_t DR12;                                                         ///< BKP data register 12,                          offset: 0x3C
+    __IO uint32_t DR13;                                                         ///< BKP data register 13,                          offset: 0x40
+    __IO uint32_t DR14;                                                         ///< BKP data register 14,                          offset: 0x44
+    __IO uint32_t DR15;                                                         ///< BKP data register 15,                          offset: 0x48
+    __IO uint32_t DR16;                                                         ///< BKP data register 16,                          offset: 0x4C
+    __IO uint32_t DR17;                                                         ///< BKP data register 17,                          offset: 0x50
+    __IO uint32_t DR18;                                                         ///< BKP data register 18,                          offset: 0x54
+    __IO uint32_t DR19;                                                         ///< BKP data register 19,                          offset: 0x58
+    __IO uint32_t DR20;                                                         ///< BKP data register 20,                          offset: 0x5C
 } BKP_TypeDef;
 #endif
 
@@ -910,31 +942,46 @@ typedef struct {
 #define BKP_NUMBER  20
 
 typedef struct {
-    __IO u32 RTCCR;                                                             ///< RTC clock calibration register,                offset: 0x00
-    __IO u32 CR;                                                                ///< BKP control register,                          offset: 0x04
-    __IO u32 CSR;                                                               ///< BKP control/status register,                   offset: 0x08
-    __IO u32 RESERVED0;                                                         ///< Reserved,                                      offset: 0x0C
-    __IO u32 DR1;                                                               ///< BKP data register 1,                           offset: 0x10
-    __IO u32 DR2;                                                               ///< BKP data register 2,                           offset: 0x14
-    __IO u32 DR3;                                                               ///< BKP data register 3,                           offset: 0x18
-    __IO u32 DR4;                                                               ///< BKP data register 4,                           offset: 0x1C
-    __IO u32 DR5;                                                               ///< BKP data register 5,                           offset: 0x20
-    __IO u32 DR6;                                                               ///< BKP data register 6,                           offset: 0x24
-    __IO u32 DR7;                                                               ///< BKP data register 7,                           offset: 0x28
-    __IO u32 DR8;                                                               ///< BKP data register 8,                           offset: 0x2C
-    __IO u32 DR9;                                                               ///< BKP data register 9,                           offset: 0x30
-    __IO u32 DR10;                                                              ///< BKP data register 10                           offset: 0x34
-    __IO u32 DR11;                                                              ///< BKP data register 11,                          offset: 0x38
-    __IO u32 DR12;                                                              ///< BKP data register 12,                          offset: 0x3C
-    __IO u32 DR13;                                                              ///< BKP data register 13,                          offset: 0x40
-    __IO u32 DR14;                                                              ///< BKP data register 14,                          offset: 0x44
-    __IO u32 DR15;                                                              ///< BKP data register 15,                          offset: 0x48
-    __IO u32 DR16;                                                              ///< BKP data register 16,                          offset: 0x4C
-    __IO u32 DR17;                                                              ///< BKP data register 17,                          offset: 0x50
-    __IO u32 DR18;                                                              ///< BKP data register 18,                          offset: 0x54
-    __IO u32 DR19;                                                              ///< BKP data register 19,                          offset: 0x58
-    __IO u32 DR20;                                                              ///< BKP data register 20,                          offset: 0x5C
+    __IO uint32_t RTCCR;                                                        ///< RTC clock calibration register,                offset: 0x00
+    __IO uint32_t CR;                                                           ///< BKP control register,                          offset: 0x04
+    __IO uint32_t CSR;                                                          ///< BKP control/status register,                   offset: 0x08
+    __IO uint32_t RESERVED0;                                                    ///< Reserved,                                      offset: 0x0C
+    __IO uint32_t DR1;                                                          ///< BKP data register 1,                           offset: 0x10
+    __IO uint32_t DR2;                                                          ///< BKP data register 2,                           offset: 0x14
+    __IO uint32_t DR3;                                                          ///< BKP data register 3,                           offset: 0x18
+    __IO uint32_t DR4;                                                          ///< BKP data register 4,                           offset: 0x1C
+    __IO uint32_t DR5;                                                          ///< BKP data register 5,                           offset: 0x20
+    __IO uint32_t DR6;                                                          ///< BKP data register 6,                           offset: 0x24
+    __IO uint32_t DR7;                                                          ///< BKP data register 7,                           offset: 0x28
+    __IO uint32_t DR8;                                                          ///< BKP data register 8,                           offset: 0x2C
+    __IO uint32_t DR9;                                                          ///< BKP data register 9,                           offset: 0x30
+    __IO uint32_t DR10;                                                         ///< BKP data register 10                           offset: 0x34
+    __IO uint32_t DR11;                                                         ///< BKP data register 11,                          offset: 0x38
+    __IO uint32_t DR12;                                                         ///< BKP data register 12,                          offset: 0x3C
+    __IO uint32_t DR13;                                                         ///< BKP data register 13,                          offset: 0x40
+    __IO uint32_t DR14;                                                         ///< BKP data register 14,                          offset: 0x44
+    __IO uint32_t DR15;                                                         ///< BKP data register 15,                          offset: 0x48
+    __IO uint32_t DR16;                                                         ///< BKP data register 16,                          offset: 0x4C
+    __IO uint32_t DR17;                                                         ///< BKP data register 17,                          offset: 0x50
+    __IO uint32_t DR18;                                                         ///< BKP data register 18,                          offset: 0x54
+    __IO uint32_t DR19;                                                         ///< BKP data register 19,                          offset: 0x58
+    __IO uint32_t DR20;                                                         ///< BKP data register 20,                          offset: 0x5C
 } BKP_TypeDef;
+#endif
+
+////////////////////////////////////////////////////////////////////////////////
+/// @brief CACHE Register Structure Definition
+////////////////////////////////////////////////////////////////////////////////
+#if defined(__MM3U1)
+typedef struct {
+    __IO uint32_t CCR;                                                          ///< CACHE configure and control register,          offset: 0x00
+    __IO uint32_t SR;                                                           ///< CACHE status register,                         offset: 0x04
+    __IO uint32_t IMR;                                                          ///< CACHE interrupt mask register,                 offset: 0x08
+    __IO uint32_t ISR;                                                          ///< CACHE interrupt status register,               offset: 0x0C
+    __IO uint32_t RESERVED;                                                     ///< Reserved,                                      offset: 0x10
+    __IO uint32_t CSHR;                                                         ///< CACHE statistic hit register,                  offset: 0x14
+    __IO uint32_t CSMR;                                                         ///< CACHE statistic miss register,                 offset: 0x18
+} CACHE_TypeDef;
 #endif
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -945,169 +992,169 @@ typedef struct {
 /// @brief CAN basic
 ////////////////////////////////////////////////////////////////////////////////
 typedef struct {
-    __IO u32 CR;                                                                ///< Control register,          offset: 0x00
-    __IO u32 CMR;                                                               ///< Command register,          offset: 0x04
-    __IO u32 SR;                                                                ///< <Status register,          offset: 0x08
-    __IO u32 IR;                                                                ///< Interrupt register,        offset: 0x0c
-    __IO u32 ACR;                                                               ///< Acceptance Code register,  offset: 0x10
-    __IO u32 AMR;                                                               ///< Acceptance Mask register,  offset: 0x14
-    __IO u32 BTR0;                                                              ///< Bus Timing register 0,     offset: 0x18
-    __IO u32 BTR1;                                                              ///< Bus Timing register 1,     offset: 0x1C
-    __IO u32  RESERVED0;
-    __IO u32  RESERVED1;
-    __IO u32 TXID0;                                                             ///< Send ID register 0,        offset: 0x28
-    __IO u32 TXID1;                                                             ///< Send ID register 1,        offset: 0x2c
-    __IO u32 TXDR0;                                                             ///< Send Data register 0,      offset: 0x30
-    __IO u32 TXDR1;                                                             ///< Send Data register 1,      offset: 0x34
-    __IO u32 TXDR2;                                                             ///< Send Data register 2,      offset: 0x38
-    __IO u32 TXDR3;                                                             ///< Send Data register 3,      offset: 0x3c
-    __IO u32 TXDR4;                                                             ///< Send Data register 4,      offset: 0x40
-    __IO u32 TXDR5;                                                             ///< Send Data register 5,      offset: 0x44
-    __IO u32 TXDR6;                                                             ///< Send Data register 6,      offset: 0x48
-    __IO u32 TXDR7;                                                             ///< Send Data register 7,      offset: 0x4c
-    __IO u32 RXID0;                                                             ///< Mode register,             offset: 0x50
-    __IO u32 RXID1;                                                             ///< Mode register,             offset: 0x54
-    __IO u32 RXDR0;                                                             ///< Mode register,             offset: 0x58
-    __IO u32 RXDR1;                                                             ///< Mode register,             offset: 0x5C
-    __IO u32 RXDR2;                                                             ///< Mode register,             offset: 0x60
-    __IO u32 RXDR3;                                                             ///< Mode register,             offset: 0x64
-    __IO u32 RXDR4;                                                             ///< Mode register,             offset: 0x68
-    __IO u32 RXDR5;                                                             ///< Mode register,             offset: 0x6c
-    __IO u32 RXDR6;                                                             ///< Mode register,             offset: 0x70
-    __IO u32 RXDR7;                                                             ///< Mode register,             offset: 0x74
-    __IO u32 RESERVED2;
-    __IO u32 CDR;                                                               ///< Clock Divider register,    offset: 0x7c
-    __IO u32 AFM0;
-    __IO u32 AFM1;
-    __IO u32 AFM2;
-    __IO u32 FGA0;
-    __IO u32 FGA1;
-    __IO u32 FGA2;
-    __IO u32 GROUP1_ACR;
-    __IO u32 GROUP2_ACR;
-    __IO u32 GROUP3_ACR;
-    __IO u32 GROUP4_ACR;
-    __IO u32 GROUP5_ACR;
-    __IO u32 GROUP6_ACR;
-    __IO u32 GROUP7_ACR;
-    __IO u32 GROUP8_ACR;
-    __IO u32 GROUP9_ACR;
-    __IO u32 GROUP10_ACR;
-    __IO u32 GROUP11_ACR;
-    __IO u32 GROUP12_ACR;
-    __IO u32 GROUP13_ACR;
-    __IO u32 GROUP14_ACR;
-    __IO u32 GROUP15_ACR;
-    __IO u32 GROUP16_ACR;
-    __IO u32 GROUP17_ACR;
-    __IO u32 GROUP18_ACR;
-    __IO u32 GROUP19_ACR;
-    __IO u32 GROUP1_ACR;
-    __IO u32 GROUP2_AMR;
-    __IO u32 GROUP3_AMR;
-    __IO u32 GROUP4_AMR;
-    __IO u32 GROUP5_AMR;
-    __IO u32 GROUP6_AMR;
-    __IO u32 GROUP7_AMR;
-    __IO u32 GROUP8_AMR;
-    __IO u32 GROUP9_AMR;
-    __IO u32 GROUP10_AMR;
-    __IO u32 GROUP11_AMR;
-    __IO u32 GROUP12_AMR;
-    __IO u32 GROUP13_AMR;
-    __IO u32 GROUP14_AMR;
-    __IO u32 GROUP15_AMR;
-    __IO u32 GROUP16_AMR;
-    __IO u32 GROUP17_AMR;
-    __IO u32 GROUP18_AMR;
-    __IO u32 GROUP19_AMR;
+    __IO uint32_t CR;                                                           ///< Control register,          offset: 0x00
+    __IO uint32_t CMR;                                                          ///< Command register,          offset: 0x04
+    __IO uint32_t SR;                                                           ///< <Status register,          offset: 0x08
+    __IO uint32_t IR;                                                           ///< Interrupt register,        offset: 0x0c
+    __IO uint32_t ACR;                                                          ///< Acceptance Code register,  offset: 0x10
+    __IO uint32_t AMR;                                                          ///< Acceptance Mask register,  offset: 0x14
+    __IO uint32_t BTR0;                                                         ///< Bus Timing register 0,     offset: 0x18
+    __IO uint32_t BTR1;                                                         ///< Bus Timing register 1,     offset: 0x1C
+    __IO uint32_t  RESERVED0;
+    __IO uint32_t  RESERVED1;
+    __IO uint32_t TXID0;                                                        ///< Send ID register 0,        offset: 0x28
+    __IO uint32_t TXID1;                                                        ///< Send ID register 1,        offset: 0x2c
+    __IO uint32_t TXDR0;                                                        ///< Send Data register 0,      offset: 0x30
+    __IO uint32_t TXDR1;                                                        ///< Send Data register 1,      offset: 0x34
+    __IO uint32_t TXDR2;                                                        ///< Send Data register 2,      offset: 0x38
+    __IO uint32_t TXDR3;                                                        ///< Send Data register 3,      offset: 0x3c
+    __IO uint32_t TXDR4;                                                        ///< Send Data register 4,      offset: 0x40
+    __IO uint32_t TXDR5;                                                        ///< Send Data register 5,      offset: 0x44
+    __IO uint32_t TXDR6;                                                        ///< Send Data register 6,      offset: 0x48
+    __IO uint32_t TXDR7;                                                        ///< Send Data register 7,      offset: 0x4c
+    __IO uint32_t RXID0;                                                        ///< Mode register,             offset: 0x50
+    __IO uint32_t RXID1;                                                        ///< Mode register,             offset: 0x54
+    __IO uint32_t RXDR0;                                                        ///< Mode register,             offset: 0x58
+    __IO uint32_t RXDR1;                                                        ///< Mode register,             offset: 0x5C
+    __IO uint32_t RXDR2;                                                        ///< Mode register,             offset: 0x60
+    __IO uint32_t RXDR3;                                                        ///< Mode register,             offset: 0x64
+    __IO uint32_t RXDR4;                                                        ///< Mode register,             offset: 0x68
+    __IO uint32_t RXDR5;                                                        ///< Mode register,             offset: 0x6c
+    __IO uint32_t RXDR6;                                                        ///< Mode register,             offset: 0x70
+    __IO uint32_t RXDR7;                                                        ///< Mode register,             offset: 0x74
+    __IO uint32_t RESERVED2;
+    __IO uint32_t CDR;                                                          ///< Clock Divider register,    offset: 0x7c
+    __IO uint32_t AFM0;
+    __IO uint32_t AFM1;
+    __IO uint32_t AFM2;
+    __IO uint32_t FGA0;
+    __IO uint32_t FGA1;
+    __IO uint32_t FGA2;
+    __IO uint32_t GROUP1_ACR;
+    __IO uint32_t GROUP2_ACR;
+    __IO uint32_t GROUP3_ACR;
+    __IO uint32_t GROUP4_ACR;
+    __IO uint32_t GROUP5_ACR;
+    __IO uint32_t GROUP6_ACR;
+    __IO uint32_t GROUP7_ACR;
+    __IO uint32_t GROUP8_ACR;
+    __IO uint32_t GROUP9_ACR;
+    __IO uint32_t GROUP10_ACR;
+    __IO uint32_t GROUP11_ACR;
+    __IO uint32_t GROUP12_ACR;
+    __IO uint32_t GROUP13_ACR;
+    __IO uint32_t GROUP14_ACR;
+    __IO uint32_t GROUP15_ACR;
+    __IO uint32_t GROUP16_ACR;
+    __IO uint32_t GROUP17_ACR;
+    __IO uint32_t GROUP18_ACR;
+    __IO uint32_t GROUP19_ACR;
+    __IO uint32_t GROUP1_ACR;
+    __IO uint32_t GROUP2_AMR;
+    __IO uint32_t GROUP3_AMR;
+    __IO uint32_t GROUP4_AMR;
+    __IO uint32_t GROUP5_AMR;
+    __IO uint32_t GROUP6_AMR;
+    __IO uint32_t GROUP7_AMR;
+    __IO uint32_t GROUP8_AMR;
+    __IO uint32_t GROUP9_AMR;
+    __IO uint32_t GROUP10_AMR;
+    __IO uint32_t GROUP11_AMR;
+    __IO uint32_t GROUP12_AMR;
+    __IO uint32_t GROUP13_AMR;
+    __IO uint32_t GROUP14_AMR;
+    __IO uint32_t GROUP15_AMR;
+    __IO uint32_t GROUP16_AMR;
+    __IO uint32_t GROUP17_AMR;
+    __IO uint32_t GROUP18_AMR;
+    __IO uint32_t GROUP19_AMR;
 }CAN_TypeDef;
 
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief CAN Peli
 ////////////////////////////////////////////////////////////////////////////////
 typedef struct {
-    __IO u32 MOD;                                                               ///< Mode register,                                 offset: 0x00
-    __IO u32 CMR;                                                               ///< Command register,                              offset: 0x04
-    __IO u32 SR;                                                                ///< Status register,                               offset: 0x08
-    __IO u32 IR;                                                                ///< Interrupt Enable register,                     offset: 0x0c
-    __IO u32 IER;                                                               ///< Mode register,                                 offset: 0x10
-    __IO u32 RESERVED0;
-    __IO u32 BTR0;                                                              ///< Bus Timing register 0,                         offset: 0x18
-    __IO u32 BTR1;                                                              ///< Bus Timing register 1,                         offset: 0x1C
-    __IO u32 RESERVED1;
-    __IO u32 RESERVED2;
-    __IO u32 RESERVED3;
-    __IO u32 ALC;                                                               ///< Arbitration Lost Capture register,             offset: 0x2c
-    __IO u32 ECC;                                                               ///< Error Code Capture register,                   offset: 0x30
-    __IO u32 EWLR;                                                              ///< Error Warning Limit register,                  offset: 0x34
-    __IO u32 RXERR;                                                             ///< RX Error Counter register,                     offset: 0x38
-    __IO u32 TXERR;                                                             ///< TX Error Counter register,                     offset: 0x3c
-    __IO u32 FF;                                                                ///< Frame Format register,                         offset: 0x40
-    __IO u32 ID0;                                                               ///< ID register 0,                                 offset: 0x44
-    __IO u32 ID1;                                                               ///< ID register 1,                                 offset: 0x48
-    __IO u32 DATA0;                                                             ///< Data register 0,                               offset: 0x4c
-    __IO u32 DATA1;                                                             ///< Data register 1,                               offset: 0x50
-    __IO u32 DATA2;                                                             ///< Data register 2,                               offset: 0x54
-    __IO u32 DATA3;                                                             ///< Data register 3,                               offset: 0x58
-    __IO u32 DATA4;                                                             ///< Data register 4,                               offset: 0x5c
-    __IO u32 DATA5;                                                             ///< Data register 5,                               offset: 0x60
-    __IO u32 DATA6;                                                             ///< Data register 6,                               offset: 0x64
-    __IO u32 DATA7;                                                             ///< Data register 7,                               offset: 0x68
-    __IO u32 DATA8;                                                             ///< Data register 8,                               offset: 0x6c
-    __IO u32 DATA9;                                                             ///< Data register 9,                               offset: 0x70
-    __IO u32 RMC;
-    __IO u32 RBSA;
-    __IO u32 CDR;                                                               ///< Clock Divider register                         offset: 0x7c
-    __IO u32 SFF;
-    __IO u32 TXID0;
-    __IO u32 TXID1;
-    __IO u32 TXDATA0;
-    __IO u32 TXDAYA1;
-    __IO u32 AFM0;
-    __IO u32 AFM1;
-    __IO u32 AFM2;
-    __IO u32 FGA0;
-    __IO u32 FGA1;
-    __IO u32 FGA2;
-    __IO u32 GROUP1_ACR;
-    __IO u32 GROUP2_ACR;
-    __IO u32 GROUP3_ACR;
-    __IO u32 GROUP4_ACR;
-    __IO u32 GROUP5_ACR;
-    __IO u32 GROUP6_ACR;
-    __IO u32 GROUP7_ACR;
-    __IO u32 GROUP8_ACR;
-    __IO u32 GROUP9_ACR;
-    __IO u32 GROUP10_ACR;
-    __IO u32 GROUP11_ACR;
-    __IO u32 GROUP12_ACR;
-    __IO u32 GROUP13_ACR;
-    __IO u32 GROUP14_ACR;
-    __IO u32 GROUP15_ACR;
-    __IO u32 GROUP16_ACR;
-    __IO u32 GROUP17_ACR;
-    __IO u32 GROUP18_ACR;
-    __IO u32 GROUP19_ACR;
-    __IO u32 GROUP1_ACR;
-    __IO u32 GROUP2_AMR;
-    __IO u32 GROUP3_AMR;
-    __IO u32 GROUP4_AMR;
-    __IO u32 GROUP5_AMR;
-    __IO u32 GROUP6_AMR;
-    __IO u32 GROUP7_AMR;
-    __IO u32 GROUP8_AMR;
-    __IO u32 GROUP9_AMR;
-    __IO u32 GROUP10_AMR;
-    __IO u32 GROUP11_AMR;
-    __IO u32 GROUP12_AMR;
-    __IO u32 GROUP13_AMR;
-    __IO u32 GROUP14_AMR;
-    __IO u32 GROUP15_AMR;
-    __IO u32 GROUP16_AMR;
-    __IO u32 GROUP17_AMR;
-    __IO u32 GROUP18_AMR;
-    __IO u32 GROUP19_AMR;
+    __IO uint32_t MOD;                                                          ///< Mode register,                                 offset: 0x00
+    __IO uint32_t CMR;                                                          ///< Command register,                              offset: 0x04
+    __IO uint32_t SR;                                                           ///< Status register,                               offset: 0x08
+    __IO uint32_t IR;                                                           ///< Interrupt Enable register,                     offset: 0x0c
+    __IO uint32_t IER;                                                          ///< Mode register,                                 offset: 0x10
+    __IO uint32_t RESERVED0;
+    __IO uint32_t BTR0;                                                         ///< Bus Timing register 0,                         offset: 0x18
+    __IO uint32_t BTR1;                                                         ///< Bus Timing register 1,                         offset: 0x1C
+    __IO uint32_t RESERVED1;
+    __IO uint32_t RESERVED2;
+    __IO uint32_t RESERVED3;
+    __IO uint32_t ALC;                                                          ///< Arbitration Lost Capture register,             offset: 0x2c
+    __IO uint32_t ECC;                                                          ///< Error Code Capture register,                   offset: 0x30
+    __IO uint32_t EWLR;                                                         ///< Error Warning Limit register,                  offset: 0x34
+    __IO uint32_t RXERR;                                                        ///< RX Error Counter register,                     offset: 0x38
+    __IO uint32_t TXERR;                                                        ///< TX Error Counter register,                     offset: 0x3c
+    __IO uint32_t FF;                                                           ///< Frame Format register,                         offset: 0x40
+    __IO uint32_t ID0;                                                          ///< ID register 0,                                 offset: 0x44
+    __IO uint32_t ID1;                                                          ///< ID register 1,                                 offset: 0x48
+    __IO uint32_t DATA0;                                                        ///< Data register 0,                               offset: 0x4c
+    __IO uint32_t DATA1;                                                        ///< Data register 1,                               offset: 0x50
+    __IO uint32_t DATA2;                                                        ///< Data register 2,                               offset: 0x54
+    __IO uint32_t DATA3;                                                        ///< Data register 3,                               offset: 0x58
+    __IO uint32_t DATA4;                                                        ///< Data register 4,                               offset: 0x5c
+    __IO uint32_t DATA5;                                                        ///< Data register 5,                               offset: 0x60
+    __IO uint32_t DATA6;                                                        ///< Data register 6,                               offset: 0x64
+    __IO uint32_t DATA7;                                                        ///< Data register 7,                               offset: 0x68
+    __IO uint32_t DATA8;                                                        ///< Data register 8,                               offset: 0x6c
+    __IO uint32_t DATA9;                                                        ///< Data register 9,                               offset: 0x70
+    __IO uint32_t RMC;
+    __IO uint32_t RBSA;
+    __IO uint32_t CDR;                                                          ///< Clock Divider register                         offset: 0x7c
+    __IO uint32_t SFF;
+    __IO uint32_t TXID0;
+    __IO uint32_t TXID1;
+    __IO uint32_t TXDATA0;
+    __IO uint32_t TXDAYA1;
+    __IO uint32_t AFM0;
+    __IO uint32_t AFM1;
+    __IO uint32_t AFM2;
+    __IO uint32_t FGA0;
+    __IO uint32_t FGA1;
+    __IO uint32_t FGA2;
+    __IO uint32_t GROUP1_ACR;
+    __IO uint32_t GROUP2_ACR;
+    __IO uint32_t GROUP3_ACR;
+    __IO uint32_t GROUP4_ACR;
+    __IO uint32_t GROUP5_ACR;
+    __IO uint32_t GROUP6_ACR;
+    __IO uint32_t GROUP7_ACR;
+    __IO uint32_t GROUP8_ACR;
+    __IO uint32_t GROUP9_ACR;
+    __IO uint32_t GROUP10_ACR;
+    __IO uint32_t GROUP11_ACR;
+    __IO uint32_t GROUP12_ACR;
+    __IO uint32_t GROUP13_ACR;
+    __IO uint32_t GROUP14_ACR;
+    __IO uint32_t GROUP15_ACR;
+    __IO uint32_t GROUP16_ACR;
+    __IO uint32_t GROUP17_ACR;
+    __IO uint32_t GROUP18_ACR;
+    __IO uint32_t GROUP19_ACR;
+    __IO uint32_t GROUP1_ACR;
+    __IO uint32_t GROUP2_AMR;
+    __IO uint32_t GROUP3_AMR;
+    __IO uint32_t GROUP4_AMR;
+    __IO uint32_t GROUP5_AMR;
+    __IO uint32_t GROUP6_AMR;
+    __IO uint32_t GROUP7_AMR;
+    __IO uint32_t GROUP8_AMR;
+    __IO uint32_t GROUP9_AMR;
+    __IO uint32_t GROUP10_AMR;
+    __IO uint32_t GROUP11_AMR;
+    __IO uint32_t GROUP12_AMR;
+    __IO uint32_t GROUP13_AMR;
+    __IO uint32_t GROUP14_AMR;
+    __IO uint32_t GROUP15_AMR;
+    __IO uint32_t GROUP16_AMR;
+    __IO uint32_t GROUP17_AMR;
+    __IO uint32_t GROUP18_AMR;
+    __IO uint32_t GROUP19_AMR;
 }CAN_Peli_TypeDef;
 #endif
 
@@ -1117,59 +1164,59 @@ typedef struct {
 #if defined(COMP_BASE)
 typedef struct {
 #if defined(__MM0N1) || defined(__MM3O1)
-    __IO u32 CSR1;                                                              ///< COMP1 Control Status Register                 offset: 0x00
-    __IO u32 CSR2;                                                              ///< COMP2 Control Status Register                 offset: 0x04
+    __IO uint32_t CSR1;                                                         ///< COMP1 Control Status Register                 offset: 0x00
+    __IO uint32_t CSR2;                                                         ///< COMP2 Control Status Register                 offset: 0x04
 #endif
 
 #if defined(__MM0P1)
-    __IO u32 CSR4;                                                              ///< COMP4 Control Status Register                  offset: 0x00
-    __IO u32 CSR5;                                                              ///< COMP5 Control Status Register                  offset: 0x04
-    __IO u32 CSR1;                                                              ///< COMP1 Control Status Register                  offset: 0x08
-    __IO u32 CSR2;                                                              ///< COMP2 Control Status Register                  offset: 0x0C
-    __IO u32 RESERVED;
-    __IO u32 CSR3;                                                              ///< COMP3 Control Status Register                  offset: 0x14
+    __IO uint32_t CSR4;                                                         ///< COMP4 Control Status Register                  offset: 0x00
+    __IO uint32_t CSR5;                                                         ///< COMP5 Control Status Register                  offset: 0x04
+    __IO uint32_t CSR1;                                                         ///< COMP1 Control Status Register                  offset: 0x08
+    __IO uint32_t CSR2;                                                         ///< COMP2 Control Status Register                  offset: 0x0C
+    __IO uint32_t RESERVED;
+    __IO uint32_t CSR3;                                                         ///< COMP3 Control Status Register                  offset: 0x14
 #endif
 #if defined(__MM0Q1)
-    __IO u32 CSR1;                                                              ///< COMP1 Control Status Register                  offset: 0x00
-    __IO u32 RESERVED0;
-    __IO u32 RESERVED1;
-    __IO u32 RESERVED2;
-    __IO u32 RESERVED3;
-    __IO u32 RESERVED4;
+    __IO uint32_t CSR1;                                                         ///< COMP1 Control Status Register                  offset: 0x00
+    __IO uint32_t RESERVED0;
+    __IO uint32_t RESERVED1;
+    __IO uint32_t RESERVED2;
+    __IO uint32_t RESERVED3;
+    __IO uint32_t RESERVED4;
 #endif
 #if defined(__MM0P1) || defined(__MM0Q1)
-    __IO u32 CRV;                                                               ///< COMP external reference voltage register       offset: 0x18
+    __IO uint32_t CRV;                                                          ///< COMP external reference voltage register       offset: 0x18
 #endif
 #if defined(__MM0P1)
-    __IO u32 POLL4;                                                             ///< COMP4 polling register                         offset: 0x1C
-    __IO u32 POLL5;                                                             ///< COMP5 polling register                         offset: 0x20
+    __IO uint32_t POLL4;                                                        ///< COMP4 polling register                         offset: 0x1C
+    __IO uint32_t POLL5;                                                        ///< COMP5 polling register                         offset: 0x20
 #endif
 #if defined(__MM0Q1)
-    __IO u32 POLL1;                                                             ///< COMP1 polling register                         offset: 0x1C
+    __IO uint32_t POLL1;                                                        ///< COMP1 polling register                         offset: 0x1C
 #endif
 
 #if defined(__MM0S1)
-    __IO u32 CSR1;                                                              ///< COMP1 Control Status Register              offset: 0x00
-    __IO u32 CSR2;                                                              ///< COMP2 Control Status Register              offset: 0x04
-    __IO u32 RESERVED1;                                                         ///<                                            offset: 0x08
-    __IO u32 RESERVED2;                                                         ///<                                            offset: 0x0C
-    __IO u32 RESERVED3;                                                         ///<                                            offset: 0x10
-    __IO u32 RESERVED4;                                                         ///<                                            offset: 0x14
-    __IO u32 CRV;                                                               ///< COMP external reference voltage register   offset: 0x18
-    __IO u32 POLL1;                                                             ///< COMP1 polling register                     offset: 0x1C
-    __IO u32 POLL2;                                                             ///< COMP2 polling register                     offset: 0x20
+    __IO uint32_t CSR1;                                                         ///< COMP1 Control Status Register              offset: 0x00
+    __IO uint32_t CSR2;                                                         ///< COMP2 Control Status Register              offset: 0x04
+    __IO uint32_t RESERVED1;                                                    ///<                                            offset: 0x08
+    __IO uint32_t RESERVED2;                                                    ///<                                            offset: 0x0C
+    __IO uint32_t RESERVED3;                                                    ///<                                            offset: 0x10
+    __IO uint32_t RESERVED4;                                                    ///<                                            offset: 0x14
+    __IO uint32_t CRV;                                                          ///< COMP external reference voltage register   offset: 0x18
+    __IO uint32_t POLL1;                                                        ///< COMP1 polling register                     offset: 0x1C
+    __IO uint32_t POLL2;                                                        ///< COMP2 polling register                     offset: 0x20
 #endif
 
 #if defined(__MM3U1)
-    __IO u32 RESERVED1;                                                         ///< offset: 0x00
-    __IO u32 RESERVED2;                                                         ///< offset: 0x04
-    __IO u32 RESERVED3;                                                         ///< offset: 0x08
-    __IO u32 CSR1;                                                              ///< COMP1 Control Status Register                  offset: 0x0C
-    __IO u32 CSR2;                                                              ///< COMP2 Control Status Register                  offset: 0x10
-    __IO u32 RESERVED4;                                                         ///<                                                offset: 0x14
-    __IO u32 CRV;                                                               ///< COMP external reference voltage register       offset: 0x18
-    __IO u32 POLL1;                                                             ///< COMP1 polling register                         offset: 0x1C
-    __IO u32 POLL2;                                                             ///< COMP2 polling register                         offset: 0x20
+    __IO uint32_t RESERVED1;                                                    ///< offset: 0x00
+    __IO uint32_t RESERVED2;                                                    ///< offset: 0x04
+    __IO uint32_t RESERVED3;                                                    ///< offset: 0x08
+    __IO uint32_t CSR1;                                                         ///< COMP1 Control Status Register                  offset: 0x0C
+    __IO uint32_t CSR2;                                                         ///< COMP2 Control Status Register                  offset: 0x10
+    __IO uint32_t RESERVED4;                                                    ///<                                                offset: 0x14
+    __IO uint32_t CRV;                                                          ///< COMP external reference voltage register       offset: 0x18
+    __IO uint32_t POLL1;                                                        ///< COMP1 polling register                         offset: 0x1C
+    __IO uint32_t POLL2;                                                        ///< COMP2 polling register                         offset: 0x20
 #endif
 } COMP_TypeDef;
 #endif
@@ -1180,15 +1227,15 @@ typedef struct {
 ////////////////////////////////////////////////////////////////////////////////
 #if defined(CRC_BASE)
 typedef struct {
-    __IO u32 DR;                                                                ///< CRC data register,                             offset: 0x00
-    __IO u32 IDR;                                                               ///< CRC independent data register,                 offset: 0x04
-    __IO u32 CR;                                                                ///< CRC control register,                          offset: 0x08
+    __IO uint32_t DR;                                                           ///< CRC data register,                             offset: 0x00
+    __IO uint32_t IDR;                                                          ///< CRC independent data register,                 offset: 0x04
+    __IO uint32_t CR;                                                           ///< CRC control register,                          offset: 0x08
 #if defined(__MM3U1)
-    __IO u32 MIR;                                                               ///< CRC middle data register,                      offset: 0x0c
+    __IO uint32_t MIR;                                                          ///< CRC middle data register,                      offset: 0x0c
 #endif
 #if defined(__MM0S1)
-    __IO u32 RESERVED0[5];
-    __IO u32 REVERSE;                                                           ///< CRC Data reverse register                      offset: 0x20
+    __IO uint32_t RESERVED0[5];
+    __IO uint32_t REVERSE;                                                      ///< CRC Data reverse register                      offset: 0x20
 #endif
 } CRC_TypeDef;
 #endif
@@ -1198,10 +1245,10 @@ typedef struct {
 ////////////////////////////////////////////////////////////////////////////////
 #if defined(CRS_BASE)
 typedef struct {
-    __IO u32 CR;                                                                ///< Control Register               offset: 0x00
-    __IO u32 CFGR;                                                              ///< Configuration Register         offset: 0x04
-    __IO u32 ISR;                                                               ///< Interrupt and Status Register  offset: 0x08
-    __IO u32 ICR;                                                               ///< Interrupt Flag Clear Register  offset: 0x0C
+    __IO uint32_t CR;                                                           ///< Control Register               offset: 0x00
+    __IO uint32_t CFGR;                                                         ///< Configuration Register         offset: 0x04
+    __IO uint32_t ISR;                                                          ///< Interrupt and Status Register  offset: 0x08
+    __IO uint32_t ICR;                                                          ///< Interrupt Flag Clear Register  offset: 0x0C
 } CRS_TypeDef;
 #endif
 
@@ -1210,19 +1257,19 @@ typedef struct {
 ////////////////////////////////////////////////////////////////////////////////
 #if defined(DAC_BASE)
 typedef struct {
-    __IO u32 CR;                                                                ///<  DAC control register,                         offset: 0x00
-    __IO u32 SWTRIGR;                                                           ///<  DAC software trigger register,                offset: 0x04
-    __IO u32 DHR12R1;                                                           ///<  Channel 1 12-bit right align data register,   offset: 0x08
-    __IO u32 DHR12L1;                                                           ///<  Channel 1 12-bit left align data register,    offset: 0x0C
-    __IO u32 DHR8R1;                                                            ///<  Channel 1 8-bit right align data register,    offset: 0x10
-    __IO u32 DHR12R2;                                                           ///<  Channel 2 12-bit right align data register,   offset: 0x14
-    __IO u32 DHR12L2;                                                           ///<  Channel 2 12-bit left align data register,    offset: 0x18
-    __IO u32 DHR8R2;                                                            ///<  Channel 2 8-bit right align data register,    offset: 0x1C
-    __IO u32 DHR12RD;                                                           ///<  Dual channel 12-bit right align data register,offset: 0x20
-    __IO u32 DHR12LD;                                                           ///<  Dual channel 12-bit left align data register, offset: 0x24
-    __IO u32 DHR8RD;                                                            ///<  Dual channel 8-bit right align data register, offset: 0x28
-    __IO u32 DOR1;                                                              ///<  Channel 1 output register,                    offset: 0x2C
-    __IO u32 DOR2;                                                              ///<  Channel 2 output register,                    offset: 0x30
+    __IO uint32_t CR;                                                           ///<  DAC control register,                         offset: 0x00
+    __IO uint32_t SWTRIGR;                                                      ///<  DAC software trigger register,                offset: 0x04
+    __IO uint32_t DHR12R1;                                                      ///<  Channel 1 12-bit right align data register,   offset: 0x08
+    __IO uint32_t DHR12L1;                                                      ///<  Channel 1 12-bit left align data register,    offset: 0x0C
+    __IO uint32_t DHR8R1;                                                       ///<  Channel 1 8-bit right align data register,    offset: 0x10
+    __IO uint32_t DHR12R2;                                                      ///<  Channel 2 12-bit right align data register,   offset: 0x14
+    __IO uint32_t DHR12L2;                                                      ///<  Channel 2 12-bit left align data register,    offset: 0x18
+    __IO uint32_t DHR8R2;                                                       ///<  Channel 2 8-bit right align data register,    offset: 0x1C
+    __IO uint32_t DHR12RD;                                                      ///<  Dual channel 12-bit right align data register,offset: 0x20
+    __IO uint32_t DHR12LD;                                                      ///<  Dual channel 12-bit left align data register, offset: 0x24
+    __IO uint32_t DHR8RD;                                                       ///<  Dual channel 8-bit right align data register, offset: 0x28
+    __IO uint32_t DOR1;                                                         ///<  Channel 1 output register,                    offset: 0x2C
+    __IO uint32_t DOR2;                                                         ///<  Channel 2 output register,                    offset: 0x30
 } DAC_TypeDef;
 #endif
 
@@ -1230,8 +1277,8 @@ typedef struct {
 /// @brief DEBUG Registers Structure Definition
 ////////////////////////////////////////////////////////////////////////////////
 typedef struct {
-    __IO u32 IDCODE;                                                            ///< Code ID            offset: 0x00
-    __IO u32 CR;                                                                ///< Control Register   offset: 0x04
+    __IO uint32_t IDCODE;                                                       ///< Code ID            offset: 0x00
+    __IO uint32_t CR;                                                           ///< Control Register   offset: 0x04
 }DBGMCU_TypeDef;
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -1239,12 +1286,12 @@ typedef struct {
 ////////////////////////////////////////////////////////////////////////////////
 #if defined(DIV_BASE)
 typedef struct {
-    __IO u32 DVDR;                                                              ///< Divider data register, offset: 0x00
-    __IO u32 DVSR;                                                              ///< Divisor register,      offset: 0x04
-    __IO u32 QUOTR;                                                             ///< Quotient register,     offset: 0x08
-    __IO u32 RMDR;                                                              ///< Remainder register,    offset: 0x0C
-    __IO u32 SR;                                                                ///< Status register,       offset: 0x10
-    __IO u32 CR;                                                                ///< Control register,      offset: 0x14
+    __IO uint32_t DVDR;                                                         ///< Divider data register, offset: 0x00
+    __IO uint32_t DVSR;                                                         ///< Divisor register,      offset: 0x04
+    __IO uint32_t QUOTR;                                                        ///< Quotient register,     offset: 0x08
+    __IO uint32_t RMDR;                                                         ///< Remainder register,    offset: 0x0C
+    __IO uint32_t SR;                                                           ///< Status register,       offset: 0x10
+    __IO uint32_t CR;                                                           ///< Control register,      offset: 0x14
 } DIV_TypeDef;
 #endif
 
@@ -1253,61 +1300,17 @@ typedef struct {
 ////////////////////////////////////////////////////////////////////////////////
 #if defined(DMA1_BASE) || defined(DMA2_BASE)
 typedef struct {
-    __IO u32 CCR;                                                               ///< DMA channel x configuration register        offset: 0x00
-    __IO u32 CNDTR;                                                             ///< DMA channel x number of data register       offset: 0x04
-    __IO u32 CPAR;                                                              ///< DMA channel x peripheral address register   offset: 0x08
-    __IO u32 CMAR;                                                              ///< DMA channel x memory address register       offset: 0x0C
+    __IO uint32_t CCR;                                                          ///< DMA channel x configuration register        offset: 0x00
+    __IO uint32_t CNDTR;                                                        ///< DMA channel x number of data register       offset: 0x04
+    __IO uint32_t CPAR;                                                         ///< DMA channel x peripheral address register   offset: 0x08
+    __IO uint32_t CMAR;                                                         ///< DMA channel x memory address register       offset: 0x0C
 } DMA_Channel_TypeDef;
 
 typedef struct {
-    __IO u32 ISR;                                                               ///< Interrupt Status Register      offset: 0x00
-    __IO u32 IFCR;                                                              ///< Interrupt Flag Clear Register  offset: 0x04
+    __IO uint32_t ISR;                                                          ///< Interrupt Status Register      offset: 0x00
+    __IO uint32_t IFCR;                                                         ///< Interrupt Flag Clear Register  offset: 0x04
 } DMA_TypeDef;
 #endif
-
-////////////////////////////////////////////////////////////////////////////////
-/// @brief EXTI Registers Structure Definition
-////////////////////////////////////////////////////////////////////////////////
-typedef struct {
-#if defined(__MM0N1) || defined(__MM3O1) || defined(__MM0P1) || defined(__MM0Q1) || defined(__MM0S1) || defined(__MM0T1)
-    __IO u32 CFGR;                                                              ///< SYSCFG configuration register,             offset: 0x00
-    u32 Reserved;                                                               ///< Reserved                                   offset: 0x04
-#endif
-#if defined(__MM3N1)
-    u32 Reserved;                                                               ///< Reserved                                   offset: 0x00
-    __IO u32 MAPR;                                                              ///< Multiplexed remapping registers,           offset: 0x04
-#endif
-
-#if defined(__MM3U1)
-    __IO u32 CFGR1;                                                             ///< SYSCFG configuration register 1,           offset: 0x00
-    u32 Reserved;                                                               ///< Reserved                                   offset: 0x04
-#endif
-
-    __IO u32 CR[4];                                                             ///< External interrupt configuration register, offset: 0x08 - 0x17
-
-#if defined(__MM3U1)
-    __IO u32 CFGR2;                                                             ///< SYSCFG configuration register 2,           offset: 0x18
-    __IO u32 PDETCSR;                                                           ///< Power detect configuration state reigster  offset: 0x1c
-    __IO u32 VOSDLY;                                                            ///< VOS Delay                                  offset: 0x20
-    u32 Reserved1[0x100 - 0x09];                                                ///< Reserved space 0x04 * 0x100 = 0x400
-#endif
-
-#if defined(__MM0S1) || defined(__MM0T1)
-    __IO u32 PADHYS;                                                            ///< PAD configutation register,                offset: 0x18
-    u32 Reserved1[0x100 - 0x07];                                                ///< Reserved space 0x04 * 0x100 = 0x400
-#endif
-
-#if defined(__MM3N1) || defined(__MM0N1) || defined(__MM3O1) || defined(__MM0P1) || defined(__MM0Q1)
-    u32 Reserved1[0x100 - 0x06];                                                ///< Reserved space
-#endif
-
-    __IO u32 IMR;                                                               ///< Interrupt Mask Register                    offset: 0x00 + 0x400
-    __IO u32 EMR;                                                               ///< Event Mask Register                        offset: 0x04 + 0x400
-    __IO u32 RTSR;                                                              ///< Rising Trigger Status Register             offset: 0x08 + 0x400
-    __IO u32 FTSR;                                                              ///< Falling Trigger Status Register            offset: 0x0C + 0x400
-    __IO u32 SWIER;                                                             ///< Software Interrupt Enable Register         offset: 0x10 + 0x400
-    __IO u32 PR;                                                                ///< Pending Register                           offset: 0x14 + 0x400
-} EXTI_TypeDef;
 
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief ETH Register Structure Definition
@@ -1375,25 +1378,69 @@ typedef struct {
 #endif
 
 ////////////////////////////////////////////////////////////////////////////////
+/// @brief EXTI Registers Structure Definition
+////////////////////////////////////////////////////////////////////////////////
+typedef struct {
+#if defined(__MM0N1) || defined(__MM3O1) || defined(__MM0P1) || defined(__MM0Q1) || defined(__MM0S1) || defined(__MM0T1)
+    __IO uint32_t CFGR;                                                         ///< SYSCFG configuration register,             offset: 0x00
+    uint32_t Reserved;                                                          ///< Reserved                                   offset: 0x04
+#endif
+#if defined(__MM3N1)
+    uint32_t Reserved;                                                          ///< Reserved                                   offset: 0x00
+    __IO uint32_t MAPR;                                                         ///< Multiplexed remapping registers,           offset: 0x04
+#endif
+
+#if defined(__MM3U1)
+    __IO uint32_t CFGR1;                                                        ///< SYSCFG configuration register 1,           offset: 0x00
+    uint32_t Reserved;                                                          ///< Reserved                                   offset: 0x04
+#endif
+
+    __IO uint32_t CR[4];                                                        ///< External interrupt configuration register, offset: 0x08 - 0x17
+
+#if defined(__MM3U1)
+    __IO uint32_t CFGR2;                                                        ///< SYSCFG configuration register 2,           offset: 0x18
+    __IO uint32_t PDETCSR;                                                      ///< Power detect configuration state reigster  offset: 0x1c
+    __IO uint32_t VOSDLY;                                                       ///< VOS Delay                                  offset: 0x20
+    uint32_t Reserved1[0x100 - 0x09];                                           ///< Reserved space 0x04 * 0x100 = 0x400
+#endif
+
+#if defined(__MM0S1) || defined(__MM0T1)
+    __IO uint32_t PADHYS;                                                       ///< PAD configutation register,                offset: 0x18
+    uint32_t Reserved1[0x100 - 0x07];                                           ///< Reserved space 0x04 * 0x100 = 0x400
+#endif
+
+#if defined(__MM3N1) || defined(__MM0N1) || defined(__MM3O1) || defined(__MM0P1) || defined(__MM0Q1)
+    uint32_t Reserved1[0x100 - 0x06];                                           ///< Reserved space
+#endif
+
+    __IO uint32_t IMR;                                                          ///< Interrupt Mask Register                    offset: 0x00 + 0x400
+    __IO uint32_t EMR;                                                          ///< Event Mask Register                        offset: 0x04 + 0x400
+    __IO uint32_t RTSR;                                                         ///< Rising Trigger Status Register             offset: 0x08 + 0x400
+    __IO uint32_t FTSR;                                                         ///< Falling Trigger Status Register            offset: 0x0C + 0x400
+    __IO uint32_t SWIER;                                                        ///< Software Interrupt Enable Register         offset: 0x10 + 0x400
+    __IO uint32_t PR;                                                           ///< Pending Register                           offset: 0x14 + 0x400
+} EXTI_TypeDef;
+
+////////////////////////////////////////////////////////////////////////////////
 /// @brief FLASH Registers Structure Definition
 ////////////////////////////////////////////////////////////////////////////////
 typedef struct {
-    __IO u32 ACR;                                                               ///< Access control Register                        offset: 0x00
-    __IO u32 KEYR;                                                              ///< Key Register                                   offset: 0x04
-    __IO u32 OPTKEYR;                                                           ///< Option byte key Register                       offset: 0x08
-    __IO u32 SR;                                                                ///< State Register                                 offset: 0x0C
-    __IO u32 CR;                                                                ///< Control Register                               offset: 0x10
-    __IO u32 AR;                                                                ///< Address Register                               offset: 0x14
-    __IO u32 RESERVED;
-    __IO u32 OBR;                                                               ///< Option bytes Register                          offset: 0x1C
+    __IO uint32_t ACR;                                                          ///< Access control Register                        offset: 0x00
+    __IO uint32_t KEYR;                                                         ///< Key Register                                   offset: 0x04
+    __IO uint32_t OPTKEYR;                                                      ///< Option byte key Register                       offset: 0x08
+    __IO uint32_t SR;                                                           ///< State Register                                 offset: 0x0C
+    __IO uint32_t CR;                                                           ///< Control Register                               offset: 0x10
+    __IO uint32_t AR;                                                           ///< Address Register                               offset: 0x14
+    __IO uint32_t RESERVED;
+    __IO uint32_t OBR;                                                          ///< Option bytes Register                          offset: 0x1C
 #if defined(__MM3N1) || defined(__MM0N1) || defined(__MM0P1) || defined(__MM0Q1) || defined(__MM0S1) || defined(__MM0T1)
-    __IO u32 WRPR;                                                              ///< Write protect Register                         offset: 0x20
+    __IO uint32_t WRPR;                                                         ///< Write protect Register                         offset: 0x20
 #endif
 #if defined(__MM3O1) || defined(__MM3U1)
-    __IO u32 WRP0R;                                                             ///< Write protect 0 Register                       offset: 0x20
-    __IO u32 WRP1R;                                                             ///< Write protect 1 Register                       offset: 0x24
-    __IO u32 WRP2R;                                                             ///< Write protect 2 Register                       offset: 0x28
-    __IO u32 WRP3R;                                                             ///< Write protect 3 Register                       offset: 0x2C
+    __IO uint32_t WRP0R;                                                        ///< Write protect 0 Register                       offset: 0x20
+    __IO uint32_t WRP1R;                                                        ///< Write protect 1 Register                       offset: 0x24
+    __IO uint32_t WRP2R;                                                        ///< Write protect 2 Register                       offset: 0x28
+    __IO uint32_t WRP3R;                                                        ///< Write protect 3 Register                       offset: 0x2C
 #endif
 } FLASH_TypeDef;
 
@@ -1401,22 +1448,22 @@ typedef struct {
 /// @brief GPIO Registers Structure Definition
 ////////////////////////////////////////////////////////////////////////////////
 typedef struct {
-    __IO u32 CRL;                                                               ///< Control Register Low,                          offset: 0x00
-    __IO u32 CRH;                                                               ///< Control Register High,                         offset: 0x04
-    __IO u32 IDR;                                                               ///< Input Data Register,                           offset: 0x08
-    __IO u32 ODR;                                                               ///< Output Data Register,                          offset: 0x0C
-    __IO u32 BSRR;                                                              ///< Bit Set or Reset Register,                     offset: 0x10
-    __IO u32 BRR;                                                               ///< Bit Reset Register,                            offset: 0x14
-    __IO u32 LCKR;                                                              ///< Lock Register,                                 offset: 0x18
+    __IO uint32_t CRL;                                                          ///< Control Register Low,                          offset: 0x00
+    __IO uint32_t CRH;                                                          ///< Control Register High,                         offset: 0x04
+    __IO uint32_t IDR;                                                          ///< Input Data Register,                           offset: 0x08
+    __IO uint32_t ODR;                                                          ///< Output Data Register,                          offset: 0x0C
+    __IO uint32_t BSRR;                                                         ///< Bit Set or Reset Register,                     offset: 0x10
+    __IO uint32_t BRR;                                                          ///< Bit Reset Register,                            offset: 0x14
+    __IO uint32_t LCKR;                                                         ///< Lock Register,                                 offset: 0x18
 #if defined(__MM0N1) || defined(__MM3O1) || defined(__MM0P1) || defined(__MM0Q1)
-    __IO u32 Reserved;
-    __IO u32 AFRL;                                                              ///< Port Multiplexing Function Low Register,       offset: 0x20
-    __IO u32 AFRH;                                                              ///< Port Multiplexing Function High Register,      offset: 0x24
+    __IO uint32_t Reserved;
+    __IO uint32_t AFRL;                                                         ///< Port Multiplexing Function Low Register,       offset: 0x20
+    __IO uint32_t AFRH;                                                         ///< Port Multiplexing Function High Register,      offset: 0x24
 #endif
 #if defined(__MM0S1) || defined(__MM0T1) || defined(__MM3U1)
-    __IO u32 DCR;                                                               ///< Port Output Open Drain Control  Register,      offset: 0x1C
-    __IO u32 AFRL;                                                              ///< Port Multiplexing Function Low Register,       offset: 0x20
-    __IO u32 AFRH;                                                              ///< Port Multiplexing Function High Register,      offset: 0x24
+    __IO uint32_t DCR;                                                          ///< Port Output Open Drain Control  Register,      offset: 0x1C
+    __IO uint32_t AFRL;                                                         ///< Port Multiplexing Function Low Register,       offset: 0x20
+    __IO uint32_t AFRH;                                                         ///< Port Multiplexing Function High Register,      offset: 0x24
 #endif
 } GPIO_TypeDef;
 
@@ -1424,69 +1471,69 @@ typedef struct {
 /// @brief I2C Register Structure Definition
 ////////////////////////////////////////////////////////////////////////////////
 typedef struct {
-    __IO u32 CR;                                                                ///< Control Register                               offset: 0x00
-    __IO u32 TAR;                                                               ///< Target Address Register                        offset: 0x04
-    __IO u32 SAR;                                                               ///< Slave Address Register                         offset: 0x08
-    __IO u32 RESERVED3;
-    __IO u32 DR;                                                                ///< Data Command Register                          offset: 0x10
-    __IO u32 SSHR;                                                              ///< SCL High Period Count for Std. Speed Register  offset: 0x14
-    __IO u32 SSLR;                                                              ///< SCL Low Period Count for Std. Speed Register   offset: 0x18
-    __IO u32 FSHR;                                                              ///< SCL High Period Count for Fast Speed Register  offset: 0x1C
-    __IO u32 FSLR;                                                              ///< SCL Low Period Count for Fast Speed Register   offset: 0x20
-    __IO u32 RESERVED9;
-    __IO u32 RESERVED10;
-    __IO u32 ISR;                                                               ///< Interrupt Status Register                      offset: 0x2C
-    __IO u32 IMR;                                                               ///< Interrupt Mask Register                        offset: 0x30
-    __IO u32 RAWISR;                                                            ///< RAW Interrupt Status Register                  offset: 0x34
-    __IO u32 RXTLR;                                                             ///< Receive FIFO Threshold Level Register          offset: 0x38
-    __IO u32 TXTLR;                                                             ///< Transmit FIFO Threshold Level Register         offset: 0x3C
-    __IO u32 ICR;                                                               ///< Clear All Interrupt Register                   offset: 0x40
-    __IO u32 RX_UNDER;                                                          ///< Clear RX_UNDER Interrupt Register              offset: 0x44
-    __IO u32 RX_OVER;                                                           ///< Clear RX_OVER Interrupt Register               offset: 0x48
-    __IO u32 TX_OVER;                                                           ///< Clear TX_OVER Interrupt Register               offset: 0x4C
-    __IO u32 RD_REQ;                                                            ///< Clear RD_REQ Interrupt Register                offset: 0x50
-    __IO u32 TX_ABRT;                                                           ///< Clear TX_ABRT Interrupt Register               offset: 0x54
-    __IO u32 RX_DONE;                                                           ///< Clear RX_DONE Interrupt Register               offset: 0x58
-    __IO u32 ACTIV;                                                             ///< Clear ACTIVITY Interrupt Register              offset: 0x5C
-    __IO u32 STOP;                                                              ///< Clear STOP_DET Interrupt Register              offset: 0x60
-    __IO u32 START;                                                             ///< Clear START_DET Interrupt Register             offset: 0x64
-    __IO u32 GC;                                                                ///< Clear GEN_CALL Interrupt Register              offset: 0x68
-    __IO u32 ENR;                                                               ///< Enable Register                                offset: 0x6C
-    __IO u32 SR;                                                                ///< Status Register                                offset: 0x70
-    __IO u32 TXFLR;                                                             ///< Transmit FIFO Level Register                   offset: 0x74
-    __IO u32 RXFLR;                                                             ///< Receive FIFO Level Register                    offset: 0x78
-    __IO u32 HOLD;                                                              ///< SDA Hold Time Register                         offset: 0x7C
-    __IO u32 RESERVED28;
-    __IO u32 RESERVED29;
-    __IO u32 DMA;                                                               ///< DMA Control Register                           offset: 0x88
-    __IO u32 RESERVED30;
-    __IO u32 RESERVED31;
-    __IO u32 SETUP;                                                             ///< SDA Setup Time Register                        offset: 0x94
-    __IO u32 GCR;                                                               ///< ACK General Call Register                      offset: 0x98
-    __IO u32 RESERVED32[5];                                                     //                                                  offset: 0x9C, 0xA0, 0xA4, 0xA8, 0xAC
-    __IO u32 SMR;                                                               ///< Slave mask register                            offset: 0xB0
-    __IO u32 SRAR;                                                              ///< Slave reviced address register                 offset: 0xB4
+    __IO uint32_t CR;                                                           ///< Control Register                               offset: 0x00
+    __IO uint32_t TAR;                                                          ///< Target Address Register                        offset: 0x04
+    __IO uint32_t SAR;                                                          ///< Slave Address Register                         offset: 0x08
+    __IO uint32_t RESERVED3;
+    __IO uint32_t DR;                                                           ///< Data Command Register                          offset: 0x10
+    __IO uint32_t SSHR;                                                         ///< SCL High Period Count for Std. Speed Register  offset: 0x14
+    __IO uint32_t SSLR;                                                         ///< SCL Low Period Count for Std. Speed Register   offset: 0x18
+    __IO uint32_t FSHR;                                                         ///< SCL High Period Count for Fast Speed Register  offset: 0x1C
+    __IO uint32_t FSLR;                                                         ///< SCL Low Period Count for Fast Speed Register   offset: 0x20
+    __IO uint32_t RESERVED9;
+    __IO uint32_t RESERVED10;
+    __IO uint32_t ISR;                                                          ///< Interrupt Status Register                      offset: 0x2C
+    __IO uint32_t IMR;                                                          ///< Interrupt Mask Register                        offset: 0x30
+    __IO uint32_t RAWISR;                                                       ///< RAW Interrupt Status Register                  offset: 0x34
+    __IO uint32_t RXTLR;                                                        ///< Receive FIFO Threshold Level Register          offset: 0x38
+    __IO uint32_t TXTLR;                                                        ///< Transmit FIFO Threshold Level Register         offset: 0x3C
+    __IO uint32_t ICR;                                                          ///< Clear All Interrupt Register                   offset: 0x40
+    __IO uint32_t RX_UNDER;                                                     ///< Clear RX_UNDER Interrupt Register              offset: 0x44
+    __IO uint32_t RX_OVER;                                                      ///< Clear RX_OVER Interrupt Register               offset: 0x48
+    __IO uint32_t TX_OVER;                                                      ///< Clear TX_OVER Interrupt Register               offset: 0x4C
+    __IO uint32_t RD_REQ;                                                       ///< Clear RD_REQ Interrupt Register                offset: 0x50
+    __IO uint32_t TX_ABRT;                                                      ///< Clear TX_ABRT Interrupt Register               offset: 0x54
+    __IO uint32_t RX_DONE;                                                      ///< Clear RX_DONE Interrupt Register               offset: 0x58
+    __IO uint32_t ACTIV;                                                        ///< Clear ACTIVITY Interrupt Register              offset: 0x5C
+    __IO uint32_t STOP;                                                         ///< Clear STOP_DET Interrupt Register              offset: 0x60
+    __IO uint32_t START;                                                        ///< Clear START_DET Interrupt Register             offset: 0x64
+    __IO uint32_t GC;                                                           ///< Clear GEN_CALL Interrupt Register              offset: 0x68
+    __IO uint32_t ENR;                                                          ///< Enable Register                                offset: 0x6C
+    __IO uint32_t SR;                                                           ///< Status Register                                offset: 0x70
+    __IO uint32_t TXFLR;                                                        ///< Transmit FIFO Level Register                   offset: 0x74
+    __IO uint32_t RXFLR;                                                        ///< Receive FIFO Level Register                    offset: 0x78
+    __IO uint32_t HOLD;                                                         ///< SDA Hold Time Register                         offset: 0x7C
+    __IO uint32_t RESERVED28;
+    __IO uint32_t RESERVED29;
+    __IO uint32_t DMA;                                                          ///< DMA Control Register                           offset: 0x88
+    __IO uint32_t RESERVED30;
+    __IO uint32_t RESERVED31;
+    __IO uint32_t SETUP;                                                        ///< SDA Setup Time Register                        offset: 0x94
+    __IO uint32_t GCR;                                                          ///< ACK General Call Register                      offset: 0x98
+    __IO uint32_t RESERVED32[5];                                                //                                                  offset: 0x9C, 0xA0, 0xA4, 0xA8, 0xAC
+    __IO uint32_t SMR;                                                          ///< Slave mask register                            offset: 0xB0
+    __IO uint32_t SRAR;                                                         ///< Slave reviced address register                 offset: 0xB4
 } I2C_TypeDef;
 
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief IWDG Register Structure Definition
 ////////////////////////////////////////////////////////////////////////////////
 typedef struct {
-    __IO u32 KR;                                                                ///< Key Register                                   offset: 0x00
-    __IO u32 PR;                                                                ///< Prescaler Register                             offset: 0x04
-    __IO u32 RLR;                                                               ///< Reload Register                                offset: 0x08
-    __IO u32 SR;                                                                ///< Status Register                                offset: 0x0C
+    __IO uint32_t KR;                                                           ///< Key Register                                   offset: 0x00
+    __IO uint32_t PR;                                                           ///< Prescaler Register                             offset: 0x04
+    __IO uint32_t RLR;                                                          ///< Reload Register                                offset: 0x08
+    __IO uint32_t SR;                                                           ///< Status Register                                offset: 0x0C
 #if defined(__MM3O1) || defined (__MM0P1) || defined (__MM0Q1) || defined (__MM0S1) || defined (__MM0T1) || defined (__MM3U1)
-    __IO u32 CR;                                                                ///< Control Register                               offset: 0x10
+    __IO uint32_t CR;                                                           ///< Control Register                               offset: 0x10
 #endif
 #if defined(__MM0S1) || defined (__MM0T1) || defined(__MM3U1)
-    __IO u32 IGEN;                                                              ///< Interrupt Generator Register                   offset: 0x14
+    __IO uint32_t IGEN;                                                         ///< Interrupt Generator Register                   offset: 0x14
 #endif
 #if defined(__MM0T1) || defined(__MM3U1)
-    __IO u32  CNT;                                                              ///< Interrupt Generator count Register             offset: 0x18
+    __IO uint32_t  CNT;                                                         ///< Interrupt Generator count Register             offset: 0x18
 #endif
 #if defined(__MM3U1)
-    __IO u32  PS;                                                               ///< Prescaler count Register                        offset: 0x1C
+    __IO uint32_t  PS;                                                          ///< Prescaler count Register                        offset: 0x1C
 #endif
 } IWDG_TypeDef;
 
@@ -1495,7 +1542,7 @@ typedef struct {
 ////////////////////////////////////////////////////////////////////////////////
 #if defined(OPAMP_BASE)
 typedef struct {
-    __IO u32 CSR;                                                               ///< OPAMP Control Status Register                  Offset: 0x00
+    __IO uint32_t CSR;                                                          ///< OPAMP Control Status Register                  Offset: 0x00
 }OPAMP_TypeDef;
 #endif
 
@@ -1503,28 +1550,28 @@ typedef struct {
 /// @brief  OPT Structure Definition
 ////////////////////////////////////////////////////////////////////////////////
 typedef struct {
-    __IO u16 RDP;                                                               ///< Read Protect,                          offset: 0x00
-    __IO u16 USER;                                                              ///< User option byte,                      offset: 0x02
-    __IO u16 Data0;                                                             ///< User data 0,                           offset: 0x04
-    __IO u16 Data1;                                                             ///< User data 1,                           offset: 0x06
-    __IO u16 WRP0;                                                              ///< Flash write protection option byte 0,  offset: 0x08
-    __IO u16 WRP1;                                                              ///< Flash write protection option byte 1,  offset: 0x0A
-    __IO u16 WRP2;                                                              ///< Flash write protection option byte 2,  offset: 0x0C
-    __IO u16 WRP3;                                                              ///< Flash write protection option byte 3,  offset: 0x0E
+    __IO uint16_t RDP;                                                          ///< Read Protect,                          offset: 0x00
+    __IO uint16_t USER;                                                         ///< User option byte,                      offset: 0x02
+    __IO uint16_t Data0;                                                        ///< User data 0,                           offset: 0x04
+    __IO uint16_t Data1;                                                        ///< User data 1,                           offset: 0x06
+    __IO uint16_t WRP0;                                                         ///< Flash write protection option byte 0,  offset: 0x08
+    __IO uint16_t WRP1;                                                         ///< Flash write protection option byte 1,  offset: 0x0A
+    __IO uint16_t WRP2;                                                         ///< Flash write protection option byte 2,  offset: 0x0C
+    __IO uint16_t WRP3;                                                         ///< Flash write protection option byte 3,  offset: 0x0E
 } OB_TypeDef;
 
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief  PROTECT BYTES Structure Definition
 ////////////////////////////////////////////////////////////////////////////////
 typedef struct {
-    __IO u16 PROTECT_LEN0;                                                      ///< The length of Protect byte 0,  offset: 0x00
-    __IO u16 PROTECT_ADDR0;                                                     ///< Data of Protect byte 0,        offset: 0x02
-    __IO u16 PROTECT_LEN1;                                                      ///< The length of Protect byte 1,  offset: 0x04
-    __IO u16 PROTECT_ADDR1;                                                     ///< Data of Protect byte 1,        offset: 0x06
-    __IO u16 PROTECT_LEN2;                                                      ///< The length of Protect byte 2,  offset: 0x08
-    __IO u16 PROTECT_ADDR2;                                                     ///< Data of Protect byte 2,        offset: 0x0A
-    __IO u16 PROTECT_LEN3;                                                      ///< The length of Protect byte 3,  offset: 0x0C
-    __IO u16 PROTECT_ADDR3;                                                     ///< Data of Protect byte 3,        offset: 0x0E
+    __IO uint16_t PROTECT_LEN0;                                                 ///< The length of Protect byte 0,  offset: 0x00
+    __IO uint16_t PROTECT_ADDR0;                                                ///< Data of Protect byte 0,        offset: 0x02
+    __IO uint16_t PROTECT_LEN1;                                                 ///< The length of Protect byte 1,  offset: 0x04
+    __IO uint16_t PROTECT_ADDR1;                                                ///< Data of Protect byte 1,        offset: 0x06
+    __IO uint16_t PROTECT_LEN2;                                                 ///< The length of Protect byte 2,  offset: 0x08
+    __IO uint16_t PROTECT_ADDR2;                                                ///< Data of Protect byte 2,        offset: 0x0A
+    __IO uint16_t PROTECT_LEN3;                                                 ///< The length of Protect byte 3,  offset: 0x0C
+    __IO uint16_t PROTECT_ADDR3;                                                ///< Data of Protect byte 3,        offset: 0x0E
 } PROTECT_TypeDef;
 
 #if defined(OTG_FS_BASE)
@@ -1589,9 +1636,9 @@ typedef struct {
 ////////////////////////////////////////////////////////////////////////////////
 #if defined(PWM_BASE)
 typedef struct {
-    __IO u32 CSR;                                                               ///< Control PWM output status register,            offset: 0x00
-    __IO u32 APMSKR;                                                            ///< Auto phase mask register,                      offset: 0x04
-    __IO u32 APMDLR;                                                            ///< Auto phase mask dalay register,                offset: 0x08
+    __IO uint32_t CSR;                                                          ///< Control PWM output status register,            offset: 0x00
+    __IO uint32_t APMSKR;                                                       ///< Auto phase mask register,                      offset: 0x04
+    __IO uint32_t APMDLR;                                                       ///< Auto phase mask dalay register,                offset: 0x08
 } PWM_TypeDef;
 #endif
 
@@ -1600,20 +1647,20 @@ typedef struct {
 ////////////////////////////////////////////////////////////////////////////////
 typedef struct {
 #if defined(__MM3N1) || defined(__MM0N1) || defined(__MM3O1) || defined(__MM0P1) || defined(__MM0Q1) || defined(__MM0S1) || defined(__MM0T1)
-    __IO u32 CR;                                                                ///< Control register                               offset: 0x00
-    __IO u32 CSR;                                                               ///< Control Status register                        offset: 0x04
+    __IO uint32_t CR;                                                           ///< Control register                               offset: 0x00
+    __IO uint32_t CSR;                                                          ///< Control Status register                        offset: 0x04
 #endif
 #if defined(__MM3U1)
-    __IO u32 CR1;                                                               ///< Control register 1                             offset: 0x00
-    __IO u32 CSR;                                                               ///< Control Status register                        offset: 0x04
-    __IO u32 CR2;                                                               ///< Control register 2                             offset: 0x08
-    __IO u32 CR3;                                                               ///< Control register 3                             offset: 0x0C
-    __IO u32 CR4;                                                               ///< Control register 4                             offset: 0x10
-    __IO u32 CR5;                                                               ///< Control register 5                             offset: 0x14
-    __IO u32 CR6;                                                               ///< Control register 6                             offset: 0x18
-    __IO u32 SR;                                                                ///< Satae register                                 offset: 0x1C
-    __IO u32 SCR;                                                               ///< State clear register                           offset: 0x20
-    __IO u32 CFGR;                                                              ///< Configuration register                         offset: 0x24
+    __IO uint32_t CR1;                                                          ///< Control register 1                             offset: 0x00
+    __IO uint32_t CSR;                                                          ///< Control Status register                        offset: 0x04
+    __IO uint32_t CR2;                                                          ///< Control register 2                             offset: 0x08
+    __IO uint32_t CR3;                                                          ///< Control register 3                             offset: 0x0C
+    __IO uint32_t CR4;                                                          ///< Control register 4                             offset: 0x10
+    __IO uint32_t CR5;                                                          ///< Control register 5                             offset: 0x14
+    __IO uint32_t CR6;                                                          ///< Control register 6                             offset: 0x18
+    __IO uint32_t SR;                                                           ///< Satae register                                 offset: 0x1C
+    __IO uint32_t SCR;                                                          ///< State clear register                           offset: 0x20
+    __IO uint32_t CFGR;                                                         ///< Configuration register                         offset: 0x24
 #endif
 } PWR_TypeDef;
 ////////////////////////////////////////////////////////////////////////////////
@@ -1621,174 +1668,174 @@ typedef struct {
 ////////////////////////////////////////////////////////////////////////////////
 typedef struct {
 #if defined(__MM3N1)
-    __IO u32 CR;                                                                ///< Control Register                               offset: 0x00
-    __IO u32 CFGR;                                                              ///< Configuration Register                         offset: 0x04
-    __IO u32 CIR;                                                               ///< Clock Interrupt Register                       offset: 0x08
-    __IO u32 APB2RSTR;                                                          ///< Advanced Peripheral Bus 2 Reset Register       offset: 0x0C
-    __IO u32 APB1RSTR;                                                          ///< Advanced Peripheral Bus 1 Reset Register       offset: 0x10
-    __IO u32 AHBENR;                                                            ///< Advanced High Performance Bus Enable Register  offset: 0x14
-    __IO u32 APB2ENR;                                                           ///< Advanced Peripheral Bus 2 Enable Register      offset: 0x18
-    __IO u32 APB1ENR;                                                           ///< Advanced Peripheral Bus 1 Enable Register      offset: 0x1C
-    __IO u32 BDCR;                                                              ///< Backup Domain Control Register                 offset: 0x20
-    __IO u32 CSR;                                                               ///< Control Status Register                        offset: 0x24
-    __IO u32 RESERVED0;                                                         ///<                                                offset: 0x28
-    __IO u32 RESERVED1;                                                         ///<                                                offset: 0x2C
-    __IO u32 RESERVED2;                                                         ///<                                                offset: 0x30
-    __IO u32 RESERVED3;                                                         ///<                                                offset: 0x34
-    __IO u32 RESERVED4;                                                         ///<                                                offset: 0x38
-    __IO u32 RESERVED5;                                                         ///<                                                offset: 0x3C
-    __IO u32 CONFIG;                                                            ///< System Configuration Register                  offset: 0x40
+    __IO uint32_t CR;                                                           ///< Control Register                               offset: 0x00
+    __IO uint32_t CFGR;                                                         ///< Configuration Register                         offset: 0x04
+    __IO uint32_t CIR;                                                          ///< Clock Interrupt Register                       offset: 0x08
+    __IO uint32_t APB2RSTR;                                                     ///< Advanced Peripheral Bus 2 Reset Register       offset: 0x0C
+    __IO uint32_t APB1RSTR;                                                     ///< Advanced Peripheral Bus 1 Reset Register       offset: 0x10
+    __IO uint32_t AHBENR;                                                       ///< Advanced High Performance Bus Enable Register  offset: 0x14
+    __IO uint32_t APB2ENR;                                                      ///< Advanced Peripheral Bus 2 Enable Register      offset: 0x18
+    __IO uint32_t APB1ENR;                                                      ///< Advanced Peripheral Bus 1 Enable Register      offset: 0x1C
+    __IO uint32_t BDCR;                                                         ///< Backup Domain Control Register                 offset: 0x20
+    __IO uint32_t CSR;                                                          ///< Control Status Register                        offset: 0x24
+    __IO uint32_t RESERVED0;                                                    ///<                                                offset: 0x28
+    __IO uint32_t RESERVED1;                                                    ///<                                                offset: 0x2C
+    __IO uint32_t RESERVED2;                                                    ///<                                                offset: 0x30
+    __IO uint32_t RESERVED3;                                                    ///<                                                offset: 0x34
+    __IO uint32_t RESERVED4;                                                    ///<                                                offset: 0x38
+    __IO uint32_t RESERVED5;                                                    ///<                                                offset: 0x3C
+    __IO uint32_t CONFIG;                                                       ///< System Configuration Register                  offset: 0x40
 #endif
 #if defined(__MM0N1)
-    __IO u32 CR;                                                                ///< Control Register                               offset: 0x00
-    __IO u32 CFGR;                                                              ///< Configuration Register                         offset: 0x04
-    __IO u32 CIR;                                                               ///< Clock Interrupt Register                       offset: 0x08
-    __IO u32 APB2RSTR;                                                          ///< Advanced Peripheral Bus 2 Reset Register       offset: 0x0C
-    __IO u32 APB1RSTR;                                                          ///< Advanced Peripheral Bus 1 Reset Register       offset: 0x10
-    __IO u32 AHBENR;                                                            ///< Advanced High Performance Bus Enable Register  offset: 0x14
-    __IO u32 APB2ENR;                                                           ///< Advanced Peripheral Bus 2 Enable Register      offset: 0x18
-    __IO u32 APB1ENR;                                                           ///< Advanced Peripheral Bus 1 Enable Register      offset: 0x1C
-    __IO u32 RESERVED0;                                                         ///<                                                offset: 0x20
-    __IO u32 CSR;                                                               ///< Control Status Register                        offset: 0x24
-    __IO u32 RESERVED1;                                                         ///<                                                offset: 0x28
-    __IO u32 RESERVED2;                                                         ///<                                                offset: 0x2C
-    __IO u32 RESERVED3;                                                         ///<                                                offset: 0x30
-    __IO u32 RESERVED4;                                                         ///<                                                offset: 0x34
-    __IO u32 RESERVED5;                                                         ///<                                                offset: 0x38
-    __IO u32 RESERVED6;                                                         ///<                                                offset: 0x3C
-    __IO u32 CONFIG;                                                            ///< System Configuration Register                  offset: 0x40
+    __IO uint32_t CR;                                                           ///< Control Register                               offset: 0x00
+    __IO uint32_t CFGR;                                                         ///< Configuration Register                         offset: 0x04
+    __IO uint32_t CIR;                                                          ///< Clock Interrupt Register                       offset: 0x08
+    __IO uint32_t APB2RSTR;                                                     ///< Advanced Peripheral Bus 2 Reset Register       offset: 0x0C
+    __IO uint32_t APB1RSTR;                                                     ///< Advanced Peripheral Bus 1 Reset Register       offset: 0x10
+    __IO uint32_t AHBENR;                                                       ///< Advanced High Performance Bus Enable Register  offset: 0x14
+    __IO uint32_t APB2ENR;                                                      ///< Advanced Peripheral Bus 2 Enable Register      offset: 0x18
+    __IO uint32_t APB1ENR;                                                      ///< Advanced Peripheral Bus 1 Enable Register      offset: 0x1C
+    __IO uint32_t RESERVED0;                                                    ///<                                                offset: 0x20
+    __IO uint32_t CSR;                                                          ///< Control Status Register                        offset: 0x24
+    __IO uint32_t RESERVED1;                                                    ///<                                                offset: 0x28
+    __IO uint32_t RESERVED2;                                                    ///<                                                offset: 0x2C
+    __IO uint32_t RESERVED3;                                                    ///<                                                offset: 0x30
+    __IO uint32_t RESERVED4;                                                    ///<                                                offset: 0x34
+    __IO uint32_t RESERVED5;                                                    ///<                                                offset: 0x38
+    __IO uint32_t RESERVED6;                                                    ///<                                                offset: 0x3C
+    __IO uint32_t CONFIG;                                                       ///< System Configuration Register                  offset: 0x40
 #endif
 #if defined(__MM3O1)
-    __IO u32 CR;                                                                ///< Control Register                               offset: 0x00
-    __IO u32 CFGR;                                                              ///< Configuration Register                         offset: 0x04
-    __IO u32 CIR;                                                               ///< Clock Interrupt Register                       offset: 0x08
-    __IO u32 AHB3RSTR;                                                          ///< Advanced High Peripheral Bus 3 Reset Register  offset: 0x0C
-    __IO u32 AHB2RSTR;                                                          ///< Advanced High Peripheral Bus 2 Reset Register  offset: 0x10
-    __IO u32 AHB1RSTR;                                                          ///< Advanced High Peripheral Bus 1 Reset Register  offset: 0x14
-    __IO u32 APB2RSTR;                                                          ///< Advanced Peripheral Bus 2 Reset Register       offset: 0x18
-    __IO u32 APB1RSTR;                                                          ///< Advanced Peripheral Bus 1 Reset Register       offset: 0x1C
-    __IO u32 AHB3ENR;                                                           ///< Advanced High Performance Bus 3 Enable Register  offset: 0x20
-    __IO u32 AHB2ENR;                                                           ///< Advanced High Performance Bus 2 Enable Register  offset: 0x24
-    __IO u32 AHB1ENR;                                                           ///< Advanced High Performance Bus 1 Enable Register  offset: 0x28
-    __IO u32 APB2ENR;                                                           ///< Advanced Peripheral Bus 2 Enable Register      offset: 0x2C
-    __IO u32 APB1ENR;                                                           ///< Advanced Peripheral Bus 1 Enable Register      offset: 0x30
-    __IO u32 BDCR;                                                              ///< Backup Domain Control Register                 offset: 0x34
-    __IO u32 CSR;                                                               ///< Control Status Register                        offset: 0x38
-    __IO u32 CONFIG;                                                            ///< System Configuration Register                  offset: 0x3C
-    __IO u32 RESERVED0;                                                         ///<                                                offset: 0x40
+    __IO uint32_t CR;                                                           ///< Control Register                               offset: 0x00
+    __IO uint32_t CFGR;                                                         ///< Configuration Register                         offset: 0x04
+    __IO uint32_t CIR;                                                          ///< Clock Interrupt Register                       offset: 0x08
+    __IO uint32_t AHB3RSTR;                                                     ///< Advanced High Peripheral Bus 3 Reset Register  offset: 0x0C
+    __IO uint32_t AHB2RSTR;                                                     ///< Advanced High Peripheral Bus 2 Reset Register  offset: 0x10
+    __IO uint32_t AHB1RSTR;                                                     ///< Advanced High Peripheral Bus 1 Reset Register  offset: 0x14
+    __IO uint32_t APB2RSTR;                                                     ///< Advanced Peripheral Bus 2 Reset Register       offset: 0x18
+    __IO uint32_t APB1RSTR;                                                     ///< Advanced Peripheral Bus 1 Reset Register       offset: 0x1C
+    __IO uint32_t AHB3ENR;                                                      ///< Advanced High Performance Bus 3 Enable Register  offset: 0x20
+    __IO uint32_t AHB2ENR;                                                      ///< Advanced High Performance Bus 2 Enable Register  offset: 0x24
+    __IO uint32_t AHB1ENR;                                                      ///< Advanced High Performance Bus 1 Enable Register  offset: 0x28
+    __IO uint32_t APB2ENR;                                                      ///< Advanced Peripheral Bus 2 Enable Register      offset: 0x2C
+    __IO uint32_t APB1ENR;                                                      ///< Advanced Peripheral Bus 1 Enable Register      offset: 0x30
+    __IO uint32_t BDCR;                                                         ///< Backup Domain Control Register                 offset: 0x34
+    __IO uint32_t CSR;                                                          ///< Control Status Register                        offset: 0x38
+    __IO uint32_t CONFIG;                                                       ///< System Configuration Register                  offset: 0x3C
+    __IO uint32_t RESERVED0;                                                    ///<                                                offset: 0x40
 #endif
 #if defined(__MM0P1)
-    __IO u32 CR;                                                                ///< Control Register                               offset: 0x00
-    __IO u32 CFGR;                                                              ///< Configuration Register                         offset: 0x04
-    __IO u32 CIR;                                                               ///< Clock Interrupt Register                       offset: 0x08
-    __IO u32 APB2RSTR;                                                          ///< Advanced Peripheral Bus 2 Reset Register       offset: 0x0C
-    __IO u32 APB1RSTR;                                                          ///< Advanced Peripheral Bus 1 Reset Register       offset: 0x10
-    __IO u32 AHBENR;                                                            ///< Advanced High Performance Bus Enable Register  offset: 0x14
-    __IO u32 APB2ENR;                                                           ///< Advanced Peripheral Bus 2 Enable Register      offset: 0x18
-    __IO u32 APB1ENR;                                                           ///< Advanced Peripheral Bus 1 Enable Register      offset: 0x1C
-    __IO u32 BDCR;                                                              ///< Backup Domain Control Register                 offset: 0x20
-    __IO u32 CSR;                                                               ///< Control Status Register                        offset: 0x24
-    __IO u32 AHBRSTR;                                                           ///< Advanced High Performance Bus Reset Register   offset: 0x28
-    __IO u32 RESERVED0;                                                         ///<                                                offset: 0x2C
-    __IO u32 RESERVED1;                                                         ///<                                                offset: 0x30
-    __IO u32 RESERVED2;                                                         ///<                                                offset: 0x34
-    __IO u32 RESERVED3;                                                         ///<                                                offset: 0x38
-    __IO u32 RESERVED4;                                                         ///<                                                offset: 0x3C
-    __IO u32 CONFIG;                                                            ///< System Configuration Register                  offset: 0x40
+    __IO uint32_t CR;                                                           ///< Control Register                               offset: 0x00
+    __IO uint32_t CFGR;                                                         ///< Configuration Register                         offset: 0x04
+    __IO uint32_t CIR;                                                          ///< Clock Interrupt Register                       offset: 0x08
+    __IO uint32_t APB2RSTR;                                                     ///< Advanced Peripheral Bus 2 Reset Register       offset: 0x0C
+    __IO uint32_t APB1RSTR;                                                     ///< Advanced Peripheral Bus 1 Reset Register       offset: 0x10
+    __IO uint32_t AHBENR;                                                       ///< Advanced High Performance Bus Enable Register  offset: 0x14
+    __IO uint32_t APB2ENR;                                                      ///< Advanced Peripheral Bus 2 Enable Register      offset: 0x18
+    __IO uint32_t APB1ENR;                                                      ///< Advanced Peripheral Bus 1 Enable Register      offset: 0x1C
+    __IO uint32_t BDCR;                                                         ///< Backup Domain Control Register                 offset: 0x20
+    __IO uint32_t CSR;                                                          ///< Control Status Register                        offset: 0x24
+    __IO uint32_t AHBRSTR;                                                      ///< Advanced High Performance Bus Reset Register   offset: 0x28
+    __IO uint32_t RESERVED0;                                                    ///<                                                offset: 0x2C
+    __IO uint32_t RESERVED1;                                                    ///<                                                offset: 0x30
+    __IO uint32_t RESERVED2;                                                    ///<                                                offset: 0x34
+    __IO uint32_t RESERVED3;                                                    ///<                                                offset: 0x38
+    __IO uint32_t RESERVED4;                                                    ///<                                                offset: 0x3C
+    __IO uint32_t CONFIG;                                                       ///< System Configuration Register                  offset: 0x40
 #endif
 #if defined(__MM0Q1)
-    __IO u32 CR;                                                                ///< Control Register                               offset: 0x00
-    __IO u32 CFGR;                                                              ///< Configuration Register                         offset: 0x04
-    __IO u32 CIR;                                                               ///< Clock Interrupt Register                       offset: 0x08
-    __IO u32 APB2RSTR;                                                          ///< Advanced Peripheral Bus 2 Reset Register       offset: 0x0C
-    __IO u32 APB1RSTR;                                                          ///< Advanced Peripheral Bus 1 Reset Register       offset: 0x10
-    __IO u32 AHBENR;                                                            ///< Advanced High Performance Bus Enable Register  offset: 0x14
-    __IO u32 APB2ENR;                                                           ///< Advanced Peripheral Bus 2 Enable Register      offset: 0x18
-    __IO u32 APB1ENR;                                                           ///< Advanced Peripheral Bus 1 Enable Register      offset: 0x1C
-    __IO u32 RESERVED0;                                                         ///<                                                offset: 0x20
-    __IO u32 CSR;                                                               ///< Control Status Register                        offset: 0x24
-    __IO u32 AHBRSTR;                                                           ///< Advanced High Performance Bus Reset Register   offset: 0x28
-    __IO u32 RESERVED2;                                                         ///<                                                offset: 0x2C
-    __IO u32 RESERVED3;                                                         ///<                                                offset: 0x30
-    __IO u32 RESERVED4;                                                         ///<                                                offset: 0x34
-    __IO u32 RESERVED5;                                                         ///<                                                offset: 0x38
-    __IO u32 RESERVED6;                                                         ///<                                                offset: 0x3C
-    __IO u32 CONFIG;                                                            ///< System Configuration Register                  offset: 0x40
+    __IO uint32_t CR;                                                           ///< Control Register                               offset: 0x00
+    __IO uint32_t CFGR;                                                         ///< Configuration Register                         offset: 0x04
+    __IO uint32_t CIR;                                                          ///< Clock Interrupt Register                       offset: 0x08
+    __IO uint32_t APB2RSTR;                                                     ///< Advanced Peripheral Bus 2 Reset Register       offset: 0x0C
+    __IO uint32_t APB1RSTR;                                                     ///< Advanced Peripheral Bus 1 Reset Register       offset: 0x10
+    __IO uint32_t AHBENR;                                                       ///< Advanced High Performance Bus Enable Register  offset: 0x14
+    __IO uint32_t APB2ENR;                                                      ///< Advanced Peripheral Bus 2 Enable Register      offset: 0x18
+    __IO uint32_t APB1ENR;                                                      ///< Advanced Peripheral Bus 1 Enable Register      offset: 0x1C
+    __IO uint32_t RESERVED0;                                                    ///<                                                offset: 0x20
+    __IO uint32_t CSR;                                                          ///< Control Status Register                        offset: 0x24
+    __IO uint32_t AHBRSTR;                                                      ///< Advanced High Performance Bus Reset Register   offset: 0x28
+    __IO uint32_t RESERVED2;                                                    ///<                                                offset: 0x2C
+    __IO uint32_t RESERVED3;                                                    ///<                                                offset: 0x30
+    __IO uint32_t RESERVED4;                                                    ///<                                                offset: 0x34
+    __IO uint32_t RESERVED5;                                                    ///<                                                offset: 0x38
+    __IO uint32_t RESERVED6;                                                    ///<                                                offset: 0x3C
+    __IO uint32_t CONFIG;                                                       ///< System Configuration Register                  offset: 0x40
 #endif
 #if defined(__MM0S1)
-    __IO u32 CR;                                                                ///< Control Register                               offset: 0x00
-    __IO u32 CFGR;                                                              ///< Configuration Register                         offset: 0x04
-    __IO u32 CIR;                                                               ///< Clock Interrupt Register                       offset: 0x08
-    __IO u32 APB2RSTR;                                                          ///< Advanced Peripheral Bus 2 Reset Register       offset: 0x0C
-    __IO u32 APB1RSTR;                                                          ///< Advanced Peripheral Bus 1 Reset Register       offset: 0x10
-    __IO u32 AHBENR;                                                            ///< Advanced High Performance Bus Enable Register  offset: 0x14
-    __IO u32 APB2ENR;                                                           ///< Advanced Peripheral Bus 2 Enable Register      offset: 0x18
-    __IO u32 APB1ENR;                                                           ///< Advanced Peripheral Bus 1 Enable Register      offset: 0x1C
-    __IO u32 BDCR;                                                              ///< Backup Domain Control Register                 offset: 0x20
-    __IO u32 CSR;                                                               ///< Control Status Register                        offset: 0x24
-    __IO u32 AHBRSTR;                                                           ///< Advanced High Performance Bus Reset Register   offset: 0x28
-    __IO u32 CFGR2;                                                             ///< Clock Configuration 2 Register                 offset: 0x2C
-    __IO u32 RNG;                                                               ///< RNG Register                                   offset: 0x30
-    __IO u32 RESERVED0;                                                         ///<                                                offset: 0x34
-    __IO u32 RESERVED1;                                                         ///<                                                offset: 0x38
-    __IO u32 RESERVED2;                                                         ///<                                                offset: 0x3C
-    __IO u32 CONFIG;                                                            ///< System Configuration Register                  offset: 0x40
+    __IO uint32_t CR;                                                           ///< Control Register                               offset: 0x00
+    __IO uint32_t CFGR;                                                         ///< Configuration Register                         offset: 0x04
+    __IO uint32_t CIR;                                                          ///< Clock Interrupt Register                       offset: 0x08
+    __IO uint32_t APB2RSTR;                                                     ///< Advanced Peripheral Bus 2 Reset Register       offset: 0x0C
+    __IO uint32_t APB1RSTR;                                                     ///< Advanced Peripheral Bus 1 Reset Register       offset: 0x10
+    __IO uint32_t AHBENR;                                                       ///< Advanced High Performance Bus Enable Register  offset: 0x14
+    __IO uint32_t APB2ENR;                                                      ///< Advanced Peripheral Bus 2 Enable Register      offset: 0x18
+    __IO uint32_t APB1ENR;                                                      ///< Advanced Peripheral Bus 1 Enable Register      offset: 0x1C
+    __IO uint32_t BDCR;                                                         ///< Backup Domain Control Register                 offset: 0x20
+    __IO uint32_t CSR;                                                          ///< Control Status Register                        offset: 0x24
+    __IO uint32_t AHBRSTR;                                                      ///< Advanced High Performance Bus Reset Register   offset: 0x28
+    __IO uint32_t CFGR2;                                                        ///< Clock Configuration 2 Register                 offset: 0x2C
+    __IO uint32_t RNG;                                                          ///< RNG Register                                   offset: 0x30
+    __IO uint32_t RESERVED0;                                                    ///<                                                offset: 0x34
+    __IO uint32_t RESERVED1;                                                    ///<                                                offset: 0x38
+    __IO uint32_t RESERVED2;                                                    ///<                                                offset: 0x3C
+    __IO uint32_t CONFIG;                                                       ///< System Configuration Register                  offset: 0x40
 #endif
 #if defined(__MM0T1)
-    __IO u32 CR;                                                                ///< Control Register                               offset: 0x00
-    __IO u32 CFGR;                                                              ///< Configuration Register                         offset: 0x04
-    __IO u32 CIR;                                                               ///< Clock Interrupt Register                       offset: 0x08
-    __IO u32 RESERVED0;                                                         ///<                                                offset: 0x0C
-    __IO u32 APB1RSTR;                                                          ///< Advanced Peripheral Bus 1 Reset Register       offset: 0x10
-    __IO u32 AHBENR;                                                            ///< Advanced High Performance Bus Enable Register  offset: 0x14
-    __IO u32 RESERVED1;                                                         ///<                                                offset: 0x18
-    __IO u32 APB1ENR;                                                           ///< Advanced Peripheral Bus 1 Enable Register      offset: 0x1C
-    __IO u32 RESERVED2;                                                         ///<                                                offset: 0x20
-    __IO u32 CSR;                                                               ///< Control Status Register                        offset: 0x24
-    __IO u32 AHBRSTR;                                                           ///< Advanced High Performance Bus Reset Register   offset: 0x28
-    __IO u32 RESERVED3;                                                         ///<                                                offset: 0x2c
-    __IO u32 RESERVED4;                                                         ///<                                                offset: 0x30
-    __IO u32 RESERVED5;                                                         ///<                                                offset: 0x34
-    __IO u32 RESERVED6;                                                         ///<                                                offset: 0x38
-    __IO u32 RESERVED7;                                                         ///<                                                offset: 0x3C
-    __IO u32 CONFIG;                                                            ///< System Configuration Register                  offset: 0x40
+    __IO uint32_t CR;                                                           ///< Control Register                               offset: 0x00
+    __IO uint32_t CFGR;                                                         ///< Configuration Register                         offset: 0x04
+    __IO uint32_t CIR;                                                          ///< Clock Interrupt Register                       offset: 0x08
+    __IO uint32_t RESERVED0;                                                    ///<                                                offset: 0x0C
+    __IO uint32_t APB1RSTR;                                                     ///< Advanced Peripheral Bus 1 Reset Register       offset: 0x10
+    __IO uint32_t AHBENR;                                                       ///< Advanced High Performance Bus Enable Register  offset: 0x14
+    __IO uint32_t RESERVED1;                                                    ///<                                                offset: 0x18
+    __IO uint32_t APB1ENR;                                                      ///< Advanced Peripheral Bus 1 Enable Register      offset: 0x1C
+    __IO uint32_t RESERVED2;                                                    ///<                                                offset: 0x20
+    __IO uint32_t CSR;                                                          ///< Control Status Register                        offset: 0x24
+    __IO uint32_t AHBRSTR;                                                      ///< Advanced High Performance Bus Reset Register   offset: 0x28
+    __IO uint32_t RESERVED3;                                                    ///<                                                offset: 0x2c
+    __IO uint32_t RESERVED4;                                                    ///<                                                offset: 0x30
+    __IO uint32_t RESERVED5;                                                    ///<                                                offset: 0x34
+    __IO uint32_t RESERVED6;                                                    ///<                                                offset: 0x38
+    __IO uint32_t RESERVED7;                                                    ///<                                                offset: 0x3C
+    __IO uint32_t CONFIG;                                                       ///< System Configuration Register                  offset: 0x40
 #endif
 #if defined(__MM3U1)
-    __IO u32 CR;                                                                ///< Control Register                               offset: 0x00
-    __IO u32 CFGR;                                                              ///< Configuration Register                         offset: 0x04
-    __IO u32 CIR;                                                               ///< Clock Interrupt Register                       offset: 0x08
-    __IO u32 AHB3RSTR;                                                          ///< Advanced High Performance Bus3 Reset Register  offset: 0x0c
-    __IO u32 AHB2RSTR;                                                          ///< Advanced High Performance Bus2 Reset Register  offset: 0x10
-    __IO u32 AHB1RSTR;                                                          ///< Advanced High Performance Bus1 Reset Register  offset: 0x14
-    __IO u32 APB2RSTR;                                                          ///< Advanced Peripheral Bus 2 Enable Register      offset: 0x18
-    __IO u32 APB1RSTR;                                                          ///< Advanced Peripheral Bus 1 Enable Register      offset: 0x1c
-    __IO u32 AHB3ENR;                                                           ///< Advanced High Performance Bus3 Enable Register offset: 0x20
-    __IO u32 AHB2ENR;                                                           ///< Advanced High Performance Bus2 Enable Register offset: 0x24
-    __IO u32 AHB1ENR;                                                           ///< Advanced High Performance Bus1 Enable Register offset: 0x28
-    __IO u32 APB2ENR;                                                           ///< Advanced Peripheral Bus 2 Enable Register      offset: 0x2c
-    __IO u32 APB1ENR;                                                           ///< Advanced Peripheral Bus 1 Enable Register      offset: 0x30
-    __IO u32 BDCR;                                                              ///< Backup Domain Control Register                 offset: 0x34
-    __IO u32 CSR;                                                               ///< Control Status Register                        offset: 0x38
-    __IO u32 CONFIG;                                                            ///< System Configuration Register                  offset: 0x3c
-    __IO u32 CFGR2;                                                             ///< Configuration Register 2                       offset: 0x40
-    __IO u32 ICSCR;                                                             ///< Insert Clock Source Calibration Register       offset: 0x44
-    __IO u32 PLLCFGR;                                                           ///< PLL Configuration Register                     offset: 0x48
-    __IO u32 RESERVED0;                                                         ///<                                                offset: 0x4c
-    __IO u32 RESERVED1;                                                         ///<                                                offset: 0x50
-    __IO u32 RESERVED2;                                                         ///<                                                offset: 0x54
-    __IO u32 RESERVED3;                                                         ///<                                                offset: 0x58
-    __IO u32 RESERVED4;                                                         ///<                                                offset: 0x5c
-    __IO u32 RESERVED5;                                                         ///<                                                offset: 0x60
-    __IO u32 RESERVED6;                                                         ///<                                                offset: 0x64
-    __IO u32 RESERVED7;                                                         ///<                                                offset: 0x68
-    __IO u32 RESERVED8;                                                         ///<                                                offset: 0x6c
-    __IO u32 RESERVED9;                                                         ///<                                                offset: 0x70
-    __IO u32 RESERVED10;                                                        ///<                                                offset: 0x74
-    __IO u32 RESERVED11;                                                        ///<                                                offset: 0x78
-    __IO u32 RESERVED12;                                                        ///<                                                offset: 0x7c
-    __IO u32 HSIDLY;                                                            ///< HSI Delay Register                             offset: 0x80
-    __IO u32 HSEDLY;                                                            ///< HSE Delay Register                             offset: 0x84
-    __IO u32 PLLDLY;                                                            ///< PLL Delay Register                             offset: 0x88
+    __IO uint32_t CR;                                                           ///< Control Register                               offset: 0x00
+    __IO uint32_t CFGR;                                                         ///< Configuration Register                         offset: 0x04
+    __IO uint32_t CIR;                                                          ///< Clock Interrupt Register                       offset: 0x08
+    __IO uint32_t AHB3RSTR;                                                     ///< Advanced High Performance Bus3 Reset Register  offset: 0x0c
+    __IO uint32_t AHB2RSTR;                                                     ///< Advanced High Performance Bus2 Reset Register  offset: 0x10
+    __IO uint32_t AHB1RSTR;                                                     ///< Advanced High Performance Bus1 Reset Register  offset: 0x14
+    __IO uint32_t APB2RSTR;                                                     ///< Advanced Peripheral Bus 2 Enable Register      offset: 0x18
+    __IO uint32_t APB1RSTR;                                                     ///< Advanced Peripheral Bus 1 Enable Register      offset: 0x1c
+    __IO uint32_t AHB3ENR;                                                      ///< Advanced High Performance Bus3 Enable Register offset: 0x20
+    __IO uint32_t AHB2ENR;                                                      ///< Advanced High Performance Bus2 Enable Register offset: 0x24
+    __IO uint32_t AHB1ENR;                                                      ///< Advanced High Performance Bus1 Enable Register offset: 0x28
+    __IO uint32_t APB2ENR;                                                      ///< Advanced Peripheral Bus 2 Enable Register      offset: 0x2c
+    __IO uint32_t APB1ENR;                                                      ///< Advanced Peripheral Bus 1 Enable Register      offset: 0x30
+    __IO uint32_t BDCR;                                                         ///< Backup Domain Control Register                 offset: 0x34
+    __IO uint32_t CSR;                                                          ///< Control Status Register                        offset: 0x38
+    __IO uint32_t CONFIG;                                                       ///< System Configuration Register                  offset: 0x3c
+    __IO uint32_t CFGR2;                                                        ///< Configuration Register 2                       offset: 0x40
+    __IO uint32_t ICSCR;                                                        ///< Insert Clock Source Calibration Register       offset: 0x44
+    __IO uint32_t PLLCFGR;                                                      ///< PLL Configuration Register                     offset: 0x48
+    __IO uint32_t RESERVED0;                                                    ///<                                                offset: 0x4c
+    __IO uint32_t RESERVED1;                                                    ///<                                                offset: 0x50
+    __IO uint32_t RESERVED2;                                                    ///<                                                offset: 0x54
+    __IO uint32_t RESERVED3;                                                    ///<                                                offset: 0x58
+    __IO uint32_t RESERVED4;                                                    ///<                                                offset: 0x5c
+    __IO uint32_t RESERVED5;                                                    ///<                                                offset: 0x60
+    __IO uint32_t RESERVED6;                                                    ///<                                                offset: 0x64
+    __IO uint32_t RESERVED7;                                                    ///<                                                offset: 0x68
+    __IO uint32_t RESERVED8;                                                    ///<                                                offset: 0x6c
+    __IO uint32_t RESERVED9;                                                    ///<                                                offset: 0x70
+    __IO uint32_t RESERVED10;                                                   ///<                                                offset: 0x74
+    __IO uint32_t RESERVED11;                                                   ///<                                                offset: 0x78
+    __IO uint32_t RESERVED12;                                                   ///<                                                offset: 0x7c
+    __IO uint32_t HSIDLY;                                                       ///< HSI Delay Register                             offset: 0x80
+    __IO uint32_t HSEDLY;                                                       ///< HSE Delay Register                             offset: 0x84
+    __IO uint32_t PLLDLY;                                                       ///< PLL Delay Register                             offset: 0x88
 #endif
 } RCC_TypeDef;
 
@@ -1797,42 +1844,91 @@ typedef struct {
 ////////////////////////////////////////////////////////////////////////////////
 #if defined(RTC_BASE)
 typedef struct {
-    __IO u32 CR;                                                                ///< Control Register,              offset: 0x00
-    __IO u32 CSR;                                                               ///< Control & Status Register,     offset: 0x04
-    __IO u32 PRLH;                                                              ///< Prescaler Reload Value High,   offset: 0x08
-    __IO u32 PRLL;                                                              ///< Prescaler Reload Value Low,    offset: 0x0C
-    __IO u32 DIVH;                                                              ///< Clock Divider High,            offset: 0x10
-    __IO u32 DIVL;                                                              ///< Clock Divider Low,             offset: 0x14
-    __IO u32 CNTH;                                                              ///< Counter High,                  offset: 0x18
-    __IO u32 CNTL;                                                              ///< Counter Low,                   offset: 0x1C
-    __IO u32 ALRH;                                                              ///< Alarm High,                    offset: 0x20
-    __IO u32 ALRL;                                                              ///< Alarm Low,                     offset: 0x24
+    __IO uint32_t CR;                                                           ///< Control Register,              offset: 0x00
+    __IO uint32_t CSR;                                                          ///< Control & Status Register,     offset: 0x04
+    __IO uint32_t PRLH;                                                         ///< Prescaler Reload Value High,   offset: 0x08
+    __IO uint32_t PRLL;                                                         ///< Prescaler Reload Value Low,    offset: 0x0C
+    __IO uint32_t DIVH;                                                         ///< Clock Divider High,            offset: 0x10
+    __IO uint32_t DIVL;                                                         ///< Clock Divider Low,             offset: 0x14
+    __IO uint32_t CNTH;                                                         ///< Counter High,                  offset: 0x18
+    __IO uint32_t CNTL;                                                         ///< Counter Low,                   offset: 0x1C
+    __IO uint32_t ALRH;                                                         ///< Alarm High,                    offset: 0x20
+    __IO uint32_t ALRL;                                                         ///< Alarm Low,                     offset: 0x24
 #if defined(__MM0S1) || defined(__MM3U1)
-    __IO u32 MSRH;                                                              ///< Millisecond alarm high,        offset: 0x28
-    __IO u32 MSRL;                                                              ///< Millisecond alarm low,         offset: 0x2C
+    __IO uint32_t MSRH;                                                         ///< Millisecond alarm high,        offset: 0x28
+    __IO uint32_t MSRL;                                                         ///< Millisecond alarm low,         offset: 0x2C
 #endif
 #if defined(__MM3U1)
-    __IO u32 LSE_CFG;                                                           ///< LSE configuration,             offset: 0x3C
+    __IO uint32_t LSE_CFG;                                                      ///< LSE configuration,             offset: 0x3C
 #endif
 } RTC_TypeDef;
 #endif
 
 ////////////////////////////////////////////////////////////////////////////////
+/// @brief SDIO Register Structure Definition
+////////////////////////////////////////////////////////////////////////////////
+typedef struct {
+    __IO uint32_t MMC_CTRL;                                                     ///< SDIO transmit data register,       offset: 0x00
+    __IO uint32_t MMC_IO;                                                       ///< SDIO receive data register,        offset: 0x04
+    __IO uint32_t MMC_BYTECNTL;                                                 ///< SDIO current state register,       offset: 0x08
+    __IO uint32_t MMC_TR_BLOCKCNT;                                              ///< SDIO interruput state register,    offset: 0x0C
+    __IO uint32_t MMC_CRCCTL;                                                   ///< SDIO interruput enable register,   offset: 0x10
+    __IO uint32_t CMD_CRC;                                                      ///< SDIO interruput control register,  offset: 0x14
+    __IO uint32_t DAT_CRCL;                                                     ///< SDIO global control register,      offset: 0x18
+    __IO uint32_t DAT_CRCH;                                                     ///< SDIO common control register,      offset: 0x1C
+    __IO uint32_t MMC_PORT;                                                     ///< SDIO baud rate control register,   offset: 0x20
+    __IO uint32_t MMC_INT_MASK;                                                 ///< SDIO receive data number register, offset: 0x24
+    __IO uint32_t CLR_MMC_INT;                                                  ///< SDIO chip select register,         offset: 0x28
+    __IO uint32_t MMC_CARDSEL;                                                  ///< SDIO extand control register,      offset: 0x2C
+    __IO uint32_t MMC_SIG;                                                      ///<                                    0ffset: 0x30
+    __IO uint32_t MMC_IO_MBCTL;                                                 ///<                                    0ffset: 0x34
+    __IO uint32_t MMC_BLOCKCNT;                                                 ///<                                    0ffset: 0x38
+    __IO uint32_t MMC_TIMEOUTCNT;                                               ///<                                    0ffset: 0x3C
+    __IO uint32_t CMD_BUF0;                                                     ///<                                    0ffset: 0x40
+    __IO uint32_t CMD_BUF1;                                                     ///<                                    0ffset: 0x44
+    __IO uint32_t CMD_BUF2;                                                     ///<                                    0ffset: 0x48
+    __IO uint32_t CMD_BUF3;                                                     ///<                                    0ffset: 0x4C
+    __IO uint32_t CMD_BUF4;                                                     ///<                                    0ffset: 0x50
+    __IO uint32_t CMD_BUF5;                                                     ///<                                    0ffset: 0x54
+    __IO uint32_t CMD_BUF6;                                                     ///<                                    0ffset: 0x58
+    __IO uint32_t CMD_BUF7;                                                     ///<                                    0ffset: 0x5C
+    __IO uint32_t CMD_BUF8;                                                     ///<                                    0ffset: 0x60
+    __IO uint32_t CMD_BUF9;                                                     ///<                                    0ffset: 0x64
+    __IO uint32_t CMD_BUF10;                                                    ///<                                    0ffset: 0x68
+    __IO uint32_t CMD_BUF11;                                                    ///<                                    0ffset: 0x6C
+    __IO uint32_t CMD_BUF12;                                                    ///<                                    0ffset: 0x70
+    __IO uint32_t CMD_BUF13;                                                    ///<                                    0ffset: 0x74
+    __IO uint32_t CMD_BUF14;                                                    ///<                                    0ffset: 0x78
+    __IO uint32_t CMD_BUF15;                                                    ///<                                    0ffset: 0x7C
+    __IO uint32_t BUF_CTL;                                                      ///<                                    0ffset: 0x80
+
+    __IO uint32_t RESERVED[31];                                                 ///<                                    0ffset: 0x84
+    union {
+        __IO uint32_t DATA_BUF0;                                                ///<                                    0ffset: 0x100
+        __IO uint32_t FIFO;
+    };
+    __IO uint32_t DATA_BUF1;                                                    ///<                                    0ffset: 0x104
+    __IO uint32_t DATA_BUF2;                                                    ///<                                    0ffset: 0x108
+    __IO uint32_t DATA_BUF3;                                                    ///<                                    0ffset: 0x10C
+    __IO uint32_t DATA_BUF4;                                                    ///<                                    0ffset: 0x110
+} SDIO_TypeDef;
+
+////////////////////////////////////////////////////////////////////////////////
 /// @brief SPI Register Structure Definition
 ////////////////////////////////////////////////////////////////////////////////
 typedef struct {
-    __IO u32 TDR;                                                               ///< SPI transmit data register,        offset: 0x00
-    __IO u32 RDR;                                                               ///< SPI receive data register,         offset: 0x04
-    __IO u32 SR;                                                                ///< SPI current state register,        offset: 0x08
-    __IO u32 ISR;                                                               ///< SPI interruput state register,     offset: 0x0C
-    __IO u32 IER;                                                               ///< SPI interruput enable register,    offset: 0x10
-    __IO u32 ICR;                                                               ///< SPI interruput control register,   offset: 0x14
-    __IO u32 GCR;                                                               ///< SPI global control register,       offset: 0x18
-    __IO u32 CCR;                                                               ///< SPI common control register,       offset: 0x1C
-    __IO u32 BRR;                                                               ///< SPI baud rate control register,    offset: 0x20
-    __IO u32 RDNR;                                                              ///< SPI receive data number register,  offset: 0x24
-    __IO u32 NSSR;                                                              ///< SPI chip select register,          offset: 0x28
-    __IO u32 ECR;                                                               ///< SPI extand control register,       offset: 0x2C
+    __IO uint32_t TDR;                                                          ///< SPI transmit data register,        offset: 0x00
+    __IO uint32_t RDR;                                                          ///< SPI receive data register,         offset: 0x04
+    __IO uint32_t SR;                                                           ///< SPI current state register,        offset: 0x08
+    __IO uint32_t ISR;                                                          ///< SPI interruput state register,     offset: 0x0C
+    __IO uint32_t IER;                                                          ///< SPI interruput enable register,    offset: 0x10
+    __IO uint32_t ICR;                                                          ///< SPI interruput control register,   offset: 0x14
+    __IO uint32_t GCR;                                                          ///< SPI global control register,       offset: 0x18
+    __IO uint32_t CCR;                                                          ///< SPI common control register,       offset: 0x1C
+    __IO uint32_t BRR;                                                          ///< SPI baud rate control register,    offset: 0x20
+    __IO uint32_t RDNR;                                                         ///< SPI receive data number register,  offset: 0x24
+    __IO uint32_t NSSR;                                                         ///< SPI chip select register,          offset: 0x28
+    __IO uint32_t ECR;                                                          ///< SPI extand control register,       offset: 0x2C
 } SPI_TypeDef;
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -1849,37 +1945,37 @@ typedef struct {
 /// @brief Timer Register Structure Definition
 ////////////////////////////////////////////////////////////////////////////////
 typedef struct{
-    __IO u32 CR1;                                                               ///< TIM control register 1,                        offset: 0x00
-    __IO u32 CR2;                                                               ///< TIM control register 2,                        offset: 0x04
-    __IO u32 SMCR;                                                              ///< TIM slave Mode Control register,               offset: 0x08
-    __IO u32 DIER;                                                              ///< TIM DMA/interrupt enable register,             offset: 0x0C
-    __IO u32 SR;                                                                ///< TIM status register,                           offset: 0x10
-    __IO u32 EGR;                                                               ///< TIM event generation register,                 offset: 0x14
-    __IO u32 CCMR1;                                                             ///< TIM capture/compare mode register 1,           offset: 0x18
-    __IO u32 CCMR2;                                                             ///< TIM capture/compare mode register 2,           offset: 0x1C
-    __IO u32 CCER;                                                              ///< TIM capture/compare enable register,           offset: 0x20
-    __IO u32 CNT;                                                               ///< TIM counter register,                          offset: 0x24
-    __IO u32 PSC;                                                               ///< TIM prescaler register,                        offset: 0x28
-    __IO u32 ARR;                                                               ///< TIM auto-reload register,                      offset: 0x2C
-    __IO u32 RCR;                                                               ///< TIM repetition counter register,               offset: 0x30
-    __IO u32 CCR1;                                                              ///< TIM capture/compare register 1,                offset: 0x34
-    __IO u32 CCR2;                                                              ///< TIM capture/compare register 2,                offset: 0x38
-    __IO u32 CCR3;                                                              ///< TIM capture/compare register 3,                offset: 0x3C
-    __IO u32 CCR4;                                                              ///< TIM capture/compare register 4,                offset: 0x40
-    __IO u32 BDTR;                                                              ///< TIM break and dead-time register,              offset: 0x44
-    __IO u32 DCR;                                                               ///< TIM DMA control register,                      offset: 0x48
-    __IO u32 DMAR;                                                              ///< TIM DMA address for full transfer register,    offset: 0x4C
+    __IO uint32_t CR1;                                                          ///< TIM control register 1,                        offset: 0x00
+    __IO uint32_t CR2;                                                          ///< TIM control register 2,                        offset: 0x04
+    __IO uint32_t SMCR;                                                         ///< TIM slave Mode Control register,               offset: 0x08
+    __IO uint32_t DIER;                                                         ///< TIM DMA/interrupt enable register,             offset: 0x0C
+    __IO uint32_t SR;                                                           ///< TIM status register,                           offset: 0x10
+    __IO uint32_t EGR;                                                          ///< TIM event generation register,                 offset: 0x14
+    __IO uint32_t CCMR1;                                                        ///< TIM capture/compare mode register 1,           offset: 0x18
+    __IO uint32_t CCMR2;                                                        ///< TIM capture/compare mode register 2,           offset: 0x1C
+    __IO uint32_t CCER;                                                         ///< TIM capture/compare enable register,           offset: 0x20
+    __IO uint32_t CNT;                                                          ///< TIM counter register,                          offset: 0x24
+    __IO uint32_t PSC;                                                          ///< TIM prescaler register,                        offset: 0x28
+    __IO uint32_t ARR;                                                          ///< TIM auto-reload register,                      offset: 0x2C
+    __IO uint32_t RCR;                                                          ///< TIM repetition counter register,               offset: 0x30
+    __IO uint32_t CCR1;                                                         ///< TIM capture/compare register 1,                offset: 0x34
+    __IO uint32_t CCR2;                                                         ///< TIM capture/compare register 2,                offset: 0x38
+    __IO uint32_t CCR3;                                                         ///< TIM capture/compare register 3,                offset: 0x3C
+    __IO uint32_t CCR4;                                                         ///< TIM capture/compare register 4,                offset: 0x40
+    __IO uint32_t BDTR;                                                         ///< TIM break and dead-time register,              offset: 0x44
+    __IO uint32_t DCR;                                                          ///< TIM DMA control register,                      offset: 0x48
+    __IO uint32_t DMAR;                                                         ///< TIM DMA address for full transfer register,    offset: 0x4C
 #if !(defined(__MM3N1) || defined(__MM0N1) || defined(__MM3O1))
-    __IO u32 OR;                                                                ///< TIM Option register,                           offset: 0x50
-    __IO u32 CCMR3;                                                             ///< TIM capture/compare mode register 3,           offset: 0x54
-    __IO u32 CCR5;                                                              ///< TIM capture/compare register 5,                offset: 0x58
+    __IO uint32_t OR;                                                           ///< TIM Option register,                           offset: 0x50
+    __IO uint32_t CCMR3;                                                        ///< TIM capture/compare mode register 3,           offset: 0x54
+    __IO uint32_t CCR5;                                                         ///< TIM capture/compare register 5,                offset: 0x58
 #if !(defined(__MM0P1) || defined(__MM0Q1))
-    __IO u32 PDER;                                                              ///< PWM/DMA repeat enable register,                offset: 0x5C
-    __IO u32 CCR1FALL;                                                          ///< PWM shift count CCR1 register,                 offset: 0x60
-    __IO u32 CCR2FALL;                                                          ///< PWM shift count CCR2 register,                 offset: 0x64
-    __IO u32 CCR3FALL;                                                          ///< PWM shift count CCR3 register,                 offset: 0x68
-    __IO u32 CCR4FALL;                                                          ///< PWM shift count CCR4 register,                 offset: 0x6c
-    __IO u32 CCR5FALL;                                                          ///< PWM shift count CCR5 register,                 offset: 0x70
+    __IO uint32_t PDER;                                                         ///< PWM/DMA repeat enable register,                offset: 0x5C
+    __IO uint32_t CCR1FALL;                                                     ///< PWM shift count CCR1 register,                 offset: 0x60
+    __IO uint32_t CCR2FALL;                                                     ///< PWM shift count CCR2 register,                 offset: 0x64
+    __IO uint32_t CCR3FALL;                                                     ///< PWM shift count CCR3 register,                 offset: 0x68
+    __IO uint32_t CCR4FALL;                                                     ///< PWM shift count CCR4 register,                 offset: 0x6c
+    __IO uint32_t CCR5FALL;                                                     ///< PWM shift count CCR5 register,                 offset: 0x70
 #endif
 #endif
 } TIM_TypeDef;
@@ -1888,152 +1984,181 @@ typedef struct{
 /// @brief UART Register Structure Definition
 ////////////////////////////////////////////////////////////////////////////////
 typedef struct {
-    __IO u32 TDR;                                                               ///< Transmit Data Register,    offset: 0x00
-    __IO u32 RDR;                                                               ///< Receive Data Register,     offset: 0x04
-    __IO u32 CSR;                                                               ///< Current Status Register,   offset: 0x08
-    __IO u32 ISR;                                                               ///< Interrupt Status Register, offset: 0x0C
-    __IO u32 IER;                                                               ///< Interrupt Enable Register, offset: 0x10
-    __IO u32 ICR;                                                               ///< Interrupt Clear Register,  offset: 0x14
-    __IO u32 GCR;                                                               ///< Global Control Register,   offset: 0x18
-    __IO u32 CCR;                                                               ///< Config Control Register,   offset: 0x1C
-    __IO u32 BRR;                                                               ///< Baud Rate Register,        offset: 0x20
-    __IO u32 FRA;                                                               ///< Fraction Register,         offset: 0x24
+    __IO uint32_t TDR;                                                          ///< Transmit Data Register,    offset: 0x00
+    __IO uint32_t RDR;                                                          ///< Receive Data Register,     offset: 0x04
+    __IO uint32_t CSR;                                                          ///< Current Status Register,   offset: 0x08
+    __IO uint32_t ISR;                                                          ///< Interrupt Status Register, offset: 0x0C
+    __IO uint32_t IER;                                                          ///< Interrupt Enable Register, offset: 0x10
+    __IO uint32_t ICR;                                                          ///< Interrupt Clear Register,  offset: 0x14
+    __IO uint32_t GCR;                                                          ///< Global Control Register,   offset: 0x18
+    __IO uint32_t CCR;                                                          ///< Config Control Register,   offset: 0x1C
+    __IO uint32_t BRR;                                                          ///< Baud Rate Register,        offset: 0x20
+    __IO uint32_t FRA;                                                          ///< Fraction Register,         offset: 0x24
 
 #if defined(__MM3O1) || defined(__MM0P1) || defined(__MM0Q1) || defined(__MM0S1) || defined(__MM0T1) || defined(__MM3U1)
-    __IO u32 RXAR;                                                              ///< Receive Address Register,      offset: 0x28
-    __IO u32 RXMR;                                                              ///< Receive Address Mask Register, offset: 0x2C
-    __IO u32 SCR;                                                               ///< Smart Card Register,           offset: 0x30
+    __IO uint32_t RXAR;                                                         ///< Receive Address Register,      offset: 0x28
+    __IO uint32_t RXMR;                                                         ///< Receive Address Mask Register, offset: 0x2C
+    __IO uint32_t SCR;                                                          ///< Smart Card Register,           offset: 0x30
 #endif
 
 #if defined(__MM0S1) || defined(__MM0T1) || defined(__MM3U1)
-    __IO u32 IDLR;
-    __IO u32 ABRCR;
+    __IO uint32_t IDLR;
+    __IO uint32_t ABRCR;
 #endif
 
 #if defined(__MM3U1)
-    __IO u32 IDRA;
+    __IO uint32_t IDRA;
 #endif
 } UART_TypeDef;
 
 ////////////////////////////////////////////////////////////////////////////////
-/// @brief USB Register Structure Definition
+/// @brief SPI Register Structure Definition
 ////////////////////////////////////////////////////////////////////////////////
-#if defined(USB_BASE)
+#if defined(SYSCFG_BASE)
 typedef struct {
-    __IO u32 TOP;                                                               ///< Top Register                       offset: 0x00
-    __IO u32 INT_STATE;                                                         ///< Interrupt State Register           offset: 0x04
-    __IO u32 EP_INT_STATE;                                                      ///< Endpoint Interrupt State Register  offset: 0x08
-    __IO u32 EP0_INT_STATE;                                                     ///< EP0 Interrupt State Register       offset: 0x0C
-    __IO u32 INT_EN;                                                            ///< Interrupt Enable Register          offset: 0x10
-    __IO u32 EP_INT_EN;                                                         ///< Endpoint Interrupt Enable Register offset: 0x14
-    __IO u32 EP0_INT_EN;                                                        ///< EP0 Interrupt Enable Register      offset: 0x18
-    __IO u32 RESERVED0;                                                         ///< Reserved                           offset: 0x1C
-    __IO u32 EP1_INT_STATE;                                                     ///< EP1 Interrupt State Register       offset: 0x20
-    __IO u32 EP2_INT_STATE;                                                     ///< EP2 Interrupt State Register       offset: 0x24
-    __IO u32 EP3_INT_STATE;                                                     ///< EP3 Interrupt State Register       offset: 0x28
-    __IO u32 EP4_INT_STATE;                                                     ///< EP4 Interrupt State Register       offset: 0x2C
-    __IO u32 RESERVED1[4];                                                      ///< Reserved                           offset: 0x30
-    __IO u32 EP1_INT_EN;                                                        ///< EP1 Interrupt Enable Register      offset: 0x40
-    __IO u32 EP2_INT_EN;                                                        ///< EP2 Interrupt Enable Register      offset: 0x44
-    __IO u32 EP3_INT_EN;                                                        ///< EP3 Interrupt Enable Register      offset: 0x48
-    __IO u32 EP4_INT_EN;                                                        ///< EP4 Interrupt Enable Register      offset: 0x4C
-    __IO u32 RESERVED5[4];                                                      ///< Reserved                           offset: 0x50
-    __IO u32 ADDR;                                                              ///< USB Address Register               offset: 0x60
-    __IO u32 EP_EN;                                                             ///< Endpoint Enable Register           offset: 0x64
-#if defined(__MM3N1) || defined(__MM0N1) || defined(__MM3O1)
-    __IO u32 RESERVED9[4];                                                      ///< Reserved                           offset: 0x68
+#if defined(__MM0N1) || defined (__MM3O1) || defined(__MM0P1) || defined(__MM0Q1) || defined(__MM0S1) || defined(__MM0T1)
+    __IO uint32_t CFGR;                                                         ///< SYSCFG configuration register,                      offset: 0x00
 #endif
-#if defined(__MM0S1)
-    __IO u32 EP_DMA_DIR ;                                                       ///< USB Starte die kasse durch DMA     offset: 0x68
-    __IO u32 EP_TYPE    ;                                                       ///< USB Endpoint type register         offset: 0x6c
-    __IO u32 EP_INDEXI1_2;                                                      ///< USB Endpoint 12 index register     offset: 0x70
-    __IO u32 EP_INDEX3_4;                                                       ///< USB Endpoint 12 index register     offset: 0x74
+#if defined(__MM3U1)
+    __IO uint32_t CFGR1;                                                        ///< SYSCFG configuration register 1,                    offset: 0x00
 #endif
-    __IO u32 TOG_CTRL1_4;                                                       ///< Toggle Control Register            offset: 0x78
-#if defined(__MM3N1) || defined(__MM0N1) || defined(__MM3O1)
-    __IO u32 RESERVED13;                                                        ///< Reserved                           offset: 0x7C
+#if defined(__MM0N1) || defined (__MM3O1) || defined(__MM0P1) || defined(__MM0Q1) || defined(__MM0S1) || defined(__MM0T1) || defined(__MM3U1)
+    __IO uint32_t RESERVED;
+    __IO uint32_t EXTICR1;                                                      ///< External interrupt configuration register 1,        offset: 0x08
+    __IO uint32_t EXTICR2;                                                      ///< External interrupt configuration register 2,        offset: 0x0C
+    __IO uint32_t EXTICR3;                                                      ///< External interrupt configuration register 3,        offset: 0x10
+    __IO uint32_t EXTICR4;                                                      ///< External interrupt configuration register 4,        offset: 0x14
 #endif
-#if defined(__MM0S1)
-    __IO u32 TOG_STAT1_4;                                                       ///< USB Data flip control register     offset: 0x7c
+#if defined(__MM0T1)
+    __IO uint32_t PADHYS;                                                       ///< SYSCFG  PAD configuration register ,                offset: 0x18
 #endif
-#if (0)
-    __IO u32 SETUP[8];
-#else
-    __IO u32 SETUP0;                                                            ///< SETUP Packet Byte 0 Register       offset: 0x80
-    __IO u32 SETUP1;                                                            ///< SETUP Packet Byte 1 Register       offset: 0x84
-    __IO u32 SETUP2;                                                            ///< SETUP Packet Byte 2 Register       offset: 0x88
-    __IO u32 SETUP3;                                                            ///< SETUP Packet Byte 3 Register       offset: 0x8C
-    __IO u32 SETUP4;                                                            ///< SETUP Packet Byte 4 Register       offset: 0x90
-    __IO u32 SETUP5;                                                            ///< SETUP Packet Byte 5 Register       offset: 0x94
-    __IO u32 SETUP6;                                                            ///< SETUP Packet Byte 6 Register       offset: 0x98
-    __IO u32 SETUP7;                                                            ///< SETUP Packet Byte 7 Register       offset: 0x9C
+#if defined(__MM3U1)
+    __IO uint32_t CFGR2;                                                        ///< SYSCFG configuration register 2,                    offset: 0x18
+    __IO uint32_t PDETCSR;                                                      ///< Power detection configuration status register,      offset: 0x1C
+    __IO uint32_t VOS;                                                          ///< VOS delay configuration register,                   offset: 0x20
 #endif
-    __IO u32 PACKET_SIZE0;                                                      ///< DMA Max Packet Size 0 Register     offset: 0xA0
-    __IO u32 PAKCET_SIZE1;                                                      ///< DMA Max Packet Size 1 Register     offset: 0xA4
-    __IO u32 RESERVED14[22];                                                    ///< Reserved                           offset: 0xA8
-    __IO u32 EP0_AVIL;                                                          ///< EP0 Available Data Register        offset: 0x100
-    __IO u32 EP1_AVIL;                                                          ///< EP1 Available Data Register        offset: 0x104
-    __IO u32 EP2_AVIL;                                                          ///< EP2 Available Data Register        offset: 0x108
-    __IO u32 EP3_AVIL;                                                          ///< EP3 Available Data Register        offset: 0x10C
-    __IO u32 EP4_AVIL;                                                          ///< EP4 Available Data Register        offset: 0x110
-#if defined(__MM3N1) || defined(__MM0N1) || defined(__MM3O1)
-    __IO u32 RESERVED36[11];                                                    ///< Reserved                           offset: 0x114
-#endif
-#if defined(__MM0S1)
-    __IO u32 RESERVED36[3];                                                     ///< Reserved                               offset: 0x114
-    __IO u32 DMA_ADDR0;                                                         ///< Endpoint 2DMA address 0 register       offset: 0x120
-    __IO u32 DMA_ADDR1;                                                         ///< Endpoint 2DMA address 1 register       offset: 0x124
-    __IO u32 DMA_ADDR2;                                                         ///< Endpoint 2DMA address 2 register       offset: 0X128
-    __IO u32 DMA_ADDR3;                                                         ///< Endpoint 2DMA address 3 register       offset: 0x12c
-    __IO u32 DMA_NUML;                                                          ///< Endpoint 2DMA address data register    offset: 0x130
-    __IO u32 DMA_NUMH;                                                          ///< Endpoint 2DMA address data register    offset: 0x134
-    __IO u32 RSSERVED46[2];                                                     ///< Reserved                               offset: 0x138
-#endif
-    __IO u32 EP0_CTRL;                                                          ///< EP0 Control Register   offset: 0x140
-    __IO u32 EP1_CTRL;                                                          ///< EP1 Control Register   offset: 0x144
-    __IO u32 EP2_CTRL;                                                          ///< EP2 Control Register   offset: 0x148
-    __IO u32 EP3_CTRL;                                                          ///< EP3 Control Register   offset: 0x14C
-    __IO u32 EP4_CTRL;                                                          ///< EP4 Control Register   offset: 0x150
-    __IO u32 RESERVED47[3];                                                     ///< Reserved               offset: 0x154
-    __IO u32 EP0_FIFO;                                                          ///< EP0 FIFO Register      offset: 0x160
-    __IO u32 EP1_FIFO;                                                          ///< EP1 FIFO Register      offset: 0x164
-    __IO u32 EP2_FIFO;                                                          ///< EP2 FIFO Register      offset: 0x168
-    __IO u32 EP3_FIFO;                                                          ///< EP3 FIFO Register      offset: 0x16C
-    __IO u32 EP4_FIFO;                                                          ///< EP4 FIFO Register      offset: 0x170
-#if defined(__MM3N1) || defined(__MM0N1) || defined(__MM3O1)
-    __IO u32 RESERVED50[4];                                                     ///< Reserved               offset: 0x174
-#endif
-#if defined(__MM0S1)
-    __IO u32 RESERVED50[3];                                                     ///< Reserved               offset: 0x174
-    __IO u32 EP_MEN;                                                            ///< Endpoint data register offset: 0x180
-#endif
-    __IO u32 EP_DMA;                                                            ///< EP DMA Register        offset: 0x184
-    __IO u32 EP_HALT;                                                           ///< EP Halt Register       offset: 0x188
-    __IO u32 RESERVED54[13];                                                    ///< Reserved               offset: 0x18C
-    __IO u32 POWER;                                                             ///< Power Register         offset: 0x1C0
-#if defined(__MM0S1)
-    __IO u32 AHB_DMA;                                                           ///< AHB DMA Register       offset: 0x1c4
-    __IO u32 AHB_RST;                                                           ///< AHB RST Register       offset: 0x1c8
-#endif
-} USB_TypeDef;
+} SYSCFG_TypeDef;
 #endif
 
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief UID Register Structure Definition
 ////////////////////////////////////////////////////////////////////////////////
 typedef struct {
-    __IO u32 ID1;                                                               ///< 31:0  unique ID bits
-    __IO u32 ID2;                                                               ///< 63:32 unique ID bits
-    __IO u32 ID3;                                                               ///< 95:64 unique ID bits
+    __IO uint32_t ID1;                                                          ///< 31:0  unique ID bits
+    __IO uint32_t ID2;                                                          ///< 63:32 unique ID bits
+    __IO uint32_t ID3;                                                          ///< 95:64 unique ID bits
 } UID_TypeDef;
+
+////////////////////////////////////////////////////////////////////////////////
+/// @brief USB Register Structure Definition
+////////////////////////////////////////////////////////////////////////////////
+#if defined(USB_BASE)
+typedef struct {
+    __IO uint32_t TOP;                                                          ///< Top Register                       offset: 0x00
+    __IO uint32_t INT_STATE;                                                    ///< Interrupt State Register           offset: 0x04
+    __IO uint32_t EP_INT_STATE;                                                 ///< Endpoint Interrupt State Register  offset: 0x08
+    __IO uint32_t EP0_INT_STATE;                                                ///< EP0 Interrupt State Register       offset: 0x0C
+    __IO uint32_t INT_EN;                                                       ///< Interrupt Enable Register          offset: 0x10
+    __IO uint32_t EP_INT_EN;                                                    ///< Endpoint Interrupt Enable Register offset: 0x14
+    __IO uint32_t EP0_INT_EN;                                                   ///< EP0 Interrupt Enable Register      offset: 0x18
+    __IO uint32_t RESERVED0;                                                    ///< Reserved                           offset: 0x1C
+    __IO uint32_t EP1_INT_STATE;                                                ///< EP1 Interrupt State Register       offset: 0x20
+    __IO uint32_t EP2_INT_STATE;                                                ///< EP2 Interrupt State Register       offset: 0x24
+    __IO uint32_t EP3_INT_STATE;                                                ///< EP3 Interrupt State Register       offset: 0x28
+    __IO uint32_t EP4_INT_STATE;                                                ///< EP4 Interrupt State Register       offset: 0x2C
+    __IO uint32_t RESERVED1[4];                                                 ///< Reserved                           offset: 0x30
+    __IO uint32_t EP1_INT_EN;                                                   ///< EP1 Interrupt Enable Register      offset: 0x40
+    __IO uint32_t EP2_INT_EN;                                                   ///< EP2 Interrupt Enable Register      offset: 0x44
+    __IO uint32_t EP3_INT_EN;                                                   ///< EP3 Interrupt Enable Register      offset: 0x48
+    __IO uint32_t EP4_INT_EN;                                                   ///< EP4 Interrupt Enable Register      offset: 0x4C
+    __IO uint32_t RESERVED5[4];                                                 ///< Reserved                           offset: 0x50
+    __IO uint32_t ADDR;                                                         ///< USB Address Register               offset: 0x60
+    __IO uint32_t EP_EN;                                                        ///< Endpoint Enable Register           offset: 0x64
+#if defined(__MM3N1) || defined(__MM0N1) || defined(__MM3O1)
+    __IO uint32_t RESERVED9[4];                                                 ///< Reserved                           offset: 0x68
+#endif
+#if defined(__MM0S1)
+    __IO uint32_t EP_DMA_DIR ;                                                  ///< USB Starte die kasse durch DMA     offset: 0x68
+    __IO uint32_t EP_TYPE    ;                                                  ///< USB Endpoint type register         offset: 0x6c
+    __IO uint32_t EP_INDEXI1_2;                                                 ///< USB Endpoint 12 index register     offset: 0x70
+    __IO uint32_t EP_INDEX3_4;                                                  ///< USB Endpoint 12 index register     offset: 0x74
+#endif
+    __IO uint32_t TOG_CTRL1_4;                                                  ///< Toggle Control Register            offset: 0x78
+#if defined(__MM3N1) || defined(__MM0N1) || defined(__MM3O1)
+    __IO uint32_t RESERVED13;                                                   ///< Reserved                           offset: 0x7C
+#endif
+#if defined(__MM0S1)
+    __IO uint32_t TOG_STAT1_4;                                                  ///< USB Data flip control register     offset: 0x7c
+#endif
+#if (0)
+    __IO uint32_t SETUP[8];
+#else
+    __IO uint32_t SETUP0;                                                       ///< SETUP Packet Byte 0 Register       offset: 0x80
+    __IO uint32_t SETUP1;                                                       ///< SETUP Packet Byte 1 Register       offset: 0x84
+    __IO uint32_t SETUP2;                                                       ///< SETUP Packet Byte 2 Register       offset: 0x88
+    __IO uint32_t SETUP3;                                                       ///< SETUP Packet Byte 3 Register       offset: 0x8C
+    __IO uint32_t SETUP4;                                                       ///< SETUP Packet Byte 4 Register       offset: 0x90
+    __IO uint32_t SETUP5;                                                       ///< SETUP Packet Byte 5 Register       offset: 0x94
+    __IO uint32_t SETUP6;                                                       ///< SETUP Packet Byte 6 Register       offset: 0x98
+    __IO uint32_t SETUP7;                                                       ///< SETUP Packet Byte 7 Register       offset: 0x9C
+#endif
+    __IO uint32_t PACKET_SIZE0;                                                 ///< DMA Max Packet Size 0 Register     offset: 0xA0
+    __IO uint32_t PAKCET_SIZE1;                                                 ///< DMA Max Packet Size 1 Register     offset: 0xA4
+    __IO uint32_t RESERVED14[22];                                               ///< Reserved                           offset: 0xA8
+    __IO uint32_t EP0_AVIL;                                                     ///< EP0 Available Data Register        offset: 0x100
+    __IO uint32_t EP1_AVIL;                                                     ///< EP1 Available Data Register        offset: 0x104
+    __IO uint32_t EP2_AVIL;                                                     ///< EP2 Available Data Register        offset: 0x108
+    __IO uint32_t EP3_AVIL;                                                     ///< EP3 Available Data Register        offset: 0x10C
+    __IO uint32_t EP4_AVIL;                                                     ///< EP4 Available Data Register        offset: 0x110
+#if defined(__MM3N1) || defined(__MM0N1) || defined(__MM3O1)
+    __IO uint32_t RESERVED36[11];                                               ///< Reserved                           offset: 0x114
+#endif
+#if defined(__MM0S1)
+    __IO uint32_t RESERVED36[3];                                                ///< Reserved                               offset: 0x114
+    __IO uint32_t DMA_ADDR0;                                                    ///< Endpoint 2DMA address 0 register       offset: 0x120
+    __IO uint32_t DMA_ADDR1;                                                    ///< Endpoint 2DMA address 1 register       offset: 0x124
+    __IO uint32_t DMA_ADDR2;                                                    ///< Endpoint 2DMA address 2 register       offset: 0X128
+    __IO uint32_t DMA_ADDR3;                                                    ///< Endpoint 2DMA address 3 register       offset: 0x12c
+    __IO uint32_t DMA_NUML;                                                     ///< Endpoint 2DMA address data register    offset: 0x130
+    __IO uint32_t DMA_NUMH;                                                     ///< Endpoint 2DMA address data register    offset: 0x134
+    __IO uint32_t RSSERVED46[2];                                                ///< Reserved                               offset: 0x138
+#endif
+    __IO uint32_t EP0_CTRL;                                                     ///< EP0 Control Register   offset: 0x140
+    __IO uint32_t EP1_CTRL;                                                     ///< EP1 Control Register   offset: 0x144
+    __IO uint32_t EP2_CTRL;                                                     ///< EP2 Control Register   offset: 0x148
+    __IO uint32_t EP3_CTRL;                                                     ///< EP3 Control Register   offset: 0x14C
+    __IO uint32_t EP4_CTRL;                                                     ///< EP4 Control Register   offset: 0x150
+    __IO uint32_t RESERVED47[3];                                                ///< Reserved               offset: 0x154
+    __IO uint32_t EP0_FIFO;                                                     ///< EP0 FIFO Register      offset: 0x160
+    __IO uint32_t EP1_FIFO;                                                     ///< EP1 FIFO Register      offset: 0x164
+    __IO uint32_t EP2_FIFO;                                                     ///< EP2 FIFO Register      offset: 0x168
+    __IO uint32_t EP3_FIFO;                                                     ///< EP3 FIFO Register      offset: 0x16C
+    __IO uint32_t EP4_FIFO;                                                     ///< EP4 FIFO Register      offset: 0x170
+#if defined(__MM3N1) || defined(__MM0N1) || defined(__MM3O1)
+    __IO uint32_t RESERVED50[4];                                                ///< Reserved               offset: 0x174
+#endif
+#if defined(__MM0S1)
+    __IO uint32_t RESERVED50[3];                                                ///< Reserved               offset: 0x174
+    __IO uint32_t EP_MEN;                                                       ///< Endpoint data register offset: 0x180
+#endif
+    __IO uint32_t EP_DMA;                                                       ///< EP DMA Register        offset: 0x184
+    __IO uint32_t EP_HALT;                                                      ///< EP Halt Register       offset: 0x188
+    __IO uint32_t RESERVED54[13];                                               ///< Reserved               offset: 0x18C
+    __IO uint32_t POWER;                                                        ///< Power Register         offset: 0x1C0
+#if defined(__MM0S1)
+    __IO uint32_t AHB_DMA;                                                      ///< AHB DMA Register       offset: 0x1c4
+    __IO uint32_t AHB_RST;                                                      ///< AHB RST Register       offset: 0x1c8
+#endif
+} USB_TypeDef;
+#endif
 
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief WWDG Register Structure Definition
 ////////////////////////////////////////////////////////////////////////////////
 typedef struct {
-    __IO u32 CR;                                                                ///< Control register           offset: 0x00
-    __IO u32 CFGR;                                                              ///< Configuration register     offset: 0x04
-    __IO u32 SR;                                                                ///< Status register            offset: 0x08
+    __IO uint32_t CR;                                                           ///< Control register           offset: 0x00
+    __IO uint32_t CFGR;                                                         ///< Configuration register     offset: 0x04
+    __IO uint32_t SR;                                                           ///< Status register            offset: 0x08
 } WWDG_TypeDef;
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -2062,6 +2187,13 @@ typedef struct {
 /// @brief BKP type pointer Definition
 ////////////////////////////////////////////////////////////////////////////////
 #define BKP                             ((BKP_TypeDef*) BKP_BASE)
+
+////////////////////////////////////////////////////////////////////////////////
+/// @brief CACHE type pointer Definition
+////////////////////////////////////////////////////////////////////////////////
+#if defined(__MM3U1)
+    #define CACHE                       ((CACHE_TypeDef*) CACHE_BASE)
+#endif
 
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief CAN type pointer Definition
@@ -2096,7 +2228,7 @@ typedef struct {
 /// @brief DAC type pointer Definition
 ////////////////////////////////////////////////////////////////////////////////
 #if defined(DAC_BASE)
-    #define DAC_BASE                    (APB1PERIPH_BASE + 0x7400)              ///< Base Address: 0x40007400
+    #define DAC                         ((DAC_TypeDef*) DAC_BASE)
 #endif
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -2141,16 +2273,16 @@ typedef struct {
 #endif
 
 ////////////////////////////////////////////////////////////////////////////////
-/// @brief EXTI type pointer Definition
-////////////////////////////////////////////////////////////////////////////////
-#define EXTI                            ((EXTI_TypeDef*) EXTI_BASE)
-
-////////////////////////////////////////////////////////////////////////////////
 /// @brief ETH type pointer Definition
 ////////////////////////////////////////////////////////////////////////////////
 #if defined(ETH_BASE)
     #define ETH                         ((ETH_TypeDef*) ETH_BASE)
 #endif
+
+////////////////////////////////////////////////////////////////////////////////
+/// @brief EXTI type pointer Definition
+////////////////////////////////////////////////////////////////////////////////
+#define EXTI                            ((EXTI_TypeDef*) EXTI_BASE)
 
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief FLASH type pointer Definition
@@ -2246,6 +2378,11 @@ typedef struct {
 #endif
 
 ////////////////////////////////////////////////////////////////////////////////
+/// @brief SDIO type pointer Definition
+////////////////////////////////////////////////////////////////////////////////
+#define SDIO                            ((SDIO_TypeDef*) SDIO_BASE)
+
+////////////////////////////////////////////////////////////////////////////////
 /// @brief SPI type pointer Definition
 ////////////////////////////////////////////////////////////////////////////////
 #if defined(SPI1_BASE)
@@ -2338,16 +2475,23 @@ typedef struct {
 #endif
 
 ////////////////////////////////////////////////////////////////////////////////
-/// @brief USBD type pointer Definition
+/// @brief SYSCFG type pointer Definition
 ////////////////////////////////////////////////////////////////////////////////
-#if defined(USB_BASE)
-    #define USB                         ((USB_TypeDef*) USB_BASE)
+#if defined(SYSCFG_BASE)
+    #define SYSCFG                      ((SYSCFG_TypeDef*)SYSCFG_BASE)          ///< Base Address: 0x40010000
 #endif
+
 
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief UID type pointer Definition
 ////////////////////////////////////////////////////////////////////////////////
 #define UID                             ((UID_TypeDef*) UID_BASE)
+////////////////////////////////////////////////////////////////////////////////
+/// @brief USBD type pointer Definition
+////////////////////////////////////////////////////////////////////////////////
+#if defined(USB_BASE)
+    #define USB                         ((USB_TypeDef*) USB_BASE)
+#endif
 
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief WWDG type pointer Definition
@@ -3082,7 +3226,6 @@ typedef struct {
     #define ADC_JDR3_JVALID_Pos         (22)
     #define ADC_JDR3_JVALID             (0x01U << ADC_JDR3_JVALID_Pos)
 #endif
-
 #if defined(AES_BASE)
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief AES_CR Register Bit Definition
@@ -3168,7 +3311,6 @@ typedef struct {
     #define AES_IVRn_Pos                (0)
     #define AES_IVRn                    (0xFFFFFFFFU << AES_IVRn_Pos)           ///< AES Initialization Vector Register n
 #endif
-
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief BKP_DRn Register Bit Definition
 ////////////////////////////////////////////////////////////////////////////////
@@ -3210,7 +3352,63 @@ typedef struct {
     #define BKP_CSR_TIF_Pos             (9)
     #define BKP_CSR_TIF                 (0x01U << BKP_CSR_TIF_Pos)              ///< Tamper Interrupt Flag
 #endif
+#if defined(__MM3U1)
+////////////////////////////////////////////////////////////////////////////////
+/// @brief CACHE_CCR Register Bit Definition
+////////////////////////////////////////////////////////////////////////////////
+    #define CACHE_CCR_EN_Pos            (0)
+    #define CAHCE_CCR_EN                (0x01U << CACHE_CCR_EN_Pos)             ///< CACHE Enable
+    #define CACHE_CCR_INV_REQ_Pos       (1)
+    #define CACHE_CCR_INV_REQ           (0x01U << CACHE_CCR_INV_REQ_Pos)        ///< Invalid request
+    #define CACHE_CCR_POW_REQ_Pos       (2)
+    #define CACHE_CCR_POW_REQ           (0x01U << CACHE_CCR_POW_REQ_Pos)        ///< Power request
+    #define CACHE_CCR_SET_MAN_POW_Pos   (3)
+    #define CACHE_CCR_SET_MAN_POW       (0x01U << CACHE_CCR_SET_MAN_POW_Pos)    ///< Set manual power request
+    #define CACHE_CCR_SET_MAN_INV_Pos   (4)
+    #define CACHE_CCR_SET_MAN_INV       (0x01U << CACHE_CCR_SET_MAN_INV_Pos)    ///< Set manual invalid request
+    #define CACHE_CCR_SET_PREFETCH_Pos  (5)
+    #define CACHE_CCR_SET_PREFETCH      (0x01U << CACHE_CCR_SET_PREFETCH_Pos)   ///< Set prefetch
+    #define CACHE_CCR_STATISTIC_EN_Pos  (6)
+    #define CACHE_CCR_STATISTIC_EN      (0x01U << CACHE_CCR_STATISTIC_EN_Pos)   ///< Statistic enable
 
+////////////////////////////////////////////////////////////////////////////////
+/// @brief CACHE_SR Register Bit Definition
+////////////////////////////////////////////////////////////////////////////////
+    #define CACHE_SR_CS_Pos             (0)
+    #define CACHE_SR_CS                 (0x01U << CACHE_SR_CS_Pos)              ///< Cache status
+    #define CACHE_INV_STAT_Pos          (1)
+    #define CACHE_INV_STAT              (0x01U << CACHE_INV_STAT_Pos)           ///< Invalid status
+    #define CACHE_POW_STAT_Pos          (3)
+    #define CACHE_POW_STAT_Pos          (0x01U << CACHE_POW_STAT_Pos)           ///< Power status
+
+////////////////////////////////////////////////////////////////////////////////
+/// @brief CACHE_IMR Register Bit Definition
+////////////////////////////////////////////////////////////////////////////////
+    #define CACHE_IMR_POW_ERR_Pos       (0)
+    #define CACHE_IMR_POW_ERR           (0x01U << CACHE_IMR_POW_ERR_Pos)        ///< Power error interrupt request
+    #define CACHE_IMR_MAN_INV_ERR_Pos   (1)
+    #define CACHE_IMR_MAN_INV_ERR       (0x01U << CACHE_IMR_MAN_INV_ERR_Pos)    ///< Manual invalid error interrupt request
+
+////////////////////////////////////////////////////////////////////////////////
+/// @brief CACHE_ISR Register Bit Definition
+////////////////////////////////////////////////////////////////////////////////
+    #define CACHE_ISR_POW_ERR_Pos       (0)
+    #define CACHE_ISR_POW_ERR           (0x01U << CACHE_ISR_POW_ERR_Pos)        ///< Power error interrupt request
+    #define CACHE_ISR_MAN_INV_ERR_Pos   (1)
+    #define CACHE_ISR_MAN_INV_ERR       (0x01U << CACHE_ISR_MAN_INV_ERR_Pos)    ///< Manual invalid error interrupt request
+
+////////////////////////////////////////////////////////////////////////////////
+/// @brief CACHE_CSHR Register Bit Definition
+////////////////////////////////////////////////////////////////////////////////
+    #define CACHE_CSHR_CSHR_Pos         (0)
+    #define CACHE_CSHR_CSHR             (0xFFFFFFFFU << CACHE_CSHR_CSHR_Pos)    ///< Cache statistic hit register
+
+////////////////////////////////////////////////////////////////////////////////
+/// @brief CACHE_CSMR Register Bit Definition
+////////////////////////////////////////////////////////////////////////////////
+    #define CACHE_CSMR_CSMR_Pos         (0)
+    #define CACHE_CSMR_CSMR             (0xFFFFFFFFU << CACHE_CSMR_CSMR_Pos)    ///< Cache statistic miss register
+#endif
 #if defined(CAN1_BASE)
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief CAN basic
@@ -3649,7 +3847,6 @@ typedef struct {
     #define CAN_FGA2_FGA19_Pos          (4)
     #define CAN_FGA2_FGA19              (0x01U << CAN_FGA2_MODE_Pos)
 #endif
-
 #if defined(__MM0N1)
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief COMP_CSR Register Bit Definition
@@ -3926,7 +4123,6 @@ typedef struct {
     #define COMP_POLL_POUT_Low          (0x00U << COMP_POL_POUT_Pos)            ///< Non-inverting input is lower than inverting input
     #define COMP_POLL_POUT_High         (0x01U << COMP_POL_POUT_Pos)            ///< Non-inverting input is higher than inverting input
 #endif
-
 #if defined(CRC_BASE)
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief CRC_DR Register Bit Definition
@@ -3973,7 +4169,6 @@ typedef struct {
     #define CRC_MIR_DATA                (0xFFFFFFFFU << CRC_MIR_DATA_Pos)       //< Middle data register bits
 #endif
 #endif
-
 #if defined(CRS_BASE)
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief CRS_CR Register Bit Definition
@@ -4050,7 +4245,6 @@ typedef struct {
     #define CRS_ICR_EXPT_Pos            (3)
     #define CRS_ICR_EXPT                (0x01U << CRS_ICR_EXPT_Pos)             ///< Expected SYNC clear flag
 #endif
-
 #if defined(DAC_BASE)
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief DAC_CR Register Bit Definition
@@ -4209,7 +4403,6 @@ typedef struct {
     #define DAC_DOR2_DACC2DOR           (0xFFFU << DAC_DOR2_DACC2DOR_Pos)       ///< DAC channel2 data output #endif
 
 #endif
-
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief DBGMCU_IDCODE Register Bit Definition
 ////////////////////////////////////////////////////////////////////////////////
@@ -4278,7 +4471,6 @@ typedef struct {
     #define DBGMCU_TIMX_STOP_Pos        (17)
     #define DBGMCU_TIMX_STOP            (0x0FU << DBGMCU_TIMX_STOP_Pos)         ///< Debug STOP for TIMX mode (5/6/7/8)
 #endif
-
 #if defined(DIV_BASE)
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief HWDIV_DVDR Register Bit Definition
@@ -4318,7 +4510,6 @@ typedef struct {
     #define  DIV_CR_OVFE_Pos            (1)
     #define  DIV_CR_OVFE                (0x01U << DIV_CR_OVFE_Pos)              ///< Overflow interruput enable
 #endif
-
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief DMA_ISR Register Bit Definition
 ////////////////////////////////////////////////////////////////////////////////
@@ -4520,7 +4711,496 @@ typedef struct {
     #define DMA_CMAR_MA                 (0xFFFFFFFFU << DMA_CMAR_MA_Pos)        ///< Peripheral Address
 
 #endif
+#if defined(ETH_BASE)
+////////////////////////////////////////////////////////////////////////////////
+/// @brief ETH_MACCR register Bit definition
+////////////////////////////////////////////////////////////////////////////////
+    #define ETH_MACCR_RE_Pos            (2)
+    #define ETH_MACCR_RE                (0x01U << ETH_MACCR_RE_Pos)
+    #define ETH_MACCR_TE_Pos            (3)
+    #define ETH_MACCR_TE                (0x01U << ETH_MACCR_TE_Pos)
+    #define ETH_MACCR_DC_Pos            (4)
+    #define ETH_MACCR_DC                (0x01U << ETH_MACCR_DC_Pos)
+    #define ETH_MACCR_BL_Pos            (5)
+    #define ETH_MACCR_BL                (0x03U << ETH_MACCR_BL_Pos)
+    #define ETH_MACCR_APCS_Pos          (7)
+    #define ETH_MACCR_APCS              (0x01U << ETH_MACCR_APCS_Pos)
+    #define ETH_MACCR_LUD_Pos           (8)
+    #define ETH_MACCR_LUD               (0x01U << ETH_MACCR_LUD_Pos)
+    #define ETH_MACCR_RD_Pos            (9)
+    #define ETH_MACCR_RD                (0x01U << ETH_MACCR_RD_Pos)
+    #define ETH_MACCR_IPCO_Pos          (10)
+    #define ETH_MACCR_IPCO              (0x01U << ETH_MACCR_IPCO_Pos)
+    #define ETH_MACCR_DM_Pos            (11)
+    #define ETH_MACCR_DM                (0x01U << ETH_MACCR_DM_Pos)
+    #define ETH_MACCR_LM_Pos            (12)
+    #define ETH_MACCR_LM                (0x01U << ETH_MACCR_LM_Pos)
+    #define ETH_MACCR_ROD_Pos           (13)
+    #define ETH_MACCR_ROD               (0x01U << ETH_MACCR_ROD_Pos)
+    #define ETH_MACCR_FES_Pos           (14)
+    #define ETH_MACCR_FES               (0x01U << ETH_MACCR_FES_Pos)
+    #define ETH_MACCR_IFG_Pos           (16)
+    #define ETH_MACCR_IFG               (0x05U << ETH_MACCR_IFG_Pos)
+    #define ETH_MACCR_JE_Pos            (20)
+    #define ETH_MACCR_JE                (0x01U << ETH_MACCR_JE_Pos)
+    #define ETH_MACCR_FBE_Pos           (21)
+    #define ETH_MACCR_FBE               (0x01U << ETH_MACCR_FBE_Pos)
+    #define ETH_MACCR_JD_Pos            (22)
+    #define ETH_MACCR_JD                (0x01U << ETH_MACCR_JD_Pos)
+    #define ETH_MACCR_WD_Pos            (23)
+    #define ETH_MACCR_WD                (0x01U << ETH_MACCR_WD_Pos)
 
+////////////////////////////////////////////////////////////////////////////////
+/// @brief ETH_MACFFR PMgister Bit definition
+////////////////////////////////////////////////////////////////////////////////
+    #define ETH_MACFFR_PM_Pos           (2)
+    #define ETH_MACFFR_PM               (0x01U << ETH_MACFFR_PM_Pos)
+    #define ETH_MACFFR_HU_Pos           (3)
+    #define ETH_MACFFR_HU               (0x01U << ETH_MACFFR_HU_Pos)
+    #define ETH_MACFFR_HM_Pos           (4)
+    #define ETH_MACFFR_HM               (0x01U << ETH_MACFFR_HM_Pos)
+    #define ETH_MACFFR_DAIF_Pos         (5)
+    #define ETH_MACFFR_DAIF             (0x03U << ETH_MACFFR_DAIF_Pos)
+    #define ETH_MACFFR_PAM_Pos          (7)
+    #define ETH_MACFFR_PAM              (0x01U << ETH_MACFFR_PAM_Pos)
+    #define ETH_MACFFR_BFD_Pos          (8)
+    #define ETH_MACFFR_BFD              (0x01U << ETH_MACFFR_BFD_Pos)
+    #define ETH_MACFFR_PCF_Pos          (9)
+    #define ETH_MACFFR_PCF              (0x01U << ETH_MACFFR_PCF_Pos)
+    #define ETH_MACFFR_SAIF_Pos         (10)
+    #define ETH_MACFFR_SAIF             (0x01U << ETH_MACFFR_SAIF_Pos)
+    #define ETH_MACFFR_SAF_Pos          (11)
+    #define ETH_MACFFR_SAF              (0x01U << ETH_MACFFR_SAF_Pos)
+
+////////////////////////////////////////////////////////////////////////////////
+/// @brief ETH_MACHTHR PMgister Bit definition
+////////////////////////////////////////////////////////////////////////////////
+    #define ETH_MACHTHR_HTH_Pos         (0)
+    #define ETH_MACHTHR_HTH             (0xFFFFFFFFU << ETH_MACHTHR_HTH_Pos)
+
+////////////////////////////////////////////////////////////////////////////////
+/// @brief ETH_MACHTLR PMgister Bit definition
+////////////////////////////////////////////////////////////////////////////////
+    #define ETH_MACHTLR_HTH_Pos         (0)
+    #define ETH_MACHTLR_HTH             (0xFFFFFFFFU << ETH_MACHTLR_HTH_Pos)
+
+////////////////////////////////////////////////////////////////////////////////
+/// @brief ETH_MACMIIAR PMgister Bit definition
+////////////////////////////////////////////////////////////////////////////////
+    #define ETH_MACMIIAR_MB_Pos         (0)
+    #define ETH_MACMIIAR_MB             (0x01U << ETH_MACMIIAR_MB_Pos)
+    #define ETH_MACMIIAR_MW_Pos         (1)
+    #define ETH_MACMIIAR_MW             (0x01U << ETH_MACMIIAR_MW_Pos)
+    #define ETH_MACMIIAR_CR_Pos         (4)
+    #define ETH_MACMIIAR_CR             (0x07U << ETH_MACMIIAR_CR_Pos)
+    #define ETH_MACMIIAR_MR_Pos         (6)
+    #define ETH_MACMIIAR_MR             (0x1FU << ETH_MACMIIAR_MR_Pos)
+    #define ETH_MACMIIAR_PA_Pos         (11)
+    #define ETH_MACMIIAR_PA             (0x1FU << ETH_MACMIIAR_PA_Pos)
+
+////////////////////////////////////////////////////////////////////////////////
+/// @brief ETH_MACMIIDR PMgister Bit definition
+////////////////////////////////////////////////////////////////////////////////
+    #define ETH_MACMIIDR_MD_Pos         (0)
+    #define ETH_MACMIIDR_MD             (0xFFFFU << ETH_MACMIIDR_MD_Pos)
+
+////////////////////////////////////////////////////////////////////////////////
+/// @brief ETH_MACFRFCE PMgister Bit definition
+////////////////////////////////////////////////////////////////////////////////
+    #define ETH_MACFRFCE_FCBBPLT_Pos    (0)
+    #define ETH_MACFRFCE_FCBBPLT        (0x01U << ETH_MACFRFCE_FCBBPLT_Pos)
+    #define ETH_MACFRFCE_TFCE_Pos       (1)
+    #define ETH_MACFRFCE_TFCE           (0x01U << ETH_MACFRFCE_TFCE_Pos)
+    #define ETH_MACFRFCE_RFCE_Pos       (2)
+    #define ETH_MACFRFCE_RFCE           (0x07U << ETH_MACFRFCE_RFCE_Pos)
+    #define ETH_MACFRFCE_UPFD_Pos       (3)
+    #define ETH_MACFRFCE_UPFD           (0x1FU << ETH_MACFRFCE_UPFD_Pos)
+    #define ETH_MACFRFCE_PLT_Pos        (4)
+    #define ETH_MACFRFCE_PLT            (0x03U << ETH_MACFRFCE_PLT_Pos)
+    #define ETH_MACFRFCE_PT_Pos         (16)
+    #define ETH_MACFRFCE_PT             (0xFFFFU << ETH_MACFRFCE_PT_Pos)
+
+////////////////////////////////////////////////////////////////////////////////
+/// @brief ETH_MACVLANTR PMgister Bit definition
+////////////////////////////////////////////////////////////////////////////////
+    #define ETH_MACVLANTR_VLANTI_Pos    (0)
+    #define ETH_MACVLANTR_VLANTI        (0xFFFFU << ETH_MACVLANTR_VLANTI_Pos)
+
+////////////////////////////////////////////////////////////////////////////////
+/// @brief ETH_MACPMTCSR PMgister Bit definition
+////////////////////////////////////////////////////////////////////////////////
+    #define ETH_MACPMTCSR_PD_Pos        (0)
+    #define ETH_MACPMTCSR_PD            (0x01U << ETH_MACPMTCSR_PD_Pos)
+    #define ETH_MACPMTCSR_MPE_Pos       (1)
+    #define ETH_MACPMTCSR_MPE           (0x01U << ETH_MACPMTCSR_MPE_Pos)
+    #define ETH_MACPMTCSR_WFE_Pos       (2)
+    #define ETH_MACPMTCSR_WFE           (0x01U << ETH_MACPMTCSR_WFE_Pos)
+    #define ETH_MACPMTCSR_MPR_Pos       (5)
+    #define ETH_MACPMTCSR_MPR           (0x1FU << ETH_MACPMTCSR_MPR_Pos)
+    #define ETH_MACPMTCSR_WFR_Pos       (6)
+    #define ETH_MACPMTCSR_WFR           (0x01U << ETH_MACPMTCSR_WFR_Pos)
+    #define ETH_MACPMTCSR_GU_Pos        (9)
+    #define ETH_MACPMTCSR_GU            (0x01U << ETH_MACPMTCSR_GU_Pos)
+
+////////////////////////////////////////////////////////////////////////////////
+/// @brief ETH_MACA0HR PMgister Bit definition
+////////////////////////////////////////////////////////////////////////////////
+    #define ETH_MACA0HR_MACA0H_Pos      (0)
+    #define ETH_MACA0HR_MACA0H          (0xFFFFU << ETH_MACA0HR_MACA0H_Pos)
+    #define ETH_MACA0HR_MO_Pos          (31)
+    #define ETH_MACA0HR_MO              (0x01U << ETH_MACA0HR_MO_Pos)
+
+////////////////////////////////////////////////////////////////////////////////
+/// @brief ETH_MACA0LR PMgister Bit definition
+////////////////////////////////////////////////////////////////////////////////
+    #define ETH_MACA0LR_MACA0L_Pos      (0)
+    #define ETH_MACA0LR_MACA0L          (0xFFFFU << ETH_MACA0LR_MACA0L_Pos)
+
+////////////////////////////////////////////////////////////////////////////////
+/// @brief ETH_MACA1HR PMgister Bit definition
+////////////////////////////////////////////////////////////////////////////////
+    #define ETH_MACA1HR_MACH1H_Pos      (0)
+    #define ETH_MACA1HR_MACH1H          (0xFFFFU << ETH_MACA1HR_MACH1H_Pos)
+    #define ETH_MACA1HR_SA_Pos          (30)
+    #define ETH_MACA1HR_SA              (0x01U << ETH_MACA1HR_SA_Pos)
+    #define ETH_MACA1HR_AE_Pos          (31)
+    #define ETH_MACA1HR_AE              (0x01U << ETH_MACA1HR_AE_Pos)
+
+////////////////////////////////////////////////////////////////////////////////
+/// @brief ETH_MACA1LR PMgister Bit definition
+////////////////////////////////////////////////////////////////////////////////
+    #define ETH_MACA1LR_MACA1L_Pos      (0)
+    #define ETH_MACA1LR_MACA1L          (0xFFFFFFFFU << ETH_MACA1LR_MACA1L_Pos)
+
+////////////////////////////////////////////////////////////////////////////////
+/// @brief ETH_MACANCR PMgister Bit definition
+////////////////////////////////////////////////////////////////////////////////
+    #define ETH_MACANCR_RAN_Pos         (9)
+    #define ETH_MACANCR_RAN             (0x01U << ETH_MACANCR_RAN_Pos)
+    #define ETH_MACANCR_ANE_Pos         (12)
+    #define ETH_MACANCR_ANE             (0x01U << ETH_MACANCR_ANE_Pos)
+    #define ETH_MACANCR_ELE_Pos         (14)
+    #define ETH_MACANCR_ELE             (0x01U << ETH_MACANCR_ELE_Pos)
+    #define ETH_MACANCR_ECD_Pos         (16)
+    #define ETH_MACANCR_ECD             (0x1FU << ETH_MACANCR_ECD_Pos)
+    #define ETH_MACANCR_LR_Pos          (17)
+    #define ETH_MACANCR_LR              (0x01U << ETH_MACANCR_LR_Pos)
+
+////////////////////////////////////////////////////////////////////////////////
+/// @brief ETH_MACANSR PMgister Bit definition
+////////////////////////////////////////////////////////////////////////////////
+    #define ETH_MACANSR_LS_Pos          (1)
+    #define ETH_MACANSR_LS              (0x01U << ETH_MACANSR_LS_Pos)
+    #define ETH_MACANSR_ANA_Pos         (2)
+    #define ETH_MACANSR_ANA             (0x01U << ETH_MACANSR_ANA_Pos)
+    #define ETH_MACANSR_ANC_Pos         (5)
+    #define ETH_MACANSR_ANC             (0x01U << ETH_MACANSR_ANC_Pos)
+    #define ETH_MACANSR_ES_Pos          (8)
+    #define ETH_MACANSR_ES              (0x1FU << ETH_MACANSR_ES_Pos)
+
+////////////////////////////////////////////////////////////////////////////////
+/// @brief ETH_MACANAR PMgister Bit definition
+////////////////////////////////////////////////////////////////////////////////
+    #define ETH_MACANAR_FD_Pos          (5)
+    #define ETH_MACANAR_FD              (0x01U << ETH_MACANAR_FD_Pos)
+    #define ETH_MACANAR_HD_Pos          (6)
+    #define ETH_MACANAR_HD              (0x01U << ETH_MACANAR_HD_Pos)
+    #define ETH_MACANAR_RSE_Pos         (7)
+    #define ETH_MACANAR_RSE             (0x03U << ETH_MACANAR_RSE_Pos)
+    #define ETH_MACANAR_RFE_Pos         (12)
+    #define ETH_MACANAR_RFE             (0x03U << ETH_MACANAR_RFE_Pos)
+    #define ETH_MACANAR_NP_Pos          (15)
+    #define ETH_MACANAR_NP              (0x01U << ETH_MACANAR_NP_Pos)
+
+////////////////////////////////////////////////////////////////////////////////
+/// @brief ETH_MACANLPAR PMgister Bit definition
+////////////////////////////////////////////////////////////////////////////////
+    #define ETH_MACANLPAR_FD_Pos        (5)
+    #define ETH_MACANLPAR_FD            (0x01U << ETH_MACANLPAR_FD_Pos)
+    #define ETH_MACANLPAR_HD_Pos        (6)
+    #define ETH_MACANLPAR_HD            (0x01U << ETH_MACANLPAR_HD_Pos)
+    #define ETH_MACANLPAR_RSE_Pos       (7)
+    #define ETH_MACANLPAR_RSE           (0x03U << ETH_MACANLPAR_RSE_Pos)
+    #define ETH_MACANLPAR_RFE_Pos       (12)
+    #define ETH_MACANLPAR_RFE           (0x03U << ETH_MACANLPAR_RFE_Pos)
+    #define ETH_MACANLPAR_NP_Pos        (15)
+    #define ETH_MACANLPAR_NP            (0x01U << ETH_MACANLPAR_NP_Pos)
+
+////////////////////////////////////////////////////////////////////////////////
+/// @brief ETH_MACANER PMgister Bit definition
+////////////////////////////////////////////////////////////////////////////////
+    #define ETH_MACANER_NPR_Pos         (1)
+    #define ETH_MACANER_NPR             (0x01U << ETH_MACANER_NPR_Pos)
+    #define ETH_MACANER_NPA_Pos         (2)
+    #define ETH_MACANER_NPA             (0x01U << ETH_MACANER_NPA_Pos)
+
+////////////////////////////////////////////////////////////////////////////////
+/// @brief ETH_MACTBIER PMgister Bit definition
+////////////////////////////////////////////////////////////////////////////////
+    #define ETH_MACTBIER_GHD_Pos        (14)
+    #define ETH_MACTBIER_GHD            (0x01U << ETH_MACTBIER_GHD_Pos)
+    #define ETH_MACTBIER_GFD_Pos        (15)
+    #define ETH_MACTBIER_GFD            (0x01U << ETH_MACTBIER_GFD_Pos)
+
+////////////////////////////////////////////////////////////////////////////////
+/// @brief ETH_MACMIISR PMgister Bit definition
+////////////////////////////////////////////////////////////////////////////////
+    #define ETH_MACMIISR_LM_Pos         (0)
+    #define ETH_MACMIISR_LM             (0x01U << ETH_MACMIISR_LM_Pos)
+    #define ETH_MACMIISR_LSP_Pos        (1)
+    #define ETH_MACMIISR_LSP            (0x03U << ETH_MACMIISR_LSP_Pos)
+    #define ETH_MACMIISR_LS_Pos         (3)
+    #define ETH_MACMIISR_LS             (0x01U << ETH_MACMIISR_LS_Pos)
+
+////////////////////////////////////////////////////////////////////////////////
+/// @brief ETH_MMCCR PMgister Bit definition
+////////////////////////////////////////////////////////////////////////////////
+    #define ETH_MMCCR_CR_Pos            (0)
+    #define ETH_MMCCR_CR                (0x01U << ETH_MMCCR_CR_Pos)
+    #define ETH_MMCCR_CSR_Pos           (1)
+    #define ETH_MMCCR_CSR               (0x01U << ETH_MMCCR_CSR_Pos)
+    #define ETH_MMCCR_ROR_Pos           (2)
+    #define ETH_MMCCR_ROR               (0x01U << ETH_MMCCR_ROR_Pos)
+
+////////////////////////////////////////////////////////////////////////////////
+/// @brief ETH_MMCRIR PMgister Bit definition
+////////////////////////////////////////////////////////////////////////////////
+    #define ETH_MMCRIR_RFCES_Pos        (0)
+    #define ETH_MMCRIR_RFCES            (0x01U << ETH_MMCRIR_RFCES_Pos)
+    #define ETH_MMCRIR_RFAES_Pos        (1)
+    #define ETH_MMCRIR_RFAES            (0x01U << ETH_MMCRIR_RFAES_Pos)
+    #define ETH_MMCRIR_RGUFS_Pos        (2)
+    #define ETH_MMCRIR_RGUFS            (0x01U << ETH_MMCRIR_RGUFS_Pos)
+
+////////////////////////////////////////////////////////////////////////////////
+/// @brief ETH_MMCTIR PMgister Bit definition
+////////////////////////////////////////////////////////////////////////////////
+    #define ETH_MMCTIR_TCFSCS_Pos       (14)
+    #define ETH_MMCTIR_TCFSCS           (0x01U << ETH_MMCTIR_TCFSCS_Pos)
+    #define ETH_MMCTIR_TGFMSCS_Pos      (15)
+    #define ETH_MMCTIR_TGFMSCS          (0x01U << ETH_MMCTIR_TGFMSCS_Pos)
+    #define ETH_MMCTIR_TGFS_Pos         (21)
+    #define ETH_MMCTIR_TGFS             (0x01U << ETH_MMCTIR_TGFS_Pos)
+
+////////////////////////////////////////////////////////////////////////////////
+/// @brief ETH_MMCRIMR PMgister Bit definition
+////////////////////////////////////////////////////////////////////////////////
+    #define ETH_MMCRIMR_RFCEM_Pos       (5)
+    #define ETH_MMCRIMR_RFCEM           (0x01U << ETH_MMCRIMR_RFCEM_Pos)
+    #define ETH_MMCRIMR_RFAEM_Pos       (6)
+    #define ETH_MMCRIMR_RFAEM           (0x01U << ETH_MMCRIMR_RFAEM_Pos)
+    #define ETH_MMCRIMR_RGUFM_Pos       (17)
+    #define ETH_MMCRIMR_RGUFM           (0x01U << ETH_MMCRIMR_RGUFM_Pos)
+
+////////////////////////////////////////////////////////////////////////////////
+/// @brief ETH_MMCTIMR PMgister Bit definition
+////////////////////////////////////////////////////////////////////////////////
+    #define ETH_MMCTIMR_TGFSCM_Pos      (14)
+    #define ETH_MMCTIMR_TGFSCM          (0x01U << ETH_MMCTIMR_TGFSCM_Pos)
+    #define ETH_MMCTIMR_TGFMSCM_Pos     (15)
+    #define ETH_MMCTIMR_TGFMSCM         (0x01U << ETH_MMCTIMR_TGFMSCM_Pos)
+    #define ETH_MMCTIMR_TGFM_Pos        (21)
+    #define ETH_MMCTIMR_TGFM            (0x01U << ETH_MMCTIMR_TGFM_Pos)
+
+////////////////////////////////////////////////////////////////////////////////
+/// @brief ETH_MMCTGFSCCR PMgister Bit definition
+////////////////////////////////////////////////////////////////////////////////
+    #define ETH_MMCTGFSCCR_TGFSCC_Pos   (0)
+    #define ETH_MMCTGFSCCR_TGFSCC       (0xFFFFFFFFU << ETH_MMCTGFSCCR_TGFSCC_Pos)
+
+////////////////////////////////////////////////////////////////////////////////
+/// @brief ETH_MMCTGFCR PMgister Bit definition
+////////////////////////////////////////////////////////////////////////////////
+    #define ETH_MMCTGFCR_TGFC_Pos       (0)
+    #define ETH_MMCTGFCR_TGFC           (0xFFFFFFFFU << ETH_MMCTGFCR_TGFC_Pos)
+
+////////////////////////////////////////////////////////////////////////////////
+/// @brief ETH_MMCRFCECR PMgister Bit definition
+////////////////////////////////////////////////////////////////////////////////
+    #define ETH_MMCRFCECR_RFCEC_Pos     (0)
+    #define ETH_MMCRFCECR_RFCEC         (0xFFFFFFFFU << ETH_MMCRFCECR_RFCEC_Pos)
+
+////////////////////////////////////////////////////////////////////////////////
+/// @brief ETH_MMCRFAECR PMgister Bit definition
+////////////////////////////////////////////////////////////////////////////////
+    #define ETH_MMCRFAECR_RFAEC_Pos     (0)
+    #define ETH_MMCRFAECR_RFAEC         (0xFFFFFFFFU << ETH_MMCRFAECR_RFAEC_Pos)
+
+////////////////////////////////////////////////////////////////////////////////
+/// @brief ETH_MMCRGUFCR PMgister Bit definition
+////////////////////////////////////////////////////////////////////////////////
+    #define ETH_MMCRGUFCR_RGUFC_Pos     (0)
+    #define ETH_MMCRGUFCR_RGUFC         (0xFFFFFFFFU << ETH_MMCRGUFCR_RGUFC_Pos)
+
+////////////////////////////////////////////////////////////////////////////////
+/// @brief ETH_DMABMR PMgister Bit definition
+////////////////////////////////////////////////////////////////////////////////
+    #define ETH_DMABMR_SR_Pos           (0)
+    #define ETH_DMABMR_SR               (0x01U << ETH_DMABMR_SR_Pos)
+    #define ETH_DMABMR_DA_Pos           (1)
+    #define ETH_DMABMR_DA               (0x01U << ETH_DMABMR_DA_Pos)
+    #define ETH_DMABMR_DSL_Pos          (2)
+    #define ETH_DMABMR_DSL              (0x01FU << ETH_DMABMR_DSL_Pos)
+    #define ETH_DMABMR_PBL_Pos          (8)
+    #define ETH_DMABMR_PBL              (0x03FU << ETH_DMABMR_PBL_Pos)
+    #define ETH_DMABMR_RTPR_Pos         (14)
+    #define ETH_DMABMR_RTPR             (0x03U << ETH_DMABMR_RTPR_Pos)
+    #define ETH_DMABMR_FB_Pos           (16)
+    #define ETH_DMABMR_FB               (0x01U << ETH_DMABMR_FB_Pos)
+
+////////////////////////////////////////////////////////////////////////////////
+/// @brief ETH_DMATPDR PMgister Bit definition
+////////////////////////////////////////////////////////////////////////////////
+    #define ETH_DMATPDR_TPD_Pos         (0)
+    #define ETH_DMATPDR_TPD             (0xFFFFFFFFU << ETH_DMATPDR_TPD_Pos)
+
+////////////////////////////////////////////////////////////////////////////////
+/// @brief ETH_DMARPDR PMgister Bit definition
+////////////////////////////////////////////////////////////////////////////////
+    #define ETH_DMARPDR_RPD_Pos         (0)
+    #define ETH_DMARPDR_RPD             (0xFFFFFFFFU << ETH_DMARPDR_RPD_Pos)
+
+////////////////////////////////////////////////////////////////////////////////
+/// @brief ETH_DMARDLAR PMgister Bit definition
+////////////////////////////////////////////////////////////////////////////////
+    #define ETH_DMARDLAR_SRL_Pos        (0)
+    #define ETH_DMARDLAR_SRL            (0xFFFFFFFFU << ETH_DMARDLAR_SRL_Pos)
+
+////////////////////////////////////////////////////////////////////////////////
+/// @brief ETH_DMATDLAR PMgister Bit definition
+////////////////////////////////////////////////////////////////////////////////
+    #define ETH_DMATDLAR_STL_Pos        (0)
+    #define ETH_DMATDLAR_STL            (0xFFFFFFFFU << ETH_DMATDLAR_STL_Pos)
+
+////////////////////////////////////////////////////////////////////////////////
+/// @brief ETH_DMASR PMgister Bit definition
+////////////////////////////////////////////////////////////////////////////////
+    #define ETH_DMASR_TS_Pos            (0)
+    #define ETH_DMASR_TS                (0x01U << ETH_DMASR_TS_Pos)
+    #define ETH_DMASR_TPSS_Pos          (1)
+    #define ETH_DMASR_TPSS              (0x01U << ETH_DMASR_TPSS_Pos)
+    #define ETH_DMASR_TBUS_Pos          (2)
+    #define ETH_DMASR_TBUS              (0x01U << ETH_DMASR_TBUS_Pos)
+    #define ETH_DMASR_TJTS_Pos          (3)
+    #define ETH_DMASR_TJTS              (0x01U << ETH_DMASR_TJTS_Pos)
+    #define ETH_DMASR_ROS_Pos           (4)
+    #define ETH_DMASR_ROS               (0x03U << ETH_DMASR_ROS_Pos)
+    #define ETH_DMASR_TUS_Pos           (5)
+    #define ETH_DMASR_TUS               (0x01U << ETH_DMASR_TUS_Pos)
+    #define ETH_DMASR_RS_Pos            (6)
+    #define ETH_DMASR_RS                (0x01U << ETH_DMASR_RS_Pos)
+    #define ETH_DMASR_RBUS_Pos          (7)
+    #define ETH_DMASR_RBUS              (0x01U << ETH_DMASR_RBUS_Pos)
+    #define ETH_DMASR_RPSS_Pos          (8)
+    #define ETH_DMASR_RPSS              (0x01U << ETH_DMASR_RPSS_Pos)
+    #define ETH_DMASR_RWTS_Pos          (9)
+    #define ETH_DMASR_RWTS              (0x01U << ETH_DMASR_RWTS_Pos)
+    #define ETH_DMASR_ETS_Pos           (10)
+    #define ETH_DMASR_ETS               (0x01U << ETH_DMASR_ETS_Pos)
+    #define ETH_DMASR_FBES_Pos          (13)
+    #define ETH_DMASR_FBES              (0x01U << ETH_DMASR_FBES_Pos)
+    #define ETH_DMASR_ERS_Pos           (14)
+    #define ETH_DMASR_ERS               (0x01U << ETH_DMASR_ERS_Pos)
+    #define ETH_DMASR_AIS_Pos           (15)
+    #define ETH_DMASR_AIS               (0x01U << ETH_DMASR_AIS_Pos)
+    #define ETH_DMASR_NIS_Pos           (16)
+    #define ETH_DMASR_NIS               (0x01U << ETH_DMASR_NIS_Pos)
+    #define ETH_DMASR_RPS_Pos           (17)
+    #define ETH_DMASR_RPS               (0x07U << ETH_DMASR_RPS_Pos)
+    #define ETH_DMASR_TPS_Pos           (20)
+    #define ETH_DMASR_TPS               (0x07U << ETH_DMASR_TPS_Pos)
+    #define ETH_DMASR_EBS_Pos           (23)
+    #define ETH_DMASR_EBS               (0x07U << ETH_DMASR_EBS_Pos)
+    #define ETH_DMASR_LIS_Pos           (26)
+    #define ETH_DMASR_LIS               (0x01U << ETH_DMASR_LIS_Pos)
+    #define ETH_DMASR_MMCS_Pos          (27)
+    #define ETH_DMASR_MMCS              (0x01U << ETH_DMASR_MMCS_Pos)
+    #define ETH_DMASR_PMTS_Pos          (28)
+    #define ETH_DMASR_PMTS              (0x01U << ETH_DMASR_PMTS_Pos)
+
+////////////////////////////////////////////////////////////////////////////////
+/// @brief ETH_DMAOMR PMgister Bit definition
+////////////////////////////////////////////////////////////////////////////////
+    #define ETH_DMAOMR_SR_Pos           (1)
+    #define ETH_DMAOMR_SR               (0x01U << ETH_DMAOMR_SR_Pos)
+    #define ETH_DMAOMR_OSF_Pos          (2)
+    #define ETH_DMAOMR_OSF              (0x01U << ETH_DMAOMR_OSF_Pos)
+    #define ETH_DMAOMR_RTC_Pos          (3)
+    #define ETH_DMAOMR_RTC              (0x03U << ETH_DMAOMR_RTC_Pos)
+    #define ETH_DMAOMR_FUGF_Pos         (6)
+    #define ETH_DMAOMR_FUGF             (0x01U << ETH_DMAOMR_FUGF_Pos)
+    #define ETH_DMAOMR_FEF_Pos          (7)
+    #define ETH_DMAOMR_FEF              (0x01U << ETH_DMAOMR_FEF_Pos)
+    #define ETH_DMAOMR_EFC_Pos          (8)
+    #define ETH_DMAOMR_EFC              (0x01U << ETH_DMAOMR_EFC_Pos)
+    #define ETH_DMAOMR_ST_Pos           (13)
+    #define ETH_DMAOMR_ST               (0x01U << ETH_DMAOMR_ST_Pos)
+    #define ETH_DMAOMR_TTC_Pos          (14)
+    #define ETH_DMAOMR_TTC              (0x07U << ETH_DMAOMR_TTC_Pos)
+    #define ETH_DMAOMR_FTF_Pos          (20)
+    #define ETH_DMAOMR_FTF              (0x01U << ETH_DMAOMR_FTF_Pos)
+    #define ETH_DMAOMR_TSF_Pos          (21)
+    #define ETH_DMAOMR_TSF              (0x01U << ETH_DMAOMR_TSF_Pos)
+
+////////////////////////////////////////////////////////////////////////////////
+/// @brief ETH_DMAIER PMgister Bit definition
+////////////////////////////////////////////////////////////////////////////////
+    #define ETH_DMAIER_TIE_Pos          (0)
+    #define ETH_DMAIER_TIE              (0x01U << ETH_DMAIER_TIE_Pos)
+    #define ETH_DMAIER_TPSIE_Pos        (1)
+    #define ETH_DMAIER_TPSIE            (0x01U << ETH_DMAIER_TPSIE_Pos)
+    #define ETH_DMAIER_TBUIE_Pos        (2)
+    #define ETH_DMAIER_TBUIE            (0x01U << ETH_DMAIER_TBUIE_Pos)
+    #define ETH_DMAIER_TJTIE_Pos        (3)
+    #define ETH_DMAIER_TJTIE            (0x01U << ETH_DMAIER_TJTIE_Pos)
+    #define ETH_DMAIER_ROIE_Pos         (4)
+    #define ETH_DMAIER_ROIE             (0x01U << ETH_DMAIER_ROIE_Pos)
+    #define ETH_DMAIER_TUIE_Pos         (5)
+    #define ETH_DMAIER_TUIE             (0x01U << ETH_DMAIER_TUIE_Pos)
+    #define ETH_DMAIER_RIE_Pos          (6)
+    #define ETH_DMAIER_RIE              (0x01U << ETH_DMAIER_RIE_Pos)
+    #define ETH_DMAIER_RBUIE_Pos        (7)
+    #define ETH_DMAIER_RBUIE            (0x01U << ETH_DMAIER_RBUIE_Pos)
+    #define ETH_DMAIER_NISEIE_Pos       (8)
+    #define ETH_DMAIER_NISEIE           (0x01U << ETH_DMAIER_NISEIE_Pos)
+    #define ETH_DMAIER_RWTIE_Pos        (9)
+    #define ETH_DMAIER_RWTIE            (0x01U << ETH_DMAIER_RWTIE_Pos)
+    #define ETH_DMAIER_ETIE_Pos         (10)
+    #define ETH_DMAIER_ETIE             (0x01U << ETH_DMAIER_ETIE_Pos)
+    #define ETH_DMAIER_FBEIE_Pos        (13)
+    #define ETH_DMAIER_FBEIE            (0x01U << ETH_DMAIER_FBEIE_Pos)
+    #define ETH_DMAIER_ERIE_Pos         (14)
+    #define ETH_DMAIER_ERIE             (0x01U << ETH_DMAIER_ERIE_Pos)
+    #define ETH_DMAIER_AISE_Pos         (15)
+    #define ETH_DMAIER_AISE             (0x01U << ETH_DMAIER_AISE_Pos)
+    #define ETH_DMAIER_NISE_Pos         (16)
+    #define ETH_DMAIER_NISE             (0x01U << ETH_DMAIER_NISE_Pos)
+
+////////////////////////////////////////////////////////////////////////////////
+/// @brief ETH_DMAMFBOCR PMgister Bit definition
+////////////////////////////////////////////////////////////////////////////////
+    #define ETH_DMAMFBOCR_MFC_Pos       (0)
+    #define ETH_DMAMFBOCR_MFC           (0xFFFFU << ETH_DMAMFBOCR_MFC_Pos)
+    #define ETH_DMAMFBOCR_OMFC_Pos      (16)
+    #define ETH_DMAMFBOCR_OMFC          (0x01U << ETH_DMAMFBOCR_OMFC_Pos)
+    #define ETH_DMAMFBOCR_MFA_Pos       (17)
+    #define ETH_DMAMFBOCR_MFA           (0x07FFU << ETH_DMAMFBOCR_MFA_Pos)
+    #define ETH_DMAMFBOCR_OFOC_Pos      (28)
+    #define ETH_DMAMFBOCR_OFOC          (0x01U << ETH_DMAMFBOCR_OFOC_Pos)
+
+////////////////////////////////////////////////////////////////////////////////
+/// @brief ETH_DMACHTDR PMgister Bit definition
+////////////////////////////////////////////////////////////////////////////////
+    #define ETH_DMACHTDR_HTDAP_Pos      (0)
+    #define ETH_DMACHTDR_HTDAP          (0xFFFFFFFFU << ETH_DMACHTDR_HTDAP_Pos)
+
+////////////////////////////////////////////////////////////////////////////////
+/// @brief ETH_DMACHRBAR PMgister Bit definition
+////////////////////////////////////////////////////////////////////////////////
+    #define ETH_DMACHRBAR_HRBAP_Pos     (0)
+    #define ETH_DMACHRBAR_HRBAP         (0xFFFFFFFFU << ETH_DMACHRBAR_HRBAP_Pos)
+
+#endif
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief EXTI_CFGR Register Bit Definition
 ////////////////////////////////////////////////////////////////////////////////
@@ -5129,499 +5809,6 @@ typedef struct {
 #define EXTI_PR_23                      (0x01U << EXTI_PR_23_Pos)               ///< Pending bit 23
 #define EXTI_PR_24_Pos                  (24)
 #define EXTI_PR_24                      (0x01U << EXTI_PR_24_Pos)               ///< Pending bit 24
-
-#if defined(ETH_BASE)
-////////////////////////////////////////////////////////////////////////////////
-/// @brief ETH_MACCR register Bit definition
-////////////////////////////////////////////////////////////////////////////////
-    #define ETH_MACCR_RE_Pos            (2)
-    #define ETH_MACCR_RE                (0x01U << ETH_MACCR_RE_Pos)
-    #define ETH_MACCR_TE_Pos            (3)
-    #define ETH_MACCR_TE                (0x01U << ETH_MACCR_TE_Pos)
-    #define ETH_MACCR_DC_Pos            (4)
-    #define ETH_MACCR_DC                (0x01U << ETH_MACCR_DC_Pos)
-    #define ETH_MACCR_BL_Pos            (5)
-    #define ETH_MACCR_BL                (0x03U << ETH_MACCR_BL_Pos)
-    #define ETH_MACCR_APCS_Pos          (7)
-    #define ETH_MACCR_APCS              (0x01U << ETH_MACCR_APCS_Pos)
-    #define ETH_MACCR_LUD_Pos           (8)
-    #define ETH_MACCR_LUD               (0x01U << ETH_MACCR_LUD_Pos)
-    #define ETH_MACCR_RD_Pos            (9)
-    #define ETH_MACCR_RD                (0x01U << ETH_MACCR_RD_Pos)
-    #define ETH_MACCR_IPCO_Pos          (10)
-    #define ETH_MACCR_IPCO              (0x01U << ETH_MACCR_IPCO_Pos)
-    #define ETH_MACCR_DM_Pos            (11)
-    #define ETH_MACCR_DM                (0x01U << ETH_MACCR_DM_Pos)
-    #define ETH_MACCR_LM_Pos            (12)
-    #define ETH_MACCR_LM                (0x01U << ETH_MACCR_LM_Pos)
-    #define ETH_MACCR_ROD_Pos           (13)
-    #define ETH_MACCR_ROD               (0x01U << ETH_MACCR_ROD_Pos)
-    #define ETH_MACCR_FES_Pos           (14)
-    #define ETH_MACCR_FES               (0x01U << ETH_MACCR_FES_Pos)
-    #define ETH_MACCR_IFG_Pos           (16)
-    #define ETH_MACCR_IFG               (0x05U << ETH_MACCR_IFG_Pos)
-    #define ETH_MACCR_JE_Pos            (20)
-    #define ETH_MACCR_JE                (0x01U << ETH_MACCR_JE_Pos)
-    #define ETH_MACCR_FBE_Pos           (21)
-    #define ETH_MACCR_FBE               (0x01U << ETH_MACCR_FBE_Pos)
-    #define ETH_MACCR_JD_Pos            (22)
-    #define ETH_MACCR_JD                (0x01U << ETH_MACCR_JD_Pos)
-    #define ETH_MACCR_WD_Pos            (23)
-    #define ETH_MACCR_WD                (0x01U << ETH_MACCR_WD_Pos)
-
-////////////////////////////////////////////////////////////////////////////////
-/// @brief ETH_MACFFR PMgister Bit definition
-////////////////////////////////////////////////////////////////////////////////
-    #define ETH_MACFFR_PM_Pos           (2)
-    #define ETH_MACFFR_PM               (0x01U << ETH_MACFFR_PM_Pos)
-    #define ETH_MACFFR_HU_Pos           (3)
-    #define ETH_MACFFR_HU               (0x01U << ETH_MACFFR_HU_Pos)
-    #define ETH_MACFFR_HM_Pos           (4)
-    #define ETH_MACFFR_HM               (0x01U << ETH_MACFFR_HM_Pos)
-    #define ETH_MACFFR_DAIF_Pos         (5)
-    #define ETH_MACFFR_DAIF             (0x03U << ETH_MACFFR_DAIF_Pos)
-    #define ETH_MACFFR_PAM_Pos          (7)
-    #define ETH_MACFFR_PAM              (0x01U << ETH_MACFFR_PAM_Pos)
-    #define ETH_MACFFR_BFD_Pos          (8)
-    #define ETH_MACFFR_BFD              (0x01U << ETH_MACFFR_BFD_Pos)
-    #define ETH_MACFFR_PCF_Pos          (9)
-    #define ETH_MACFFR_PCF              (0x01U << ETH_MACFFR_PCF_Pos)
-    #define ETH_MACFFR_SAIF_Pos         (10)
-    #define ETH_MACFFR_SAIF             (0x01U << ETH_MACFFR_SAIF_Pos)
-    #define ETH_MACFFR_SAF_Pos          (11)
-    #define ETH_MACFFR_SAF              (0x01U << ETH_MACFFR_SAF_Pos)
-
-////////////////////////////////////////////////////////////////////////////////
-/// @brief ETH_MACHTHR PMgister Bit definition
-////////////////////////////////////////////////////////////////////////////////
-    #define ETH_MACHTHR_HTH_Pos         (0)
-    #define ETH_MACHTHR_HTH             (0xFFFFFFFFU << ETH_MACHTHR_HTH_Pos)
-
-////////////////////////////////////////////////////////////////////////////////
-/// @brief ETH_MACHTLR PMgister Bit definition
-////////////////////////////////////////////////////////////////////////////////
-    #define ETH_MACHTLR_HTH_Pos         (0)
-    #define ETH_MACHTLR_HTH             (0xFFFFFFFFU << ETH_MACHTLR_HTH_Pos)
-
-////////////////////////////////////////////////////////////////////////////////
-/// @brief ETH_MACMIIAR PMgister Bit definition
-////////////////////////////////////////////////////////////////////////////////
-    #define ETH_MACMIIAR_MB_Pos         (0)
-    #define ETH_MACMIIAR_MB             (0x01U << ETH_MACMIIAR_MB_Pos)
-    #define ETH_MACMIIAR_MW_Pos         (1)
-    #define ETH_MACMIIAR_MW             (0x01U << ETH_MACMIIAR_MW_Pos)
-    #define ETH_MACMIIAR_CR_Pos         (4)
-    #define ETH_MACMIIAR_CR             (0x07U << ETH_MACMIIAR_CR_Pos)
-    #define ETH_MACMIIAR_MR_Pos         (6)
-    #define ETH_MACMIIAR_MR             (0x1FU << ETH_MACMIIAR_MR_Pos)
-    #define ETH_MACMIIAR_PA_Pos         (11)
-    #define ETH_MACMIIAR_PA             (0x1FU << ETH_MACMIIAR_PA_Pos)
-
-////////////////////////////////////////////////////////////////////////////////
-/// @brief ETH_MACMIIDR PMgister Bit definition
-////////////////////////////////////////////////////////////////////////////////
-    #define ETH_MACMIIDR_MD_Pos         (0)
-    #define ETH_MACMIIDR_MD             (0xFFFFU << ETH_MACMIIDR_MD_Pos)
-
-////////////////////////////////////////////////////////////////////////////////
-/// @brief ETH_MACFRFCE PMgister Bit definition
-////////////////////////////////////////////////////////////////////////////////
-    #define ETH_MACFRFCE_FCBBPLT_Pos    (0)
-    #define ETH_MACFRFCE_FCBBPLT        (0x01U << ETH_MACFRFCE_FCBBPLT_Pos)
-    #define ETH_MACFRFCE_TFCE_Pos       (1)
-    #define ETH_MACFRFCE_TFCE           (0x01U << ETH_MACFRFCE_TFCE_Pos)
-    #define ETH_MACFRFCE_RFCE_Pos       (2)
-    #define ETH_MACFRFCE_RFCE           (0x07U << ETH_MACFRFCE_RFCE_Pos)
-    #define ETH_MACFRFCE_UPFD_Pos       (3)
-    #define ETH_MACFRFCE_UPFD           (0x1FU << ETH_MACFRFCE_UPFD_Pos)
-    #define ETH_MACFRFCE_PLT_Pos        (4)
-    #define ETH_MACFRFCE_PLT            (0x03U << ETH_MACFRFCE_PLT_Pos)
-    #define ETH_MACFRFCE_PT_Pos         (16)
-    #define ETH_MACFRFCE_PT             (0xFFFFU << ETH_MACFRFCE_PT_Pos)
-
-////////////////////////////////////////////////////////////////////////////////
-/// @brief ETH_MACVLANTR PMgister Bit definition
-////////////////////////////////////////////////////////////////////////////////
-    #define ETH_MACVLANTR_VLANTI_Pos    (0)
-    #define ETH_MACVLANTR_VLANTI        (0xFFFFU << ETH_MACVLANTR_VLANTI_Pos)
-
-////////////////////////////////////////////////////////////////////////////////
-/// @brief ETH_MACPMTCSR PMgister Bit definition
-////////////////////////////////////////////////////////////////////////////////
-    #define ETH_MACPMTCSR_PD_Pos        (0)
-    #define ETH_MACPMTCSR_PD            (0x01U << ETH_MACPMTCSR_PD_Pos)
-    #define ETH_MACPMTCSR_MPE_Pos       (1)
-    #define ETH_MACPMTCSR_MPE           (0x01U << ETH_MACPMTCSR_MPE_Pos)
-    #define ETH_MACPMTCSR_WFE_Pos       (2)
-    #define ETH_MACPMTCSR_WFE           (0x01U << ETH_MACPMTCSR_WFE_Pos)
-    #define ETH_MACPMTCSR_MPR_Pos       (5)
-    #define ETH_MACPMTCSR_MPR           (0x1FU << ETH_MACPMTCSR_MPR_Pos)
-    #define ETH_MACPMTCSR_WFR_Pos       (6)
-    #define ETH_MACPMTCSR_WFR           (0x01U << ETH_MACPMTCSR_WFR_Pos)
-    #define ETH_MACPMTCSR_GU_Pos        (9)
-    #define ETH_MACPMTCSR_GU            (0x01U << ETH_MACPMTCSR_GU_Pos)
-
-////////////////////////////////////////////////////////////////////////////////
-/// @brief ETH_MACA0HR PMgister Bit definition
-////////////////////////////////////////////////////////////////////////////////
-    #define ETH_MACA0HR_MACA0H_Pos      (0)
-    #define ETH_MACA0HR_MACA0H          (0xFFFFU << ETH_MACA0HR_MACA0H_Pos)
-    #define ETH_MACA0HR_MO_Pos          (31)
-    #define ETH_MACA0HR_MO              (0x01U << ETH_MACA0HR_MO_Pos)
-
-////////////////////////////////////////////////////////////////////////////////
-/// @brief ETH_MACA0LR PMgister Bit definition
-////////////////////////////////////////////////////////////////////////////////
-    #define ETH_MACA0LR_MACA0L_Pos      (0)
-    #define ETH_MACA0LR_MACA0L          (0xFFFFU << ETH_MACA0LR_MACA0L_Pos)
-
-////////////////////////////////////////////////////////////////////////////////
-/// @brief ETH_MACA1HR PMgister Bit definition
-////////////////////////////////////////////////////////////////////////////////
-    #define ETH_MACA1HR_MACH1H_Pos      (0)
-    #define ETH_MACA1HR_MACH1H          (0xFFFFU << ETH_MACA1HR_MACH1H_Pos)
-    #define ETH_MACA1HR_SA_Pos          (30)
-    #define ETH_MACA1HR_SA              (0x01U << ETH_MACA1HR_SA_Pos)
-    #define ETH_MACA1HR_AE_Pos          (31)
-    #define ETH_MACA1HR_AE              (0x01U << ETH_MACA1HR_AE_Pos)
-
-////////////////////////////////////////////////////////////////////////////////
-/// @brief ETH_MACA1LR PMgister Bit definition
-////////////////////////////////////////////////////////////////////////////////
-    #define ETH_MACA1LR_MACA1L_Pos      (0)
-    #define ETH_MACA1LR_MACA1L          (0xFFFFFFFFU << ETH_MACA1LR_MACA1L_Pos)
-
-////////////////////////////////////////////////////////////////////////////////
-/// @brief ETH_MACANCR PMgister Bit definition
-////////////////////////////////////////////////////////////////////////////////
-    #define ETH_MACANCR_RAN_Pos         (9)
-    #define ETH_MACANCR_RAN             (0x01U << ETH_MACANCR_RAN_Pos)
-    #define ETH_MACANCR_ANE_Pos         (12)
-    #define ETH_MACANCR_ANE             (0x01U << ETH_MACANCR_ANE_Pos)
-    #define ETH_MACANCR_ELE_Pos         (14)
-    #define ETH_MACANCR_ELE             (0x01U << ETH_MACANCR_ELE_Pos)
-    #define ETH_MACANCR_ECD_Pos         (16)
-    #define ETH_MACANCR_ECD             (0x1FU << ETH_MACANCR_ECD_Pos)
-    #define ETH_MACANCR_LR_Pos          (17)
-    #define ETH_MACANCR_LR              (0x01U << ETH_MACANCR_LR_Pos)
-
-////////////////////////////////////////////////////////////////////////////////
-/// @brief ETH_MACANSR PMgister Bit definition
-////////////////////////////////////////////////////////////////////////////////
-    #define ETH_MACANSR_LS_Pos          (1)
-    #define ETH_MACANSR_LS              (0x01U << ETH_MACANSR_LS_Pos)
-    #define ETH_MACANSR_ANA_Pos         (2)
-    #define ETH_MACANSR_ANA             (0x01U << ETH_MACANSR_ANA_Pos)
-    #define ETH_MACANSR_ANC_Pos         (5)
-    #define ETH_MACANSR_ANC             (0x01U << ETH_MACANSR_ANC_Pos)
-    #define ETH_MACANSR_ES_Pos          (8)
-    #define ETH_MACANSR_ES              (0x1FU << ETH_MACANSR_ES_Pos)
-
-////////////////////////////////////////////////////////////////////////////////
-/// @brief ETH_MACANAR PMgister Bit definition
-////////////////////////////////////////////////////////////////////////////////
-    #define ETH_MACANAR_FD_Pos          (5)
-    #define ETH_MACANAR_FD              (0x01U << ETH_MACANAR_FD_Pos)
-    #define ETH_MACANAR_HD_Pos          (6)
-    #define ETH_MACANAR_HD              (0x01U << ETH_MACANAR_HD_Pos)
-    #define ETH_MACANAR_RSE_Pos         (7)
-    #define ETH_MACANAR_RSE             (0x03U << ETH_MACANAR_RSE_Pos)
-    #define ETH_MACANAR_RFE_Pos         (12)
-    #define ETH_MACANAR_RFE             (0x03U << ETH_MACANAR_RFE_Pos)
-    #define ETH_MACANAR_NP_Pos          (15)
-    #define ETH_MACANAR_NP              (0x01U << ETH_MACANAR_NP_Pos)
-
-////////////////////////////////////////////////////////////////////////////////
-/// @brief ETH_MACANLPAR PMgister Bit definition
-////////////////////////////////////////////////////////////////////////////////
-    #define ETH_MACANLPAR_FD_Pos        (5)
-    #define ETH_MACANLPAR_FD            (0x01U << ETH_MACANLPAR_FD_Pos)
-    #define ETH_MACANLPAR_HD_Pos        (6)
-    #define ETH_MACANLPAR_HD            (0x01U << ETH_MACANLPAR_HD_Pos)
-    #define ETH_MACANLPAR_RSE_Pos       (7)
-    #define ETH_MACANLPAR_RSE           (0x03U << ETH_MACANLPAR_RSE_Pos)
-    #define ETH_MACANLPAR_RFE_Pos       (12)
-    #define ETH_MACANLPAR_RFE           (0x03U << ETH_MACANLPAR_RFE_Pos)
-    #define ETH_MACANLPAR_NP_Pos        (15)
-    #define ETH_MACANLPAR_NP            (0x01U << ETH_MACANLPAR_NP_Pos)
-
-////////////////////////////////////////////////////////////////////////////////
-/// @brief ETH_MACANER PMgister Bit definition
-////////////////////////////////////////////////////////////////////////////////
-    #define ETH_MACANER_NPR_Pos         (1)
-    #define ETH_MACANER_NPR             (0x01U << ETH_MACANER_NPR_Pos)
-    #define ETH_MACANER_NPA_Pos         (2)
-    #define ETH_MACANER_NPA             (0x01U << ETH_MACANER_NPA_Pos)
-
-////////////////////////////////////////////////////////////////////////////////
-/// @brief ETH_MACTBIER PMgister Bit definition
-////////////////////////////////////////////////////////////////////////////////
-    #define ETH_MACTBIER_GHD_Pos        (14)
-    #define ETH_MACTBIER_GHD            (0x01U << ETH_MACTBIER_GHD_Pos)
-    #define ETH_MACTBIER_GFD_Pos        (15)
-    #define ETH_MACTBIER_GFD            (0x01U << ETH_MACTBIER_GFD_Pos)
-
-////////////////////////////////////////////////////////////////////////////////
-/// @brief ETH_MACMIISR PMgister Bit definition
-////////////////////////////////////////////////////////////////////////////////
-    #define ETH_MACMIISR_LM_Pos         (0)
-    #define ETH_MACMIISR_LM             (0x01U << ETH_MACMIISR_LM_Pos)
-    #define ETH_MACMIISR_LSP_Pos        (1)
-    #define ETH_MACMIISR_LSP            (0x03U << ETH_MACMIISR_LSP_Pos)
-    #define ETH_MACMIISR_LS_Pos         (3)
-    #define ETH_MACMIISR_LS             (0x01U << ETH_MACMIISR_LS_Pos)
-
-////////////////////////////////////////////////////////////////////////////////
-/// @brief ETH_MMCCR PMgister Bit definition
-////////////////////////////////////////////////////////////////////////////////
-    #define ETH_MMCCR_CR_Pos            (0)
-    #define ETH_MMCCR_CR                (0x01U << ETH_MMCCR_CR_Pos)
-    #define ETH_MMCCR_CSR_Pos           (1)
-    #define ETH_MMCCR_CSR               (0x01U << ETH_MMCCR_CSR_Pos)
-    #define ETH_MMCCR_ROR_Pos           (2)
-    #define ETH_MMCCR_ROR               (0x01U << ETH_MMCCR_ROR_Pos)
-
-////////////////////////////////////////////////////////////////////////////////
-/// @brief ETH_MMCRIR PMgister Bit definition
-////////////////////////////////////////////////////////////////////////////////
-    #define ETH_MMCRIR_RFCES_Pos        (0)
-    #define ETH_MMCRIR_RFCES            (0x01U << ETH_MMCRIR_RFCES_Pos)
-    #define ETH_MMCRIR_RFAES_Pos        (1)
-    #define ETH_MMCRIR_RFAES            (0x01U << ETH_MMCRIR_RFAES_Pos)
-    #define ETH_MMCRIR_RGUFS_Pos        (2)
-    #define ETH_MMCRIR_RGUFS            (0x01U << ETH_MMCRIR_RGUFS_Pos)
-
-////////////////////////////////////////////////////////////////////////////////
-/// @brief ETH_MMCTIR PMgister Bit definition
-////////////////////////////////////////////////////////////////////////////////
-    #define ETH_MMCTIR_TCFSCS_Pos       (14)
-    #define ETH_MMCTIR_TCFSCS           (0x01U << ETH_MMCTIR_TCFSCS_Pos)
-    #define ETH_MMCTIR_TGFMSCS_Pos      (15)
-    #define ETH_MMCTIR_TGFMSCS          (0x01U << ETH_MMCTIR_TGFMSCS_Pos)
-    #define ETH_MMCTIR_TGFS_Pos         (21)
-    #define ETH_MMCTIR_TGFS             (0x01U << ETH_MMCTIR_TGFS_Pos)
-
-////////////////////////////////////////////////////////////////////////////////
-/// @brief ETH_MMCRIMR PMgister Bit definition
-////////////////////////////////////////////////////////////////////////////////
-    #define ETH_MMCRIMR_RFCEM_Pos       (5)
-    #define ETH_MMCRIMR_RFCEM           (0x01U << ETH_MMCRIMR_RFCEM_Pos)
-    #define ETH_MMCRIMR_RFAEM_Pos       (6)
-    #define ETH_MMCRIMR_RFAEM           (0x01U << ETH_MMCRIMR_RFAEM_Pos)
-    #define ETH_MMCRIMR_RGUFM_Pos       (17)
-    #define ETH_MMCRIMR_RGUFM           (0x01U << ETH_MMCRIMR_RGUFM_Pos)
-
-////////////////////////////////////////////////////////////////////////////////
-/// @brief ETH_MMCTIMR PMgister Bit definition
-////////////////////////////////////////////////////////////////////////////////
-    #define ETH_MMCTIMR_TGFSCM_Pos      (14)
-    #define ETH_MMCTIMR_TGFSCM          (0x01U << ETH_MMCTIMR_TGFSCM_Pos)
-    #define ETH_MMCTIMR_TGFMSCM_Pos     (15)
-    #define ETH_MMCTIMR_TGFMSCM         (0x01U << ETH_MMCTIMR_TGFMSCM_Pos)
-    #define ETH_MMCTIMR_TGFM_Pos        (21)
-    #define ETH_MMCTIMR_TGFM            (0x01U << ETH_MMCTIMR_TGFM_Pos)
-
-////////////////////////////////////////////////////////////////////////////////
-/// @brief ETH_MMCTGFSCCR PMgister Bit definition
-////////////////////////////////////////////////////////////////////////////////
-    #define ETH_MMCTGFSCCR_TGFSCC_Pos   (0)
-    #define ETH_MMCTGFSCCR_TGFSCC       (0xFFFFFFFFU << ETH_MMCTGFSCCR_TGFSCC_Pos)
-
-////////////////////////////////////////////////////////////////////////////////
-/// @brief ETH_MMCTGFCR PMgister Bit definition
-////////////////////////////////////////////////////////////////////////////////
-    #define ETH_MMCTGFCR_TGFC_Pos       (0)
-    #define ETH_MMCTGFCR_TGFC           (0xFFFFFFFFU << ETH_MMCTGFCR_TGFC_Pos)
-
-////////////////////////////////////////////////////////////////////////////////
-/// @brief ETH_MMCRFCECR PMgister Bit definition
-////////////////////////////////////////////////////////////////////////////////
-    #define ETH_MMCRFCECR_RFCEC_Pos     (0)
-    #define ETH_MMCRFCECR_RFCEC         (0xFFFFFFFFU << ETH_MMCRFCECR_RFCEC_Pos)
-
-////////////////////////////////////////////////////////////////////////////////
-/// @brief ETH_MMCRFAECR PMgister Bit definition
-////////////////////////////////////////////////////////////////////////////////
-    #define ETH_MMCRFAECR_RFAEC_Pos     (0)
-    #define ETH_MMCRFAECR_RFAEC         (0xFFFFFFFFU << ETH_MMCRFAECR_RFAEC_Pos)
-
-////////////////////////////////////////////////////////////////////////////////
-/// @brief ETH_MMCRGUFCR PMgister Bit definition
-////////////////////////////////////////////////////////////////////////////////
-    #define ETH_MMCRGUFCR_RGUFC_Pos     (0)
-    #define ETH_MMCRGUFCR_RGUFC         (0xFFFFFFFFU << ETH_MMCRGUFCR_RGUFC_Pos)
-
-////////////////////////////////////////////////////////////////////////////////
-/// @brief ETH_DMABMR PMgister Bit definition
-////////////////////////////////////////////////////////////////////////////////
-    #define ETH_DMABMR_SR_Pos           (0)
-    #define ETH_DMABMR_SR               (0x01U << ETH_DMABMR_SR_Pos)
-    #define ETH_DMABMR_DA_Pos           (1)
-    #define ETH_DMABMR_DA               (0x01U << ETH_DMABMR_DA_Pos)
-    #define ETH_DMABMR_DSL_Pos          (2)
-    #define ETH_DMABMR_DSL              (0x01FU << ETH_DMABMR_DSL_Pos)
-    #define ETH_DMABMR_PBL_Pos          (8)
-    #define ETH_DMABMR_PBL              (0x03FU << ETH_DMABMR_PBL_Pos)
-    #define ETH_DMABMR_RTPR_Pos         (14)
-    #define ETH_DMABMR_RTPR             (0x03U << ETH_DMABMR_RTPR_Pos)
-    #define ETH_DMABMR_FB_Pos           (16)
-    #define ETH_DMABMR_FB               (0x01U << ETH_DMABMR_FB_Pos)
-
-////////////////////////////////////////////////////////////////////////////////
-/// @brief ETH_DMATPDR PMgister Bit definition
-////////////////////////////////////////////////////////////////////////////////
-    #define ETH_DMATPDR_TPD_Pos         (0)
-    #define ETH_DMATPDR_TPD             (0xFFFFFFFFU << ETH_DMATPDR_TPD_Pos)
-
-////////////////////////////////////////////////////////////////////////////////
-/// @brief ETH_DMARPDR PMgister Bit definition
-////////////////////////////////////////////////////////////////////////////////
-    #define ETH_DMARPDR_RPD_Pos         (0)
-    #define ETH_DMARPDR_RPD             (0xFFFFFFFFU << ETH_DMARPDR_RPD_Pos)
-
-////////////////////////////////////////////////////////////////////////////////
-/// @brief ETH_DMARDLAR PMgister Bit definition
-////////////////////////////////////////////////////////////////////////////////
-    #define ETH_DMARDLAR_SRL_Pos        (0)
-    #define ETH_DMARDLAR_SRL            (0xFFFFFFFFU << ETH_DMARDLAR_SRL_Pos)
-
-////////////////////////////////////////////////////////////////////////////////
-/// @brief ETH_DMATDLAR PMgister Bit definition
-////////////////////////////////////////////////////////////////////////////////
-    #define ETH_DMATDLAR_STL_Pos        (0)
-    #define ETH_DMATDLAR_STL            (0xFFFFFFFFU << ETH_DMATDLAR_STL_Pos)
-
-////////////////////////////////////////////////////////////////////////////////
-/// @brief ETH_DMASR PMgister Bit definition
-////////////////////////////////////////////////////////////////////////////////
-    #define ETH_DMASR_TS_Pos            (0)
-    #define ETH_DMASR_TS                (0x01U << ETH_DMASR_TS_Pos)
-    #define ETH_DMASR_TPSS_Pos          (1)
-    #define ETH_DMASR_TPSS              (0x01U << ETH_DMASR_TPSS_Pos)
-    #define ETH_DMASR_TBUS_Pos          (2)
-    #define ETH_DMASR_TBUS              (0x01U << ETH_DMASR_TBUS_Pos)
-    #define ETH_DMASR_TJTS_Pos          (3)
-    #define ETH_DMASR_TJTS              (0x01U << ETH_DMASR_TJTS_Pos)
-    #define ETH_DMASR_ROS_Pos           (4)
-    #define ETH_DMASR_ROS               (0x03U << ETH_DMASR_ROS_Pos)
-    #define ETH_DMASR_TUS_Pos           (5)
-    #define ETH_DMASR_TUS               (0x01U << ETH_DMASR_TUS_Pos)
-    #define ETH_DMASR_RS_Pos            (6)
-    #define ETH_DMASR_RS                (0x01U << ETH_DMASR_RS_Pos)
-    #define ETH_DMASR_RBUS_Pos          (7)
-    #define ETH_DMASR_RBUS              (0x01U << ETH_DMASR_RBUS_Pos)
-    #define ETH_DMASR_RPSS_Pos          (8)
-    #define ETH_DMASR_RPSS              (0x01U << ETH_DMASR_RPSS_Pos)
-    #define ETH_DMASR_RWTS_Pos          (9)
-    #define ETH_DMASR_RWTS              (0x01U << ETH_DMASR_RWTS_Pos)
-    #define ETH_DMASR_ETS_Pos           (10)
-    #define ETH_DMASR_ETS               (0x01U << ETH_DMASR_ETS_Pos)
-    #define ETH_DMASR_FBES_Pos          (13)
-    #define ETH_DMASR_FBES              (0x01U << ETH_DMASR_FBES_Pos)
-    #define ETH_DMASR_ERS_Pos           (14)
-    #define ETH_DMASR_ERS               (0x01U << ETH_DMASR_ERS_Pos)
-    #define ETH_DMASR_AIS_Pos           (15)
-    #define ETH_DMASR_AIS               (0x01U << ETH_DMASR_AIS_Pos)
-    #define ETH_DMASR_NIS_Pos           (16)
-    #define ETH_DMASR_NIS               (0x01U << ETH_DMASR_NIS_Pos)
-    #define ETH_DMASR_RPS_Pos           (17)
-    #define ETH_DMASR_RPS               (0x07U << ETH_DMASR_RPS_Pos)
-    #define ETH_DMASR_TPS_Pos           (20)
-    #define ETH_DMASR_TPS               (0x07U << ETH_DMASR_TPS_Pos)
-    #define ETH_DMASR_EBS_Pos           (23)
-    #define ETH_DMASR_EBS               (0x07U << ETH_DMASR_EBS_Pos)
-    #define ETH_DMASR_LIS_Pos           (26)
-    #define ETH_DMASR_LIS               (0x01U << ETH_DMASR_LIS_Pos)
-    #define ETH_DMASR_MMCS_Pos          (27)
-    #define ETH_DMASR_MMCS              (0x01U << ETH_DMASR_MMCS_Pos)
-    #define ETH_DMASR_PMTS_Pos          (28)
-    #define ETH_DMASR_PMTS              (0x01U << ETH_DMASR_PMTS_Pos)
-
-////////////////////////////////////////////////////////////////////////////////
-/// @brief ETH_DMAOMR PMgister Bit definition
-////////////////////////////////////////////////////////////////////////////////
-    #define ETH_DMAOMR_SR_Pos           (1)
-    #define ETH_DMAOMR_SR               (0x01U << ETH_DMAOMR_SR_Pos)
-    #define ETH_DMAOMR_OSF_Pos          (2)
-    #define ETH_DMAOMR_OSF              (0x01U << ETH_DMAOMR_OSF_Pos)
-    #define ETH_DMAOMR_RTC_Pos          (3)
-    #define ETH_DMAOMR_RTC              (0x03U << ETH_DMAOMR_RTC_Pos)
-    #define ETH_DMAOMR_FUGF_Pos         (6)
-    #define ETH_DMAOMR_FUGF             (0x01U << ETH_DMAOMR_FUGF_Pos)
-    #define ETH_DMAOMR_FEF_Pos          (7)
-    #define ETH_DMAOMR_FEF              (0x01U << ETH_DMAOMR_FEF_Pos)
-    #define ETH_DMAOMR_EFC_Pos          (8)
-    #define ETH_DMAOMR_EFC              (0x01U << ETH_DMAOMR_EFC_Pos)
-    #define ETH_DMAOMR_ST_Pos           (13)
-    #define ETH_DMAOMR_ST               (0x01U << ETH_DMAOMR_ST_Pos)
-    #define ETH_DMAOMR_TTC_Pos          (14)
-    #define ETH_DMAOMR_TTC              (0x07U << ETH_DMAOMR_TTC_Pos)
-    #define ETH_DMAOMR_FTF_Pos          (20)
-    #define ETH_DMAOMR_FTF              (0x01U << ETH_DMAOMR_FTF_Pos)
-    #define ETH_DMAOMR_TSF_Pos          (21)
-    #define ETH_DMAOMR_TSF              (0x01U << ETH_DMAOMR_TSF_Pos)
-
-////////////////////////////////////////////////////////////////////////////////
-/// @brief ETH_DMAIER PMgister Bit definition
-////////////////////////////////////////////////////////////////////////////////
-    #define ETH_DMAIER_TIE_Pos          (0)
-    #define ETH_DMAIER_TIE              (0x01U << ETH_DMAIER_TIE_Pos)
-    #define ETH_DMAIER_TPSIE_Pos        (1)
-    #define ETH_DMAIER_TPSIE            (0x01U << ETH_DMAIER_TPSIE_Pos)
-    #define ETH_DMAIER_TBUIE_Pos        (2)
-    #define ETH_DMAIER_TBUIE            (0x01U << ETH_DMAIER_TBUIE_Pos)
-    #define ETH_DMAIER_TJTIE_Pos        (3)
-    #define ETH_DMAIER_TJTIE            (0x01U << ETH_DMAIER_TJTIE_Pos)
-    #define ETH_DMAIER_ROIE_Pos         (4)
-    #define ETH_DMAIER_ROIE             (0x01U << ETH_DMAIER_ROIE_Pos)
-    #define ETH_DMAIER_TUIE_Pos         (5)
-    #define ETH_DMAIER_TUIE             (0x01U << ETH_DMAIER_TUIE_Pos)
-    #define ETH_DMAIER_RIE_Pos          (6)
-    #define ETH_DMAIER_RIE              (0x01U << ETH_DMAIER_RIE_Pos)
-    #define ETH_DMAIER_RBUIE_Pos        (7)
-    #define ETH_DMAIER_RBUIE            (0x01U << ETH_DMAIER_RBUIE_Pos)
-    #define ETH_DMAIER_NISEIE_Pos       (8)
-    #define ETH_DMAIER_NISEIE           (0x01U << ETH_DMAIER_NISEIE_Pos)
-    #define ETH_DMAIER_RWTIE_Pos        (9)
-    #define ETH_DMAIER_RWTIE            (0x01U << ETH_DMAIER_RWTIE_Pos)
-    #define ETH_DMAIER_ETIE_Pos         (10)
-    #define ETH_DMAIER_ETIE             (0x01U << ETH_DMAIER_ETIE_Pos)
-    #define ETH_DMAIER_FBEIE_Pos        (13)
-    #define ETH_DMAIER_FBEIE            (0x01U << ETH_DMAIER_FBEIE_Pos)
-    #define ETH_DMAIER_ERIE_Pos         (14)
-    #define ETH_DMAIER_ERIE             (0x01U << ETH_DMAIER_ERIE_Pos)
-    #define ETH_DMAIER_AISE_Pos         (15)
-    #define ETH_DMAIER_AISE             (0x01U << ETH_DMAIER_AISE_Pos)
-    #define ETH_DMAIER_NISE_Pos         (16)
-    #define ETH_DMAIER_NISE             (0x01U << ETH_DMAIER_NISE_Pos)
-
-////////////////////////////////////////////////////////////////////////////////
-/// @brief ETH_DMAMFBOCR PMgister Bit definition
-////////////////////////////////////////////////////////////////////////////////
-    #define ETH_DMAMFBOCR_MFC_Pos       (0)
-    #define ETH_DMAMFBOCR_MFC           (0xFFFFU << ETH_DMAMFBOCR_MFC_Pos)
-    #define ETH_DMAMFBOCR_OMFC_Pos      (16)
-    #define ETH_DMAMFBOCR_OMFC          (0x01U << ETH_DMAMFBOCR_OMFC_Pos)
-    #define ETH_DMAMFBOCR_MFA_Pos       (17)
-    #define ETH_DMAMFBOCR_MFA           (0x07FFU << ETH_DMAMFBOCR_MFA_Pos)
-    #define ETH_DMAMFBOCR_OFOC_Pos      (28)
-    #define ETH_DMAMFBOCR_OFOC          (0x01U << ETH_DMAMFBOCR_OFOC_Pos)
-
-////////////////////////////////////////////////////////////////////////////////
-/// @brief ETH_DMACHTDR PMgister Bit definition
-////////////////////////////////////////////////////////////////////////////////
-    #define ETH_DMACHTDR_HTDAP_Pos      (0)
-    #define ETH_DMACHTDR_HTDAP          (0xFFFFFFFFU << ETH_DMACHTDR_HTDAP_Pos)
-
-////////////////////////////////////////////////////////////////////////////////
-/// @brief ETH_DMACHRBAR PMgister Bit definition
-////////////////////////////////////////////////////////////////////////////////
-    #define ETH_DMACHRBAR_HRBAP_Pos     (0)
-    #define ETH_DMACHRBAR_HRBAP         (0xFFFFFFFFU << ETH_DMACHRBAR_HRBAP_Pos)
-
-#endif
-
-
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief FLASH_ACR Register Bit Definition
 ////////////////////////////////////////////////////////////////////////////////
@@ -5747,7 +5934,6 @@ typedef struct {
     #define FLASH_WRPR_WRP_Pos          (0)
     #define FLASH_WRPR_WRP              (0x0FU << FLASH_WRPR_WRP_Pos)           ///< Write Protect
 #endif
-
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief GPIO_CRL Register Bit Definition
 ////////////////////////////////////////////////////////////////////////////////
@@ -5996,7 +6182,6 @@ typedef struct {
     #define GPIO_AFRH_AFR15_Pos         (28)
     #define GPIO_AFRH_AFR15             (0x0FU << GPIO_AFRH_AFR15_Pos)          ///< Multiplexing function selection for bit 15 of portx
 #endif
-
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief I2C_CR Register Bit Definition
 ////////////////////////////////////////////////////////////////////////////////
@@ -6343,7 +6528,6 @@ typedef struct {
 ////////////////////////////////////////////////////////////////////////////////
 #define I2C_SRAR_ADDR_Pos               (0)
 #define I2C_SRAR_ADDR                   (0x3FF << I2C_SRAR_ADDR_Pos)
-
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief IWDG_KR Register Bit Definition
 ////////////////////////////////////////////////////////////////////////////////
@@ -6404,11 +6588,6 @@ typedef struct {
 ////////////////////////////////////////////////////////////////////////////////
 #define IWDG_PS_PS_Pos                  (0)
 #define IWDG_PS_PS                      (0xFFFU << IWDG_PS_PS_Pos)              ///< IWDG Interrupt Generate value
-
-
-///////////////////////////////////////////////////////////////////////////////
-//                  Nested Vectored Interrupt Controller
-///////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief NVIC_ISER Register Bit Definition
 ////////////////////////////////////////////////////////////////////////////////
@@ -6839,7 +7018,6 @@ typedef struct {
 /// @brief SCB_AFSR Register Bit Definition
 ////////////////////////////////////////////////////////////////////////////////
 #define SCB_AFSR_IMPDEF                 (0xFFFFFFFFU)                           ///< Implementation defined
-
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief OPAMP_CSR Register Bit Definition
 ////////////////////////////////////////////////////////////////////////////////
@@ -6856,8 +7034,6 @@ typedef struct {
     #define OPAMP_CSR_OP4_Pos           (24)
     #define OPAMP_CSR_OP4               (0x01U << OPAMP_CSR_OP4_Pos)            ///< operational amplifier four enable
 #endif
-
-
 #if defined(OTG_FS_BASE)
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief OTG_FS_PER_ID Register Bit Definition
@@ -7130,7 +7306,6 @@ typedef struct {
 #define OTG_FS_EP_CTL_HOST_WO_HUB_Pos   (7)
 #define OTG_FS_EP_CTL_HOST_WO_HUB       (0x01U << OTG_FS_EP_CTL_HOST_WO_HUB_Pos)
 #endif
-
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief PWM_CSR Register Bit Definition
 ////////////////////////////////////////////////////////////////////////////////
@@ -7194,7 +7369,6 @@ typedef struct {
     #define PWM_APMDLR_Pos              (0)
     #define PWM_APMDLR                  (0x3FFFFFFU << PWM_APMDLR_Pos)          ///< Auto Phase Mask delay load register
 #endif
-
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief PWR_CR register Bit definition
 ////////////////////////////////////////////////////////////////////////////////
@@ -8777,9 +8951,6 @@ typedef struct {
     #define RCC_PLLDLY_PLLEQUCNT_Pos    (0)
     #define RCC_PLLDLY_PLLEQUCNT        (0xFFU << RCC_PLLDLY_PLLEQUCNT_Pos)     ///< PLL delay time
 #endif
-
-
-
 #if defined(RTC_BASE)
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief RTC_CR Register Bit Definition
@@ -8887,7 +9058,342 @@ typedef struct {
     #define RTC_LSE_CFG_LSE_IB          (0x02U << RTC_LSE_CFG_LSE_IB_Pos)       ///< LSE bias current regulation
 #endif
 #endif
+////////////////////////////////////////////////////////////////////////////////
+/// @brief SDIO_MMC_CTRL Register Bit Definition
+////////////////////////////////////////////////////////////////////////////////
+#define SDIO_MMC_CTRL_OPMSel_Pos        (0)
+#define SDIO_MMC_CTRL_OPMSel            (0x01U << SDIO_MMC_CTRL_OPMSel_Pos)     ///< SD/MMC/SDIO port operation mode select
+#define SDIO_MMC_CTRL_SelSM_Pos         (1)
+#define SDIO_MMC_CTRL_SelSM             (0x01U << SDIO_MMC_CTRL_SelSM_Pos)      ///< Select automatic mode
+#define SDIO_MMC_CTRL_OUTM_Pos          (2)
+#define SDIO_MMC_CTRL_OUTM              (0x01U << SDIO_MMC_CTRL_OUTM_Pos)       ///< SD/MMC/SDIO port CMD line output driver mode selection Open drain
+#define SDIO_MMC_CTRL_CLKSP_Pos         (3)
+#define SDIO_MMC_CTRL_CLKSP2            (0x00U << SDIO_MMC_CTRL_CLKSP_Pos)      ///< SD/MMC/SDIO port CLK linespeedselection 1/2  baseclock
+#define SDIO_MMC_CTRL_CLKSP4            (0x01U << SDIO_MMC_CTRL_CLKSP_Pos)      ///< SD/MMC/SDIO port CLK linespeedselection 1/4  baseclock
+#define SDIO_MMC_CTRL_CLKSP6            (0x02U << SDIO_MMC_CTRL_CLKSP_Pos)      ///< SD/MMC/SDIO port CLK linespeedselection 1/6  baseclock
+#define SDIO_MMC_CTRL_CLKSP8            (0x03U << SDIO_MMC_CTRL_CLKSP_Pos)      ///< SD/MMC/SDIO port CLK linespeedselection 1/8  baseclock
+#define SDIO_MMC_CTRL_CLKSP10           (0x04U << SDIO_MMC_CTRL_CLKSP_Pos)      ///< SD/MMC/SDIO port CLK linespeedselection 1/10 baseclock
+#define SDIO_MMC_CTRL_CLKSP12           (0x05U << SDIO_MMC_CTRL_CLKSP_Pos)      ///< SD/MMC/SDIO port CLK linespeedselection 1/12 baseclock
+#define SDIO_MMC_CTRL_CLKSP14           (0x06U << SDIO_MMC_CTRL_CLKSP_Pos)      ///< SD/MMC/SDIO port CLK linespeedselection 1/14 baseclock
+#define SDIO_MMC_CTRL_CLKSP16           (0x07U << SDIO_MMC_CTRL_CLKSP_Pos)      ///< SD/MMC/SDIO port CLK linespeedselection 1/16 baseclock
+#define SDIO_MMC_CTRL_SelPTSM_Pos       (6)
+#define SDIO_MMC_CTRL_SelPTSM           (0x01U << SDIO_MMC_CTRL_SelPTSM_Pos)    ///< SelectSD/MMC/SDIO port transfer high speed mode
+#define SDIO_MMC_CTRL_DATWT_Pos         (7)
+#define SDIO_MMC_CTRL_DATWT             (0x01U << SDIO_MMC_CTRL_DATWT_Pos)      ///< Definethe bus width of SD/MMC/SDIO port DAT line
+#define SDIO_MMC_CTRL_MDEN_Pos          (8)
+#define SDIO_MMC_CTRL_MDEN              (0x01U << SDIO_MMC_CTRL_MDEN_Pos)       ///< SDIO mode enable
+#define SDIO_MMC_CTRL_INTEN_Pos         (9)
+#define SDIO_MMC_CTRL_INTEN             (0x01U << SDIO_MMC_CTRL_INTEN_Pos)      ///< SDIO interrupt enale signal
+#define SDIO_MMC_CTRL_RDWTEN_Pos        (10)
+#define SDIO_MMC_CTRL_RDWTEN            (0x01U << SDIO_MMC_CTRL_RDWTEN_Pos)     ///< SDIO read wait enable signal
 
+////////////////////////////////////////////////////////////////////////////////
+/// @brief SDIO_MMC_IO Register Bit Definition
+////////////////////////////////////////////////////////////////////////////////
+#define SDIO_MMC_IO_AUTODATTR_Pos       (0)
+#define SDIO_MMC_IO_AUTODATTR           (0x01U << SDIO_MMC_IO_AUTODATTR_Pos)    ///< Set up automatic data transfer
+#define SDIO_MMC_IO_TRANSFDIR_Pos       (1)
+#define SDIO_MMC_IO_TRANSFDIR           (0x01U << SDIO_MMC_IO_TRANSFDIR_Pos)    ///< Set the direction of data transfer
+#define SDIO_MMC_IO_AUTOTR_Pos          (2)
+#define SDIO_MMC_IO_AUTOTR              (0x01U << SDIO_MMC_IO_AUTOTR_Pos)       ///< Set up automatic 8-bit/command/response transmission.
+#define SDIO_MMC_IO_RESPCMDSEL_Pos      (3)
+#define SDIO_MMC_IO_RESPCMDSEL          (0x01U << SDIO_MMC_IO_RESPCMDSEL_Pos)   ///< Receive response
+#define SDIO_MMC_IO_CID_CSDRD_Pos       (4)
+#define SDIO_MMC_IO_CID_CSDRD           (0x01U << SDIO_MMC_IO_CID_CSDRD_Pos)    ///< CID and CSD reads
+#define SDIO_MMC_IO_PCLKG_Pos           (5)
+#define SDIO_MMC_IO_PCLKG               (0x01U << SDIO_MMC_IO_PCLKG_Pos)        ///< SD/MMC/SDIO port CLK line 8 empty clock generated
+#define SDIO_MMC_IO_ENRRESP_Pos         (6)
+#define SDIO_MMC_IO_ENRRESP             (0x01U << SDIO_MMC_IO_ENRRESP_Pos)      ///< Enable automatic receiving of responses after a command
+#define SDIO_MMC_IO_AUTOCLKG_Pos        (7)
+#define SDIO_MMC_IO_AUTOCLKG            (0x01U << SDIO_MMC_IO_AUTOCLKG_Pos)     ///< Enable automatic conversion of the 8 empty clock after a response/command or a single block of data
+#define SDIO_MMC_IO_CMDCH_Pos           (8)
+#define SDIO_MMC_IO_CMDCH               (0x01U << SDIO_MMC_IO_CMDCH_Pos)        ///< SDIO mode enable
+#define SDIO_MMC_IO_CMDAF_Pos           (9)
+#define SDIO_MMC_IO_CMDAF               (0x01U << SDIO_MMC_IO_CMDAF_Pos)        ///< SDIO CMD12 / IO abort flag
+
+////////////////////////////////////////////////////////////////////////////////
+/// @brief SDIO_MMC_BYTECNTL Register Bit Definition
+////////////////////////////////////////////////////////////////////////////////
+#define SDIO_MMC_BYTECNTL_CNT_Pos       (0)
+#define SDIO_MMC_BYTECNTL_CNT           (0xFFFFU << SDIO_MMC_BYTECNTL_CNT_Pos)  ///< Data transfer byte count register
+
+////////////////////////////////////////////////////////////////////////////////
+/// @brief SDIO_MMC_TR_BLOCKCNT Register Bit Definition
+////////////////////////////////////////////////////////////////////////////////
+#define SDIO_MMC_TR_BLOCKCNT_CNT_Pos    (0)
+#define SDIO_MMC_TR_BLOCKCNT_CNT        (0xFFFFU << SDIO_MMC_TR_BLOCKCNT_CNT_Pos)   ///< The value of the counter that completes the transfer when multiple blocks are transferred.
+
+////////////////////////////////////////////////////////////////////////////////
+/// @brief SDIO_MMC_CRCCTL Register Bit Definition
+////////////////////////////////////////////////////////////////////////////////
+#define SDIO_MMC_CRCCTL_DAT_CRCE_Pos    (0)
+#define SDIO_MMC_CRCCTL_DAT_CRCE        (0x01U << SDIO_MMC_CRCCTL_DAT_CRCE_Pos) ///< DAT CRC error
+#define SDIO_MMC_CRCCTL_CMD_CRCE_Pos    (1)
+#define SDIO_MMC_CRCCTL_CMD_CRCE        (0x01U << SDIO_MMC_CRCCTL_CMD_CRCE_Pos) ///< CMD CRC error
+#define SDIO_MMC_CRCCTL_DAT_CRCS_Pos    (2)
+#define SDIO_MMC_CRCCTL_DAT_CRCS        (0x03U << SDIO_MMC_CRCCTL_DAT_CRCS_Pos) ///< DAT CRC selection
+#define SDIO_MMC_CRCCTL_ENRDMB_Pos      (4)
+#define SDIO_MMC_CRCCTL_ENRDMB          (0x01U << SDIO_MMC_CRCCTL_ENRDMB_Pos)   ///< Enable reading multiple blocks of data before responding
+#define SDIO_MMC_CRCCTL_ENCHK_Pos       (5)
+#define SDIO_MMC_CRCCTL_ENCHK           (0x01U << SDIO_MMC_CRCCTL_ENCHK_Pos)    ///< Enable automatic checking
+#define SDIO_MMC_CRCCTL_DAT_CRCEN_Pos   (6)
+#define SDIO_MMC_CRCCTL_DAT_CRCEN       (0x01U << SDIO_MMC_CRCCTL_DAT_CRCEN_Pos)///< SD/MMC/SDIO PORT DAT line CRC circuit enablement
+#define SDIO_MMC_CRCCTL_CMD_CRCEN_Pos   (7)
+#define SDIO_MMC_CRCCTL_CMD_CRCEN       (0x01U << SDIO_MMC_CRCCTL_CMD_CRCEN_Pos)///< SD/MMC/SDIO port CMD line CRC circuit enablement
+
+////////////////////////////////////////////////////////////////////////////////
+/// @brief SDIO_CMD_CRC Register Bit Definition
+////////////////////////////////////////////////////////////////////////////////
+#define SDIO_CMD_CRC_CMD_CRCV_Pos       (0)
+#define SDIO_CMD_CRC_CMD_CRCV           (0x7FU << SDIO_CMD_CRC_CMD_CRCV_Pos)    ///< CMD_CRCV register value
+
+////////////////////////////////////////////////////////////////////////////////
+/// @brief SDIO_DAT_CRCL Register Bit Definition
+////////////////////////////////////////////////////////////////////////////////
+#define SDIO_DAT_CRCL_DAT_CRCLV_Pos     (0)
+#define SDIO_DAT_CRCL_DAT_CRCLV         (0xFFU << SDIO_DAT_CRCL_DAT_CRCLV_Pos)  ///< CMD_CRCV low  register value
+
+////////////////////////////////////////////////////////////////////////////////
+/// @brief SDIO_DAT_CRCH Register Bit Definition
+////////////////////////////////////////////////////////////////////////////////
+#define SDIO_DAT_CRCL_DAT_CRCHV_Pos     (0)
+#define SDIO_DAT_CRCL_DAT_CRCHV         (0xFFU << SDIO_DAT_CRCL_DAT_CRCHV_Pos)  ///< CMD_CRCV high register value
+
+////////////////////////////////////////////////////////////////////////////////
+/// @brief SDIO_MMC_PORT Register Bit Definition
+////////////////////////////////////////////////////////////////////////////////
+#define SDIO_MMC_PORT_NTCR_Pos          (0)
+#define SDIO_MMC_PORT_NTCR              (0x0FU << SDIO_MMC_PORT_NTCR_Pos)       ///< Ncr timeout count register
+#define SDIO_MMC_PORT_AUTONTEN_Pos      (4)
+#define SDIO_MMC_PORT_AUTONTEN          (0x01U << SDIO_MMC_PORT_AUTONTEN_Pos)   ///< Automatic Ncr timer output enablement
+#define SDIO_MMC_PORT_PDATS_Pos         (5)
+#define SDIO_MMC_PORT_PDATS             (0x01U << SDIO_MMC_PORT_PDATS_Pos)      ///< SD/MMC/SDIO port DAT line signal
+#define SDIO_MMC_PORT_PCMDS_Pos         (6)
+#define SDIO_MMC_PORT_PCMDS             (0x01U << SDIO_MMC_PORT_PCMDS_Pos)      ///< SD/MMC/SDIO port CMD line signal
+#define SDIO_MMC_PORT_PCLKS_Pos         (7)
+#define SDIO_MMC_PORT_PCLKS             (0x01U << SDIO_MMC_PORT_PCLKS_Pos)      ///< SD/MMC/SDIO port CLK line signal
+
+////////////////////////////////////////////////////////////////////////////////
+/// @brief SDIO_MMC_INT_MASK Register Bit Definition
+////////////////////////////////////////////////////////////////////////////////
+#define SDIO_MMC_INT_MASK_CMDDINT_Pos   (0)
+#define SDIO_MMC_INT_MASK_CMDDINT       (0x01U << SDIO_MMC_INT_MASK_CMDDINT_Pos)///<CMD completes interrupt shielding
+#define SDIO_MMC_INT_MASK_DATDINT_Pos   (1)
+#define SDIO_MMC_INT_MASK_DATDINT       (0x01U << SDIO_MMC_INT_MASK_DATDINT_Pos)///< DAT completes interrupt shielding
+#define SDIO_MMC_INT_MASK_DATEINT_Pos   (2)
+#define SDIO_MMC_INT_MASK_DATEINT       (0x01U << SDIO_MMC_INT_MASK_DATEINT_Pos)///< DAT CRC error interrupt masking
+#define SDIO_MMC_INT_MASK_CMDEINT_Pos   (3)
+#define SDIO_MMC_INT_MASK_CMDEINT       (0x01U << SDIO_MMC_INT_MASK_CMDEINT_Pos)///< CMD CRC error interrupt masking
+#define SDIO_MMC_INT_MASK_MBDINTM_Pos   (4)
+#define SDIO_MMC_INT_MASK_MBDINTM       (0x01U << SDIO_MMC_INT_MASK_MBDINTM_Pos)///< Multiple blocks complete interrupt shielding
+#define SDIO_MMC_INT_MASK_MBTINTM_Pos   (5)
+#define SDIO_MMC_INT_MASK_MBTINTM       (0x01U << SDIO_MMC_INT_MASK_MBTINTM_Pos)///< Multiblock timeout interrupt shielding
+#define SDIO_MMC_INT_MASK_CRTINTM_Pos   (6)
+#define SDIO_MMC_INT_MASK_CRTINTM       (0x01U << SDIO_MMC_INT_MASK_CRTINTM_Pos)///< Cmd and Resp Ncr timeout interrupt shielding
+#define SDIO_MMC_INT_MASK_CRCINTM_Pos   (7)
+#define SDIO_MMC_INT_MASK_CRCINTM       (0x01U << SDIO_MMC_INT_MASK_CRCINTM_Pos)///< CRC status token error interrupt masking
+#define SDIO_MMC_INT_MASK_D1INTM_Pos    (8)
+#define SDIO_MMC_INT_MASK_D1INTM        (0x01U << SDIO_MMC_INT_MASK_D1INTM_Pos) ///< SDIO Data 1 Line Interrupt Mask
+
+////////////////////////////////////////////////////////////////////////////////
+/// @brief SDIO_CLR_MMC_INT Register Bit Definition
+////////////////////////////////////////////////////////////////////////////////
+#define SDIO_CLR_MMC_INT_CMDDMC_Pos     (0)
+#define SDIO_CLR_MMC_INT_CMDDMC         (0x01U << SDIO_CLR_MMC_INT_CMDDMC_Pos)  ///< CMD completes interrupt mask bit
+#define SDIO_CLR_MMC_INT_DATDMC_Pos     (1)
+#define SDIO_CLR_MMC_INT_DATDMC         (0x01U << SDIO_CLR_MMC_INT_DATDMC_Pos)  ///< DAT completes interrupt mask bit
+#define SDIO_CLR_MMC_INT_DATEMC_Pos     (2)
+#define SDIO_CLR_MMC_INT_DATEMC         (0x01U << SDIO_CLR_MMC_INT_DATEMC_Pos)  ///< DAT CRC error interrupt mask bit
+#define SDIO_CLR_MMC_INT_CMDEMC_Pos     (3)
+#define SDIO_CLR_MMC_INT_CMDEMC         (0x01U << SDIO_CLR_MMC_INT_CMDEMC_Pos)  ///< CMD CRC error interrupt mask bit
+#define SDIO_CLR_MMC_INT_MBDMC_Pos      (4)
+#define SDIO_CLR_MMC_INT_MBDMC          (0x01U << SDIO_CLR_MMC_INT_MBDMC_Pos)   ///< Multi - block transmission completion interrupt mask bit
+#define SDIO_CLR_MMC_INT_MBTMC_Pos      (5)
+#define SDIO_CLR_MMC_INT_MBTMC          (0x01U << SDIO_CLR_MMC_INT_MBTMC_Pos)   ///< Multiblock transmission timeout interrupt mask bit
+#define SDIO_CLR_MMC_INT_CRNTMC_Pos     (6)
+#define SDIO_CLR_MMC_INT_CRNTMC         (0x01U << SDIO_CLR_MMC_INT_CRNTMC_Pos)  ///< Command and response Ncr timeout interrupt mask bit
+#define SDIO_CLR_MMC_INT_CRCEMC_Pos     (7)
+#define SDIO_CLR_MMC_INT_CRCEMC         (0x01U << SDIO_CLR_MMC_INT_CRCEMC_Pos)  ///< CRC status error marks the interrupt mask bit
+#define SDIO_CLR_MMC_INT_D1MC_Pos       (8)
+#define SDIO_CLR_MMC_INT_D1MC           (0x01U << SDIO_CLR_MMC_INT_D1MC_Pos)    ///< SDIO DatA1 line interrupt flag/clear bit
+#define SDIO_CLR_MMC_INT_MASK           (0XFFU)
+
+////////////////////////////////////////////////////////////////////////////////
+/// @brief SDIO_MMC_CARDSEL Register Bit Definition
+////////////////////////////////////////////////////////////////////////////////
+#define SDIO_MMC_CARDSEL_TSCALE_Pos     (0)
+#define SDIO_MMC_CARDSEL_TSCALE         (0x01U << SDIO_MMC_CARDSEL_TSCALE_Pos)  ///< SD/MMC/SDIO clock frequency division factor (based on 1MHz
+#define SDIO_MMC_CARDSEL_ENPCLK_Pos     (6)
+#define SDIO_MMC_CARDSEL_ENPCLK         (0x01U << SDIO_MMC_CARDSEL_ENPCLK_Pos)  ///< Enabling card's SD/MMC/SDIO port CLK clock
+#define SDIO_MMC_CARDSEL_CTREN_Pos      (7)
+#define SDIO_MMC_CARDSEL_CTREN          (0x01U << SDIO_MMC_CARDSEL_CTREN_Pos)   ///< SD/MMC/SDIO controller enablement bit
+
+////////////////////////////////////////////////////////////////////////////////
+/// @brief SDIO_MMC_SIQ Register Bit Definition
+////////////////////////////////////////////////////////////////////////////////
+#define SDIO_MMC_SIQ_PDAT0S_Pos         (0)
+#define SDIO_MMC_SIQ_PDAT0S             (0x01U << SDIO_MMC_SIQ_PDAT0S_Pos)      ///< SD/MMC/SDIO port DAT0 line signal
+#define SDIO_MMC_SIQ_PDAT1S_Pos         (1)
+#define SDIO_MMC_SIQ_PDAT1S             (0x01U << SDIO_MMC_SIQ_PDAT1S_Pos)      ///< SD/MMC/SDIO port DAT1 line signal
+#define SDIO_MMC_SIQ_PDAT2S_Pos         (2)
+#define SDIO_MMC_SIQ_PDAT2S             (0x01U << SDIO_MMC_SIQ_PDAT2S_Pos)      ///< SD/MMC/SDIO port DAT2 line signal
+#define SDIO_MMC_SIQ_PDAT3S_Pos         (3)
+#define SDIO_MMC_SIQ_PDAT3S             (0x01U << SDIO_MMC_SIQ_PDAT3S_Pos)      ///< SD/MMC/SDIO port DAT3 line signal
+#define SDIO_MMC_SIQ_CRC_status_Pos     (4)
+#define SDIO_MMC_SIQ_CRC_status         (0x07U << SDIO_MMC_SIQ_CRC_status_Pos)  ///< CRC state
+#define SDIO_MMC_SIQ_PCMDS_Pos          (7)
+#define SDIO_MMC_SIQ_PCMDS              (0x01U << SDIO_MMC_SIQ_PCMDS_Pos)       ///< SD/MMC/SDIO port CMD line signal
+
+////////////////////////////////////////////////////////////////////////////////
+/// @brief SDIO_MMC_IO_MBCTL Register Bit Definition
+////////////////////////////////////////////////////////////////////////////////
+#define SDIO_MMC_IO_MBCTL_SPMBDTR_Pos   (0)
+#define SDIO_MMC_IO_MBCTL_SPMBDTR       (0x01U << SDIO_MMC_IO_MBCTL_SPMBDTR_Pos)///< Set the SD/MMC/SDIO port to automatically multiblock data transfer bit
+#define SDIO_MMC_IO_MBCTL_SMBDTD_Pos    (1)
+#define SDIO_MMC_IO_MBCTL_SMBDTD        (0x01U << SDIO_MMC_IO_MBCTL_SMBDTD_Pos) //< Multi - block data transfer direction selection bit
+#define SDIO_MMC_IO_MBCTL_PAUTOTR_Pos   (2)
+#define SDIO_MMC_IO_MBCTL_PAUTOTR       (0x01U << SDIO_MMC_IO_MBCTL_PAUTOTR_Pos)///< Set up SD/MMC/SDIO port automatic command and multi - block data transfer
+#define SDIO_MMC_IO_MBCTL_PCLKP_Pos     (3)
+#define SDIO_MMC_IO_MBCTL_PCLKP         (0x01U << SDIO_MMC_IO_MBCTL_PCLKP_Pos)  ///< SD/MMC/SDIO port CLK line polarity selection bit
+#define SDIO_MMC_IO_MBCTL_BTSSel_Pos    (4)
+#define SDIO_MMC_IO_MBCTL_BTSSel        (0x03U << SDIO_MMC_IO_MBCTL_BTSSel_Pos) ///< SD/MMC/SDIO BUSY Timeout level selects bits
+#define SDIO_MMC_IO_MBCTL_BTSSel_2      (0x02U << SDIO_MMC_IO_MBCTL_BTSSel_Pos) ///< SD/MMC/SDIO BUSY Timeout level selects bits
+#define SDIO_MMC_IO_MBCTL_NTSSel_Pos    (6)
+#define SDIO_MMC_IO_MBCTL_NTSSel        (0x03U << SDIO_MMC_IO_MBCTL_NTSSel_Pos) ///< SD/MMC/SDIO NAC timeout level selection bit
+
+////////////////////////////////////////////////////////////////////////////////
+/// @brief SDIO_MMC_BLOCKCNT Register Bit Definition
+////////////////////////////////////////////////////////////////////////////////
+#define SDIO_MMC_BLOCKCNT_EN_Pos        (0)
+#define SDIO_MMC_BLOCKCNT_EN            (0xFFFFU << SDIO_MMC_BLOCKCNT_EN_Pos)   ///< Block count register
+
+////////////////////////////////////////////////////////////////////////////////
+/// @brief SDIO_MMC_TIMEOUTCNT Register Bit Definition
+////////////////////////////////////////////////////////////////////////////////
+#define SDIO_MMC_TIMEOUTCNT_DTCNT_Pos   (0)
+#define SDIO_MMC_TIMEOUTCNT_DTCNT       (0xFFU << SDIO_MMC_TIMEOUTCNT_DTCNT_Pos)///< Data transfer timeout count register
+
+////////////////////////////////////////////////////////////////////////////////
+/// @brief SDIO_CMD_BUF0 Register Bit Definition
+////////////////////////////////////////////////////////////////////////////////
+#define SDIO_CMD_BUF0_DAT_Pos           (0)
+#define SDIO_CMD_BUF0_DAT               (0xFFU << SDIO_CMD_BUF0_DAT_Pos)        ///< Cmd_buf0 byte mapping bit
+
+////////////////////////////////////////////////////////////////////////////////
+/// @brief SDIO_CMD_BUF1 Register Bit Definition
+////////////////////////////////////////////////////////////////////////////////
+#define SDIO_CMD_BUF1_DAT_Pos           (0)
+#define SDIO_CMD_BUF1_DAT               (0xFFU << SDIO_CMD_BUF1_DAT_Pos)        ///< Cmd_buf1 byte mapping bit
+
+////////////////////////////////////////////////////////////////////////////////
+/// @brief SDIO_CMD_BUF2 Register Bit Definition
+////////////////////////////////////////////////////////////////////////////////
+#define SDIO_CMD_BUF2_DAT_Pos           (0)
+#define SDIO_CMD_BUF2_DAT               (0xFFU << SDIO_CMD_BUF2_DAT_Pos)        ///< Cmd_buf2 byte mapping bit
+
+////////////////////////////////////////////////////////////////////////////////
+/// @brief SDIO_CMD_BUF3 Register Bit Definition
+////////////////////////////////////////////////////////////////////////////////
+#define SDIO_CMD_BUF3_DAT_Pos           (0)
+#define SDIO_CMD_BUF3_DAT               (0xFFU << SDIO_CMD_BUF3_DAT_Pos)        ///< Cmd_buf3 byte mapping bit
+
+////////////////////////////////////////////////////////////////////////////////
+/// @brief SDIO_CMD_BUF4 Register Bit Definition
+////////////////////////////////////////////////////////////////////////////////
+#define SDIO_CMD_BUF4_DAT_Pos           (0)
+#define SDIO_CMD_BUF4_DAT               (0xFFU << SDIO_CMD_BUF4_DAT_Pos)        ///< Cmd_buf4 byte mapping bit
+
+////////////////////////////////////////////////////////////////////////////////
+/// @brief SDIO_CMD_BUF5 Register Bit Definition
+////////////////////////////////////////////////////////////////////////////////
+#define SDIO_CMD_BUF5_DAT_Pos           (0)
+#define SDIO_CMD_BUF5_DAT               (0xFFU << SDIO_CMD_BUF5_DAT_Pos)        ///< Cmd_buf5 byte mapping bit
+
+////////////////////////////////////////////////////////////////////////////////
+/// @brief SDIO_CMD_BUF6 Register Bit Definition
+////////////////////////////////////////////////////////////////////////////////
+#define SDIO_CMD_BUF6_DAT_Pos           (0)
+#define SDIO_CMD_BUF6_DAT               (0xFFU << SDIO_CMD_BUF6_DAT_Pos)        ///< Cmd_buf6 byte mapping bit
+
+////////////////////////////////////////////////////////////////////////////////
+/// @brief SDIO_CMD_BUF7 Register Bit Definition
+////////////////////////////////////////////////////////////////////////////////
+#define SDIO_CMD_BUF7_DAT_Pos           (0)
+#define SDIO_CMD_BUF7_DAT               (0xFFU << SDIO_CMD_BUF7_DAT_Pos)        ///< Cmd_buf7 byte mapping bit
+
+////////////////////////////////////////////////////////////////////////////////
+/// @brief SDIO_CMD_BUF8 Register Bit Definition
+////////////////////////////////////////////////////////////////////////////////
+#define SDIO_CMD_BUF8_DAT_Pos           (0)
+#define SDIO_CMD_BUF8_DAT               (0xFFU << SDIO_CMD_BUF8_DAT_Pos)        ///< Cmd_buf8 byte mapping bit
+
+////////////////////////////////////////////////////////////////////////////////
+/// @brief SDIO_CMD_BUF9 Register Bit Definition
+////////////////////////////////////////////////////////////////////////////////
+#define SDIO_CMD_BUF9_DAT_Pos           (0)
+#define SDIO_CMD_BUF9_DAT               (0xFFU << SDIO_CMD_BUF9_DAT_Pos)        ///< Cmd_buf9 byte mapping bit
+
+////////////////////////////////////////////////////////////////////////////////
+/// @brief SDIO_CMD_BUF10 Register Bit Definition
+////////////////////////////////////////////////////////////////////////////////
+#define SDIO_CMD_BUF10_DAT_Pos          (0)
+#define SDIO_CMD_BUF10_DAT              (0xFFU << SDIO_CMD_BUF10_DAT_Pos)       ///< Cmd_buf10 byte mapping bit
+
+////////////////////////////////////////////////////////////////////////////////
+/// @brief SDIO_CMD_BUF11 Register Bit Definition
+////////////////////////////////////////////////////////////////////////////////
+#define SDIO_CMD_BUF11_DAT_Pos          (0)
+#define SDIO_CMD_BUF11_DAT              (0xFFU << SDIO_CMD_BUF11_DAT_Pos)       ///< Cmd_buf11 byte mapping bit
+
+////////////////////////////////////////////////////////////////////////////////
+/// @brief SDIO_CMD_BUF12 Register Bit Definition
+////////////////////////////////////////////////////////////////////////////////
+#define SDIO_CMD_BUF12_DAT_Pos          (0)
+#define SDIO_CMD_BUF12_DAT              (0xFFU << SDIO_CMD_BUF12_DAT_Pos)       ///< Cmd_buf12 byte mapping bit
+
+////////////////////////////////////////////////////////////////////////////////
+/// @brief SDIO_CMD_BUF13 Register Bit Definition
+////////////////////////////////////////////////////////////////////////////////
+#define SDIO_CMD_BUF13_DAT_Pos          (0)
+#define SDIO_CMD_BUF13_DAT              (0xFFU << SDIO_CMD_BUF13_DAT_Pos)       ///< Cmd_buf13 byte mapping bit
+
+////////////////////////////////////////////////////////////////////////////////
+/// @brief SDIO_CMD_BUF14 Register Bit Definition
+////////////////////////////////////////////////////////////////////////////////
+#define SDIO_CMD_BUF14_DAT_Pos          (0)
+#define SDIO_CMD_BUF14_DAT              (0xFFU << SDIO_CMD_BUF14_DAT_Pos)       ///< Cmd_buf14 byte mapping bit
+
+////////////////////////////////////////////////////////////////////////////////
+/// @brief SDIO_CMD_BUF15 Register Bit Definition
+////////////////////////////////////////////////////////////////////////////////
+#define SDIO_CMD_BUF15_DAT_Pos          (0)
+#define SDIO_CMD_BUF15_DAT              (0xFFU << SDIO_CMD_BUF15_DAT_Pos)       ///< Cmd_buf15 byte mapping bit
+
+////////////////////////////////////////////////////////////////////////////////
+/// @brief SDIO_BUF_CTLL Register Bit Definition
+////////////////////////////////////////////////////////////////////////////////
+#define SDIO_BUF_CTLL_DBF_Pos           (0)
+#define SDIO_BUF_CTLL_DBF               (0x01U << SDIO_BUF_CTLL_DBF_Pos)        ///< The data cache is full
+#define SDIO_BUF_CTLL_DBE_Pos           (1)
+#define SDIO_BUF_CTLL_DBE               (0x01U << SDIO_BUF_CTLL_DBE_Pos)        ///< Data buff is null
+#define SDIO_BUF_CTLL_DBML_Pos          (2)
+#define SDIO_BUF_CTLL_DBML              (0xFFU << SDIO_BUF_CTLL_DBML_Pos)       ////< Data buff tags
+#define SDIO_BUF_CTLL_DMAHEN_Pos        (10)
+#define SDIO_BUF_CTLL_DMAHEN            (0x01U << SDIO_BUF_CTLL_DMAHEN_Pos)     ///< DMA hardware interface enablement
+#define SDIO_BUF_CTLL_SBAD_Pos          (11)
+#define SDIO_BUF_CTLL_SBAD              (0x01U << SDIO_BUF_CTLL_SBAD_Pos)       ///< Sets the access direction of the buff
+#define SDIO_BUF_CTLL_DFIFOSM_Pos       (12)
+#define SDIO_BUF_CTLL_DFIFOSM           (0x01U << SDIO_BUF_CTLL_DFIFOSM_Pos)    ///< Data FIFO status signal shielding bit
+#define SDIO_BUF_CTLL_DRM_Pos           (14)
+#define SDIO_BUF_CTLL_DRM               (0x01U << SDIO_BUF_CTLL_DRM_Pos)        ///< DMA request masking
+#define SDIO_BUF_CTLL_DBFEN_Pos         (15)
+#define SDIO_BUF_CTLL_DBFEN             (0x01U << SDIO_BUF_CTLL_DBFEN_Pos)      ///< Data Buf empty enable bit
+
+////////////////////////////////////////////////////////////////////////////////
+/// @brief SDIO_DATA_BUF Register Bit Definition
+////////////////////////////////////////////////////////////////////////////////
+#define SDIO_DATA_BUF_DB_Pos            (0)
+#define SDIO_DATA_BUF_DB                (0xFFFFFFFFU << SDIO_DATA_BUF_DB_Pos)   ///< Data buffer
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief SPI_TDR Register Bit Definition
 ////////////////////////////////////////////////////////////////////////////////
@@ -9073,7 +9579,6 @@ typedef struct {
 #define SPI_I2S_CFGR_MCKOE              (0x01 << SPI_I2S_CFGR_MCKOE_Pos)
 #define SPI_I2S_CFGR_I2SDIV_Pos         (16)
 #define SPI_I2S_CFGR_I2SDIV             (0x01FF << SPI_I2S_CFGR_I2SDIV_Pos)
-
 #if defined(SQRT_BASE)
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief HWSQRT Register Bit Definition
@@ -9087,7 +9592,6 @@ typedef struct {
     #define SQRT_RESULT_RESULT_Pos      (0)
     #define SQRT_RESULT_RESULT          (0xFFFFU << SQRT_RESULT_RESULT_Pos)     ///< Square result register
 #endif
-
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief TIM_CR1 Register Bit Definition
 ////////////////////////////////////////////////////////////////////////////////
@@ -9636,7 +10140,7 @@ typedef struct {
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief TIM_CCR5 Register Bit Definition
 ////////////////////////////////////////////////////////////////////////////////
-    #define TIM_CCR5_CCR5               (0xFFFF)                                ///< Capture/Compare 5 Value
+    #define TIM_CCR5_CCR5               (0xFFFFU)                               ///< Capture/Compare 5 Value
 #endif
 
 #if !(defined(__MM3N1) || defined(__MM0N1) || defined(__MM3O1) || defined(__MM0P1) || defined(__MM0Q1))
@@ -9681,7 +10185,6 @@ typedef struct {
 ////////////////////////////////////////////////////////////////////////////////
     #define TIM_CCR5FALL_CCR5FALL       (0xFFFFU)                               ///< Capture/compare value for ch5 when counting down in PWM center-aligned mode
 #endif
-
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief UART_TDR Register Bit Definition
 ////////////////////////////////////////////////////////////////////////////////
@@ -9909,7 +10412,126 @@ typedef struct {
 #define UART_ABRCR_FORMEREDGE           (0x01U << UART_ABRCR_FORMEREDGE_Pos)
 #define UART_ABRCR_LATTEREDGE_Pos       (4)
 #define UART_ABRCR_LATTEREDGE           (0x01U << UART_ABRCR_LATTEREDGE_Pos)
+////////////////////////////////////////////////////////////////////////////////
+/// @brief SYSCFG_CFGR1 Register Bit Definition
+////////////////////////////////////////////////////////////////////////////////
+#define SYSCFG_CFGR_MEM_MODE_Pos        (0)
+#define SYSCFG_CFGR_MEM_MODE            (0x03U << SYSCFG_CFGR_MEM_MODE_Pos)     ///< Memory selection bit
+#define SYSCFG_CFGR_ADC_Pos             (8)
+#define SYSCFG_CFGR_ADC                 (0x01U << SYSCFG_CFGR_ADC_Pos)          ///< ADC DMA request remap-ping bit
+#define SYSCFG_CFGR_UART1_TX_Pos        (9)
+#define SYSCFG_CFGR_UART1_TX            (0x01U << SYSCFG_CFGR_UART1_TX_Pos)     ///< UART1  TX DMA request remap-ping bit
+#define SYSCFG_CFGR_UART1_RX_Pos        (10)
+#define SYSCFG_CFGR_UART1_RX            (0x01U << SYSCFG_CFGR_UART1_RX_Pos)     ///< UART1 RX DMA request remap-ping bit
+#define SYSCFG_CFGR_TIM16_Pos           (11)
+#define SYSCFG_CFGR_TIM16               (0x01U << SYSCFG_CFGR_TIM16_Pos)        ///< TIM16 DMA request remap-ping bit
+#define SYSCFG_CFGR_TIM17_Pos           (12)
+#define SYSCFG_CFGR_TIM17               (0x01U << SYSCFG_CFGR_TIM17_Pos)        ///< TIM17 DMA request remap-ping bit
 
+#define SYSCFG_CFGR_PD01_Pos            (31)
+#define SYSCFG_CFGR_PD01                (0x01U << SYSCFG_CFGR_PD01_Pos)         ///<Port D0/Port D1 are mapped to OSC_IN/OSC_OUT
+
+////////////////////////////////////////////////////////////////////////////////
+/// @brief SYSCFG_CFGR1 Register Bit Definition
+////////////////////////////////////////////////////////////////////////////////
+#define SYSCFG_CFGR1_MEM_MODE_Pos       (0)
+#define SYSCFG_CFGR1_MEM_MODE           (0x03U << SYSCFG_CFGR1_MEM_MODE_Pos)    ///< Memory selection bit
+#define SYSCFG_CFGR1_FC_SYNC_Pos        (27)
+#define SYSCFG_CFGR1_FC_SYNC            (0x01U << SYSCFG_CFGR1_FC_SYNC_Pos)     ///< FSMC synchronization enable
+#define SYSCFG_CFGR1_FC_ODATA_Pos       (28)
+#define SYSCFG_CFGR1_FC_ODATA           (0x01U << SYSCFG_CFGR1_FC_ODATA_Pos)    ///< FSMC address data multiplexing pin  enable
+#define SYSCFG_CFGR1_MODESEL_Pos        (29)
+#define SYSCFG_CFGR1_MODESEL            (0x03U << SYSCFG_CFGR1_MODESEL_Pos)     ///< FSMC mode selection
+
+////////////////////////////////////////////////////////////////////////////////
+/// @brief SYSCFG_EXTICR1 Register Bit Definition
+////////////////////////////////////////////////////////////////////////////////
+#define SYSCFG_EXTICR1_EXTI0_Pos        (0)
+#define SYSCFG_EXTICR1_EXTI0            (0x0FU << SYSCFG_EXTICR1_EXTI0_Pos)     ///< EXTI 0 configuration
+#define SYSCFG_EXTICR1_EXTI1_Pos        (4)
+#define SYSCFG_EXTICR1_EXTI1            (0x0FU << SYSCFG_EXTICR1_EXTI1_Pos)     ///< EXTI 1 configuration
+#define SYSCFG_EXTICR1_EXTI2_Pos        (8)
+#define SYSCFG_EXTICR1_EXTI2            (0x0FU << SYSCFG_EXTICR1_EXTI2_Pos)     ///< EXTI 2 configuration
+#define SYSCFG_EXTICR1_EXTI3_Pos        (12)
+#define SYSCFG_EXTICR1_EXTI3            (0x0FU << SYSCFG_EXTICR1_EXTI3_Pos)     ///< EXTI 3 configuration
+
+////////////////////////////////////////////////////////////////////////////////
+/// @brief SYSCFG_EXTICR2 Register Bit Definition
+////////////////////////////////////////////////////////////////////////////////
+#define SYSCFG_EXTICR2_EXTI4_Pos        (0)
+#define SYSCFG_EXTICR2_EXTI4            (0x0FU << SYSCFG_EXTICR2_EXTI4_Pos)     ///< EXTI 4 configuration
+#define SYSCFG_EXTICR2_EXTI5_Pos        (4)
+#define SYSCFG_EXTICR2_EXTI5            (0x0FU << SYSCFG_EXTICR2_EXTI5_Pos)     ///< EXTI 5 configuration
+#define SYSCFG_EXTICR2_EXTI6_Pos        (8)
+#define SYSCFG_EXTICR2_EXTI6            (0x0FU << SYSCFG_EXTICR2_EXTI6_Pos)     ///< EXTI 6 configuration
+#define SYSCFG_EXTICR2_EXTI7_Pos        (12)
+#define SYSCFG_EXTICR2_EXTI7            (0x0FU << SYSCFG_EXTICR2_EXTI7_Pos)     ///< EXTI 7 configuration
+
+////////////////////////////////////////////////////////////////////////////////
+/// @brief SYSCFG_EXTICR3 Register Bit Definition
+////////////////////////////////////////////////////////////////////////////////
+#define SYSCFG_EXTICR3_EXTI8_Pos        (0)
+#define SYSCFG_EXTICR3_EXTI8            (0x0FU << SYSCFG_EXTICR3_EXTI8_Pos)     ///< EXTI 8 configuration
+#define SYSCFG_EXTICR3_EXTI9_Pos        (4)
+#define SYSCFG_EXTICR3_EXTI9            (0x0FU << SYSCFG_EXTICR3_EXTI9_Pos)     ///< EXTI 9 configuration
+#define SYSCFG_EXTICR3_EXTI10_Pos       (8)
+#define SYSCFG_EXTICR3_EXTI10           (0x0FU << SYSCFG_EXTICR3_EXTI10_Pos)    ///< EXTI 10 configuration
+#define SYSCFG_EXTICR3_EXTI11_Pos       (12)
+#define SYSCFG_EXTICR3_EXTI11           (0x0FU << SYSCFG_EXTICR3_EXTI11_Pos)    ///< EXTI 11 configuration
+
+////////////////////////////////////////////////////////////////////////////////
+/// @brief SYSCFG_EXTICR4 Register Bit Definition
+////////////////////////////////////////////////////////////////////////////////
+#define SYSCFG_EXTICR4_EXTI12_Pos       (0)
+#define SYSCFG_EXTICR4_EXTI12           (0x0FU << SYSCFG_EXTICR4_EXTI12_Pos)    ///< EXTI 12 configuration
+#define SYSCFG_EXTICR4_EXTI13_Pos       (4)
+#define SYSCFG_EXTICR4_EXTI13           (0x0FU << SYSCFG_EXTICR4_EXTI13_Pos)    ///< EXTI 13 configuration
+#define SYSCFG_EXTICR4_EXTI14_Pos       (8)
+#define SYSCFG_EXTICR4_EXTI14           (0x0FU << SYSCFG_EXTICR4_EXTI14_Pos)    ///< EXTI 14 configuration
+#define SYSCFG_EXTICR4_EXTI15_Pos       (12)
+#define SYSCFG_EXTICR4_EXTI15           (0x0FU << SYSCFG_EXTICR4_EXTI15_Pos)    ///< EXTI 15 configuration
+
+////////////////////////////////////////////////////////////////////////////////
+/// @brief SYSCFG_PADHYS Register Bit Definition
+////////////////////////////////////////////////////////////////////////////////
+#define SYSCFG_PADHYS_I2C_MODE_Pos      (0)
+#define SYSCFG_PADHYS_I2C_MODE          (0x01U << SYSCFG_PADHYS_I2C_MODE_Pos)   ///< EXTI I2C1 mode selection
+
+////////////////////////////////////////////////////////////////////////////////
+/// @brief SYSCFG_CFGR2 Register Bit Definition
+////////////////////////////////////////////////////////////////////////////////
+#define SYSCFG_CFGR2_I2C1_MODE_Pos      (16)
+#define SYSCFG_CFGR2_I2C1_MODE          (0x01U << SYSCFG_CFGR2_I2C1_MODE_Pos)   ///< I2C1 mode selection
+#define SYSCFG_CFGR2_I2C2_MODE_Pos      (17)
+#define SYSCFG_CFGR2_I2C2_MODE          (0x01U << SYSCFG_CFGR2_I2C2_MODE_Pos)   ///< I2C2 mode selection
+#define SYSCFG_CFGR2_MII_RMII_Pos       (20)
+#define SYSCFG_CFGR2_MII_RMII           (0x01U << SYSCFG_CFGR2_MII_RMII_Pos)    ///< Ethernet PHY interface selection
+#define SYSCFG_CFGR2_MAC_SPD_Pos        (21)
+#define SYSCFG_CFGR2_MAC_SPD            (0x01U << SYSCFG_CFGR2_MAC_SPD_Pos)     ///< MAC SPD selection
+
+////////////////////////////////////////////////////////////////////////////////
+/// @brief SYSCFG_PDETCSR Register Bit Definition
+////////////////////////////////////////////////////////////////////////////////
+#define SYSCFG_PDETCSR_PVDE_Pos         (0)
+#define SYSCFG_PDETCSR_PVDE             (0x01U << SYSCFG_PDETCSR_PVDE_Pos)      ///< PVD enable
+#define SYSCFG_PDETCSR_PLS_Pos          (1)
+#define SYSCFG_PDETCSR_PLS              (0x0FU << SYSCFG_PDETCSR_PLS_Pos)       ///< PVD selsection
+#define SYSCFG_PDETCSR_PVDO_Pos         (5)
+#define SYSCFG_PDETCSR_PVDO             (0x01U << SYSCFG_PDETCSR_PVDO_Pos)      ///< PVD output status
+#define SYSCFG_PDETCSR_VDTO_Pos         (6)
+#define SYSCFG_PDETCSR_VDTO             (0x01U << SYSCFG_PDETCSR_VDTO_Pos)      ///< VDTO output status
+#define SYSCFG_PDETCSR_VDTE_Pos         (8)
+#define SYSCFG_PDETCSR_VDTE             (0x01U << SYSCFG_PDETCSR_VDTE_Pos)      ///< VDT enable
+#define SYSCFG_PDETCSR_VDTLS_Pos        (9)
+#define SYSCFG_PDETCSR_VDTLS            (0x03U << SYSCFG_PDETCSR_VDTLS_Pos)     ///< VDT detection threshold selection
+#define SYSCFG_PDETCSR_VBAT_DIV3EN_Pos  (11)
+#define SYSCFG_PDETCSR_VBAT_DIV3EN      (0x01U << SYSCFG_PDETCSR_VBAT_DIV3EN_Pos)   ///< ADC detection VBat_DIV3 partial pressure value enable
+
+////////////////////////////////////////////////////////////////////////////////
+/// @brief SYSCFG_VOSDLY Register Bit Definition
+////////////////////////////////////////////////////////////////////////////////
+#define SYSCFG_VOSDLY_CNT_Pos           (0)
+#define SYSCFG_VOSDLY_CNT               (0x01U << SYSCFG_VOSDLY_CNT_Pos)        ///< VOS delay time
 #if defined(USB_BASE)
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief USB_TOP Register Bit Definition
@@ -10296,7 +10918,6 @@ typedef struct {
 #define USB_AHB_RST_EP3                 (0x01U << USB_AHB_RST_EP0_Pos )
 #endif
 #endif
-
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief WWDG_CR Register Bit Definition
 ////////////////////////////////////////////////////////////////////////////////
@@ -10324,11 +10945,6 @@ typedef struct {
 ////////////////////////////////////////////////////////////////////////////////
 #define WWDG_SR_EWIF_Pos                (0)
 #define WWDG_SR_EWIF                    (0x01U << WWDG_SR_EWIF_Pos)             ///< Early Wakeup Interrupt Flag
-
-
-////////////////////////////////////////////////////////////////////////////////
-#include "vcdefine_v1.h"
-////////////////////////////////////////////////////////////////////////////////
 
 ////////////////////////////////////////////////////////////////////////////////
 #endif // __MM32_H

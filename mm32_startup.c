@@ -1,7 +1,7 @@
-#define _STARTUP_MM32_C_
+#define _MM32_STARTUP_C_
 
 #include "stdint.h"
-#include "startup_mm32.h"
+#include "mm32_startup.h"
 
 ////////////////////////////////////////////////////////////////////////////////
 ///

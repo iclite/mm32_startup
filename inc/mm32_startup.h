@@ -1,5 +1,5 @@
-#ifndef __STARTUP_MM32_H__
-#define __STARTUP_MM32_H__
+#ifndef __MM32_STARTUP_H__
+#define __MM32_STARTUP_H__
 
 typedef void( *intfunc )( void );
 typedef union { intfunc __fun; void * __ptr; } intvec_elem;
@@ -1130,4 +1130,4 @@ void UART8_IRQHandler                   (void);                                 
                                         { UART8_IRQHandler }
 #endif
 
-#endif // __STARTUP_MM32_H__
+#endif // __MM32_STARTUP_H__

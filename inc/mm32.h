@@ -480,11 +480,11 @@ typedef enum IRQn {
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief DBG Base Address Definition
 ////////////////////////////////////////////////////////////////////////////////
-#if defined(__MM3N1) || defined(__MM3O1) || defined(__MM3U1)
+#if defined(__CORTEX_M) && (__CORTEX_M == 3U)
     #define DBG_BASE                    (0x40007080U)                           ///< Base Address: APB1 0x40007080
 #endif
 
-#if defined(__MM0N1) || defined(__MM0P1) || defined(__MM0Q1) || defined(__MM0S1) || defined(__MM0T1)
+#if defined(__CORTEX_M) && (__CORTEX_M == 0U)
     #define DBG_BASE                    (0x40013400U)                           ///< Base Address: APB2 0x40013400
 #endif
 
@@ -2997,7 +2997,6 @@ typedef struct {
 #define  ADC_CHDR_VALID_Pos             (21)
 #define  ADC_CHDR_VALID                 (0x01U << ADC_CHDR_VALID_Pos)           ///< ADC data valid flag
 
-#if defined(__MM0P1) || defined(__MM0Q1) || defined(__MM0S1) || defined(__MM3U1)
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief ADC_SREXT Register Bit Definition
 ////////////////////////////////////////////////////////////////////////////////
@@ -3028,14 +3027,12 @@ typedef struct {
     #define  ADC_SREXT_JEOCIF           (0x01U << ADC_SREXT_JEOCIF_Pos)         ///< OVERRUN[1:0] ADC channel 14, 15 data covered flag
     #define  ADC_SREXT_JEOSIF_Pos       (20)
     #define  ADC_SREXT_JEOSIF           (0x01U << ADC_SREXT_JEOSIF_Pos)         ///< OVERRUN[1:0] ADC channel 14, 15 data covered flag
-
-#endif
 #endif
 
-#if defined(__MM0S1) || defined(__MM0T1) || defined(__MM3U1)
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief ADC_CHANY0 Register Bit Definition
 ////////////////////////////////////////////////////////////////////////////////
+#if defined(__MM0S1) || defined(__MM0T1) || defined(__MM3U1)
     #define  ADC_CHANY0_CHANY_SEL0_Pos  (0)
     #define  ADC_CHANY0_CHANY_SEL0      (0x0FU << ADC_CHANY0_CHANY_SEL0_Pos)    ///< Can be configured as any channel from ch0 to 9, 14 to 15.
     #define  ADC_CHANY0_CHANY_SEL1_Pos  (4)
@@ -3052,6 +3049,7 @@ typedef struct {
     #define  ADC_CHANY0_CHANY_SEL6      (0x0FU << ADC_CHANY0_CHANY_SEL6_Pos)    ///< Can be configured as any channel from ch0 to 9, 14 to 15.
     #define  ADC_CHANY0_CHANY_SEL7_Pos  (28)
     #define  ADC_CHANY0_CHANY_SEL7      (0x0FU << ADC_CHANY0_CHANY_SEL7_Pos)    ///< Can be configured as any channel from ch0 to 9, 14 to 15.
+#endif
 
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief ADC_CHANY1 Register Bit Definition
@@ -3088,14 +3086,16 @@ typedef struct {
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief ANY_CFG Register Bit Definition
 ////////////////////////////////////////////////////////////////////////////////
-#define  ADC_ANY_CFG_CHANY_NUM_Pos      (0)
-#define  ADC_ANY_CFG_CHANY_NUM          (0x0FU << ADC_ANY_CFG_CHANY_NUM_Pos)    ///< channel number configuration
-
+#if defined(__MM0S1) || defined(__MM0T1) || defined(__MM3U1)
+    #define  ADC_ANY_CFG_CHANY_NUM_Pos  (0)
+    #define  ADC_ANY_CFG_CHANY_NUM      (0x0FU << ADC_ANY_CFG_CHANY_NUM_Pos)    ///< channel number configuration
+#endif
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief ANY_CR Register Bit Definition
 ////////////////////////////////////////////////////////////////////////////////
-#define  ADC_ANY_CR_CHANY_MDEN_Pos      (0)
-#define  ADC_ANY_CR_CHANY_MDEN          (0x01U << ADC_ANY_CR_CHANY_MDEN_Pos)    ///< Any channel configuration mode enable bit
+#if defined(__MM0S1) || defined(__MM0T1) || defined(__MM3U1)
+    #define  ADC_ANY_CR_CHANY_MDEN_Pos  (0)
+    #define  ADC_ANY_CR_CHANY_MDEN      (0x01U << ADC_ANY_CR_CHANY_MDEN_Pos)    ///< Any channel configuration mode enable bit
 #if defined(__MM3U1)
     #define  ADC_ANY_CR_JCEN_Pos        (1)
     #define  ADC_ANY_CR_JCEN            (0x01U << ADC_ANY_CR_JCEN_Pos)
@@ -3133,7 +3133,25 @@ typedef struct {
     #define  ADC_ANY_CR_JTRGEDGE        (0x02U << ADC_ANY_CR_JTRGEDGE_Pos)
 #endif
 #endif
+
+////////////////////////////////////////////////////////////////////////////////
+/// @brief SMPR1 Register Bit Definition
+////////////////////////////////////////////////////////////////////////////////
 #if defined(__MM3U1)
+    #define ADC_SMPRx_SAMCTL_2_5        (0x00U)                                 ///< ADC sample time select 2.5t
+    #define ADC_SMPRx_SAMCTL_8_5        (0x01U)                                 ///< ADC sample time select 8.5t
+    #define ADC_SMPRx_SAMCTL_14_5       (0x02U)                                 ///< ADC sample time select 14.5t
+    #define ADC_SMPRx_SAMCTL_29_5       (0x03U)                                 ///< ADC sample time select 29.5t
+    #define ADC_SMPRx_SAMCTL_42_5       (0x04U)                                 ///< ADC sample time select 42.5t
+    #define ADC_SMPRx_SAMCTL_56_5       (0x05U)                                 ///< ADC sample time select 56.5t
+    #define ADC_SMPRx_SAMCTL_72_5       (0x06U)                                 ///< ADC sample time select 72.5t
+    #define ADC_SMPRx_SAMCTL_240_5      (0x07U)                                 ///< ADC sample time select 240.5t
+    #define ADC_SMPRx_SAMCTL_3_5        (0x08U)                                 ///< ADC sample time select 3.5t
+    #define ADC_SMPRx_SAMCTL_4_5        (0x09U)                                 ///< ADC sample time select 4.5t
+    #define ADC_SMPRx_SAMCTL_5_5        (0x0AU)                                 ///< ADC sample time select 5.5t
+    #define ADC_SMPRx_SAMCTL_6_5        (0x0BU)                                 ///< ADC sample time select 6.5t
+    #define ADC_SMPRx_SAMCTL_7_5        (0x0CU)                                 ///< ADC sample time select 7.5t
+
     #define ADC_SMPR1_SAMCTL0_Pos       (0)
     #define ADC_SMPR1_SAMCTL0           (0x0FU << ADC_SMPR1_SAMCTL0_Pos)
     #define ADC_SMPR1_SAMCTL1_Pos       (4)
@@ -3150,7 +3168,12 @@ typedef struct {
     #define ADC_SMPR1_SAMCTL6           (0x0FU << ADC_SMPR1_SAMCTL6_Pos)
     #define ADC_SMPR1_SAMCTL7_Pos       (28)
     #define ADC_SMPR1_SAMCTL7           (0x0FU << ADC_SMPR1_SAMCTL7_Pos)
+#endif
 
+////////////////////////////////////////////////////////////////////////////////
+/// @brief SMPR2 Register Bit Definition
+////////////////////////////////////////////////////////////////////////////////
+#if defined(__MM3U1)
     #define ADC_SMPR2_SAMCTL8_Pos       (0)
     #define ADC_SMPR2_SAMCTL8           (0x0FU << ADC_SMPR2_SAMCTL8_Pos)
     #define ADC_SMPR2_SAMCTL9_Pos       (4)
@@ -3167,19 +3190,44 @@ typedef struct {
     #define ADC_SMPR2_SAMCTL14          (0x0FU << ADC_SMPR2_SAMCTL14_Pos)
     #define ADC_SMPR2_SAMCTL15_Pos      (28)
     #define ADC_SMPR2_SAMCTL15          (0x0FU << ADC_SMPR2_SAMCTL15_Pos)
+#endif
 
+////////////////////////////////////////////////////////////////////////////////
+/// @brief JOFR0 Register Bit Definition
+////////////////////////////////////////////////////////////////////////////////
+#if defined(__MM3U1)
     #define ADC_JOFR0_JOFR_Pos          (0)
     #define ADC_JOFR0_JOFR              (0xFFFU << ADC_JOFR0_JOFR_Pos)
+#endif
 
+////////////////////////////////////////////////////////////////////////////////
+/// @brief JOFR1 Register Bit Definition
+////////////////////////////////////////////////////////////////////////////////
+#if defined(__MM3U1)
     #define ADC_JOFR1_JOFR_Pos          (0)
     #define ADC_JOFR1_JOFR              (0xFFFU << ADC_JOFR1_JOFR_Pos)
+#endif
 
+////////////////////////////////////////////////////////////////////////////////
+/// @brief JOFR2 Register Bit Definition
+////////////////////////////////////////////////////////////////////////////////
+#if defined(__MM3U1)
     #define ADC_JOFR2_JOFR_Pos          (0)
     #define ADC_JOFR2_JOFR              (0xFFFU << ADC_JOFR2_JOFR_Pos)
+#endif
 
+////////////////////////////////////////////////////////////////////////////////
+/// @brief JOFR3 Register Bit Definition
+////////////////////////////////////////////////////////////////////////////////
+#if defined(__MM3U1)
     #define ADC_JOFR3_JOFR_Pos          (0)
     #define ADC_JOFR3_JOFR              (0xFFFU << ADC_JOFR3_JOFR_Pos)
+#endif
 
+////////////////////////////////////////////////////////////////////////////////
+/// @brief JSQR Register Bit Definition
+////////////////////////////////////////////////////////////////////////////////
+#if defined(__MM3U1)
     #define ADC_JSQR_JSQ0_Pos           (0)
     #define ADC_JSQR_JSQ0               (0x1FU << ADC_JSQR_JSQ0_Pos)
     #define ADC_JSQR_JSQ1_Pos           (5)
@@ -3190,35 +3238,60 @@ typedef struct {
     #define ADC_JSQR_JSQ3               (0x1FU << ADC_JSQR_JSQ3_Pos)
     #define ADC_JSQR_JL_Pos             (20)
     #define ADC_JSQR_JL                 (0x03U << ADC_JSQR_JL_Pos)
+#endif
 
+////////////////////////////////////////////////////////////////////////////////
+/// @brief JDATA Register Bit Definition
+////////////////////////////////////////////////////////////////////////////////
+#if defined(__MM3U1)
     #define ADC_JDATA_JDATA_Pos         (0)
     #define ADC_JDATA_JDATA             (0xFFFFFU << ADC_JDATA_JDATA_Pos)
     #define ADC_JDATA_JOVERRUN_Pos      (21)
     #define ADC_JDATA_JOVERRUN          (0x01U << ADC_JDATA_JOVERRUN_Pos)
     #define ADC_JDATA_JVALID_Pos        (22)
     #define ADC_JDATA_JVALID            (0x01U << ADC_JDATA_JVALID_Pos)
+#endif
 
+////////////////////////////////////////////////////////////////////////////////
+/// @brief JDR0 Register Bit Definition
+////////////////////////////////////////////////////////////////////////////////
+#if defined(__MM3U1)
     #define ADC_JDR0_JDATA_Pos          (0)
     #define ADC_JDR0_JDATA              (0xFFFFU << ADC_JDR0_JDATA_Pos)
     #define ADC_JDR0_JOVERRUN_Pos       (21)
     #define ADC_JDR0_JOVERRUN           (0x01U << ADC_JDR0_JOVERRUN_Pos)
     #define ADC_JDR0_JVALID_Pos         (22)
     #define ADC_JDR0_JVALID             (0x01U << ADC_JDR0_JVALID_Pos)
+#endif
 
+////////////////////////////////////////////////////////////////////////////////
+/// @brief JDR1 Register Bit Definition
+////////////////////////////////////////////////////////////////////////////////
+#if defined(__MM3U1)
     #define ADC_JDR1_JDATA_Pos          (0)
     #define ADC_JDR1_JDATA              (0xFFFFU << ADC_JDR1_JDATA_Pos)
     #define ADC_JDR1_JOVERRUN_Pos       (21)
     #define ADC_JDR1_JOVERRUN           (0x01U << ADC_JDR1_JOVERRUN_Pos)
     #define ADC_JDR1_JVALID_Pos         (22)
     #define ADC_JDR1_JVALID             (0x01U << ADC_JDR1_JVALID_Pos)
+#endif
 
+////////////////////////////////////////////////////////////////////////////////
+/// @brief JDR2 Register Bit Definition
+////////////////////////////////////////////////////////////////////////////////
+#if defined(__MM3U1)
     #define ADC_JDR2_JDATA_Pos          (0)
     #define ADC_JDR2_JDATA              (0xFFFFU << ADC_JDR2_JDATA_Pos)
     #define ADC_JDR2_JOVERRUN_Pos       (21)
     #define ADC_JDR2_JOVERRUN           (0x01U << ADC_JDR2_JOVERRUN_Pos)
     #define ADC_JDR2_JVALID_Pos         (22)
     #define ADC_JDR2_JVALID             (0x01U << ADC_JDR2_JVALID_Pos)
+#endif
 
+////////////////////////////////////////////////////////////////////////////////
+/// @brief JDR3 Register Bit Definition
+////////////////////////////////////////////////////////////////////////////////
+#if defined(__MM3U1)
     #define ADC_JDR3_JDATA_Pos          (0)
     #define ADC_JDR3_JDATA              (0xFFFFU << ADC_JDR3_JDATA_Pos)
     #define ADC_JDR3_JOVERRUN_Pos       (21)
@@ -4433,43 +4506,58 @@ typedef struct {
 #define DBGMCU_CR_WWDG_STOP_Pos         (9)
 #define DBGMCU_CR_WWDG_STOP             (0x01U << DBGMCU_CR_WWDG_STOP_Pos)      ///< Debug window watchdog stopped when core is halted
 
-#if defined(__MM3N1) || defined(__MM0N1) ||defined(__MM3O1) || defined(__MM0P1) || defined(__MM0Q1) || defined(__MM0S1)
-    #define DBGMCU_CR_TIM_STOP_Pos      (10)
-    #define DBGMCU_CR_TIM1_STOP         (0x01U << DBGMCU_CR_TIM_STOP_Pos)       ///< TIM1 counter stopped when core is halted
-    #define DBGMCU_CR_TIM2_STOP         (0x02U << DBGMCU_CR_TIM_STOP_Pos)       ///< TIM2 counter stopped when core is halted
-    #define DBGMCU_CR_TIM3_STOP         (0x04U << DBGMCU_CR_TIM_STOP_Pos)       ///< TIM3 counter stopped when core is halted
-    #define DBGMCU_CR_CAN_STOP_Pos      (14)
-    #define DBGMCU_CR_CAN_STOP          (0x01U << DBGMCU_CR_CAN_STOP_Pos)       ///< Debug CAN mode
-    #define DBGMCU_CR_TIMx_STOP_Pos     (16)
-    #define DBGMCU_CR_TIM14_STOP        (0x01U << DBGMCU_CR_TIMx_STOP_Pos)      ///< TIM1 counter stopped when core is halted
-    #define DBGMCU_CR_TIM17_STOP        (0x02U << DBGMCU_CR_TIMx_STOP_Pos)      ///< TIM2 counter stopped when core is halted
-    #define DBGMCU_CR_TIM16_STOP        (0x04U << DBGMCU_CR_TIMx_STOP_Pos)      ///< TIM3 counter stopped when core is halted
+#if defined(TIM1_BASE)
+    #define DBGMCU_CR_TIM1_STOP_Pos     (10)
+    #define DBGMCU_CR_TIM1_STOP         (0x01U << DBGMCU_CR_TIM1_STOP_Pos)      ///< TIM1 counter stopped when core is halted
 #endif
 
-#if defined(__MM3N1) || defined(__MM0P1) || defined(__MM0Q1)
-    #define DBGMCU_CR_TIM4_STOP         (0x08U << DBGMCU_CR_TIM_STOP_Pos)       ///< TIM4 counter stopped when core is halted
+#if defined(TIM2_BASE)
+    #define DBGMCU_CR_TIM2_STOP_Pos     (11)
+    #define DBGMCU_CR_TIM2_STOP         (0x01U << DBGMCU_CR_TIM2_STOP_Pos)      ///< TIM2 counter stopped when core is halted
+#endif
+
+#if defined(TIM3_BASE)
+    #define DBGMCU_CR_TIM3_STOP_Pos     (12)
+    #define DBGMCU_CR_TIM3_STOP         (0x01U << DBGMCU_CR_TIM3_STOP_Pos)      ///< TIM3 counter stopped when core is halted
+#endif
+
+#if defined(TIM4_BASE)
+    #define DBGMCU_CR_TIM4_STOP_Pos     (13)
+    #define DBGMCU_CR_TIM4_STOP         (0x01U << DBGMCU_CR_TIM4_STOP_Pos)      ///< TIM4 counter stopped when core is halted
+#endif
+
+#if defined(CAN1_BASE)
+    #define DBGMCU_CR_CAN_STOP_Pos      (14)
+    #define DBGMCU_CR_CAN_STOP          (0x01U << DBGMCU_CR_CAN_STOP_Pos)       ///< Debug CAN mode
+#endif
+
+#if defined(__MM3N1) || defined(__MM0N1) ||defined(__MM3O1) || defined(__MM0P1) || defined(__MM0Q1) || defined(__MM0S1)
+    #define DBGMCU_CR_TIM14_STOP_Pos    (16)
+    #define DBGMCU_CR_TIM14_STOP        (0x01U << DBGMCU_CR_TIM14_STOP_Pos)     ///< TIM14 counter stopped when core is halted
+    #define DBGMCU_CR_TIM17_STOP_Pos    (17)
+    #define DBGMCU_CR_TIM17_STOP        (0x01U << DBGMCU_CR_TIM17_STOP_Pos)     ///< TIM17 counter stopped when core is halted
+    #define DBGMCU_CR_TIM16_STOP_Pos    (18)
+    #define DBGMCU_CR_TIM16_STOP        (0x01U << DBGMCU_CR_TIM16_STOP_Pos)     ///< TIM16 counter stopped when core is halted
 #endif
 
 #if defined(__MM0T1)
-    #define DBGMCU_CR_TIM1_STOP_Pos     (10)
-    #define DBGMCU_CR_TIM1_STOP         (0x01U << DBGMCU_CR_TIM1_STOP_Pos)      ///< TIM1 counter stopped when core is halted
-    #define DBGMCU_CR_TIM3_STOP_Pos     (12)
-    #define DBGMCU_CR_TIM3_STOP         (0x01U << DBGMCU_CR_TIM3_STOP_Pos)      ///< TIM3 counter stopped when core is halted
     #define DBGMCU_CR_TIM14_STOP_Pos    (18)
     #define DBGMCU_CR_TIM14_STOP        (0x01U << DBGMCU_CR_TIM14_STOP_Pos)     ///< TIM14 counter stopped when core is halted
 #endif
 
 #if defined(__MM3U1)
-    #define DBGMCU_TIMX_STOP_Pos        (10)
-    #define DBGMCU_TIMX_STOP            (0x0FU << DBGMCU_TIMX_STOP_Pos)         ///< Debug STOP for TIMX mode (1/2/3/4)
-    #define DBGMCU_CAN_STOP_Pos         (14)
-    #define DBGMCU_CAN_STOP             (0x01U << DBGMCU_CAN_STOP_Pos)          ///< Debug STOP for CAN mode
     #define DBGMCU_I2C1_STOP_Pos        (15)
-    #define DBGMCU_I2C1_STOP            (0x0FU << DBGMCU_I2C1_STOP_Pos)         ///< Debug STOP for I2C1 mode
+    #define DBGMCU_I2C1_STOP            (0x01U << DBGMCU_I2C1_STOP_Pos)         ///< Debug STOP for I2C1 mode
     #define DBGMCU_I2C2_STOP_Pos        (16)
     #define DBGMCU_I2C2_STOP            (0x01U << DBGMCU_I2C2_STOP_Pos)         ///< Debug STOP for I2C2 mode
-    #define DBGMCU_TIMX_STOP_Pos        (17)
-    #define DBGMCU_TIMX_STOP            (0x0FU << DBGMCU_TIMX_STOP_Pos)         ///< Debug STOP for TIMX mode (5/6/7/8)
+    #define DBGMCU_TIM5_STOP_Pos        (17)
+    #define DBGMCU_TIM5_STOP            (0x01U << DBGMCU_TIM5_STOP_Pos)         ///< Debug STOP for TIM5 mode
+    #define DBGMCU_TIM6_STOP_Pos        (18)
+    #define DBGMCU_TIM6_STOP            (0x01U << DBGMCU_TIM6_STOP_Pos)         ///< Debug STOP for TIM6 mode
+    #define DBGMCU_TIM7_STOP_Pos        (19)
+    #define DBGMCU_TIM7_STOP            (0x01U << DBGMCU_TIM7_STOP_Pos)         ///< Debug STOP for TIM7 mode
+    #define DBGMCU_TIM8_STOP_Pos        (20)
+    #define DBGMCU_TIM8_STOP            (0x01U << DBGMCU_TIM8_STOP_Pos)         ///< Debug STOP for TIM8 mode
 #endif
 #if defined(DIV_BASE)
 ////////////////////////////////////////////////////////////////////////////////

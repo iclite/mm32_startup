@@ -1,5 +1,5 @@
 ////////////////////////////////////////////////////////////////////////////////
-/// @file    SYSTEM_MM32.C
+/// @file    MM32_SYSTEM.C
 /// @author  AE TEAM
 /// @version 2.0.0
 /// @date    2018-08-01
@@ -18,14 +18,14 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 // Define to prevent recursive inclusion  --------------------------------------
-#define _SYSTEM_MM32_C_
+#define _MM32_SYSTEM_C_
 
 // Files includes  -------------------------------------------------------------
 #include <string.h>
 #include "mm32_types.h"
 #include "mm32.h"
 
-#include "system_mm32.h"
+#include "mm32_system.h"
 
 ////////////////////////////////////////////////////////////////////////////////
 /// @addtogroup MM32_Example_Layer
@@ -118,12 +118,12 @@ EM_MCUID SystemInit(EM_SystemClock ClockSource, EM_SYSTICK tickEn , AppTick_fun 
     // Configure the Flash Latency cycles and enable prefetch buffer
 
     // Flash
-    if ((ClockSource >> 16) <= 3) {
+    if ((ClockSource >> 16) <= 4) {
         FLASH->ACR |= FLASH_ACR_PRFTBE;
         FLASH->ACR &=~FLASH_ACR_LATENCY;
         FLASH->ACR |= ClockSource >> 16;
     } else {
-        while(1); // Flash Latency not in range.
+        while(1);                                                               // Flash Latency not in range.
     }
 
     // Set Oscillator
@@ -133,7 +133,7 @@ EM_MCUID SystemInit(EM_SystemClock ClockSource, EM_SYSTICK tickEn , AppTick_fun 
                                                  (RCC->CR |=  RCC_CR_HSI_72M);
 #endif
         RCC->CR |= RCC_CR_HSION;
-        while (!(RCC->CR & RCC_CR_HSIRDY)); // Wait for HSI clock ready!
+        while (!(RCC->CR & RCC_CR_HSIRDY));                                     // Wait for HSI clock ready!
 #if defined(RCC_CFGR_PLLSRC)
         RCC->CFGR &= ~RCC_CFGR_PLLSRC;
 #endif
@@ -153,8 +153,14 @@ EM_MCUID SystemInit(EM_SystemClock ClockSource, EM_SYSTICK tickEn , AppTick_fun 
 #if defined(RCC_CR_PLLON)
     // PLL on
     if ((ClockSource & 0x000F0) >> 4 == 2) {
+#if defined(RCC_PLLCFGR_PLLSRC)
+        RCC->PLLCFGR &= ~(RCC_PLLCFGR_PLLDN | RCC_PLLCFGR_PLLDP);
+        RCC->PLLCFGR |= (((ClockSource & 0x0F000) >> 12) << RCC_PLLCFGR_PLLDN_Pos);
+        RCC->PLLCFGR |= ((ClockSource & 0x00F00) << RCC_PLLCFGR_PLLDP_Pos);
+#else
         RCC->CR |= ((ClockSource & 0x0F000) << 14);
         RCC->CR |= ((ClockSource & 0x00F00) << 12);
+#endif
         RCC->CR |= RCC_CR_PLLON;
         while (!(RCC->CR & RCC_CR_PLLRDY)); // Wait for PLL ready!
     }

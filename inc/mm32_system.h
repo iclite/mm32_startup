@@ -1,8 +1,8 @@
 ////////////////////////////////////////////////////////////////////////////////
-/// @file    SYSTEM_MM32.H
-/// @author  AE TEAM
+/// @file    MM32_SYSTEM.H
+/// @author  Nanjing AE Team
 /// @version V2.0.0
-/// @date    2018-08-01
+/// @date    2021-02-25
 /// @brief   THIS FILE PROVIDES ALL THE SYSTEM FIRMWARE FUNCTIONS.
 ////////////////////////////////////////////////////////////////////////////////
 /// @attention
@@ -14,13 +14,13 @@
 /// HARDWARE AND/OR THE USE OF THE CODING INFORMATION CONTAINED HEREIN IN
 /// CONNECTION WITH PRODUCTS MADE BY CUSTOMERS.
 ///
-/// <H2><CENTER>&COPY; COPYRIGHT 2018 MINDMOTION </CENTER></H2>
+/// <H2><CENTER>&COPY; COPYRIGHT 2018-2021 MINDMOTION </CENTER></H2>
 ////////////////////////////////////////////////////////////////////////////////
 
 
 // Define to prevent recursive inclusion  --------------------------------------
-#ifndef __SYSTEM_MM32_H
-#define __SYSTEM_MM32_H
+#ifndef __MM32_SYSTEM_H
+#define __MM32_SYSTEM_H
 
 // Files includes  -------------------------------------------------------------
 #include "mm32_types.h"
@@ -47,14 +47,17 @@
 #define CORTEX_M4_PARTNO                (0x0000C240U)   // Cortex-M4 r0p1
 #define CORTEX_M7_PARTNO                (0x0000C270U)   // Cortex-M7 r0p2/r1p0/r1p1/r1p2
 #define CORTEX_M23_PARTNO               (0x0000D200U)   // Cortex-M23 r1p0
+#define MCUID_MM3M1                     (0xCC888045U)
+#define MCUID_MM0M1                     (0xCC567071U)
+#define MCUID_MM3N1                     (0xCC888047U)
 #define MCUID_MM0N1                     (0xCC568091U)
+#define MCUID_MM3O1                     (0xCC9AA0A1U)
 #define MCUID_MM0P1                     (0xCC56A091U)
 #define MCUID_MM0P2                     (0xCC56A097U)
 #define MCUID_MM0Q1                     (0xCC4460B1U)
-#define MCUID_MM0M1                     (0xCC567071U)
-#define MCUID_MM3O1                     (0xCC9AA0A1U)
-#define MCUID_MM3M1                     (0xCC888045U)
-#define MCUID_MM3N1                     (0xCC888047U)
+#define MCUID_MM0S1                     (0xCC5680C7U)
+#define MCUID_MM0T1                     (0xCC4350D1U)
+#define MCUID_MM3U1                     (0xCC9AA0E7U)
 
 #ifndef CLOCK
     #warning "\"CLOCK\" macro is undefined!"
@@ -100,7 +103,7 @@ typedef enum {
 typedef enum {
                                         //  Flash_Latency   Mul Div Sw  Src
     SYSCLK_HSI_6d       = 0x00000,      //              0   0   0   0   0
-#if defined(__MM3N1) || defined(__MM0N1) || defined(__MM0P1) || defined(__MM0S1)
+#if defined(__MM3N1) || defined(__MM0N1) || defined(__MM0P1) || defined(__MM0S1) || defined(__MM3U1)
     SYSCLK_HSI_12MHz    = 0x00020,      //              0   0   0   2   0
     SYSCLK_HSI_24MHz    = 0x01020,      //              0   1   0   2   0
     SYSCLK_HSI_48MHz    = 0x13020,      //              1   3   0   2   0
@@ -120,6 +123,10 @@ typedef enum {
     SYSCLK_HSI_72MHz    = 0x20020,      //              2   0   0   2   0
     SYSCLK_LSI_40KHz    = 0x00032,      //              0   0   0   3   2   
 #endif
+#if defined(__MM3U1)
+    SYSCLK_HSI_108MHz   = 0x48020,      //              4   8   0   2   0
+    SYSCLK_HSI_120MHz   = 0x49020,      //              4   9   0   2   0
+#endif
 } EM_SystemClock;
 
 typedef void (*AppTick_fun)(void);
@@ -129,7 +136,7 @@ typedef void (*AppTick_fun)(void);
 ////////////////////////////////////////////////////////////////////////////////
 /// @defgroup MM32_Exported_Variables
 /// @{
-#ifdef _SYSTEM_MM32_C_
+#ifdef _MM32_SYSTEM_C_
 #define GLOBAL
 
 GLOBAL int nTimeOutCnt = 0;

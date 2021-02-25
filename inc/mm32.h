@@ -2913,7 +2913,7 @@ typedef struct {
     #define  ADC_CHSR_CH10              (0x01U << ADC_CHSR_CH10_Pos)            ///< Enable ADC channel 10
     #define  ADC_CHSR_CH11_Pos          (11)
     #define  ADC_CHSR_CH11              (0x01U << ADC_CHSR_CH11_Pos)            ///< Enable ADC channel 11
-    #if defined(__MM0Q1)
+    #if defined(__MM0Q1) || defined(__MM3U1)
     #define  ADC_CHSR_CH12_Pos          (12)
     #define  ADC_CHSR_CH12              (0x01U << ADC_CHSR_CH12_Pos)            ///< Enable ADC channel 12
     #endif
@@ -9005,7 +9005,7 @@ typedef struct {
     #define RCC_PLLCFGR_PLLSRC_Pos      (0)
     #define RCC_PLLCFGR_PLLSRC          (0x01U << RCC_PLLCFGR_PLLSRC_Pos)       ///< PLL entry clock source
     #define RCC_PLLCFGR_PLLXTPRE_Pos    (1)
-    #define RCC_PLLCFGR_PLLXTPRE        (0x1FU << RCC_PLLCFGR_PLLXTPRE_Pos)     ///< HSE divider for PLL entry
+    #define RCC_PLLCFGR_PLLXTPRE        (0x01U << RCC_PLLCFGR_PLLXTPRE_Pos)     ///< HSE divider for PLL entry
     #define RCC_PLLCFGR_PLLICTRL_Pos    (2)
     #define RCC_PLLCFGR_PLLICTRL        (0x03U << RCC_PLLCFGR_PLLICTRL_Pos)     ///< PLL CP current control signals
     #define RCC_PLLCFGR_PLLLDS_Pos      (4)

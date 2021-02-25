@@ -5538,17 +5538,17 @@ typedef struct {
     #define EXTI_PDETCSR_PVDE           (0x01 << EXTI_PDETCSR_PVDE_Pos)         ///< PVD enable
     #define EXTI_PDETCSR_PLS_Pos        (1)
     #define EXTI_PDETCSR_PLS            (0x0F << EXTI_PDETCSR_PLS_Pos)          ///< PVD threshold selection
-    #define EXTI_PDETCSR_PLS_1_7        (0x00 << EXTI_PDETCSR_PLS_POS)          ///< PVD threshold selection 1.7mV
-    #define EXTI_PDETCSR_PLS_2_0        (0x01 << EXTI_PDETCSR_PLS_POS)          ///< PVD threshold selection 2.0mV
-    #define EXTI_PDETCSR_PLS_2_3        (0x02 << EXTI_PDETCSR_PLS_POS)          ///< PVD threshold selection 2.3mV
-    #define EXTI_PDETCSR_PLS_2_6        (0x03 << EXTI_PDETCSR_PLS_POS)          ///< PVD threshold selection 2.6mV
-    #define EXTI_PDETCSR_PLS_2_9        (0x04 << EXTI_PDETCSR_PLS_POS)          ///< PVD threshold selection 2.9mV
-    #define EXTI_PDETCSR_PLS_3_2        (0x05 << EXTI_PDETCSR_PLS_POS)          ///< PVD threshold selection 3.2mV
-    #define EXTI_PDETCSR_PLS_3_5        (0x06 << EXTI_PDETCSR_PLS_POS)          ///< PVD threshold selection 3.5mV
-    #define EXTI_PDETCSR_PLS_3_8        (0x07 << EXTI_PDETCSR_PLS_POS)          ///< PVD threshold selection 3.8mV
-    #define EXTI_PDETCSR_PLS_4_1        (0x08 << EXTI_PDETCSR_PLS_POS)          ///< PVD threshold selection 4.1mV
-    #define EXTI_PDETCSR_PLS_4_4        (0x09 << EXTI_PDETCSR_PLS_POS)          ///< PVD threshold selection 4.4mV
-    #define EXTI_PDETCSR_PLS_4_7        (0x0A << EXTI_PDETCSR_PLS_POS)          ///< PVD threshold selection 4.7mV
+    #define EXTI_PDETCSR_PLS_1_7        (0x00 << EXTI_PDETCSR_PLS_Pos)          ///< PVD threshold selection 1.7mV
+    #define EXTI_PDETCSR_PLS_2_0        (0x01 << EXTI_PDETCSR_PLS_Pos)          ///< PVD threshold selection 2.0mV
+    #define EXTI_PDETCSR_PLS_2_3        (0x02 << EXTI_PDETCSR_PLS_Pos)          ///< PVD threshold selection 2.3mV
+    #define EXTI_PDETCSR_PLS_2_6        (0x03 << EXTI_PDETCSR_PLS_Pos)          ///< PVD threshold selection 2.6mV
+    #define EXTI_PDETCSR_PLS_2_9        (0x04 << EXTI_PDETCSR_PLS_Pos)          ///< PVD threshold selection 2.9mV
+    #define EXTI_PDETCSR_PLS_3_2        (0x05 << EXTI_PDETCSR_PLS_Pos)          ///< PVD threshold selection 3.2mV
+    #define EXTI_PDETCSR_PLS_3_5        (0x06 << EXTI_PDETCSR_PLS_Pos)          ///< PVD threshold selection 3.5mV
+    #define EXTI_PDETCSR_PLS_3_8        (0x07 << EXTI_PDETCSR_PLS_Pos)          ///< PVD threshold selection 3.8mV
+    #define EXTI_PDETCSR_PLS_4_1        (0x08 << EXTI_PDETCSR_PLS_Pos)          ///< PVD threshold selection 4.1mV
+    #define EXTI_PDETCSR_PLS_4_4        (0x09 << EXTI_PDETCSR_PLS_Pos)          ///< PVD threshold selection 4.4mV
+    #define EXTI_PDETCSR_PLS_4_7        (0x0A << EXTI_PDETCSR_PLS_Pos)          ///< PVD threshold selection 4.7mV
     #define EXTI_PDETCSR_PVDO_Pos       (5)
     #define EXTI_PDETCSR_PVDO           (0x01 << EXTI_PDETCSR_PVDO_Pos)         ///< PVD output state
     #define EXTI_PDETCSR_VDTO_Pos       (6)
@@ -7743,18 +7743,18 @@ typedef struct {
 #endif
 
 #if defined(__MM3U1)
-    #define RCC_CR_HSIDIV_POS           (11)
-    #define RCC_CR_HSIDIV               (0x07U << RCC_CR_HSIDIV_POS)            ///< HSI Internal high-speed clock division factor
-    #define RCC_CR_HSIDIV_1             (0X00U << RCC_CR_HSIDIV_POS)            ///< HSI Internal high-speed clock division factor 1
-    #define RCC_CR_HSIDIV_2             (0X01U << RCC_CR_HSIDIV_POS)            ///< HSI Internal high-speed clock division factor 2
-    #define RCC_CR_HSIDIV_4             (0X02U << RCC_CR_HSIDIV_POS)            ///< HSI Internal high-speed clock division factor 4
-    #define RCC_CR_HSIDIV_8             (0X03U << RCC_CR_HSIDIV_POS)            ///< HSI Internal high-speed clock division factor 8
-    #define RCC_CR_HSIDIV_16            (0X04U << RCC_CR_HSIDIV_POS)            ///< HSI Internal high-speed clock division factor 16
-    #define RCC_CR_HSIDIV_32            (0X05U << RCC_CR_HSIDIV_POS)            ///< HSI Internal high-speed clock division factor 32
-    #define RCC_CR_HSIDIV_64            (0X06U << RCC_CR_HSIDIV_POS)            ///< HSI Internal high-speed clock division factor 64
-    #define RCC_CR_HSIDIV_128           (0X07U << RCC_CR_HSIDIV_POS)            ///< HSI Internal high-speed clock division factor 128
-    #define RCC_CR_PLLON_POS            (24)
-    #define RCC_CR_PLLON                (0x01U << RCC_CR_PLLON_POS)             ///< HSI PLL Enable
+    #define RCC_CR_HSIDIV_Pos           (11)
+    #define RCC_CR_HSIDIV               (0x07U << RCC_CR_HSIDIV_Pos)            ///< HSI Internal high-speed clock division factor
+    #define RCC_CR_HSIDIV_1             (0X00U << RCC_CR_HSIDIV_Pos)            ///< HSI Internal high-speed clock division factor 1
+    #define RCC_CR_HSIDIV_2             (0X01U << RCC_CR_HSIDIV_Pos)            ///< HSI Internal high-speed clock division factor 2
+    #define RCC_CR_HSIDIV_4             (0X02U << RCC_CR_HSIDIV_Pos)            ///< HSI Internal high-speed clock division factor 4
+    #define RCC_CR_HSIDIV_8             (0X03U << RCC_CR_HSIDIV_Pos)            ///< HSI Internal high-speed clock division factor 8
+    #define RCC_CR_HSIDIV_16            (0X04U << RCC_CR_HSIDIV_Pos)            ///< HSI Internal high-speed clock division factor 16
+    #define RCC_CR_HSIDIV_32            (0X05U << RCC_CR_HSIDIV_Pos)            ///< HSI Internal high-speed clock division factor 32
+    #define RCC_CR_HSIDIV_64            (0X06U << RCC_CR_HSIDIV_Pos)            ///< HSI Internal high-speed clock division factor 64
+    #define RCC_CR_HSIDIV_128           (0X07U << RCC_CR_HSIDIV_Pos)            ///< HSI Internal high-speed clock division factor 128
+    #define RCC_CR_PLLON_Pos            (24)
+    #define RCC_CR_PLLON                (0x01U << RCC_CR_PLLON_Pos)             ///< HSI PLL Enable
     #define RCC_CR_PLLRDY_Pos           (25)
     #define RCC_CR_PLLRDY               (0x01U << RCC_CR_PLLRDY_Pos)            ///< HSI PLL clock ready flag
 #endif

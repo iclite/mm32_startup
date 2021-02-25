@@ -9010,10 +9010,10 @@ typedef struct {
     #define RCC_PLLCFGR_PLLICTRL        (0x03U << RCC_PLLCFGR_PLLICTRL_Pos)     ///< PLL CP current control signals
     #define RCC_PLLCFGR_PLLLDS_Pos      (4)
     #define RCC_PLLCFGR_PLLLDS          (0x03U << RCC_PLLCFGR_PLLLDS_Pos)       ///< PLL lock detector accuracy select
-    #define RCC_PLLCFGR_PLLDP_Pos       (8)
-    #define RCC_PLLCFGR_PLLDP           (0x07U << RCC_PLLCFGR_PLLDP_Pos)        ///< PLL divider factor DP
-    #define RCC_PLLCFGR_PLLDN_Pos       (16)
-    #define RCC_PLLCFGR_PLLDN           (0x7FU << RCC_PLLCFGR_PLLDN_Pos)        ///< PLL divider factor DN
+    #define RCC_PLLCFGR_PLLDIV_Pos      (8)
+    #define RCC_PLLCFGR_PLLDIV          (0x07U << RCC_PLLCFGR_PLLDIV_Pos)       ///< PLL division factor
+    #define RCC_PLLCFGR_PLLMUL_Pos      (16)
+    #define RCC_PLLCFGR_PLLMUL          (0x7FU << RCC_PLLCFGR_PLLMUL_Pos)       ///< PLL multiple factor
 #endif
 
 ////////////////////////////////////////////////////////////////////////////////

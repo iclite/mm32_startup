@@ -8777,11 +8777,11 @@ typedef struct {
     #define RCC_BDCR_LSERDY             (0x01U << RCC_BDCR_LSERDY_Pos)          ///< External Low Speed oscillator Ready
     #define RCC_BDCR_LSEBYP_Pos         (2)
     #define RCC_BDCR_LSEBYP             (0x01U << RCC_BDCR_LSEBYP_Pos)          ///< External Low Speed oscillator Bypass
-    #define RCC_BDCR_RTCSEL_Pos         (8)
-    #define RCC_BDCR_RTCSEL             (0x03U << RCC_BDCR_RTCSEL_Pos)          ///< RTCSEL[1:0] bits (RTC clock source selection)
-    #define RCC_BDCR_RTCSEL_LSE         (0x01U << RCC_BDCR_RTCSEL_Pos)          ///< LSE oscillator clock used as RTC clock
-    #define RCC_BDCR_RTCSEL_LSI         (0x02U << RCC_BDCR_RTCSEL_Pos)          ///< LSI oscillator clock used as RTC clock
-    #define RCC_BDCR_RTCSEL_HSE         (0x03U << RCC_BDCR_RTCSEL_Pos)          ///< HSE oscillator clock divided by 128 used as RTC clock
+    #define RCC_BDCR_RTCSRC_Pos         (8)
+    #define RCC_BDCR_RTCSRC             (0x03U << RCC_BDCR_RTCSRC_Pos)          ///< RTCSEL[1:0] bits (RTC clock source selection)
+    #define RCC_BDCR_RTCSRC_LSE         (0x01U << RCC_BDCR_RTCSRC_Pos)          ///< LSE oscillator clock used as RTC clock
+    #define RCC_BDCR_RTCSRC_LSI         (0x02U << RCC_BDCR_RTCSRC_Pos)          ///< LSI oscillator clock used as RTC clock
+    #define RCC_BDCR_RTCSRC_HSE         (0x03U << RCC_BDCR_RTCSRC_Pos)          ///< HSE oscillator clock divided by 128 used as RTC clock
     #define RCC_BDCR_RTCEN_Pos          (15)
     #define RCC_BDCR_RTCEN              (0x01U << RCC_BDCR_RTCEN_Pos)           ///< RTC clock enable
     #define RCC_BDCR_BDRST_Pos          (16)

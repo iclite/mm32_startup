@@ -7790,13 +7790,13 @@ typedef struct {
     #define RCC_CFGR_SWS_HSI            (0x00U << RCC_CFGR_SWS_Pos)             ///< HSI oscillator used as system clock
 #endif
     #define RCC_CFGR_SWS_HSE            (0x01U << RCC_CFGR_SWS_Pos)             ///< HSE oscillator used as system clock
-#if defined(__MM3N1) || defined(__MM0N1) || defined(__MM3O1) || defined(__MM0P1) || defined(__MM0S1)
+#if defined(__MM3N1) || defined(__MM0N1) || defined(__MM3O1) || defined(__MM0P1) || defined(__MM0S1) || defined(__MM3U1)
     #define RCC_CFGR_SWS_PLL            (0x02U << RCC_CFGR_SWS_Pos)             ///< PLL used as system clock
 #endif
 #if defined(__MM0Q1) || defined(__MM0T1)
     #define RCC_CFGR_SWS_HSI            (0x02U << RCC_CFGR_SWS_Pos)             ///< HSI used as system clock
 #endif
-#if defined(__MM0N1) || defined(__MM3O1) || defined(__MM0P1) || defined(__MM0Q1) || defined(__MM0S1) || defined(__MM0T1)
+#if defined(__MM0N1) || defined(__MM3O1) || defined(__MM0P1) || defined(__MM0Q1) || defined(__MM0S1) || defined(__MM0T1) || defined(__MM3U1)
     #define RCC_CFGR_SWS_LSI            (0x03U << RCC_CFGR_SWS_Pos)             ///< LSI used as system clock
 #endif
 

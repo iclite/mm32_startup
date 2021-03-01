@@ -368,10 +368,6 @@ typedef enum IRQn {
 #define AHB3_BASE                       (0x60000000U)
 #endif
 
-#if defined(AHB1_BASE)
-    #define AHB_BASE                    AHB1_BASE
-#endif
-
 #if defined(__MM3N1) || defined(__MM3O1) || defined(__MM3U1)
     #define SRAM_BITBAND_BASE           (0x22000000U)                           ///< Peripheral base address in the bit-band region
     #define PERIPH_BITBAND_BASE         (0x42000000U)                           ///< SRAM base address in the bit-band region
@@ -1685,7 +1681,7 @@ typedef struct {
     __IO uint32_t CIR;                                                          ///< Clock Interrupt Register                       offset: 0x08
     __IO uint32_t APB2RSTR;                                                     ///< Advanced Peripheral Bus 2 Reset Register       offset: 0x0C
     __IO uint32_t APB1RSTR;                                                     ///< Advanced Peripheral Bus 1 Reset Register       offset: 0x10
-    __IO uint32_t AHBENR;                                                       ///< Advanced High Performance Bus Enable Register  offset: 0x14
+    __IO uint32_t AHB1ENR;                                                      ///< Advanced High Performance Bus Enable Register  offset: 0x14
     __IO uint32_t APB2ENR;                                                      ///< Advanced Peripheral Bus 2 Enable Register      offset: 0x18
     __IO uint32_t APB1ENR;                                                      ///< Advanced Peripheral Bus 1 Enable Register      offset: 0x1C
     __IO uint32_t BDCR;                                                         ///< Backup Domain Control Register                 offset: 0x20
@@ -1699,7 +1695,7 @@ typedef struct {
     __IO uint32_t CIR;                                                          ///< Clock Interrupt Register                       offset: 0x08
     __IO uint32_t APB2RSTR;                                                     ///< Advanced Peripheral Bus 2 Reset Register       offset: 0x0C
     __IO uint32_t APB1RSTR;                                                     ///< Advanced Peripheral Bus 1 Reset Register       offset: 0x10
-    __IO uint32_t AHBENR;                                                       ///< Advanced High Performance Bus Enable Register  offset: 0x14
+    __IO uint32_t AHB1ENR;                                                      ///< Advanced High Performance Bus Enable Register  offset: 0x14
     __IO uint32_t APB2ENR;                                                      ///< Advanced Peripheral Bus 2 Enable Register      offset: 0x18
     __IO uint32_t APB1ENR;                                                      ///< Advanced Peripheral Bus 1 Enable Register      offset: 0x1C
     __IO uint32_t RESERVED0;                                                    ///<                                                offset: 0x20
@@ -1731,12 +1727,12 @@ typedef struct {
     __IO uint32_t CIR;                                                          ///< Clock Interrupt Register                       offset: 0x08
     __IO uint32_t APB2RSTR;                                                     ///< Advanced Peripheral Bus 2 Reset Register       offset: 0x0C
     __IO uint32_t APB1RSTR;                                                     ///< Advanced Peripheral Bus 1 Reset Register       offset: 0x10
-    __IO uint32_t AHBENR;                                                       ///< Advanced High Performance Bus Enable Register  offset: 0x14
+    __IO uint32_t AHB1ENR;                                                      ///< Advanced High Performance Bus Enable Register  offset: 0x14
     __IO uint32_t APB2ENR;                                                      ///< Advanced Peripheral Bus 2 Enable Register      offset: 0x18
     __IO uint32_t APB1ENR;                                                      ///< Advanced Peripheral Bus 1 Enable Register      offset: 0x1C
     __IO uint32_t BDCR;                                                         ///< Backup Domain Control Register                 offset: 0x20
     __IO uint32_t CSR;                                                          ///< Control Status Register                        offset: 0x24
-    __IO uint32_t AHBRSTR;                                                      ///< Advanced High Performance Bus Reset Register   offset: 0x28
+    __IO uint32_t AHB1RSTR;                                                     ///< Advanced High Performance Bus Reset Register   offset: 0x28
     __IO uint32_t RESERVED[5];                                                  ///<                                                offset: 0x2C ~ 0x3C
     __IO uint32_t CONFIG;                                                       ///< System Configuration Register                  offset: 0x40
 #endif
@@ -1746,12 +1742,12 @@ typedef struct {
     __IO uint32_t CIR;                                                          ///< Clock Interrupt Register                       offset: 0x08
     __IO uint32_t APB2RSTR;                                                     ///< Advanced Peripheral Bus 2 Reset Register       offset: 0x0C
     __IO uint32_t APB1RSTR;                                                     ///< Advanced Peripheral Bus 1 Reset Register       offset: 0x10
-    __IO uint32_t AHBENR;                                                       ///< Advanced High Performance Bus Enable Register  offset: 0x14
+    __IO uint32_t AHB1ENR;                                                      ///< Advanced High Performance Bus Enable Register  offset: 0x14
     __IO uint32_t APB2ENR;                                                      ///< Advanced Peripheral Bus 2 Enable Register      offset: 0x18
     __IO uint32_t APB1ENR;                                                      ///< Advanced Peripheral Bus 1 Enable Register      offset: 0x1C
     __IO uint32_t RESERVED0;                                                    ///<                                                offset: 0x20
     __IO uint32_t CSR;                                                          ///< Control Status Register                        offset: 0x24
-    __IO uint32_t AHBRSTR;                                                      ///< Advanced High Performance Bus Reset Register   offset: 0x28
+    __IO uint32_t AHB1RSTR;                                                     ///< Advanced High Performance Bus Reset Register   offset: 0x28
     __IO uint32_t RESERVED2[5];                                                 ///<                                                offset: 0x2C ~ 0x3C
     __IO uint32_t CONFIG;                                                       ///< System Configuration Register                  offset: 0x40
 #endif
@@ -1761,12 +1757,12 @@ typedef struct {
     __IO uint32_t CIR;                                                          ///< Clock Interrupt Register                       offset: 0x08
     __IO uint32_t APB2RSTR;                                                     ///< Advanced Peripheral Bus 2 Reset Register       offset: 0x0C
     __IO uint32_t APB1RSTR;                                                     ///< Advanced Peripheral Bus 1 Reset Register       offset: 0x10
-    __IO uint32_t AHBENR;                                                       ///< Advanced High Performance Bus Enable Register  offset: 0x14
+    __IO uint32_t AHB1ENR;                                                      ///< Advanced High Performance Bus Enable Register  offset: 0x14
     __IO uint32_t APB2ENR;                                                      ///< Advanced Peripheral Bus 2 Enable Register      offset: 0x18
     __IO uint32_t APB1ENR;                                                      ///< Advanced Peripheral Bus 1 Enable Register      offset: 0x1C
     __IO uint32_t BDCR;                                                         ///< Backup Domain Control Register                 offset: 0x20
     __IO uint32_t CSR;                                                          ///< Control Status Register                        offset: 0x24
-    __IO uint32_t AHBRSTR;                                                      ///< Advanced High Performance Bus Reset Register   offset: 0x28
+    __IO uint32_t AHB1STR;                                                      ///< Advanced High Performance Bus Reset Register   offset: 0x28
     __IO uint32_t CFGR2;                                                        ///< Clock Configuration 2 Register                 offset: 0x2C
     __IO uint32_t RNG;                                                          ///< RNG Register                                   offset: 0x30
     __IO uint32_t RESERVED[3];                                                  ///<                                                offset: 0x34 ~ 0x3C
@@ -1778,12 +1774,12 @@ typedef struct {
     __IO uint32_t CIR;                                                          ///< Clock Interrupt Register                       offset: 0x08
     __IO uint32_t RESERVED0;                                                    ///<                                                offset: 0x0C
     __IO uint32_t APB1RSTR;                                                     ///< Advanced Peripheral Bus 1 Reset Register       offset: 0x10
-    __IO uint32_t AHBENR;                                                       ///< Advanced High Performance Bus Enable Register  offset: 0x14
+    __IO uint32_t AHB1ENR;                                                      ///< Advanced High Performance Bus Enable Register  offset: 0x14
     __IO uint32_t RESERVED1;                                                    ///<                                                offset: 0x18
     __IO uint32_t APB1ENR;                                                      ///< Advanced Peripheral Bus 1 Enable Register      offset: 0x1C
     __IO uint32_t RESERVED2;                                                    ///<                                                offset: 0x20
     __IO uint32_t CSR;                                                          ///< Control Status Register                        offset: 0x24
-    __IO uint32_t AHBRSTR;                                                      ///< Advanced High Performance Bus Reset Register   offset: 0x28
+    __IO uint32_t AHB1RSTR;                                                     ///< Advanced High Performance Bus Reset Register   offset: 0x28
     __IO uint32_t RESERVED3[5];                                                 ///<                                                offset: 0x2C ~ 0x3C
     __IO uint32_t CONFIG;                                                       ///< System Configuration Register                  offset: 0x40
 #endif
@@ -8211,83 +8207,83 @@ typedef struct {
 /// @brief RCC_AHBENR Register Bit Definition
 ////////////////////////////////////////////////////////////////////////////////
 #if defined(__MM3N1) || defined(__MM0N1) || defined(__MM0P1) || defined(__MM0Q1) || defined(__MM0S1)
-    #define RCC_AHBENR_DMA1_Pos         (0)
-    #define RCC_AHBENR_DMA1             (0x01U << RCC_AHBENR_DMA1_Pos)          ///< DMA clock enable
+    #define RCC_AHB1ENR_DMA1_Pos        (0)
+    #define RCC_AHB1ENR_DMA1            (0x01U << RCC_AHB1ENR_DMA1_Pos)         ///< DMA clock enable
 #endif
 
 #if defined(__MM3N1) || defined(__MM0N1) || defined(__MM0P1) || defined(__MM0Q1) || defined(__MM0S1)
-    #define RCC_AHBENR_SRAM_Pos         (2)
-    #define RCC_AHBENR_SRAM             (0x01U << RCC_AHBENR_SRAM_Pos)          ///< SRAM interface clock enable
+    #define RCC_AHB1ENR_SRAM_Pos        (2)
+    #define RCC_AHB1ENR_SRAM            (0x01U << RCC_AHB1ENR_SRAM_Pos)         ///< SRAM interface clock enable
 #endif
 
 #if defined(__MM0T1)
-    #define RCC_AHBENR_SRAM_Pos         (2)
-    #define RCC_AHBENR_SRAM             (0x01U << RCC_AHBENR_SRAM_Pos)          ///< SRAM interface clock enable
+    #define RCC_AHB1ENR_SRAM_Pos        (2)
+    #define RCC_AHB1ENR_SRAM            (0x01U << RCC_AHB1ENR_SRAM_Pos)         ///< SRAM interface clock enable
 #endif
 
 #if defined(__MM3N1) || defined(__MM0N1) || defined(__MM0Q1)
-    #define RCC_AHBENR_FLITF_Pos        (4)
-    #define RCC_AHBENR_FLITF            (0x01U << RCC_AHBENR_FLITF_Pos)         ///< FLITF clock enable
+    #define RCC_AHB1ENR_FLITF_Pos       (4)
+    #define RCC_AHB1ENR_FLITF           (0x01U << RCC_AHB1ENR_FLITF_Pos)        ///< FLITF clock enable
 #endif
 
 #if defined(__MM0P1) || defined(__MM0S1) || defined(__MM0T1)
-#define RCC_AHBENR_FLASH_Pos            (4)
-#define RCC_AHBENR_FLASH                (0x01U << RCC_AHBENR_FLASH_Pos)         ///< FLASH clock enable
+#define RCC_AHB1ENR_FLASH_Pos           (4)
+#define RCC_AHB1ENR_FLASH               (0x01U << RCC_AHB1ENR_FLASH_Pos)        ///< FLASH clock enable
 #endif
 
 #if defined(__MM3N1) || defined(__MM0N1) || defined(__MM0P1) || defined(__MM0Q1) || defined(__MM0S1) || defined(__MM0T1)
-    #define RCC_AHBENR_CRC_Pos          (6)
-    #define RCC_AHBENR_CRC              (0x01U << RCC_AHBENR_CRC_Pos)           ///< Internal High Speed clock Calibration
+    #define RCC_AHB1ENR_CRC_Pos         (6)
+    #define RCC_AHB1ENR_CRC             (0x01U << RCC_AHB1ENR_CRC_Pos)          ///< Internal High Speed clock Calibration
 #endif
 
 #if defined(__MM3N1) || defined(__MM0N1)
-    #define RCC_AHBENR_AES_Pos          (7)
-    #define RCC_AHBENR_AES              (0x01U << RCC_AHBENR_AES_Pos)           ///< AES clock enable
+    #define RCC_AHB1ENR_AES_Pos         (7)
+    #define RCC_AHB1ENR_AES             (0x01U << RCC_AHB1ENR_AES_Pos)          ///< AES clock enable
 #endif
 
 #if defined(__MM0N1) || defined(__MM0P1) || defined(__MM0Q1) || defined(__MM0S1)
-    #define RCC_AHBENR_GPIOA_Pos        (17)
-    #define RCC_AHBENR_GPIOA            (0x01U << RCC_AHBENR_GPIOA_Pos)         ///< GPIOA clock enable
+    #define RCC_AHB1ENR_GPIOA_Pos       (17)
+    #define RCC_AHB1ENR_GPIOA           (0x01U << RCC_AHB1ENR_GPIOA_Pos)        ///< GPIOA clock enable
 #endif
 
 #if defined(__MM0N1) || defined(__MM0P1) || defined(__MM0Q1) || defined(__MM0S1)
-    #define RCC_AHBENR_GPIOB_Pos        (18)
-    #define RCC_AHBENR_GPIOB            (0x01U << RCC_AHBENR_GPIOB_Pos)         ///< GPIOB clock enable
+    #define RCC_AHB1ENR_GPIOB_Pos       (18)
+    #define RCC_AHB1ENR_GPIOB           (0x01U << RCC_AHB1ENR_GPIOB_Pos)        ///< GPIOB clock enable
 #endif
 
 #if defined(__MM0N1) || defined(__MM0P1) || defined(__MM0Q1) || defined(__MM0S1)
-    #define RCC_AHBENR_GPIOC_Pos        (19)
-    #define RCC_AHBENR_GPIOC            (0x01U << RCC_AHBENR_GPIOC_Pos)         ///< GPIOC clock enable
+    #define RCC_AHB1ENR_GPIOC_Pos       (19)
+    #define RCC_AHB1ENR_GPIOC           (0x01U << RCC_AHB1ENR_GPIOC_Pos)        ///< GPIOC clock enable
 #endif
 
 #if defined(__MM0N1) || defined(__MM0P1) || defined(__MM0Q1) || defined(__MM0S1)
-    #define RCC_AHBENR_GPIOD_Pos        (20)
-    #define RCC_AHBENR_GPIOD            (0x01U << RCC_AHBENR_GPIOD_Pos)         ///< GPIOD clock enable
+    #define RCC_AHB1ENR_GPIOD_Pos       (20)
+    #define RCC_AHB1ENR_GPIOD           (0x01U << RCC_AHB1ENR_GPIOD_Pos)        ///< GPIOD clock enable
 #endif
 
 #if defined(__MM0T1)
-    #define RCC_AHBENR_GPIOA_Pos        (17)
-    #define RCC_AHBENR_GPIOA            (0x01U << RCC_AHBENR_GPIOA_Pos)         ///< GPIOA clock enable
+    #define RCC_AHB1ENR_GPIOA_Pos       (17)
+    #define RCC_AHB1ENR_GPIOA           (0x01U << RCC_AHB1ENR_GPIOA_Pos)        ///< GPIOA clock enable
 #endif
 
 #if defined(__MM0T1)
-    #define RCC_AHBENR_GPIOB_Pos        (18)
-    #define RCC_AHBENR_GPIOB            (0x01U << RCC_AHBENR_GPIOB_Pos)         ///< GPIOB clock enable
+    #define RCC_AHB1ENR_GPIOB_Pos       (18)
+    #define RCC_AHB1ENR_GPIOB           (0x01U << RCC_AHB1ENR_GPIOB_Pos)        ///< GPIOB clock enable
 #endif
 
 #if defined(__MM0N1)
-    #define RCC_AHBENR_GPIOE_Pos        (21)
-    #define RCC_AHBENR_GPIOE            (0x01U << RCC_AHBENR_GPIOE_Pos)         ///< GPIOE clock enable
+    #define RCC_AHB1ENR_GPIOE_Pos       (21)
+    #define RCC_AHB1ENR_GPIOE           (0x01U << RCC_AHB1ENR_GPIOE_Pos)        ///< GPIOE clock enable
 #endif
 
 #if defined(__MM0P1)
-    #define RCC_AHBENR_HWSQRT_Pos       (25)
-    #define RCC_AHBENR_HWSQRT           (0x01U << RCC_AHBENR_HWSQRT_Pos)        ///< HWSQRT clock enable
+    #define RCC_AHB1ENR_HWSQRT_Pos      (25)
+    #define RCC_AHB1ENR_HWSQRT          (0x01U << RCC_AHB1ENR_HWSQRT_Pos)       ///< HWSQRT clock enable
 #endif
 
 #if defined(__MM0Q1) || defined(__MM0P1) || defined(__MM0S1)
-    #define RCC_AHBENR_HWDIV_Pos        (26)
-    #define RCC_AHBENR_HWDIV            (0x01U << RCC_AHBENR_HWDIV_Pos)         ///< HWDIV clock enable
+    #define RCC_AHB1ENR_HWDIV_Pos       (26)
+    #define RCC_AHB1ENR_HWDIV           (0x01U << RCC_AHB1ENR_HWDIV_Pos)        ///< HWDIV clock enable
 #endif
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -8847,42 +8843,42 @@ typedef struct {
 /// @brief RCC_AHBRSTR Register Bit Definition
 ////////////////////////////////////////////////////////////////////////////////
 #if defined(__MM0P1) || defined(__MM0Q1)
-    #define RCC_AHBRSTR_DMA1_Pos        (0)
-    #define RCC_AHBRSTR_DMA1            (0x01U << RCC_AHBRSTR_DMA1_Pos)         ///< DMA clock reset
-    #define RCC_AHBRSTR_SRAM_Pos        (2)
-    #define RCC_AHBRSTR_SRAM            (0x01U << RCC_AHBRSTR_SRAM_Pos)         ///< SRAM interface clock reset
-    #define RCC_AHBRSTR_FLITF_Pos       (4)
-    #define RCC_AHBRSTR_FLITF           (0x01U << RCC_AHBRSTR_FLITF_Pos)        ///< FLITF clock reset
-    #define RCC_AHBRSTR_CRC_Pos         (6)
-    #define RCC_AHBRSTR_CRC             (0x01U << RCC_AHBRSTR_CRC_Pos)          ///< Internal High Speed clock Calibration
-    #define RCC_AHBRSTR_GPIOA_Pos       (17)
-    #define RCC_AHBRSTR_GPIOA           (0x01U << RCC_AHBRSTR_GPIOA_Pos)        ///< GPIOA clock reset
-    #define RCC_AHBRSTR_GPIOB_Pos       (18)
-    #define RCC_AHBRSTR_GPIOB           (0x01U << RCC_AHBRSTR_GPIOB_Pos)        ///< GPIOB clock reset
-    #define RCC_AHBRSTR_GPIOC_Pos       (19)
-    #define RCC_AHBRSTR_GPIOC           (0x01U << RCC_AHBRSTR_GPIOC_Pos)        ///< GPIOC clock reset
-    #define RCC_AHBRSTR_GPIOD_Pos       (20)
-    #define RCC_AHBRSTR_GPIOD           (0x01U << RCC_AHBRSTR_GPIOD_Pos)        ///< GPIOD clock reset
-    #define RCC_AHBRSTR_HWDIV_Pos       (26)
-    #define RCC_AHBRSTR_HWDIV           (0x01U << RCC_AHBRSTR_HWDIV_Pos)        ///< HWDIV clock reset
+    #define RCC_AHB1RSTR_DMA1_Pos       (0)
+    #define RCC_AHB1RSTR_DMA1           (0x01U << RCC_AHB1RSTR_DMA1_Pos)        ///< DMA clock reset
+    #define RCC_AHB1RSTR_SRAM_Pos       (2)
+    #define RCC_AHB1RSTR_SRAM           (0x01U << RCC_AHB1RSTR_SRAM_Pos)        ///< SRAM interface clock reset
+    #define RCC_AHB1RSTR_FLITF_Pos      (4)
+    #define RCC_AHB1RSTR_FLITF          (0x01U << RCC_AHB1RSTR_FLITF_Pos)       ///< FLITF clock reset
+    #define RCC_AHB1RSTR_CRC_Pos        (6)
+    #define RCC_AHB1RSTR_CRC            (0x01U << RCC_AHB1RSTR_CRC_Pos)         ///< Internal High Speed clock Calibration
+    #define RCC_AHB1RSTR_GPIOA_Pos      (17)
+    #define RCC_AHB1RSTR_GPIOA          (0x01U << RCC_AHB1RSTR_GPIOA_Pos)       ///< GPIOA clock reset
+    #define RCC_AHB1RSTR_GPIOB_Pos      (18)
+    #define RCC_AHB1RSTR_GPIOB          (0x01U << RCC_AHB1RSTR_GPIOB_Pos)       ///< GPIOB clock reset
+    #define RCC_AHB1RSTR_GPIOC_Pos      (19)
+    #define RCC_AHB1RSTR_GPIOC          (0x01U << RCC_AHB1RSTR_GPIOC_Pos)       ///< GPIOC clock reset
+    #define RCC_AHB1RSTR_GPIOD_Pos      (20)
+    #define RCC_AHB1RSTR_GPIOD          (0x01U << RCC_AHB1RSTR_GPIOD_Pos)       ///< GPIOD clock reset
+    #define RCC_AHB1RSTR_HWDIV_Pos      (26)
+    #define RCC_AHB1RSTR_HWDIV          (0x01U << RCC_AHB1RSTR_HWDIV_Pos)       ///< HWDIV clock reset
 #endif
 #if defined(__MM0S1) || defined(__MM0T1)
-    #define RCC_AHBRSTR_GPIOA_Pos       (17)
-    #define RCC_AHBRSTR_GPIOA           (0x01U << RCC_AHBRSTR_GPIOA_Pos)        ///< GPIOA clock reset
-    #define RCC_AHBRSTR_GPIOB_Pos       (18)
-    #define RCC_AHBRSTR_GPIOB           (0x01U << RCC_AHBRSTR_GPIOB_Pos)        ///< GPIOB clock reset
+    #define RCC_AHB1RSTR_GPIOA_Pos      (17)
+    #define RCC_AHB1RSTR_GPIOA          (0x01U << RCC_AHB1RSTR_GPIOA_Pos)       ///< GPIOA clock reset
+    #define RCC_AHB1RSTR_GPIOB_Pos      (18)
+    #define RCC_AHB1RSTR_GPIOB          (0x01U << RCC_AHB1RSTR_GPIOB_Pos)       ///< GPIOB clock reset
 #if defined(__MM0S1)
-    #define RCC_AHBRSTR_GPIOC_Pos       (19)
-    #define RCC_AHBRSTR_GPIOC           (0x01U << RCC_AHBRSTR_GPIOC_Pos)        ///< GPIOC clock reset
-    #define RCC_AHBRSTR_GPIOD_Pos       (20)
-    #define RCC_AHBRSTR_GPIOD           (0x01U << RCC_AHBRSTR_GPIOD_Pos)        ///< GPIOD clock reset
-    #define RCC_AHBRSTR_HWDIV_Pos       (20)
-    #define RCC_AHBRSTR_HWDIV           (0x01U << RCC_AHBRSTR_HWDIV_Pos)        ///< HWDIV Reset
+    #define RCC_AHB1RSTR_GPIOC_Pos      (19)
+    #define RCC_AHB1RSTR_GPIOC          (0x01U << RCC_AHB1RSTR_GPIOC_Pos)       ///< GPIOC clock reset
+    #define RCC_AHB1RSTR_GPIOD_Pos      (20)
+    #define RCC_AHB1RSTR_GPIOD          (0x01U << RCC_AHB1RSTR_GPIOD_Pos)       ///< GPIOD clock reset
+    #define RCC_AHB1RSTR_HWDIV_Pos      (20)
+    #define RCC_AHB1RSTR_HWDIV          (0x01U << RCC_AHB1RSTR_HWDIV_Pos)       ///< HWDIV Reset
 #endif
 #endif
 #if defined(__MM0P1)
-    #define RCC_AHBRSTR_HWSQRT_Pos      (25)
-    #define RCC_AHBRSTR_HWSQRT          (0x01U << RCC_AHBRSTR_HWSQRT_Pos)       ///< HWSQRT clock reset
+    #define RCC_AHB1RSTR_HWSQRT_Pos     (25)
+    #define RCC_AHB1RSTR_HWSQRT         (0x01U << RCC_AHB1RSTR_HWSQRT_Pos)      ///< HWSQRT clock reset
 #endif
 
 ////////////////////////////////////////////////////////////////////////////////

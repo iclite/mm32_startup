@@ -3427,7 +3427,7 @@ typedef struct {
     #define CACHE_INV_STAT_Pos          (1)
     #define CACHE_INV_STAT              (0x01U << CACHE_INV_STAT_Pos)           ///< Invalid status
     #define CACHE_POW_STAT_Pos          (3)
-    #define CACHE_POW_STAT_Pos          (0x01U << CACHE_POW_STAT_Pos)           ///< Power status
+    #define CACHE_POW_STAT              (0x01U << CACHE_POW_STAT_Pos)           ///< Power status
 
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief CACHE_IMR Register Bit Definition

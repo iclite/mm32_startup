@@ -154,9 +154,9 @@ EM_MCUID SystemInit(EM_SystemClock ClockSource, EM_SYSTICK tickEn , AppTick_fun 
     // PLL on
     if ((ClockSource & 0x000F0) >> 4 == 2) {
 #if defined(RCC_PLLCFGR_PLLSRC)
-        RCC->PLLCFGR &= ~(RCC_PLLCFGR_PLLDN | RCC_PLLCFGR_PLLDP);
-        RCC->PLLCFGR |= (((ClockSource & 0x0F000) >> 12) << RCC_PLLCFGR_PLLDN_Pos);
-        RCC->PLLCFGR |= ((ClockSource & 0x00F00) << RCC_PLLCFGR_PLLDP_Pos);
+        RCC->PLLCFGR &= ~(RCC_PLLCFGR_PLLMUL | RCC_PLLCFGR_PLLDIV);
+        RCC->PLLCFGR |= (((ClockSource & 0x0F000) >> 12) << RCC_PLLCFGR_PLLMUL_Pos);
+        RCC->PLLCFGR |= ((ClockSource & 0x00F00) << RCC_PLLCFGR_PLLDIV_Pos);
 #else
         RCC->CR |= ((ClockSource & 0x0F000) << 14);
         RCC->CR |= ((ClockSource & 0x00F00) << 12);

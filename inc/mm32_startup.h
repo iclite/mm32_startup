@@ -305,7 +305,7 @@ __WEAK void DMA1_Channel4_IRQHandler    (void)  { while(1) {} }
 __WEAK void DMA1_Channel5_IRQHandler    (void)  { while(1) {} }
 __WEAK void DMA1_Channel6_IRQHandler    (void)  { while(1) {} }
 __WEAK void DMA1_Channel7_IRQHandler    (void)  { while(1) {} }
-__WEAK void ADC1_IRQHandler             (void)  { while(1) {} }
+__WEAK void ADC1_2_IRQHandler           (void)  { while(1) {} }
 __WEAK void FLASH_CACHE_IRQHandler      (void)  { while(1) {} }
 __WEAK void CAN1_RX_IRQHandler          (void)  { while(1) {} }
 __WEAK void EXTI9_5_IRQHandler          (void)  { while(1) {} }
@@ -367,7 +367,7 @@ void SysTick_Handler                    (void);
 #endif
 
 // Cortex-M3 core handlers
-#if defined(__MM3N1) || defined(__MM3O1) || defined(__MMU1)
+#if defined(__MM3N1) || defined(__MM3O1) || defined(__MM3U1)
 void Reset_Handler                      (void);
 void NMI_Handler                        (void);
 void HardFault_Handler                  (void);

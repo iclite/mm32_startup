@@ -353,14 +353,26 @@ typedef enum IRQn {
 ////////////////////////////////////////////////////////////////////////////////
 
 #define APB1_BASE                       (0x40000000U)
-#define APB2_BASE                       (0x40010000U)
+
+#if defined(__MM3N1) || defined(__MM0N1) || defined(__MM3O1) || defined(__MM0P1) || defined(__MM0Q1) || defined(__MM0S1) || defined(__MM0T1) || defined(__MM3U1)
+    #define APB2_BASE                   (0x40010000U)
+#endif
+
 #define AHB1_BASE                       (0x40020000U)
+
+#if defined(__MM3O1) || defined(__MM3U1)
 #define AHB2_BASE                       (0x48000000U)
+#endif
+
+#if defined(__MM3O1) || defined(__MM3U1)
 #define AHB3_BASE                       (0x60000000U)
+#endif
 
-#define AHB_BASE                        AHB1_BASE
+#if defined(AHB1_BASE)
+    #define AHB_BASE                    AHB1_BASE
+#endif
 
-#if defined(__MM3N1) || defined(__MM3O1)
+#if defined(__MM3N1) || defined(__MM3O1) || defined(__MM3U1)
     #define SRAM_BITBAND_BASE           (0x22000000U)                           ///< Peripheral base address in the bit-band region
     #define PERIPH_BITBAND_BASE         (0x42000000U)                           ///< SRAM base address in the bit-band region
 #endif
@@ -1678,12 +1690,7 @@ typedef struct {
     __IO uint32_t APB1ENR;                                                      ///< Advanced Peripheral Bus 1 Enable Register      offset: 0x1C
     __IO uint32_t BDCR;                                                         ///< Backup Domain Control Register                 offset: 0x20
     __IO uint32_t CSR;                                                          ///< Control Status Register                        offset: 0x24
-    __IO uint32_t RESERVED0;                                                    ///<                                                offset: 0x28
-    __IO uint32_t RESERVED1;                                                    ///<                                                offset: 0x2C
-    __IO uint32_t RESERVED2;                                                    ///<                                                offset: 0x30
-    __IO uint32_t RESERVED3;                                                    ///<                                                offset: 0x34
-    __IO uint32_t RESERVED4;                                                    ///<                                                offset: 0x38
-    __IO uint32_t RESERVED5;                                                    ///<                                                offset: 0x3C
+    __IO uint32_t RESERVED[6];                                                  ///<                                                offset: 0x28 ~ 0x3C
     __IO uint32_t CONFIG;                                                       ///< System Configuration Register                  offset: 0x40
 #endif
 #if defined(__MM0N1)
@@ -1697,12 +1704,7 @@ typedef struct {
     __IO uint32_t APB1ENR;                                                      ///< Advanced Peripheral Bus 1 Enable Register      offset: 0x1C
     __IO uint32_t RESERVED0;                                                    ///<                                                offset: 0x20
     __IO uint32_t CSR;                                                          ///< Control Status Register                        offset: 0x24
-    __IO uint32_t RESERVED1;                                                    ///<                                                offset: 0x28
-    __IO uint32_t RESERVED2;                                                    ///<                                                offset: 0x2C
-    __IO uint32_t RESERVED3;                                                    ///<                                                offset: 0x30
-    __IO uint32_t RESERVED4;                                                    ///<                                                offset: 0x34
-    __IO uint32_t RESERVED5;                                                    ///<                                                offset: 0x38
-    __IO uint32_t RESERVED6;                                                    ///<                                                offset: 0x3C
+    __IO uint32_t RESERVED[6];                                                  ///<                                                offset: 0x28 ~ 3C
     __IO uint32_t CONFIG;                                                       ///< System Configuration Register                  offset: 0x40
 #endif
 #if defined(__MM3O1)
@@ -1722,7 +1724,6 @@ typedef struct {
     __IO uint32_t BDCR;                                                         ///< Backup Domain Control Register                 offset: 0x34
     __IO uint32_t CSR;                                                          ///< Control Status Register                        offset: 0x38
     __IO uint32_t CONFIG;                                                       ///< System Configuration Register                  offset: 0x3C
-    __IO uint32_t RESERVED0;                                                    ///<                                                offset: 0x40
 #endif
 #if defined(__MM0P1)
     __IO uint32_t CR;                                                           ///< Control Register                               offset: 0x00
@@ -1736,11 +1737,7 @@ typedef struct {
     __IO uint32_t BDCR;                                                         ///< Backup Domain Control Register                 offset: 0x20
     __IO uint32_t CSR;                                                          ///< Control Status Register                        offset: 0x24
     __IO uint32_t AHBRSTR;                                                      ///< Advanced High Performance Bus Reset Register   offset: 0x28
-    __IO uint32_t RESERVED0;                                                    ///<                                                offset: 0x2C
-    __IO uint32_t RESERVED1;                                                    ///<                                                offset: 0x30
-    __IO uint32_t RESERVED2;                                                    ///<                                                offset: 0x34
-    __IO uint32_t RESERVED3;                                                    ///<                                                offset: 0x38
-    __IO uint32_t RESERVED4;                                                    ///<                                                offset: 0x3C
+    __IO uint32_t RESERVED[5];                                                  ///<                                                offset: 0x2C ~ 0x3C
     __IO uint32_t CONFIG;                                                       ///< System Configuration Register                  offset: 0x40
 #endif
 #if defined(__MM0Q1)
@@ -1755,11 +1752,7 @@ typedef struct {
     __IO uint32_t RESERVED0;                                                    ///<                                                offset: 0x20
     __IO uint32_t CSR;                                                          ///< Control Status Register                        offset: 0x24
     __IO uint32_t AHBRSTR;                                                      ///< Advanced High Performance Bus Reset Register   offset: 0x28
-    __IO uint32_t RESERVED2;                                                    ///<                                                offset: 0x2C
-    __IO uint32_t RESERVED3;                                                    ///<                                                offset: 0x30
-    __IO uint32_t RESERVED4;                                                    ///<                                                offset: 0x34
-    __IO uint32_t RESERVED5;                                                    ///<                                                offset: 0x38
-    __IO uint32_t RESERVED6;                                                    ///<                                                offset: 0x3C
+    __IO uint32_t RESERVED2[5];                                                 ///<                                                offset: 0x2C ~ 0x3C
     __IO uint32_t CONFIG;                                                       ///< System Configuration Register                  offset: 0x40
 #endif
 #if defined(__MM0S1)
@@ -1776,9 +1769,7 @@ typedef struct {
     __IO uint32_t AHBRSTR;                                                      ///< Advanced High Performance Bus Reset Register   offset: 0x28
     __IO uint32_t CFGR2;                                                        ///< Clock Configuration 2 Register                 offset: 0x2C
     __IO uint32_t RNG;                                                          ///< RNG Register                                   offset: 0x30
-    __IO uint32_t RESERVED0;                                                    ///<                                                offset: 0x34
-    __IO uint32_t RESERVED1;                                                    ///<                                                offset: 0x38
-    __IO uint32_t RESERVED2;                                                    ///<                                                offset: 0x3C
+    __IO uint32_t RESERVED[3];                                                  ///<                                                offset: 0x34 ~ 0x3C
     __IO uint32_t CONFIG;                                                       ///< System Configuration Register                  offset: 0x40
 #endif
 #if defined(__MM0T1)
@@ -1793,46 +1784,30 @@ typedef struct {
     __IO uint32_t RESERVED2;                                                    ///<                                                offset: 0x20
     __IO uint32_t CSR;                                                          ///< Control Status Register                        offset: 0x24
     __IO uint32_t AHBRSTR;                                                      ///< Advanced High Performance Bus Reset Register   offset: 0x28
-    __IO uint32_t RESERVED3;                                                    ///<                                                offset: 0x2c
-    __IO uint32_t RESERVED4;                                                    ///<                                                offset: 0x30
-    __IO uint32_t RESERVED5;                                                    ///<                                                offset: 0x34
-    __IO uint32_t RESERVED6;                                                    ///<                                                offset: 0x38
-    __IO uint32_t RESERVED7;                                                    ///<                                                offset: 0x3C
+    __IO uint32_t RESERVED3[5];                                                 ///<                                                offset: 0x2C ~ 0x3C
     __IO uint32_t CONFIG;                                                       ///< System Configuration Register                  offset: 0x40
 #endif
 #if defined(__MM3U1)
     __IO uint32_t CR;                                                           ///< Control Register                               offset: 0x00
     __IO uint32_t CFGR;                                                         ///< Configuration Register                         offset: 0x04
     __IO uint32_t CIR;                                                          ///< Clock Interrupt Register                       offset: 0x08
-    __IO uint32_t AHB3RSTR;                                                     ///< Advanced High Performance Bus3 Reset Register  offset: 0x0c
+    __IO uint32_t AHB3RSTR;                                                     ///< Advanced High Performance Bus3 Reset Register  offset: 0x0C
     __IO uint32_t AHB2RSTR;                                                     ///< Advanced High Performance Bus2 Reset Register  offset: 0x10
     __IO uint32_t AHB1RSTR;                                                     ///< Advanced High Performance Bus1 Reset Register  offset: 0x14
     __IO uint32_t APB2RSTR;                                                     ///< Advanced Peripheral Bus 2 Enable Register      offset: 0x18
-    __IO uint32_t APB1RSTR;                                                     ///< Advanced Peripheral Bus 1 Enable Register      offset: 0x1c
+    __IO uint32_t APB1RSTR;                                                     ///< Advanced Peripheral Bus 1 Enable Register      offset: 0x1C
     __IO uint32_t AHB3ENR;                                                      ///< Advanced High Performance Bus3 Enable Register offset: 0x20
     __IO uint32_t AHB2ENR;                                                      ///< Advanced High Performance Bus2 Enable Register offset: 0x24
     __IO uint32_t AHB1ENR;                                                      ///< Advanced High Performance Bus1 Enable Register offset: 0x28
-    __IO uint32_t APB2ENR;                                                      ///< Advanced Peripheral Bus 2 Enable Register      offset: 0x2c
+    __IO uint32_t APB2ENR;                                                      ///< Advanced Peripheral Bus 2 Enable Register      offset: 0x2C
     __IO uint32_t APB1ENR;                                                      ///< Advanced Peripheral Bus 1 Enable Register      offset: 0x30
     __IO uint32_t BDCR;                                                         ///< Backup Domain Control Register                 offset: 0x34
     __IO uint32_t CSR;                                                          ///< Control Status Register                        offset: 0x38
-    __IO uint32_t CONFIG;                                                       ///< System Configuration Register                  offset: 0x3c
+    __IO uint32_t CONFIG;                                                       ///< System Configuration Register                  offset: 0x3C
     __IO uint32_t CFGR2;                                                        ///< Configuration Register 2                       offset: 0x40
     __IO uint32_t ICSCR;                                                        ///< Insert Clock Source Calibration Register       offset: 0x44
     __IO uint32_t PLLCFGR;                                                      ///< PLL Configuration Register                     offset: 0x48
-    __IO uint32_t RESERVED0;                                                    ///<                                                offset: 0x4c
-    __IO uint32_t RESERVED1;                                                    ///<                                                offset: 0x50
-    __IO uint32_t RESERVED2;                                                    ///<                                                offset: 0x54
-    __IO uint32_t RESERVED3;                                                    ///<                                                offset: 0x58
-    __IO uint32_t RESERVED4;                                                    ///<                                                offset: 0x5c
-    __IO uint32_t RESERVED5;                                                    ///<                                                offset: 0x60
-    __IO uint32_t RESERVED6;                                                    ///<                                                offset: 0x64
-    __IO uint32_t RESERVED7;                                                    ///<                                                offset: 0x68
-    __IO uint32_t RESERVED8;                                                    ///<                                                offset: 0x6c
-    __IO uint32_t RESERVED9;                                                    ///<                                                offset: 0x70
-    __IO uint32_t RESERVED10;                                                   ///<                                                offset: 0x74
-    __IO uint32_t RESERVED11;                                                   ///<                                                offset: 0x78
-    __IO uint32_t RESERVED12;                                                   ///<                                                offset: 0x7c
+    __IO uint32_t RESERVED[13];                                                 ///<                                                offset: 0x4C ~ 0x7C
     __IO uint32_t HSIDLY;                                                       ///< HSI Delay Register                             offset: 0x80
     __IO uint32_t HSEDLY;                                                       ///< HSE Delay Register                             offset: 0x84
     __IO uint32_t PLLDLY;                                                       ///< PLL Delay Register                             offset: 0x88

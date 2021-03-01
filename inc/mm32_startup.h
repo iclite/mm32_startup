@@ -15,7 +15,6 @@ typedef union { intfunc __fun; void * __ptr; } intvec_elem;
 ////////////////////////////////////////////////////////////////////////////////
 // Cortex-M0 core handlers
 #if defined(__MM0N1) || defined(__MM0P1) || defined(__MM0Q1) || defined(__MM0S1) || defined(__MM0T1)
-__WEAK void Reset_Handler               (void)  { while(1) {} }
 __WEAK void NMI_Handler                 (void)  { while(1) {} }
 __WEAK void HardFault_Handler           (void)  { while(1) {} }
 __WEAK void SVC_Handler                 (void)  { while(1) {} }
@@ -25,7 +24,6 @@ __WEAK void SysTick_Handler             (void)  { while(1) {} }
 
 // Cortex-M3 core handlers
 #if defined(__MM3N1) || defined(__MM3O1) || defined(__MM3U1)
-__WEAK void Reset_Handler               (void)  { while(1) {} }
 __WEAK void NMI_Handler                 (void)  { while(1) {} }
 __WEAK void HardFault_Handler           (void)  { while(1) {} }
 __WEAK void MemManage_Handler           (void)  { while(1) {} }
@@ -50,13 +48,13 @@ __WEAK void EXTI1_IRQHandler            (void)  { while(1) {} }
 __WEAK void EXTI2_IRQHandler            (void)  { while(1) {} }
 __WEAK void EXTI3_IRQHandler            (void)  { while(1) {} }
 __WEAK void EXTI4_IRQHandler            (void)  { while(1) {} }
-__WEAK void DMA1_CH1_IRQHandler         (void)  { while(1) {} }
-__WEAK void DMA1_CH2_IRQHandler         (void)  { while(1) {} }
-__WEAK void DMA1_CH3_IRQHandler         (void)  { while(1) {} }
-__WEAK void DMA1_CH4_IRQHandler         (void)  { while(1) {} }
-__WEAK void DMA1_CH5_IRQHandler         (void)  { while(1) {} }
-__WEAK void DMA1_CH6_IRQHandler         (void)  { while(1) {} }
-__WEAK void DMA1_CH7_IRQHandler         (void)  { while(1) {} }
+__WEAK void DMA1_Channel1_IRQHandler    (void)  { while(1) {} }
+__WEAK void DMA1_Channel2_IRQHandler    (void)  { while(1) {} }
+__WEAK void DMA1_Channel3_IRQHandler    (void)  { while(1) {} }
+__WEAK void DMA1_Channel4_IRQHandler    (void)  { while(1) {} }
+__WEAK void DMA1_Channel5_IRQHandler    (void)  { while(1) {} }
+__WEAK void DMA1_Channel6_IRQHandler    (void)  { while(1) {} }
+__WEAK void DMA1_Channel7_IRQHandler    (void)  { while(1) {} }
 __WEAK void ADC1_2_IRQHandler           (void)  { while(1) {} }
 __WEAK void USB_HP_CAN1_TX_IRQHandler   (void)  { while(1) {} }
 __WEAK void CAN1_RX1_IRQHandler         (void)  { while(1) {} }
@@ -76,7 +74,7 @@ __WEAK void UART1_IRQHandler            (void)  { while(1) {} }
 __WEAK void UART2_IRQHandler            (void)  { while(1) {} }
 __WEAK void UART3_IRQHandler            (void)  { while(1) {} }
 __WEAK void EXTI15_10_IRQHandler        (void)  { while(1) {} }
-__WEAK void RTC_ALARM_IRQHandler        (void)  { while(1) {} }
+__WEAK void RTCAlarm_IRQHandler         (void)  { while(1) {} }
 __WEAK void USBWakeUp_IRQHandler        (void)  { while(1) {} }
 __WEAK void AES_IRQHandler              (void)  { while(1) {} }
 #endif

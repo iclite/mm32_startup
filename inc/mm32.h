@@ -8896,25 +8896,8 @@ typedef struct {
 #endif
 
 ////////////////////////////////////////////////////////////////////////////////
-/// @brief RCC_SYSCFG Register Bit Definition
-////////////////////////////////////////////////////////////////////////////////
-#if defined(__MM3U1)
-    #define RCC_SYSCFG_CHECK_Pos        (0)
-    #define RCC_SYSCFG_CHECK            (0x01U << RCC_SYSCFG_CHECK_Pos)         ///< Check the data in Flash
-    #define RCC_SYSCFG_SECTOR_Pos       (1)
-    #define RCC_SYSCFG_SECTOR           (0x01U << RCC_SYSCFG_SECTOR_Pos)        ///< Size of page erase
-    #define RCC_SYSCFG_PREFETCH_Pos     (2)
-    #define RCC_SYSCFG_PREFETCH         (0x01U << RCC_SYSCFG_PREFETCH_Pos)      ///< DATA pre enable
-    #define RCC_SYSCFG_PADOSCTRIM_Pos   (8)
-    #define RCC_SYSCFG_PADOSCTRIM       (0x1FU << RCC_SYSCFG_PADOSCTRIM_Pos)    ///< external oscillator trim
-    #define RCC_SYSCFG_OSCLPFEN_Pos     (14)
-    #define RCC_SYSCFG_OSCLPFEN         (0x01U << RCC_SYSCFG_OSCLPFEN_Pos)      ///< external oscillator LPF enable
-#endif
-
-////////////////////////////////////////////////////////////////////////////////
 /// @brief RCC_CONFIG Register Bit Definition
 ////////////////////////////////////////////////////////////////////////////////
-#if defined(__MM3N1) || defined(__MM0N1) || defined(__MM3O1) || defined(__MM0P1) || defined(__MM0Q1) || defined(__MM0S1) || defined(__MM0T1)
 #define RCC_CONFIG_CHECK_Pos            (0)
 #define RCC_CONFIG_CHECK                (0x01U << RCC_CONFIG_CHECK_Pos)         ///< Whether to check if the data in Flash is FF when writing Flash
 #define RCC_CONFIG_PAGE_Pos             (1)
@@ -8923,14 +8906,18 @@ typedef struct {
     #define RCC_CONFIG_RST_Pos          (2)
     #define RCC_CONFIG_RST              (0x01U << RCC_CONFIG_RST_Pos)           ///< Software mapping nRST
 #endif
-#if defined(__MM3O1) || defined(__MM0P1) || defined(__MM0Q1)
+#if defined(__MM3U1)
+    #define RCC_CONFIG_DFEN_Pos         (2)
+    #define RCC_CONFIG_DFEN             (0x01U << RCC_CONFIG_DFEN_Pos)          ///< Data Prefetch Enable Bit
+#endif
+#if defined(__MM3O1) || defined(__MM0P1) || defined(__MM0Q1) || defined(__MM3U1)
     #define RCC_CONFIG_RTRIM_Pos        (8)
     #define RCC_CONFIG_RTRIM            (0x07U << RCC_CONFIG_RTRIM_Pos)         ///< External crystal feedback resistance calibration value
     #define RCC_CONFIG_ITRIM_Pos        (11)
     #define RCC_CONFIG_ITRIM            (0x03U << RCC_CONFIG_ITRIM_Pos)         ///< External crystal drive current calibration value
 #endif
 
-#if defined(__MM3O1) || defined(__MM0P1) || defined(__MM0Q1) || defined(__MM0T1)
+#if defined(__MM3O1) || defined(__MM0P1) || defined(__MM0Q1) || defined(__MM0T1) || defined(__MM3U1)
     #define RCC_CONFIG_LPFEN_Pos        (14)
     #define RCC_CONFIG_LPFEN            (0x01U << RCC_CONFIG_LPFEN_Pos)         ///< External crystal low-pass filter enable
 #endif
@@ -8938,7 +8925,6 @@ typedef struct {
 #if defined(__MM3O1)
     #define RCC_CONFIG_FSTA_Pos         (31)
     #define RCC_CONFIG_FSTA             (0x01U << RCC_CONFIG_FSTA_Pos)          ///< Data prefetch module status bit
-#endif
 #endif
 
 ////////////////////////////////////////////////////////////////////////////////

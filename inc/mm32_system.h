@@ -103,7 +103,7 @@ typedef enum {
 typedef enum {
                                         //  Flash_Latency   Mul Div Sw  Src
     SYSCLK_HSI_6d       = 0x00000,      //              0   0   0   0   0
-#if defined(__MM3N1) || defined(__MM0N1) || defined(__MM0P1) || defined(__MM0S1) || defined(__MM3U1)
+#if defined(__MM3N1) || defined(__MM0N1) || defined(__MM0P1) || defined(__MM0S1)
     SYSCLK_HSI_12MHz    = 0x00020,      //              0   0   0   2   0
     SYSCLK_HSI_24MHz    = 0x01020,      //              0   1   0   2   0
     SYSCLK_HSI_48MHz    = 0x13020,      //              1   3   0   2   0
@@ -121,11 +121,39 @@ typedef enum {
     SYSCLK_HSE_1x       = 0x00011,      //              0   0   0   1   1
     SYSCLK_HSI_48MHz    = 0x10020,      //              1   0   0   2   0
     SYSCLK_HSI_72MHz    = 0x20020,      //              2   0   0   2   0
-    SYSCLK_LSI_40KHz    = 0x00032,      //              0   0   0   3   2   
+    SYSCLK_LSI_40KHz    = 0x00032,      //              0   0   0   3   2
 #endif
 #if defined(__MM3U1)
-    SYSCLK_HSI_108MHz   = 0x48020,      //              4   8   0   2   0
-    SYSCLK_HSI_120MHz   = 0x49020,      //              4   9   0   2   0
+    SYSCLK_HSI_8MHz     = 0x00020,      //              0   0   0   2   0
+    SYSCLK_HSI_16MHz    = 0x01020,      //              0   1   0   2   0
+    SYSCLK_HSI_24MHz    = 0x02020,      //              0   2   0   2   0
+    SYSCLK_HSI_32MHz    = 0x13020,      //              1   3   0   2   0
+    SYSCLK_HSI_40MHz    = 0x14020,      //              1   4   0   2   0
+    SYSCLK_HSI_48MHz    = 0x15020,      //              1   5   0   2   0
+    SYSCLK_HSI_56MHz    = 0x26020,      //              2   6   0   2   0
+    SYSCLK_HSI_64MHz    = 0x27020,      //              2   7   0   2   0
+    SYSCLK_HSI_72MHz    = 0x38020,      //              3   8   0   2   0
+    SYSCLK_HSI_80MHz    = 0x39020,      //              3   9   0   2   0
+    SYSCLK_HSI_88MHz    = 0x3A020,      //              3   9   0   2   0
+    SYSCLK_HSI_96MHz    = 0x3B020,      //              3   9   0   2   0
+    SYSCLK_HSI_104MHz   = 0x4C020,      //              4   9   0   2   0
+    SYSCLK_HSI_112MHz   = 0x4D020,      //              4   9   0   2   0
+    SYSCLK_HSI_120MHz   = 0x4E020,      //              4   9   0   2   0
+    SYSCLK_HSE_1x       = 0x00011,      //              0   0   0   1   1
+    SYSCLK_HSE_2x       = 0x01011,      //              0   1   0   1   1
+    SYSCLK_HSE_3x       = 0x02021,      //              0   2   0   2   1
+    SYSCLK_HSE_4x       = 0x13021,      //              1   3   0   2   1
+    SYSCLK_HSE_5x       = 0x14021,      //              1   4   0   2   1
+    SYSCLK_HSE_6x       = 0x15021,      //              1   5   0   2   1
+    SYSCLK_HSE_7x       = 0x26021,      //              2   6   0   2   1
+    SYSCLK_HSE_8x       = 0x27021,      //              2   7   0   2   1
+    SYSCLK_HSE_9x       = 0x28021,      //              2   8   0   2   1
+    SYSCLK_HSE_10x      = 0x39021,      //              3   9   0   2   1
+    SYSCLK_HSE_11x      = 0x3A021,      //              3   A   0   2   1
+    SYSCLK_HSE_12x      = 0x3B021,      //              3   B   0   2   1
+    SYSCLK_HSE_13x      = 0x4C021,      //              4   C   0   2   1
+    SYSCLK_HSE_14x      = 0x4D021,      //              4   D   0   2   1
+    SYSCLK_HSE_15x      = 0x4E021,      //              4   E   0   2   1
 #endif
 } EM_SystemClock;
 

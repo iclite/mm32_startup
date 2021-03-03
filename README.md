@@ -23,7 +23,12 @@ git submodule add http://122.112.241.212:7700/liuyq/mm32_startup.git
 
 If you want to add to the specified path, please append the path at the end of the above command. 
 
-如果想要添加到指定路径，请在上面的命令最后追加路径。
+
+如果想要添加到指定路径，请在上面的命令最后追加路径，例如：
+
+```bash
+git submodule add http://122.112.241.212:7700/liuyq/mm32_startup.git lib/startup
+```
 
 ### Not recommended / 不推荐
 

@@ -5994,6 +5994,26 @@ typedef struct {
     #define FLASH_WRPR_WRP              (0x0FU << FLASH_WRPR_WRP_Pos)           ///< Write Protect
 #endif
 ////////////////////////////////////////////////////////////////////////////////
+/// @brief GPIO_CRx Register Bit Definition
+////////////////////////////////////////////////////////////////////////////////
+#define GPIO_CR_CNF_AIN                 (0x0)
+#define GPIO_CR_CNF_FIN                 (0x1)
+#define GPIO_CR_CNF_PUIN                (0x2)
+#define GPIO_CR_CNF_PDIN                (0x2)
+
+#define GPIO_CR_CNF_PPOUT               (0x0)
+#define GPIO_CR_CNF_ODOUT               (0x1)
+#define GPIO_CR_CNF_AFPP                (0x2)
+#define GPIO_CR_CNF_AFOD                (0x3)
+
+#define GPIO_CR_MODE_INPUT              (0x0)
+#define GPIO_CR_MODE_OUTPUT             (0x1)
+#define GPIO_CR_MODE_HIGHSPEED          (0x1)
+#define GPIO_CR_MODE_MIDSPEED           (0x2)
+#define GPIO_CR_MODE_LOWSPEED           (0x3)
+
+
+////////////////////////////////////////////////////////////////////////////////
 /// @brief GPIO_CRL Register Bit Definition
 ////////////////////////////////////////////////////////////////////////////////
 #define GPIO_CRL_MODE0_Pos              (0)

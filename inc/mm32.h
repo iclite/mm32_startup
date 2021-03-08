@@ -2627,23 +2627,23 @@ typedef struct {
 #if defined(__MM0P1) || defined(__MM0Q1) || defined(__MM0S1) || defined(__MM0T1) || defined(__MM3U1)
     #define ADC_CFGR_PRE_Pos            (4)
     #define ADC_CFGR_PREL_Pos           (14)
-    #define ADC_CFGR_PRE                ((0x07U << ADC_CFGR_PRE_Pos) + (0x01U << ADC_CFGR_PREL_Pos))
-    #define ADC_CFGR_PRE_2              (0x00U  << ADC_CFGR_PRE_Pos)            ///< ADC preclk 2
-    #define ADC_CFGR_PRE_4              (0x01U  << ADC_CFGR_PRE_Pos)            ///< ADC preclk 4
-    #define ADC_CFGR_PRE_6              (0x02U  << ADC_CFGR_PRE_Pos)            ///< ADC preclk 6
-    #define ADC_CFGR_PRE_8              (0x03U  << ADC_CFGR_PRE_Pos)            ///< ADC preclk 8
-    #define ADC_CFGR_PRE_10             (0x04U  << ADC_CFGR_PRE_Pos)            ///< ADC preclk 10
-    #define ADC_CFGR_PRE_12             (0x05U  << ADC_CFGR_PRE_Pos)            ///< ADC preclk 12
-    #define ADC_CFGR_PRE_14             (0x06U  << ADC_CFGR_PRE_Pos)            ///< ADC preclk 14
-    #define ADC_CFGR_PRE_16             (0x07U  << ADC_CFGR_PRE_Pos)            ///< ADC preclk 16
-    #define ADC_CFGR_PRE_3              (0x01U  << ADC_CFGR_PREL_Pos)           ///< ADC preclk 3
-    #define ADC_CFGR_PRE_5              ((0x01U << ADC_CFGR_PREL_Pos) + (0x01U << ADC_CFGR_PRE_Pos))    ///< ADC preclk 5
-    #define ADC_CFGR_PRE_7              ((0x01U << ADC_CFGR_PREL_Pos) + (0x02U << ADC_CFGR_PRE_Pos))    ///< ADC preclk 7
-    #define ADC_CFGR_PRE_9              ((0x01U << ADC_CFGR_PREL_Pos) + (0x03U << ADC_CFGR_PRE_Pos))    ///< ADC preclk 9
-    #define ADC_CFGR_PRE_11             ((0x01U << ADC_CFGR_PREL_Pos) + (0x04U << ADC_CFGR_PRE_Pos))    ///< ADC preclk 11
-    #define ADC_CFGR_PRE_13             ((0x01U << ADC_CFGR_PREL_Pos) + (0x05U << ADC_CFGR_PRE_Pos))    ///< ADC preclk 13
-    #define ADC_CFGR_PRE_15             ((0x01U << ADC_CFGR_PREL_Pos) + (0x06U << ADC_CFGR_PRE_Pos))    ///< ADC preclk 15
-    #define ADC_CFGR_PRE_17             ((0x01U << ADC_CFGR_PREL_Pos) + (0x07U << ADC_CFGR_PRE_Pos))    ///< ADC preclk 17
+    #define ADC_CFGR_PRE                ((0x07U << ADC_CFGR_PRE_Pos) + (0x1U << ADC_CFGR_PREL_Pos))
+    #define ADC_CFGR_PRE_2              ((0x00U << ADC_CFGR_PRE_Pos) + (0x0U << ADC_CFGR_PREL_Pos)) ///< ADC preclk 2
+    #define ADC_CFGR_PRE_3              ((0x00U << ADC_CFGR_PRE_Pos) + (0x1U << ADC_CFGR_PREL_Pos)) ///< ADC preclk 3
+    #define ADC_CFGR_PRE_4              ((0x01U << ADC_CFGR_PRE_Pos) + (0x0U << ADC_CFGR_PREL_Pos)) ///< ADC preclk 4
+    #define ADC_CFGR_PRE_5              ((0x01U << ADC_CFGR_PRE_Pos) + (0x1U << ADC_CFGR_PREL_Pos)) ///< ADC preclk 5
+    #define ADC_CFGR_PRE_6              ((0x02U << ADC_CFGR_PRE_Pos) + (0x0U << ADC_CFGR_PREL_Pos)) ///< ADC preclk 6
+    #define ADC_CFGR_PRE_7              ((0x02U << ADC_CFGR_PRE_Pos) + (0x1U << ADC_CFGR_PREL_Pos)) ///< ADC preclk 7
+    #define ADC_CFGR_PRE_8              ((0x03U << ADC_CFGR_PRE_Pos) + (0x0U << ADC_CFGR_PREL_Pos)) ///< ADC preclk 8
+    #define ADC_CFGR_PRE_9              ((0x03U << ADC_CFGR_PRE_Pos) + (0x1U << ADC_CFGR_PREL_Pos)) ///< ADC preclk 9
+    #define ADC_CFGR_PRE_10             ((0x04U << ADC_CFGR_PRE_Pos) + (0x0U << ADC_CFGR_PREL_Pos)) ///< ADC preclk 10
+    #define ADC_CFGR_PRE_11             ((0x04U << ADC_CFGR_PRE_Pos) + (0x1U << ADC_CFGR_PREL_Pos)) ///< ADC preclk 11
+    #define ADC_CFGR_PRE_12             ((0x05U << ADC_CFGR_PRE_Pos) + (0x0U << ADC_CFGR_PREL_Pos)) ///< ADC preclk 12
+    #define ADC_CFGR_PRE_13             ((0x05U << ADC_CFGR_PRE_Pos) + (0x1U << ADC_CFGR_PREL_Pos)) ///< ADC preclk 13
+    #define ADC_CFGR_PRE_14             ((0x06U << ADC_CFGR_PRE_Pos) + (0x0U << ADC_CFGR_PREL_Pos)) ///< ADC preclk 14
+    #define ADC_CFGR_PRE_15             ((0x06U << ADC_CFGR_PRE_Pos) + (0x1U << ADC_CFGR_PREL_Pos)) ///< ADC preclk 15
+    #define ADC_CFGR_PRE_16             ((0x07U << ADC_CFGR_PRE_Pos) + (0x0U << ADC_CFGR_PREL_Pos)) ///< ADC preclk 16
+    #define ADC_CFGR_PRE_17             ((0x07U << ADC_CFGR_PRE_Pos) + (0x1U << ADC_CFGR_PREL_Pos)) ///< ADC preclk 17
 #if defined(__MM0P1) || defined(__MM0Q1)
     #define ADC_CFGR_SAMCTL             (0x0FU  << ADC_CFGR_SAMCTL_Pos)
     #define ADC_CFGR_SAMCTL_2_5         (0x08U  << ADC_CFGR_SAMCTL_Pos)         ///< ADC sample time select 2.5t

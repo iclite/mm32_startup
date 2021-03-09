@@ -2545,14 +2545,14 @@ typedef struct {
 #define  ADC_CFGR_RSLTCTL_9             (0x03U << ADC_CFGR_RSLTCTL_Pos)         ///< ADC resolution select 9bit
 #define  ADC_CFGR_RSLTCTL_8             (0x04U << ADC_CFGR_RSLTCTL_Pos)         ///< ADC resolution select 8bit
 
-#if defined(__MM3N1) || defined(__MM3O1)
-    #define ADC_CFGR_TVEN_Pos           (2)
-    #define ADC_CFGR_TVEN               (0x01U << ADC_CFGR_TVEN_Pos)            ///< Enable ADC sensor
-#endif
-
-#if defined(__MM0N1) || defined(__MM0P1) || defined(__MM0Q1) || defined(__MM0S1) || defined(__MM3U1)
+#if defined(__MM3N1) || defined(__MM0N1) || defined(__MM3O1) || defined(__MM0P1) || defined(__MM0Q1) || defined(__MM0S1) || defined(__MM3U1)
     #define ADC_CFGR_TEN_Pos            (2)
     #define ADC_CFGR_TEN                (0x01U << ADC_CFGR_TEN_Pos)             ///< Enable ADC temperature sensor
+#endif
+
+#if defined(__MM3N1) || defined(__MM3O1)
+    #define ADC_CFGR_VEN_Pos            (2)
+    #define ADC_CFGR_VEN                (0x01U << ADC_CFGR_VEN_Pos)             ///< Enable ADC sensor
 #endif
 
 #if defined(__MM0N1) || defined(__MM0P1) || defined(__MM0Q1) || defined(__MM0S1) || defined(__MM0T1) || defined(__MM3U1)

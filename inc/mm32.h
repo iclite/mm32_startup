@@ -2833,40 +2833,42 @@ typedef struct {
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief ADC_CHSR Register Bit Definition
 ////////////////////////////////////////////////////////////////////////////////
-#define  ADC_CHSR_CH0_Pos               (0)
-#define  ADC_CHSR_CH0                   (0x01U << ADC_CHSR_CH0_Pos)             ///< Enable ADC channel 0
-#define  ADC_CHSR_CH1_Pos               (1)
-#define  ADC_CHSR_CH1                   (0x01U << ADC_CHSR_CH1_Pos)             ///< Enable ADC channel 1
-#define  ADC_CHSR_CH2_Pos               (2)
-#define  ADC_CHSR_CH2                   (0x01U << ADC_CHSR_CH2_Pos)             ///< Enable ADC channel 2
-#define  ADC_CHSR_CH3_Pos               (3)
-#define  ADC_CHSR_CH3                   (0x01U << ADC_CHSR_CH3_Pos)             ///< Enable ADC channel 3
-#define  ADC_CHSR_CH4_Pos               (4)
-#define  ADC_CHSR_CH4                   (0x01U << ADC_CHSR_CH4_Pos)             ///< Enable ADC channel 4
-#define  ADC_CHSR_CH5_Pos               (5)
-#define  ADC_CHSR_CH5                   (0x01U << ADC_CHSR_CH5_Pos)             ///< Enable ADC channel 5
-#define  ADC_CHSR_CH6_Pos               (6)
-#define  ADC_CHSR_CH6                   (0x01U << ADC_CHSR_CH6_Pos)             ///< Enable ADC channel 6
+#if defined(__MM3N1) || defined(__MM0N1) || defined(__MM3O1) || defined(__MM0P1) || defined(__MM0Q1) || defined(__MM0S1) || defined(__MM3U1)
+    #define ADC_CHSR_CH0_Pos            (0)
+    #define ADC_CHSR_CH0                (0x01U << ADC_CHSR_CH0_Pos)             ///< Enable ADC channel 0
+    #define ADC_CHSR_CH1_Pos            (1)
+    #define ADC_CHSR_CH1                (0x01U << ADC_CHSR_CH1_Pos)             ///< Enable ADC channel 1
+    #define ADC_CHSR_CH2_Pos            (2)
+    #define ADC_CHSR_CH2                (0x01U << ADC_CHSR_CH2_Pos)             ///< Enable ADC channel 2
+    #define ADC_CHSR_CH3_Pos            (3)
+    #define ADC_CHSR_CH3                (0x01U << ADC_CHSR_CH3_Pos)             ///< Enable ADC channel 3
+    #define ADC_CHSR_CH4_Pos            (4)
+    #define ADC_CHSR_CH4                (0x01U << ADC_CHSR_CH4_Pos)             ///< Enable ADC channel 4
+    #define ADC_CHSR_CH5_Pos            (5)
+    #define ADC_CHSR_CH5                (0x01U << ADC_CHSR_CH5_Pos)             ///< Enable ADC channel 5
+    #define ADC_CHSR_CH6_Pos            (6)
+    #define ADC_CHSR_CH6                (0x01U << ADC_CHSR_CH6_Pos)             ///< Enable ADC channel 6
+#endif
 #if defined(__MM3N1) || defined(__MM0N1) || defined(__MM0P1) || defined(__MM0Q1) || defined(__MM0S1) || defined(__MM3U1)
     #define ADC_CHSR_CH7_Pos            (7)
     #define ADC_CHSR_CH7                (0x01U << ADC_CHSR_CH7_Pos)             ///< Enable ADC channel 7
 #endif
 
 #if defined(__MM3N1)
-    #define  ADC_CHSR_CHTV_Pos          (8)
-    #define  ADC_CHSR_CHTV              (0x01U << ADC_CHSR_CHTV_Pos)            ///< Enable ADC sensor
-    #define  ADC_CHSR_CHALL             (0x01FFU)                               ///< Enable ADC all channel
+    #define ADC_CHSR_CHTV_Pos           (8)
+    #define ADC_CHSR_CHTV               (0x01U << ADC_CHSR_CHTV_Pos)            ///< Enable ADC sensor
+    #define ADC_CHSR_CHALL              (0x01FFU)                               ///< Enable ADC all channel
 #endif
 
 #if defined(__MM0N1) || defined(__MM0P1) || defined(__MM0Q1) || defined(__MM0S1) || defined(__MM3U1)
-    #define  ADC_CHSR_CH8_Pos           (8)
-    #define  ADC_CHSR_CH8               (0x01U << ADC_CHSR_CH8_Pos)             ///< Enable ADC channel 8
-    #define  ADC_CHSR_CH9_Pos           (9)
-    #define  ADC_CHSR_CH9               (0x01U << ADC_CHSR_CH9_Pos)             ///< Enable ADC channel 9
-    #define  ADC_CHSR_CHT_Pos           (14)
-    #define  ADC_CHSR_CHT               (0x01U << ADC_CHSR_CHT_Pos)             ///< Enable Temperature Sensor
-    #define  ADC_CHSR_CHV_Pos           (15)
-    #define  ADC_CHSR_CHV               (0x01U << ADC_CHSR_CHV_Pos)             ///< Enable Voltage Sensor
+    #define ADC_CHSR_CH8_Pos            (8)
+    #define ADC_CHSR_CH8                (0x01U << ADC_CHSR_CH8_Pos)             ///< Enable ADC channel 8
+    #define ADC_CHSR_CH9_Pos            (9)
+    #define ADC_CHSR_CH9                (0x01U << ADC_CHSR_CH9_Pos)             ///< Enable ADC channel 9
+    #define ADC_CHSR_CHT_Pos            (14)
+    #define ADC_CHSR_CHT                (0x01U << ADC_CHSR_CHT_Pos)             ///< Enable Temperature Sensor
+    #define ADC_CHSR_CHV_Pos            (15)
+    #define ADC_CHSR_CHV                (0x01U << ADC_CHSR_CHV_Pos)             ///< Enable Voltage Sensor
 #endif
 #if defined(__MM3O1)
     #define ADC_CHSR_CHT_Pos            (7)
@@ -2880,19 +2882,19 @@ typedef struct {
 #endif
 
 #if defined(__MM0P1) || defined(__MM0Q1) || defined(__MM3U1)
-    #define  ADC_CHSR_CH10_Pos          (10)
-    #define  ADC_CHSR_CH10              (0x01U << ADC_CHSR_CH10_Pos)            ///< Enable ADC channel 10
-    #define  ADC_CHSR_CH11_Pos          (11)
-    #define  ADC_CHSR_CH11              (0x01U << ADC_CHSR_CH11_Pos)            ///< Enable ADC channel 11
+    #define ADC_CHSR_CH10_Pos           (10)
+    #define ADC_CHSR_CH10               (0x01U << ADC_CHSR_CH10_Pos)            ///< Enable ADC channel 10
+    #define ADC_CHSR_CH11_Pos           (11)
+    #define ADC_CHSR_CH11               (0x01U << ADC_CHSR_CH11_Pos)            ///< Enable ADC channel 11
     #if defined(__MM0Q1) || defined(__MM3U1)
-    #define  ADC_CHSR_CH12_Pos          (12)
-    #define  ADC_CHSR_CH12              (0x01U << ADC_CHSR_CH12_Pos)            ///< Enable ADC channel 12
+    #define ADC_CHSR_CH12_Pos           (12)
+    #define ADC_CHSR_CH12               (0x01U << ADC_CHSR_CH12_Pos)            ///< Enable ADC channel 12
     #endif
     #if defined(__MM3U1)
-    #define  ADC_CHSR_CH13_Pos          (13)
-    #define  ADC_CHSR_CH13              (0x01U << ADC_CHSR_CH13_Pos)            ///< Enable ADC channel 13
+    #define ADC_CHSR_CH13_Pos           (13)
+    #define ADC_CHSR_CH13               (0x01U << ADC_CHSR_CH13_Pos)            ///< Enable ADC channel 13
 
-    #define  ADC_CHSR_CHALL             (0xEFFFU)                               ///< Enable ADC all channel
+    #define ADC_CHSR_CHALL              (0xEFFFU)                               ///< Enable ADC all channel
     #endif
 #endif
 

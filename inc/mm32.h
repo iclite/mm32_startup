@@ -2544,61 +2544,20 @@ typedef struct {
 #define  ADC_CFGR_RSLTCTL_10            (0x02U << ADC_CFGR_RSLTCTL_Pos)         ///< ADC resolution select 10bit
 #define  ADC_CFGR_RSLTCTL_9             (0x03U << ADC_CFGR_RSLTCTL_Pos)         ///< ADC resolution select 9bit
 #define  ADC_CFGR_RSLTCTL_8             (0x04U << ADC_CFGR_RSLTCTL_Pos)         ///< ADC resolution select 8bit
-#if defined(__MM3N1) || defined(__MM0N1) || defined(__MM3O1) ||defined(__MM0P1) || defined(__MM0Q1)
-    #define  ADC_CFGR_SAMCTL_Pos        (10)
-    #define  ADC_CFGR_SAMCTL_1_5        (0x00U << ADC_CFGR_SAMCTL_Pos)          ///< ADC sample time select 1.5t
-    #define  ADC_CFGR_SAMCTL_7_5        (0x01U << ADC_CFGR_SAMCTL_Pos)          ///< ADC sample time select 7.5t
-    #define  ADC_CFGR_SAMCTL_13_5       (0x02U << ADC_CFGR_SAMCTL_Pos)          ///< ADC sample time select 13.5t
-    #define  ADC_CFGR_SAMCTL_28_5       (0x03U << ADC_CFGR_SAMCTL_Pos)          ///< ADC sample time select 28.5t
-    #define  ADC_CFGR_SAMCTL_41_5       (0x04U << ADC_CFGR_SAMCTL_Pos)          ///< ADC sample time select 41.5t
-    #define  ADC_CFGR_SAMCTL_55_5       (0x05U << ADC_CFGR_SAMCTL_Pos)          ///< ADC sample time select 55.5t
-    #define  ADC_CFGR_SAMCTL_71_5       (0x06U << ADC_CFGR_SAMCTL_Pos)          ///< ADC sample time select 71.5t
-    #define  ADC_CFGR_SAMCTL_239_5      (0x07U << ADC_CFGR_SAMCTL_Pos)          ///< ADC sample time select 239.5t
-#endif
-#if defined(__MM0S1) || defined(__MM0T1)
-    #define  ADC_CFGR_SAMCTL_Pos        (10)
-    #define  ADC_CFGR_SAMCTL            (0x0FU << ADC_CFGR_SAMCTL_Pos)
-    #define  ADC_CFGR_SAMCTL_2_5        (0x00U << ADC_CFGR_SAMCTL_Pos)          ///< ADC sample time select 2.5t
-    #define  ADC_CFGR_SAMCTL_8_5        (0x01U << ADC_CFGR_SAMCTL_Pos)          ///< ADC sample time select 8.5t
-    #define  ADC_CFGR_SAMCTL_14_5       (0x02U << ADC_CFGR_SAMCTL_Pos)          ///< ADC sample time select 14.5t
-    #define  ADC_CFGR_SAMCTL_29_5       (0x03U << ADC_CFGR_SAMCTL_Pos)          ///< ADC sample time select 29.5t
-    #define  ADC_CFGR_SAMCTL_42_5       (0x04U << ADC_CFGR_SAMCTL_Pos)          ///< ADC sample time select 42.5t
-    #define  ADC_CFGR_SAMCTL_56_5       (0x05U << ADC_CFGR_SAMCTL_Pos)          ///< ADC sample time select 56.5t
-    #define  ADC_CFGR_SAMCTL_72_5       (0x06U << ADC_CFGR_SAMCTL_Pos)          ///< ADC sample time select 72.5t
-    #define  ADC_CFGR_SAMCTL_240_5      (0x07U << ADC_CFGR_SAMCTL_Pos)          ///< ADC sample time select 240.5t
-    #define  ADC_CFGR_SAMCTL_3_5        (0x08U  << ADC_CFGR_SAMCTL_Pos)         ///< ADC sample time select 3.5t
-    #define  ADC_CFGR_SAMCTL_4_5        (0x09U  << ADC_CFGR_SAMCTL_Pos)         ///< ADC sample time select 4.5t
-    #define  ADC_CFGR_SAMCTL_5_5        (0x0AU  << ADC_CFGR_SAMCTL_Pos)         ///< ADC sample time select 5.5t
-    #define  ADC_CFGR_SAMCTL_6_5        (0x0BU  << ADC_CFGR_SAMCTL_Pos)         ///< ADC sample time select 6.5t
-    #define  ADC_CFGR_SAMCTL_7_5        (0x0CU  << ADC_CFGR_SAMCTL_Pos)         ///< ADC sample time select 7.5t
-#endif
+
 #if defined(__MM3N1) || defined(__MM3O1)
-    #define  ADC_CFGR_TVEN_Pos          (2)
-    #define  ADC_CFGR_TVEN              (0x01U << ADC_CFGR_TVEN_Pos)            ///< Enable ADC sensor
+    #define ADC_CFGR_TVEN_Pos           (2)
+    #define ADC_CFGR_TVEN               (0x01U << ADC_CFGR_TVEN_Pos)            ///< Enable ADC sensor
 #endif
 
-#if defined(__MM0N1) || defined(__MM0P1) || defined(__MM0Q1) || defined(__MM0S1) || defined(__MM0T1)
-    #if defined(__MM0N1) || defined(__MM0P1) || defined(__MM0Q1) || defined(__MM0S1)
-        #define  ADC_CFGR_TEN_Pos       (2)
-        #define  ADC_CFGR_TEN           (0x01U << ADC_CFGR_TEN_Pos)             ///< Enable ADC temperature sensor
-    #endif
-    #define  ADC_CFGR_VEN_Pos           (3)
-    #define  ADC_CFGR_VEN               (0x01U << ADC_CFGR_VEN_Pos)             ///< Enable ADC voltage reference
+#if defined(__MM0N1) || defined(__MM0P1) || defined(__MM0Q1) || defined(__MM0S1) || defined(__MM3U1)
+    #define ADC_CFGR_TEN_Pos            (2)
+    #define ADC_CFGR_TEN                (0x01U << ADC_CFGR_TEN_Pos)             ///< Enable ADC temperature sensor
 #endif
 
-#if defined(__MM3N1) || defined(__MM0N1)
-    #define  ADC_CFGR_PRE_Pos           (4)
-    #define  ADC_CFGR_PRE               (0x07U << ADC_CFGR_PRE_Pos)             ///< ADC preclk
-    #define  ADC_CFGR_PRE_2             (0x00U << ADC_CFGR_PRE_Pos)             ///< ADC preclk 2
-    #define  ADC_CFGR_PRE_4             (0x01U << ADC_CFGR_PRE_Pos)             ///< ADC preclk 4
-    #define  ADC_CFGR_PRE_6             (0x02U << ADC_CFGR_PRE_Pos)             ///< ADC preclk 6
-    #define  ADC_CFGR_PRE_8             (0x03U << ADC_CFGR_PRE_Pos)             ///< ADC preclk 8
-    #define  ADC_CFGR_PRE_10            (0x04U << ADC_CFGR_PRE_Pos)             ///< ADC preclk 10
-    #define  ADC_CFGR_PRE_12            (0x05U << ADC_CFGR_PRE_Pos)             ///< ADC preclk 12
-    #define  ADC_CFGR_PRE_14            (0x06U << ADC_CFGR_PRE_Pos)             ///< ADC preclk 14
-    #define  ADC_CFGR_PRE_16            (0x07U << ADC_CFGR_PRE_Pos)             ///< ADC preclk 16
-
-    #define  ADC_CFGR_SAMCTL            (0x07U << ADC_CFGR_SAMCTL_Pos)          ///< ADC sample time select
+#if defined(__MM0N1) || defined(__MM0P1) || defined(__MM0Q1) || defined(__MM0S1) || defined(__MM0T1) || defined(__MM3U1)
+    #define ADC_CFGR_VEN_Pos            (3)
+    #define ADC_CFGR_VEN                (0x01U << ADC_CFGR_VEN_Pos)             ///< Enable ADC voltage reference
 #endif
 
 #if defined(__MM3O1)
@@ -2624,6 +2583,21 @@ typedef struct {
     #define  ADC_CFGR_SAMCTL            (0x0FU << ADC_CFGR_SAMCTL_Pos)          ///< ADC sample time select
 #endif
 
+#if defined(__MM3N1) || defined(__MM0N1)
+    #define  ADC_CFGR_PRE_Pos           (4)
+    #define  ADC_CFGR_PRE               (0x07U << ADC_CFGR_PRE_Pos)             ///< ADC preclk
+    #define  ADC_CFGR_PRE_2             (0x00U << ADC_CFGR_PRE_Pos)             ///< ADC preclk 2
+    #define  ADC_CFGR_PRE_4             (0x01U << ADC_CFGR_PRE_Pos)             ///< ADC preclk 4
+    #define  ADC_CFGR_PRE_6             (0x02U << ADC_CFGR_PRE_Pos)             ///< ADC preclk 6
+    #define  ADC_CFGR_PRE_8             (0x03U << ADC_CFGR_PRE_Pos)             ///< ADC preclk 8
+    #define  ADC_CFGR_PRE_10            (0x04U << ADC_CFGR_PRE_Pos)             ///< ADC preclk 10
+    #define  ADC_CFGR_PRE_12            (0x05U << ADC_CFGR_PRE_Pos)             ///< ADC preclk 12
+    #define  ADC_CFGR_PRE_14            (0x06U << ADC_CFGR_PRE_Pos)             ///< ADC preclk 14
+    #define  ADC_CFGR_PRE_16            (0x07U << ADC_CFGR_PRE_Pos)             ///< ADC preclk 16
+
+    #define  ADC_CFGR_SAMCTL            (0x07U << ADC_CFGR_SAMCTL_Pos)          ///< ADC sample time select
+#endif
+
 #if defined(__MM0P1) || defined(__MM0Q1) || defined(__MM0S1) || defined(__MM0T1) || defined(__MM3U1)
     #define ADC_CFGR_PRE_Pos            (4)
     #define ADC_CFGR_PREL_Pos           (14)
@@ -2644,6 +2618,19 @@ typedef struct {
     #define ADC_CFGR_PRE_15             ((0x06U << ADC_CFGR_PRE_Pos) + (0x1U << ADC_CFGR_PREL_Pos)) ///< ADC preclk 15
     #define ADC_CFGR_PRE_16             ((0x07U << ADC_CFGR_PRE_Pos) + (0x0U << ADC_CFGR_PREL_Pos)) ///< ADC preclk 16
     #define ADC_CFGR_PRE_17             ((0x07U << ADC_CFGR_PRE_Pos) + (0x1U << ADC_CFGR_PREL_Pos)) ///< ADC preclk 17
+#endif
+
+#if defined(__MM3N1) || defined(__MM0N1) || defined(__MM3O1) ||defined(__MM0P1) || defined(__MM0Q1)
+    #define  ADC_CFGR_SAMCTL_Pos        (10)
+    #define  ADC_CFGR_SAMCTL_1_5        (0x00U << ADC_CFGR_SAMCTL_Pos)          ///< ADC sample time select 1.5t
+    #define  ADC_CFGR_SAMCTL_7_5        (0x01U << ADC_CFGR_SAMCTL_Pos)          ///< ADC sample time select 7.5t
+    #define  ADC_CFGR_SAMCTL_13_5       (0x02U << ADC_CFGR_SAMCTL_Pos)          ///< ADC sample time select 13.5t
+    #define  ADC_CFGR_SAMCTL_28_5       (0x03U << ADC_CFGR_SAMCTL_Pos)          ///< ADC sample time select 28.5t
+    #define  ADC_CFGR_SAMCTL_41_5       (0x04U << ADC_CFGR_SAMCTL_Pos)          ///< ADC sample time select 41.5t
+    #define  ADC_CFGR_SAMCTL_55_5       (0x05U << ADC_CFGR_SAMCTL_Pos)          ///< ADC sample time select 55.5t
+    #define  ADC_CFGR_SAMCTL_71_5       (0x06U << ADC_CFGR_SAMCTL_Pos)          ///< ADC sample time select 71.5t
+    #define  ADC_CFGR_SAMCTL_239_5      (0x07U << ADC_CFGR_SAMCTL_Pos)          ///< ADC sample time select 239.5t
+#endif
 #if defined(__MM0P1) || defined(__MM0Q1)
     #define ADC_CFGR_SAMCTL             (0x0FU  << ADC_CFGR_SAMCTL_Pos)
     #define ADC_CFGR_SAMCTL_2_5         (0x08U  << ADC_CFGR_SAMCTL_Pos)         ///< ADC sample time select 2.5t
@@ -2651,14 +2638,26 @@ typedef struct {
     #define ADC_CFGR_SAMCTL_4_5         (0x0AU  << ADC_CFGR_SAMCTL_Pos)         ///< ADC sample time select 4.5t
     #define ADC_CFGR_SAMCTL_5_5         (0x0BU  << ADC_CFGR_SAMCTL_Pos)         ///< ADC sample time select 5.5t
     #define ADC_CFGR_SAMCTL_6_5         (0x0CU  << ADC_CFGR_SAMCTL_Pos)         ///< ADC sample time select 6.5t
-    #endif
+#endif
+#if defined(__MM0S1) || defined(__MM0T1)
+    #define  ADC_CFGR_SAMCTL_Pos        (10)
+    #define  ADC_CFGR_SAMCTL            (0x0FU << ADC_CFGR_SAMCTL_Pos)
+    #define  ADC_CFGR_SAMCTL_2_5        (0x00U << ADC_CFGR_SAMCTL_Pos)          ///< ADC sample time select 2.5t
+    #define  ADC_CFGR_SAMCTL_8_5        (0x01U << ADC_CFGR_SAMCTL_Pos)          ///< ADC sample time select 8.5t
+    #define  ADC_CFGR_SAMCTL_14_5       (0x02U << ADC_CFGR_SAMCTL_Pos)          ///< ADC sample time select 14.5t
+    #define  ADC_CFGR_SAMCTL_29_5       (0x03U << ADC_CFGR_SAMCTL_Pos)          ///< ADC sample time select 29.5t
+    #define  ADC_CFGR_SAMCTL_42_5       (0x04U << ADC_CFGR_SAMCTL_Pos)          ///< ADC sample time select 42.5t
+    #define  ADC_CFGR_SAMCTL_56_5       (0x05U << ADC_CFGR_SAMCTL_Pos)          ///< ADC sample time select 56.5t
+    #define  ADC_CFGR_SAMCTL_72_5       (0x06U << ADC_CFGR_SAMCTL_Pos)          ///< ADC sample time select 72.5t
+    #define  ADC_CFGR_SAMCTL_240_5      (0x07U << ADC_CFGR_SAMCTL_Pos)          ///< ADC sample time select 240.5t
+    #define  ADC_CFGR_SAMCTL_3_5        (0x08U  << ADC_CFGR_SAMCTL_Pos)         ///< ADC sample time select 3.5t
+    #define  ADC_CFGR_SAMCTL_4_5        (0x09U  << ADC_CFGR_SAMCTL_Pos)         ///< ADC sample time select 4.5t
+    #define  ADC_CFGR_SAMCTL_5_5        (0x0AU  << ADC_CFGR_SAMCTL_Pos)         ///< ADC sample time select 5.5t
+    #define  ADC_CFGR_SAMCTL_6_5        (0x0BU  << ADC_CFGR_SAMCTL_Pos)         ///< ADC sample time select 6.5t
+    #define  ADC_CFGR_SAMCTL_7_5        (0x0CU  << ADC_CFGR_SAMCTL_Pos)         ///< ADC sample time select 7.5t
 #endif
 
 #if defined(__MM3U1)
-    #define  ADC_CFGR_TSEN_Pos          (2)
-    #define  ADC_CFGR_TSEN              (0x01U << ADC_CFGR_TEN_Pos)             ///< Temperature sensor enable
-    #define  ADC_CFGR_VSEN_Pos          (3)
-    #define  ADC_CFGR_VSEN              (0x01U << ADC_CFGR_VEN_Pos)             ///< Enable ADC voltage reference
     #define  ADC_CFGR_CADWEN_Pos        (16)
     #define  ADC_CFGR_CADWEN            (0x01U << ADC_CFGR_CADWEN_Pos)          ///< Inject ADC conversion window comparison enable
 #endif

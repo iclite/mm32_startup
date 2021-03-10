@@ -10282,8 +10282,12 @@ typedef struct {
 #define UART_ISR_TX                     (0x01U << UART_ISR_TX_Pos)              ///< Transmit buffer empty interrupt flag bit
 #define UART_ISR_RX_Pos                 (1)
 #define UART_ISR_RX                     (0x01U << UART_ISR_RX_Pos)              ///< Receive valid data interrupt flag bit
-#define UART_ISR_TXC_Pos                (2)
-#define UART_ISR_TXC                    (0x01U << UART_ISR_TXC_Pos)             ///< Transmit complete interrupt flag bit
+
+#if defined(__MM3O1) || defined(__MM0P1) || defined(__MM0Q1) || defined(__MM0S1) || defined(__MM0T1) || defined(__MM3U1)
+    #define UART_ISR_TXC_Pos            (2)
+    #define UART_ISR_TXC                (0x01U << UART_ISR_TXC_Pos)             ///< Transmit complete interrupt flag bit
+#endif
+
 #define UART_ISR_RXOERR_Pos             (3)
 #define UART_ISR_RXOERR                 (0x01U << UART_ISR_RXOERR_Pos)          ///< Receive overflow error interrupt flag bit
 #define UART_ISR_RXPERR_Pos             (4)
@@ -10292,16 +10296,20 @@ typedef struct {
 #define UART_ISR_RXFERR                 (0x01U << UART_ISR_RXFERR_Pos)          ///< Frame error interrupt flag bit
 #define UART_ISR_RXBRK_Pos              (6)
 #define UART_ISR_RXBRK                  (0x01U << UART_ISR_RXBRK_Pos)           ///< Receive frame break interrupt flag bit
-#define UART_ISR_TXBRK_Pos              (7)
-#define UART_ISR_TXBRK                  (0x01U << UART_ISR_TXBRK_Pos)           ///< Transmit Break Frame Interrupt Flag Bit
-#define UART_ISR_RXB8_Pos               (8)
-#define UART_ISR_RXB8                   (0x01U << UART_ISR_RXB8_Pos)            ///< Receive Bit 8 Interrupt Flag Bit
-#define UART_ISR_RXIDLE_Pos             (9)
-#define UART_ISR_RXIDLE                 (0x01U << UART_ISR_RXIDLE_Pos)          ///< Receive Bit 8 Interrupt clear Bit
-#define UART_ISR_ABREND_Pos             (10)
-#define UART_ISR_ABREND                 (0x01U << UART_ISR_ABREND_Pos)
-#define UART_ISR_ABRERR_Pos             (11)
-#define UART_ISR_ABRERR                 (0x01U << UART_ISR_ABRERR_Pos)
+#if defined(__MM3O1) || defined(__MM0P1) || defined(__MM0Q1) || defined(__MM0S1) || defined(__MM0T1) || defined(__MM3U1)
+    #define UART_ISR_TXBRK_Pos          (7)
+    #define UART_ISR_TXBRK              (0x01U << UART_ISR_TXBRK_Pos)           ///< Transmit Break Frame Interrupt Flag Bit
+    #define UART_ISR_RXB8_Pos           (8)
+    #define UART_ISR_RXB8               (0x01U << UART_ISR_RXB8_Pos)            ///< Receive Bit 8 Interrupt Flag Bit
+#endif
+#if defined(__MM0S1) || defined(__MM0T1) || defined(__MM3U1)
+    #define UART_ISR_RXIDLE_Pos         (9)
+    #define UART_ISR_RXIDLE             (0x01U << UART_ISR_RXIDLE_Pos)          ///< Receive Bit 8 Interrupt clear Bit
+    #define UART_ISR_ABREND_Pos         (10)
+    #define UART_ISR_ABREND             (0x01U << UART_ISR_ABREND_Pos)
+    #define UART_ISR_ABRERR_Pos         (11)
+    #define UART_ISR_ABRERR             (0x01U << UART_ISR_ABRERR_Pos)
+#endif
 
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief UART_IER Register Bit Definition
@@ -10310,8 +10318,12 @@ typedef struct {
 #define UART_IER_TX                     (0x01U << UART_IER_TX_Pos)              ///< Transmit buffer empty interrupt enable bit
 #define UART_IER_RX_Pos                 (1)
 #define UART_IER_RX                     (0x01U << UART_IER_RX_Pos)              ///< Receive buffer interrupt enable bit
-#define UART_IER_TXC_Pos                (2)
-#define UART_IER_TXC                    (0x01U << UART_IER_TXC_Pos)             ///< Transmit complete interrupt enable bit
+
+#if defined(__MM3O1) || defined(__MM0P1) || defined(__MM0Q1) || defined(__MM0S1) || defined(__MM0T1) || defined(__MM3U1)
+    #define UART_IER_TXC_Pos            (2)
+    #define UART_IER_TXC                (0x01U << UART_IER_TXC_Pos)             ///< Transmit complete interrupt enable bit
+#endif
+
 #define UART_IER_RXOERR_Pos             (3)
 #define UART_IER_RXOERR                 (0x01U << UART_IER_RXOERR_Pos)          ///< Receive overflow error interrupt enable bit
 #define UART_IER_RXPERR_Pos             (4)
@@ -10320,16 +10332,20 @@ typedef struct {
 #define UART_IER_RXFERR                 (0x01U << UART_IER_RXFERR_Pos)          ///< Frame error interrupt enable bit
 #define UART_IER_RXBRK_Pos              (6)
 #define UART_IER_RXBRK                  (0x01U << UART_IER_RXBRK_Pos)           ///< Receive frame break interrupt enable bit
-#define UART_IER_TXBRK_Pos              (7)
-#define UART_IER_TXBRK                  (0x01U << UART_IER_TXBRK_Pos)           ///< Transmit Break Frame Interrupt Enable Bit
-#define UART_IER_RXB8_Pos               (8)
-#define UART_IER_RXB8                   (0x01U << UART_IER_RXB8_Pos)            ///< Receive Bit 8 Interrupt Enable Bit
-#define UART_IER_RXIDLE_Pos             (9)
-#define UART_IER_RXIDLE                 (0x01U << UART_IER_RXIDLE_Pos)          ///< Receive Bit 8 Interrupt clear Bit
-#define UART_IER_ABRENDIEN_Pos          (10)
-#define UART_IER_ABRENDIEN              (0x01U << UART_IER_ABRENDIEN_Pos)
-#define UART_IER_ABRERRIEN_Pos          (11)
-#define UART_IER_ABRERRIEN              (0x01U << UART_IER_ABRERRIEN_Pos)
+#if defined(__MM3O1) || defined(__MM0P1) || defined(__MM0Q1) || defined(__MM0S1) || defined(__MM0T1) || defined(__MM3U1)
+    #define UART_IER_TXBRK_Pos          (7)
+    #define UART_IER_TXBRK              (0x01U << UART_IER_TXBRK_Pos)           ///< Transmit Break Frame Interrupt Enable Bit
+    #define UART_IER_RXB8_Pos           (8)
+    #define UART_IER_RXB8               (0x01U << UART_IER_RXB8_Pos)            ///< Receive Bit 8 Interrupt Enable Bit
+#endif
+#if defined(__MM0S1) || defined(__MM0T1) || defined(__MM3U1)
+    #define UART_IER_RXIDLE_Pos         (9)
+    #define UART_IER_RXIDLE             (0x01U << UART_IER_RXIDLE_Pos)          ///< Receive Bit 8 Interrupt clear Bit
+    #define UART_IER_ABRENDIEN_Pos      (10)
+    #define UART_IER_ABRENDIEN          (0x01U << UART_IER_ABRENDIEN_Pos)
+    #define UART_IER_ABRERRIEN_Pos      (11)
+    #define UART_IER_ABRERRIEN          (0x01U << UART_IER_ABRERRIEN_Pos)
+#endif
 
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief UART_ICR Register Bit Definition
@@ -10338,8 +10354,12 @@ typedef struct {
 #define UART_ICR_TX                     (0x01U << UART_ICR_TX_Pos)              ///< Transmit buffer empty interrupt clear bit
 #define UART_ICR_RX_Pos                 (1)
 #define UART_ICR_RX                     (0x01U << UART_ICR_RX_Pos)              ///< Receive interrupt clear bit
-#define UART_ICR_TXC_Pos                (2)
-#define UART_ICR_TXC                    (0x01U << UART_ICR_TXC_Pos)             ///< Transmit complete interrupt clear bit
+
+#if defined(__MM3O1) || defined(__MM0P1) || defined(__MM0Q1) || defined(__MM0S1) || defined(__MM0T1) || defined(__MM3U1)
+    #define UART_ICR_TXC_Pos            (2)
+    #define UART_ICR_TXC                (0x01U << UART_ICR_TXC_Pos)             ///< Transmit complete interrupt clear bit
+#endif
+
 #define UART_ICR_RXOERR_Pos             (3)
 #define UART_ICR_RXOERR                 (0x01U << UART_ICR_RXOERR_Pos)          ///< Receive overflow error interrupt clear bit
 #define UART_ICR_RXPERR_Pos             (4)
@@ -10348,16 +10368,22 @@ typedef struct {
 #define UART_ICR_RXFERR                 (0x01U << UART_ICR_RXFERR_Pos)          ///< Frame error interrupt clear bit
 #define UART_ICR_RXBRK_Pos              (6)
 #define UART_ICR_RXBRK                  (0x01U << UART_ICR_RXBRK_Pos)           ///< Receive frame break interrupt clear bit
-#define UART_ICR_TXBRK_Pos              (7)
-#define UART_ICR_TXBRK                  (0x01U << UART_ICR_TXBRK_Pos)           ///< Transmit Break Frame Interrupt clear Bit
-#define UART_ICR_RXB8_Pos               (8)
-#define UART_ICR_RXB8                   (0x01U << UART_ICR_RXB8_Pos)            ///< Receive Bit 8 Interrupt clear Bit
-#define UART_ICR_RXIDLE_Pos             (9)
-#define UART_ICR_RXIDLE                 (0x01U << UART_ICR_RXIDLE_Pos)          ///< Receive Bit 8 Interrupt clear Bit
-#define UART_ICR_ABRENDCLR_Pos          (10)
-#define UART_ICR_ABRENDCLR              (0x01U << UART_ICR_ABRENDCLR_Pos)
-#define UART_ICR_ABRERRCLR_Pos          (11)
-#define UART_ICR_ABRERRCLR              (0x01U << UART_ICR_ABRERRCLR_Pos)
+
+#if defined(__MM3O1) || defined(__MM0P1) || defined(__MM0Q1) || defined(__MM0S1) || defined(__MM0T1) || defined(__MM3U1)
+    #define UART_ICR_TXBRK_Pos          (7)
+    #define UART_ICR_TXBRK              (0x01U << UART_ICR_TXBRK_Pos)           ///< Transmit Break Frame Interrupt clear Bit
+    #define UART_ICR_RXB8_Pos           (8)
+    #define UART_ICR_RXB8               (0x01U << UART_ICR_RXB8_Pos)            ///< Receive Bit 8 Interrupt clear Bit
+#endif
+
+#if defined(__MM0S1) || defined(__MM0T1) || defined(__MM3U1)
+    #define UART_ICR_RXIDLE_Pos         (9)
+    #define UART_ICR_RXIDLE             (0x01U << UART_ICR_RXIDLE_Pos)          ///< Receive Bit 8 Interrupt clear Bit
+    #define UART_ICR_ABRENDCLR_Pos      (10)
+    #define UART_ICR_ABRENDCLR          (0x01U << UART_ICR_ABRENDCLR_Pos)
+    #define UART_ICR_ABRERRCLR_Pos      (11)
+    #define UART_ICR_ABRERRCLR          (0x01U << UART_ICR_ABRERRCLR_Pos)
+#endif
 
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief UART_GCR Register Bit Definition
@@ -10372,14 +10398,17 @@ typedef struct {
 #define UART_GCR_RX                     (0x01U << UART_GCR_RX_Pos)              ///< Enable receive
 #define UART_GCR_TX_Pos                 (4)
 #define UART_GCR_TX                     (0x01U << UART_GCR_TX_Pos)              ///< Enable transmit
-#define UART_GCR_SELB8_Pos              (7)
-#define UART_GCR_SELB8                  (0x01U << UART_GCR_SELB8_Pos)           ///< UART mode selection bit
-#define UART_GCR_SWAP_Pos               (8)
-#define UART_GCR_SWAP                   (0x01U << UART_GCR_SWAP_Pos)            ///< DMA mode selection bit
-#define UART_GCR_RXTOG_Pos              (9)
-#define UART_GCR_RXTOG                  (0x01U << UART_GCR_RXTOG_Pos)           ///< Automatic flow control enable bit
-#define UART_GCR_TXTOG_Pos              (10)
-#define UART_GCR_TXTOG                  (0x01U << UART_GCR_TXTOG_Pos)           ///< Enable receive
+
+#if defined(__MM0S1) || defined(__MM0T1) || defined(__MM3U1)
+    #define UART_GCR_SELB8_Pos          (7)
+    #define UART_GCR_SELB8              (0x01U << UART_GCR_SELB8_Pos)           ///< UART mode selection bit
+    #define UART_GCR_SWAP_Pos           (8)
+    #define UART_GCR_SWAP               (0x01U << UART_GCR_SWAP_Pos)            ///< DMA mode selection bit
+    #define UART_GCR_RXTOG_Pos          (9)
+    #define UART_GCR_RXTOG              (0x01U << UART_GCR_RXTOG_Pos)           ///< Automatic flow control enable bit
+    #define UART_GCR_TXTOG_Pos          (10)
+    #define UART_GCR_TXTOG              (0x01U << UART_GCR_TXTOG_Pos)           ///< Enable receive
+#endif
 
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief UART_CCR Register Bit Definition
@@ -10390,8 +10419,10 @@ typedef struct {
 #define UART_CCR_PSEL                   (0x01U << UART_CCR_PSEL_Pos)            ///< Parity selection bit
 #define UART_CCR_SPB_Pos                (2)
 #define UART_CCR_SPB                    (0x01U << UART_CCR_SPB_Pos)             ///< Stop bit selection
-#define UART_CCR_SPB0_Pos               (2)
-#define UART_CCR_SPB0                   (0x01U << UART_CCR_SPB0_Pos)            ///< Stop bit 0 selection
+#if defined(__MM3O1) || defined(__MM0P1) || defined(__MM0Q1) || defined(__MM0S1) || defined(__MM0T1) || defined(__MM3U1)
+    #define UART_CCR_SPB0_Pos           (2)
+    #define UART_CCR_SPB0               (0x01U << UART_CCR_SPB0_Pos)            ///< Stop bit 0 selection
+#endif
 #define UART_CCR_BRK_Pos                (3)
 #define UART_CCR_BRK                    (0x01U << UART_CCR_BRK_Pos)             ///< UART transmit frame break
 #define UART_CCR_CHAR_Pos               (4)
@@ -10400,24 +10431,30 @@ typedef struct {
 #define UART_CCR_CHAR_6b                (0x01U << UART_CCR_CHAR_Pos)            ///< UART Word Length 6b
 #define UART_CCR_CHAR_7b                (0x02U << UART_CCR_CHAR_Pos)            ///< UART Word Length 7b
 #define UART_CCR_CHAR_8b                (0x03U << UART_CCR_CHAR_Pos)            ///< UART Word Length 8b
-#define UART_CCR_SPB1_Pos               (6)
-#define UART_CCR_SPB1                   (0x01U << UART_CCR_SPB1_Pos)            ///< Stop bit 1 selection
-#define UART_CCR_B8RXD_Pos              (7)
-#define UART_CCR_B8RXD                  (0x01U << UART_CCR_B8RXD_Pos)           ///< Synchronous frame receive
-#define UART_CCR_B8TXD_Pos              (8)
-#define UART_CCR_B8TXD                  (0x01U << UART_CCR_B8TXD_Pos)           ///< Synchronous frame transmit
-#define UART_CCR_B8POL_Pos              (9)
-#define UART_CCR_B8POL                  (0x01U << UART_CCR_B8POL_Pos)           ///< Synchronous frame polarity control bit
-#define UART_CCR_B8TOG_Pos              (10)
-#define UART_CCR_B8TOG                  (0x01U << UART_CCR_B8TOG_Pos)           ///< Synchronous frame auto toggle bit
-#define UART_CCR_B8EN_Pos               (11)
-#define UART_CCR_B8EN                   (0x01U << UART_CCR_B8EN_Pos)            ///< Synchronous frame enable bit
-#define UART_CCR_RWU_Pos                (12)
-#define UART_CCR_RWU                    (0x01U << UART_CCR_RWU_Pos)             ///< Receive wake up method
-#define UART_CCR_WAKE_Pos               (13)
-#define UART_CCR_WAKE                   (0x01U << UART_CCR_WAKE_Pos)            ///< Wake up method
-#define UART_CCR_LIN_Pos                (14)
-#define UART_CCR_LIN                    (0x01U << UART_CCR_LIN_Pos)             ///< Wake up method
+
+#if defined(__MM3O1) || defined(__MM0P1) || defined(__MM0Q1) || defined(__MM0S1) || defined(__MM0T1) || defined(__MM3U1)
+    #define UART_CCR_SPB1_Pos           (6)
+    #define UART_CCR_SPB1               (0x01U << UART_CCR_SPB1_Pos)            ///< Stop bit 1 selection
+    #define UART_CCR_B8RXD_Pos          (7)
+    #define UART_CCR_B8RXD              (0x01U << UART_CCR_B8RXD_Pos)           ///< Synchronous frame receive
+    #define UART_CCR_B8TXD_Pos          (8)
+    #define UART_CCR_B8TXD              (0x01U << UART_CCR_B8TXD_Pos)           ///< Synchronous frame transmit
+    #define UART_CCR_B8POL_Pos          (9)
+    #define UART_CCR_B8POL              (0x01U << UART_CCR_B8POL_Pos)           ///< Synchronous frame polarity control bit
+    #define UART_CCR_B8TOG_Pos          (10)
+    #define UART_CCR_B8TOG              (0x01U << UART_CCR_B8TOG_Pos)           ///< Synchronous frame auto toggle bit
+    #define UART_CCR_B8EN_Pos           (11)
+    #define UART_CCR_B8EN               (0x01U << UART_CCR_B8EN_Pos)            ///< Synchronous frame enable bit
+    #define UART_CCR_RWU_Pos            (12)
+    #define UART_CCR_RWU                (0x01U << UART_CCR_RWU_Pos)             ///< Receive wake up method
+    #define UART_CCR_WAKE_Pos           (13)
+    #define UART_CCR_WAKE               (0x01U << UART_CCR_WAKE_Pos)            ///< Wake up method
+#endif
+
+#if defined(__MM0S1) || defined(__MM0T1) || defined(__MM3U1)
+    #define UART_CCR_LIN_Pos            (14)
+    #define UART_CCR_LIN                (0x01U << UART_CCR_LIN_Pos)             ///< Wake up method
+#endif
 
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief UART_BRR Register Bit Definition
@@ -10434,50 +10471,60 @@ typedef struct {
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief UART_RXAR Register Bit Definition
 ////////////////////////////////////////////////////////////////////////////////
-#define UART_RXAR_ADDR_Pos              (0)
-#define UART_RXAR_ADDR                  (0xFFU << UART_RXAR_ADDR_Pos)           ///< Synchronous frame match address
+#if defined(__MM3O1) || defined(__MM0P1) || defined(__MM0Q1) || defined(__MM0S1) || defined(__MM0T1) || defined(__MM3U1)
+    #define UART_RXAR_ADDR_Pos          (0)
+    #define UART_RXAR_ADDR              (0xFFU << UART_RXAR_ADDR_Pos)           ///< Synchronous frame match address
+#endif
 
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief UART_RXMR Register Bit Definition
 ////////////////////////////////////////////////////////////////////////////////
-#define UART_RXMR_MASK_Pos              (0)
-#define UART_RXMR_MASK                  (0xFFU << UART_RXMR_MASK_Pos)           ///< Synchronous frame match address mask
+#if defined(__MM3O1) || defined(__MM0P1) || defined(__MM0Q1) || defined(__MM0S1) || defined(__MM0T1) || defined(__MM3U1)
+    #define UART_RXMR_MASK_Pos          (0)
+    #define UART_RXMR_MASK              (0xFFU << UART_RXMR_MASK_Pos)           ///< Synchronous frame match address mask
+#endif
 
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief UART_SCR Register Bit Definition
 ////////////////////////////////////////////////////////////////////////////////
-#define UART_SCR_SCEN_Pos               (0)
-#define UART_SCR_SCEN                   (0x01U << UART_SCR_SCEN_Pos)            ///< ISO7816 enable bit
-#define UART_SCR_SCARB_Pos              (1)
-#define UART_SCR_SCARB                  (0x01U << UART_SCR_SCARB_Pos)           ///< ISO7816 check auto answer bit
-#define UART_SCR_NACK_Pos               (2)
-#define UART_SCR_NACK                   (0x01U << UART_SCR_NACK_Pos)            ///< Master receive frame answer bit
-#define UART_SCR_SCFCNT_Pos             (4)
-#define UART_SCR_SCFCNT                 (0xFFU << UART_SCR_SCFCNT_Pos)          ///< ISO7816 protection counter bit
-#define UART_SCR_HDSEL_Pos              (12)
-#define UART_SCR_HDSEL                  (0x01U << UART_SCR_HDSEL_Pos)           ///< Single-line half-duplex mode selection bit
+#if defined(__MM3O1) || defined(__MM0P1) || defined(__MM0Q1) || defined(__MM0S1) || defined(__MM0T1) || defined(__MM3U1)
+    #define UART_SCR_SCEN_Pos           (0)
+    #define UART_SCR_SCEN               (0x01U << UART_SCR_SCEN_Pos)            ///< ISO7816 enable bit
+    #define UART_SCR_SCARB_Pos          (1)
+    #define UART_SCR_SCARB              (0x01U << UART_SCR_SCARB_Pos)           ///< ISO7816 check auto answer bit
+    #define UART_SCR_NACK_Pos           (2)
+    #define UART_SCR_NACK               (0x01U << UART_SCR_NACK_Pos)            ///< Master receive frame answer bit
+    #define UART_SCR_SCFCNT_Pos         (4)
+    #define UART_SCR_SCFCNT             (0xFFU << UART_SCR_SCFCNT_Pos)          ///< ISO7816 protection counter bit
+    #define UART_SCR_HDSEL_Pos          (12)
+    #define UART_SCR_HDSEL              (0x01U << UART_SCR_HDSEL_Pos)           ///< Single-line half-duplex mode selection bit
+#endif
 
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief UART_IDLR Register Bit Definition
 ////////////////////////////////////////////////////////////////////////////////
-#define UART_IDLR_IDLR_Pos              (0)
-#define UART_IDLR_IDLR                  (0xFFFFU << UART_IDLR_IDLR_Pos)         ///< ISO7816 enable bit
+#if defined(__MM0S1) || defined(__MM0T1) || defined(__MM3U1)
+    #define UART_IDLR_IDLR_Pos          (0)
+    #define UART_IDLR_IDLR              (0xFFFFU << UART_IDLR_IDLR_Pos)         ///< ISO7816 enable bit
+#endif
 
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief UART_ABRCR Register Bit Definition
 ////////////////////////////////////////////////////////////////////////////////
-#define UART_ABRCR_EN_Pos               (0)
-#define UART_ABRCR_EN                   (0x01U << UART_ABRCR_EN_Pos)
-#define UART_ABRCR_BITCNT_Pos           (1)
-#define UART_ABRCR_BITCNT               (0x03U << UART_ABRCR_BITCNT_Pos)
-#define UART_ABRCR_BITCNT_1b            (0x03U << UART_ABRCR_BITCNT_Pos)
-#define UART_ABRCR_BITCNT_2b            (0x02U << UART_ABRCR_BITCNT_Pos)
-#define UART_ABRCR_BITCNT_4b            (0x01U << UART_ABRCR_BITCNT_Pos)
-#define UART_ABRCR_BITCNT_8b            (0x00U << UART_ABRCR_BITCNT_Pos)
-#define UART_ABRCR_FORMEREDGE_Pos       (3)
-#define UART_ABRCR_FORMEREDGE           (0x01U << UART_ABRCR_FORMEREDGE_Pos)
-#define UART_ABRCR_LATTEREDGE_Pos       (4)
-#define UART_ABRCR_LATTEREDGE           (0x01U << UART_ABRCR_LATTEREDGE_Pos)
+#if defined(__MM0S1) || defined(__MM0T1) || defined(__MM3U1)
+    #define UART_ABRCR_EN_Pos           (0)
+    #define UART_ABRCR_EN               (0x01U << UART_ABRCR_EN_Pos)
+    #define UART_ABRCR_BITCNT_Pos       (1)
+    #define UART_ABRCR_BITCNT           (0x03U << UART_ABRCR_BITCNT_Pos)
+    #define UART_ABRCR_BITCNT_1b        (0x03U << UART_ABRCR_BITCNT_Pos)
+    #define UART_ABRCR_BITCNT_2b        (0x02U << UART_ABRCR_BITCNT_Pos)
+    #define UART_ABRCR_BITCNT_4b        (0x01U << UART_ABRCR_BITCNT_Pos)
+    #define UART_ABRCR_BITCNT_8b        (0x00U << UART_ABRCR_BITCNT_Pos)
+    #define UART_ABRCR_FORMEREDGE_Pos   (3)
+    #define UART_ABRCR_FORMEREDGE       (0x01U << UART_ABRCR_FORMEREDGE_Pos)
+    #define UART_ABRCR_LATTEREDGE_Pos   (4)
+    #define UART_ABRCR_LATTEREDGE       (0x01U << UART_ABRCR_LATTEREDGE_Pos)
+#endif
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief SYSCFG_CFGR1 Register Bit Definition
 ////////////////////////////////////////////////////////////////////////////////

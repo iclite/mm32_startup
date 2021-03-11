@@ -10341,10 +10341,10 @@ typedef struct {
 #if defined(__MM0S1) || defined(__MM0T1) || defined(__MM3U1)
     #define UART_IER_RXIDLE_Pos         (9)
     #define UART_IER_RXIDLE             (0x01U << UART_IER_RXIDLE_Pos)          ///< Receive Bit 8 Interrupt clear Bit
-    #define UART_IER_ABRENDIEN_Pos      (10)
-    #define UART_IER_ABRENDIEN          (0x01U << UART_IER_ABRENDIEN_Pos)
-    #define UART_IER_ABRERRIEN_Pos      (11)
-    #define UART_IER_ABRERRIEN          (0x01U << UART_IER_ABRERRIEN_Pos)
+    #define UART_IER_ABREND_Pos         (10)
+    #define UART_IER_ABREND             (0x01U << UART_IER_ABREND_Pos)
+    #define UART_IER_ABRERR_Pos         (11)
+    #define UART_IER_ABRERR             (0x01U << UART_IER_ABRERR_Pos)
 #endif
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -10379,10 +10379,10 @@ typedef struct {
 #if defined(__MM0S1) || defined(__MM0T1) || defined(__MM3U1)
     #define UART_ICR_RXIDLE_Pos         (9)
     #define UART_ICR_RXIDLE             (0x01U << UART_ICR_RXIDLE_Pos)          ///< Receive Bit 8 Interrupt clear Bit
-    #define UART_ICR_ABRENDCLR_Pos      (10)
-    #define UART_ICR_ABRENDCLR          (0x01U << UART_ICR_ABRENDCLR_Pos)
-    #define UART_ICR_ABRERRCLR_Pos      (11)
-    #define UART_ICR_ABRERRCLR          (0x01U << UART_ICR_ABRERRCLR_Pos)
+    #define UART_ICR_ABREND_Pos         (10)
+    #define UART_ICR_ABREND             (0x01U << UART_ICR_ABREND_Pos)
+    #define UART_ICR_ABRERR_Pos         (11)
+    #define UART_ICR_ABRERR             (0x01U << UART_ICR_ABRERR_Pos)
 #endif
 
 ////////////////////////////////////////////////////////////////////////////////

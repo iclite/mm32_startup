@@ -464,6 +464,42 @@ typedef enum IRQn {
     #define COMP_BASE                   (0x40014000U)                           ///< Base Address: APB2 0x40014000
 #endif
 
+#define COMP_CRV                        (COMP_BASE + 0x18)                      ///< COMP CRV Base Address
+
+#if defined(__MM0N1) || defined(__MM3O1)
+    #define COMP1_BASE                  (COMP_BASE)                             ///< COMP1 Base Address
+    #define COMP2_BASE                  (COMP_BASE + 0x04)                      ///< COMP2 Base Address
+#endif
+
+#if defined(__MM0P1)
+    #define COMP4_BASE                  (COMP_BASE)                             ///< COMP4 Base Address
+    #define COMP5_BASE                  (COMP_BASE + 0x04)                      ///< COMP5 Base Address
+    #define COMP1_BASE                  (COMP_BASE + 0x08)                      ///< COMP1 Base Address
+    #define COMP2_BASE                  (COMP_BASE + 0x0C)                      ///< COMP2 Base Address
+    #define COMP3_BASE                  (COMP_BASE + 0x14)                      ///< COMP3 Base Address
+    #define COMP4_POLL_BASE             (COMP_BASE + 0x1C)                      ///< COMP1 POLL Base Address
+    #define COMP5_POLL_BASE             (COMP_BASE + 0x20)                      ///< COMP2 POLL Base Address
+#endif
+
+#if defined(__MM0Q1)
+    #define COMP1_BASE                  (COMP_BASE)                             ///< COMP1 Base Address
+    #define COMP1_POLL_BASE             (COMP_BASE + 0x1C)                      ///< COMP1 POLL Base Address
+#endif
+
+#if defined(__MM0S1)
+    #define COMP1_BASE                  (COMP_BASE)                             ///< COMP1 Base Address
+    #define COMP2_BASE                  (COMP_BASE + 0x04)                      ///< COMP2 Base Address
+    #define COMP1_POLL_BASE             (COMP_BASE + 0x1C)                      ///< COMP1 POLL Base Address
+    #define COMP2_POLL_BASE             (COMP_BASE + 0x20)                      ///< COMP2 POLL Base Address
+#endif
+
+#if defined(__MM3U1)
+    #define COMP1_BASE                  (COMP_BASE + 0x0C)                      ///< COMP1 Base Address
+    #define COMP2_BASE                  (COMP_BASE + 0x10)                      ///< COMP2 Base Address
+    #define COMP1_POLL_BASE             (COMP_BASE + 0x1C)                      ///< COMP1 POLL Base Address
+    #define COMP2_POLL_BASE             (COMP_BASE + 0x20)                      ///< COMP2 POLL Base Address
+#endif
+
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief CRC Base Address Definition
 ////////////////////////////////////////////////////////////////////////////////
@@ -1172,35 +1208,31 @@ typedef struct {
 #if defined(COMP_BASE)
 typedef struct {
 #if defined(__MM0N1) || defined(__MM3O1)
-    __IO uint32_t CSR1;                                                         ///< COMP1 Control Status Register                 offset: 0x00
-    __IO uint32_t CSR2;                                                         ///< COMP2 Control Status Register                 offset: 0x04
+    __IO uint32_t CSR1;                                                         ///< COMP1 Control Status Register              offset: 0x00
+    __IO uint32_t CSR2;                                                         ///< COMP2 Control Status Register              offset: 0x04
 #endif
 
 #if defined(__MM0P1)
-    __IO uint32_t CSR4;                                                         ///< COMP4 Control Status Register                  offset: 0x00
-    __IO uint32_t CSR5;                                                         ///< COMP5 Control Status Register                  offset: 0x04
-    __IO uint32_t CSR1;                                                         ///< COMP1 Control Status Register                  offset: 0x08
-    __IO uint32_t CSR2;                                                         ///< COMP2 Control Status Register                  offset: 0x0C
+    __IO uint32_t CSR4;                                                         ///< COMP4 Control Status Register              offset: 0x00
+    __IO uint32_t CSR5;                                                         ///< COMP5 Control Status Register              offset: 0x04
+    __IO uint32_t CSR1;                                                         ///< COMP1 Control Status Register              offset: 0x08
+    __IO uint32_t CSR2;                                                         ///< COMP2 Control Status Register              offset: 0x0C
     __IO uint32_t RESERVED;
-    __IO uint32_t CSR3;                                                         ///< COMP3 Control Status Register                  offset: 0x14
+    __IO uint32_t CSR3;                                                         ///< COMP3 Control Status Register              offset: 0x14
+    __IO uint32_t CRV;                                                          ///< COMP external reference voltage register   offset: 0x18
+    __IO uint32_t POLL4;                                                        ///< COMP4 polling register                     offset: 0x1C
+    __IO uint32_t POLL5;                                                        ///< COMP5 polling register                     offset: 0x20
 #endif
+
 #if defined(__MM0Q1)
-    __IO uint32_t CSR1;                                                         ///< COMP1 Control Status Register                  offset: 0x00
-    __IO uint32_t RESERVED0;
-    __IO uint32_t RESERVED1;
-    __IO uint32_t RESERVED2;
-    __IO uint32_t RESERVED3;
-    __IO uint32_t RESERVED4;
-#endif
-#if defined(__MM0P1) || defined(__MM0Q1)
-    __IO uint32_t CRV;                                                          ///< COMP external reference voltage register       offset: 0x18
-#endif
-#if defined(__MM0P1)
-    __IO uint32_t POLL4;                                                        ///< COMP4 polling register                         offset: 0x1C
-    __IO uint32_t POLL5;                                                        ///< COMP5 polling register                         offset: 0x20
-#endif
-#if defined(__MM0Q1)
-    __IO uint32_t POLL1;                                                        ///< COMP1 polling register                         offset: 0x1C
+    __IO uint32_t CSR1;                                                         ///< COMP1 Control Status Register              offset: 0x00
+    __IO uint32_t RESERVED0;                                                    ///<                                            offset: 0x04
+    __IO uint32_t RESERVED1;                                                    ///<                                            offset: 0x08
+    __IO uint32_t RESERVED2;                                                    ///<                                            offset: 0x0C
+    __IO uint32_t RESERVED3;                                                    ///<                                            offset: 0x10
+    __IO uint32_t RESERVED4;                                                    ///<                                            offset: 0x14
+    __IO uint32_t CRV;                                                          ///< COMP external reference voltage register   offset: 0x18
+    __IO uint32_t POLL1;                                                        ///< COMP1 polling register                     offset: 0x1C
 #endif
 
 #if defined(__MM0S1)
@@ -1216,17 +1248,33 @@ typedef struct {
 #endif
 
 #if defined(__MM3U1)
-    __IO uint32_t RESERVED1;                                                    ///< offset: 0x00
-    __IO uint32_t RESERVED2;                                                    ///< offset: 0x04
-    __IO uint32_t RESERVED3;                                                    ///< offset: 0x08
-    __IO uint32_t CSR1;                                                         ///< COMP1 Control Status Register                  offset: 0x0C
-    __IO uint32_t CSR2;                                                         ///< COMP2 Control Status Register                  offset: 0x10
-    __IO uint32_t RESERVED4;                                                    ///<                                                offset: 0x14
-    __IO uint32_t CRV;                                                          ///< COMP external reference voltage register       offset: 0x18
-    __IO uint32_t POLL1;                                                        ///< COMP1 polling register                         offset: 0x1C
-    __IO uint32_t POLL2;                                                        ///< COMP2 polling register                         offset: 0x20
+    __IO uint32_t RESERVED1[3];                                                 ///<                                            offset: 0x00 ~ 0x08
+    __IO uint32_t CSR1;                                                         ///< COMP1 Control Status Register              offset: 0x0C
+    __IO uint32_t CSR2;                                                         ///< COMP2 Control Status Register              offset: 0x10
+    __IO uint32_t RESERVED2;                                                    ///<                                            offset: 0x14
+    __IO uint32_t CRV;                                                          ///< COMP external reference voltage register   offset: 0x18
+    __IO uint32_t POLL1;                                                        ///< COMP1 polling register                     offset: 0x1C
+    __IO uint32_t POLL2;                                                        ///< COMP2 polling register                     offset: 0x20
 #endif
 } COMP_TypeDef;
+
+typedef struct {
+    __IO uint32_t CSR;
+} COMPx_TypeDef;
+
+typedef struct {
+    __IO uint32_t CSR;
+
+#if defined(__MM0P1) || defined(__MM0Q1) || defined(__MM0S1)
+    __IO uint32_t RESERVED[6];
+    __IO uint32_t POLL;                                                         ///< COMP polling register
+#endif
+
+#if defined(__MM3U1)
+    __IO uint32_t RESERVED[3];
+    __IO uint32_t POLL;                                                         ///< COMP polling register
+#endif
+} COMPx_POLL_TypeDef;
 #endif
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -2179,6 +2227,46 @@ typedef struct {
 ////////////////////////////////////////////////////////////////////////////////
 #if defined(COMP_BASE)
     #define COMP                        ((COMP_TypeDef*) COMP_BASE)
+#endif
+
+#if defined(COMP1_BASE)
+#if defined(COMP1_POLL_BASE)
+    #define COMP1                       ((COMPx_POLL_TypeDef*) COMP1_BASE)
+#else
+    #define COMP1                       ((COMPx_TypeDef*) COMP1_BASE)
+#endif
+#endif
+
+#if defined(COMP2_BASE)
+#if defined(COMP2_POLL_BASE)
+    #define COMP2                       ((COMPx_POLL_TypeDef*) COMP2_BASE)
+#else
+    #define COMP2                       ((COMPx_TypeDef*) COMP2_BASE)
+#endif
+#endif
+
+#if defined(COMP3_BASE)
+#if defined(COMP3_POLL_BASE)
+    #define COMP3                       ((COMPx_POLL_TypeDef*) COMP3_BASE)
+#else
+    #define COMP3                       ((COMPx_TypeDef*) COMP3_BASE)
+#endif
+#endif
+
+#if defined(COMP4_BASE)
+#if defined(COMP4_POLL_BASE)
+    #define COMP4                       ((COMPx_POLL_TypeDef*) COMP4_BASE)
+#else
+    #define COMP4                       ((COMPx_TypeDef*) COMP4_BASE)
+#endif
+#endif
+
+#if defined(COMP5_BASE)
+#if defined(COMP5_POLL_BASE)
+    #define COMP5                       ((COMPx_POLL_TypeDef*) COMP5_BASE)
+#else
+    #define COMP5                       ((COMPx_TypeDef*) COMP5_BASE)
+#endif
 #endif
 
 ////////////////////////////////////////////////////////////////////////////////

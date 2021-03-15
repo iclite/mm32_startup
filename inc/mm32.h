@@ -3980,7 +3980,7 @@ typedef struct {
     #define CAN_FGA2_FGA19_Pos          (4)
     #define CAN_FGA2_FGA19              (0x01U << CAN_FGA2_MODE_Pos)
 #endif
-#if defined(__MM0N1)
+#if defined(COMP_BASE)
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief COMP_CSR Register Bit Definition
 ////////////////////////////////////////////////////////////////////////////////
@@ -3988,11 +3988,24 @@ typedef struct {
     #define COMP_CSR_EN                 (0x01U << COMP_CSR_EN_Pos)              ///< Comparator enable
     #define COMP_CSR_MODE_Pos           (2)
     #define COMP_CSR_MODE               (0x03U << COMP_CSR_MODE_Pos)            ///< Comparator mode
+
+#if defined(__MM0N1) || defined(__MM3O1)
     #define COMP_CSR_MODE_LOWESTPOWER   (0x00U << COMP_CSR_MODE_Pos)            ///< Comparator lowest power mode
     #define COMP_CSR_MODE_LOWPOWER      (0x01U << COMP_CSR_MODE_Pos)            ///< Comparator low power mode
     #define COMP_CSR_MODE_MEDIUMRATE    (0x02U << COMP_CSR_MODE_Pos)            ///< Comparator medium rate mode
     #define COMP_CSR_MODE_HIGHRATE      (0x03U << COMP_CSR_MODE_Pos)            ///< Comparator high rate mode
+#endif
+
+#if defined(__MM0P1) || defined(__MM0Q1) || defined(__MM0S1) || defined(__MM3U1)
+    #define COMP_CSR_MODE_HIGHRATE      (0x00U << COMP_CSR_MODE_Pos)            ///< Comparator high rate mode
+    #define COMP_CSR_MODE_MEDIUMRATE    (0x01U << COMP_CSR_MODE_Pos)            ///< Comparator medium rate mode
+    #define COMP_CSR_MODE_LOWPOWER      (0x02U << COMP_CSR_MODE_Pos)            ///< Comparator low power mode
+    #define COMP_CSR_MODE_LOWESTPOWER   (0x03U << COMP_CSR_MODE_Pos)            ///< Comparator lowest power mode
+#endif
+
     #define COMP_CSR_INM_Pos            (4)
+
+#if defined(__MM0N1) || defined(__MM3O1)
     #define COMP_CSR_INM                (0x07U << COMP_CSR_INM_Pos)             ///< Comparator inverting input selection
     #define COMP_CSR_INM_VREFINT_1_4    (0x00U << COMP_CSR_INM_Pos)             ///< Vrefint 1/4 as COMP inverting input
     #define COMP_CSR_INM_VREFINT_1_2    (0x01U << COMP_CSR_INM_Pos)             ///< Vrefint 1/2 as COMP inverting input
@@ -4002,7 +4015,19 @@ typedef struct {
     #define COMP_CSR_INM_INM5           (0x05U << COMP_CSR_INM_Pos)             ///< INM5 as COMP inverting input
     #define COMP_CSR_INM_INM6           (0x06U << COMP_CSR_INM_Pos)             ///< INM6 as COMP inverting input
     #define COMP_CSR_INM_INM7           (0x07U << COMP_CSR_INM_Pos)             ///< INM7 as COMP inverting input
+#endif
+
+#if defined(__MM0P1) || defined(__MM0Q1) || defined(__MM0S1) || defined(__MM3U1)
+    #define COMP_CSR_INM                (0x03U << COMP_CSR_INM_Pos)             ///< Comparator inverting input selection
+    #define COMP_CSR_INM_0              (0x00U << COMP_CSR_INM_Pos)             ///< INM0 as COMP inverting input
+    #define COMP_CSR_INM_1              (0x01U << COMP_CSR_INM_Pos)             ///< INM1 as COMP inverting input
+    #define COMP_CSR_INM_2              (0x02U << COMP_CSR_INM_Pos)             ///< INM2 as COMP inverting input
+    #define COMP_CSR_INM_3              (0x03U << COMP_CSR_INM_Pos)             ///< INM3 as COMP inverting input
+#endif
+
     #define COMP_CSR_INP_Pos            (7)
+
+#if defined(__MM0N1) || defined(__MM3O1)
     #define COMP_CSR_INP                (0x07U << COMP_CSR_INP_Pos)             ///< Comparator non-inverting input selection
     #define COMP_CSR_INP_INP0           (0x00U << COMP_CSR_INP_Pos)             ///< INP0 as COMP non-inverting input
     #define COMP_CSR_INP_INP1           (0x01U << COMP_CSR_INP_Pos)             ///< INP1 as COMP non-inverting input
@@ -4012,96 +4037,51 @@ typedef struct {
     #define COMP_CSR_INP_INP5           (0x05U << COMP_CSR_INP_Pos)             ///< INP5 as COMP non-inverting input
     #define COMP_CSR_INP_INP6           (0x06U << COMP_CSR_INP_Pos)             ///< INP6 as COMP non-inverting input
     #define COMP_CSR_INP_INP7           (0x07U << COMP_CSR_INP_Pos)             ///< INP7 as COMP non-inverting input
-    #define COMP_CSR_OUT_Pos            (10)
-    #define COMP_CSR_OUT                (0x0FU << COMP_CSR_OUT_Pos)             ///< Comparator output selection
-    #define COMP_CSR_OUT_TIM1_BRAKE     (0x02U << COMP_CSR_OUT_Pos)             ///< Timer1 brake input
-    #define COMP_CSR_OUT_TIM1_OCREFCLR  (0x06U << COMP_CSR_OUT_Pos)             ///< Timer1 ocrefclear input
-    #define COMP_CSR_OUT_TIM1_CAPTURE1  (0x07U << COMP_CSR_OUT_Pos)             ///< Timer1 input capture 1
-    #define COMP_CSR_OUT_TIM2_CAPTURE4  (0x08U << COMP_CSR_OUT_Pos)             ///< Timer2 input capture 4
-    #define COMP_CSR_OUT_TIM2_OCREFCLR  (0x09U << COMP_CSR_OUT_Pos)             ///< Timer2 ocrefclear input
-    #define COMP_CSR_OUT_TIM3_CAPTURE1  (0x0AU << COMP_CSR_OUT_Pos)             ///< Timer3 input capture 1
-    #define COMP_CSR_OUT_TIM3_OCREFCLR  (0x0BU << COMP_CSR_OUT_Pos)             ///< Timer3 ocrefclear input
-    #define COMP_CSR_POL_Pos            (15)
-    #define COMP_CSR_POL                (0x01U << COMP_CSR_POL_Pos)             ///< Comparator output polarity
-    #define COMP_CSR_HYST_Pos           (16)
-    #define COMP_CSR_HYST               (0x03U << COMP_CSR_HYST_Pos)            ///< Comparator hysteresis
-    #define COMP_CSR_HYST_0             (0x00U << COMP_CSR_HYST_Pos)            ///< Hysteresis Voltage: 0mV
-    #define COMP_CSR_HYST_9             (0x01U << COMP_CSR_HYST_Pos)            ///< Hysteresis Voltage: 9mV
-    #define COMP_CSR_HYST_18            (0x02U << COMP_CSR_HYST_Pos)            ///< Hysteresis Voltage: 18mV
-    #define COMP_CSR_HYST_27            (0x03U << COMP_CSR_HYST_Pos)            ///< Hysteresis Voltage: 27mV
-    #define COMP_CSR_STA_Pos            (30)
-    #define COMP_CSR_STA                (0x01U << COMP_CSR_STA_Pos)             ///< Comparator output status
-    #define COMP_CSR_LOCK_Pos           (31)
-    #define COMP_CSR_LOCK               (0x01U << COMP_CSR_LOCK_Pos)            ///< Comparator lock
 #endif
 
-#if defined(__MM0P1) || defined(__MM0Q1) || defined(__MM0S1) || defined(__MM3U1)
-////////////////////////////////////////////////////////////////////////////////
-/// @brief COMP_CSR Register Bit Definition
-////////////////////////////////////////////////////////////////////////////////
-    #define COMP_CSR_EN_Pos             (0)
-    #define COMP_CSR_EN                 (0x01U << COMP_CSR_EN_Pos)              ///< Comparator enable
-    #define COMP_CSR_MODE_Pos           (2)
-    #define COMP_CSR_MODE               (0x03U << COMP_CSR_MODE_Pos)            ///< Comparator mode
-    #define COMP_CSR_MODE_HIGHRATE      (0x00U << COMP_CSR_MODE_Pos)            ///< Comparator high rate mode
-    #define COMP_CSR_MODE_MEDIUMRATE    (0x01U << COMP_CSR_MODE_Pos)            ///< Comparator medium rate mode
-    #define COMP_CSR_MODE_LOWPOWER      (0x02U << COMP_CSR_MODE_Pos)            ///< Comparator low power mode
-    #define COMP_CSR_MODE_LOWESTPOWER   (0x03U << COMP_CSR_MODE_Pos)            ///< Comparator lowest power mode
+#if defined(__MM0Q1) || defined(__MM3U1)
+    #define COMP_CSR_INP                (0x03U << COMP_CSR_INP_Pos)             ///< Comparator non-inverting input selection
+    #define COMP_CSR_INP_INP0           (0x00U << COMP_CSR_INP_Pos)             ///< INP0 as COMP non-inverting input
+    #define COMP_CSR_INP_INP1           (0x01U << COMP_CSR_INP_Pos)             ///< INP1 as COMP non-inverting input
+    #define COMP_CSR_INP_INP2           (0x02U << COMP_CSR_INP_Pos)             ///< INP2 as COMP non-inverting input
+    #define COMP_CSR_INP_INP3           (0x03U << COMP_CSR_INP_Pos)             ///< INP3 as COMP non-inverting input
+#endif
 
-    #define COMP_CSR_INM_Pos            (4)
-    #define COMP_CSR_INM                (0x03U << COMP_CSR_INM_Pos)             ///< Comparator inverting input selection
-    #define COMP_CSR_INM_0              (0x00U << COMP_CSR_INM_Pos)             ///< INM0 as COMP inverting input
-    #define COMP_CSR_INM_1              (0x01U << COMP_CSR_INM_Pos)             ///< INM1 as COMP inverting input
-    #define COMP_CSR_INM_2              (0x02U << COMP_CSR_INM_Pos)             ///< INM2 as COMP inverting input
-    #define COMP_CSR_INM_3              (0x03U << COMP_CSR_INM_Pos)             ///< INM3 as COMP inverting input
-
-    #if defined(__MM0P1) || defined(__MM0S1)
-        #define COMP_CSR_INP_Pos        (7)
-        #define COMP_CSR_INP            (0x03U << COMP_CSR_INP_Pos)             ///< Comparator non-inverting input selection
-        #define COMP_CSR_INP_INP0       (0x00U << COMP_CSR_INP_Pos)             ///< INP0 as COMP non-inverting input
-        #define COMP_CSR_INP_INP3       (0x01U << COMP_CSR_INP_Pos)             ///< INP1 as COMP non-inverting input
-        #define COMP_CSR_INP_INP2       (0x02U << COMP_CSR_INP_Pos)             ///< INP2 as COMP non-inverting input
-        #define COMP_CSR_INP_INP1       (0x03U << COMP_CSR_INP_Pos)             ///< INP3 as COMP non-inverting input
-    #endif
-
-    #if defined(__MM0Q1)
-        #define COMP_CSR_INP_Pos        (7)
-        #define COMP_CSR_INP            (0x03U << COMP_CSR_INP_Pos)             ///< Comparator non-inverting input selection
-        #define COMP_CSR_INP_INP0       (0x00U << COMP_CSR_INP_Pos)             ///< INP0 as COMP non-inverting input
-        #define COMP_CSR_INP_INP2       (0x02U << COMP_CSR_INP_Pos)             ///< INP2 as COMP non-inverting input
-    #elif defined(__MM0N1) || defined(__MM3O1)
-        #define COMP_CSR_INP_INP3       (0x01U << COMP_CSR_INP_Pos)             ///< INP1 as COMP non-inverting input
-        #define COMP_CSR_INP_INP1       (0x03U << COMP_CSR_INP_Pos)             ///< INP3 as COMP non-inverting input
-    #else
-        #define COMP_CSR_INP_INP1       (0x01U << COMP_CSR_INP_Pos)             ///< INP1 as COMP non-inverting input
-        #define COMP_CSR_INP_INP3       (0x03U << COMP_CSR_INP_Pos)             ///< INP3 as COMP non-inverting input
-    #endif
+#if defined(__MM0P1) || defined(__MM0S1)
+    #define COMP_CSR_INP                (0x03U << COMP_CSR_INP_Pos)             ///< Comparator non-inverting input selection
+    #define COMP_CSR_INP_INP0           (0x00U << COMP_CSR_INP_Pos)             ///< INP0 as COMP non-inverting input
+    #define COMP_CSR_INP_INP3           (0x01U << COMP_CSR_INP_Pos)             ///< INP1 as COMP non-inverting input
+    #define COMP_CSR_INP_INP2           (0x02U << COMP_CSR_INP_Pos)             ///< INP2 as COMP non-inverting input
+    #define COMP_CSR_INP_INP1           (0x03U << COMP_CSR_INP_Pos)             ///< INP3 as COMP non-inverting input
+#endif
 
     #define COMP_CSR_OUT_Pos            (10)
     #define COMP_CSR_OUT                (0x0FU << COMP_CSR_OUT_Pos)             ///< Comparator output selection
     #define COMP_CSR_OUT_TIM1_BRAKE     (0x02U << COMP_CSR_OUT_Pos)             ///< Timer1 brake input
-    #if defined(__MM0P1)
-        #define COMP_CSR_OUT_TIM8_BRAKE (0x03U << COMP_CSR_OUT_Pos)             ///< Timer8 brake input
-    #endif
     #define COMP_CSR_OUT_TIM1_OCREFCLR  (0x06U << COMP_CSR_OUT_Pos)             ///< Timer1 ocrefclear input
     #define COMP_CSR_OUT_TIM1_CAPTURE1  (0x07U << COMP_CSR_OUT_Pos)             ///< Timer1 input capture 1
     #define COMP_CSR_OUT_TIM2_CAPTURE4  (0x08U << COMP_CSR_OUT_Pos)             ///< Timer2 input capture 4
     #define COMP_CSR_OUT_TIM2_OCREFCLR  (0x09U << COMP_CSR_OUT_Pos)             ///< Timer2 ocrefclear input
     #define COMP_CSR_OUT_TIM3_CAPTURE1  (0x0AU << COMP_CSR_OUT_Pos)             ///< Timer3 input capture 1
     #define COMP_CSR_OUT_TIM3_OCREFCLR  (0x0BU << COMP_CSR_OUT_Pos)             ///< Timer3 ocrefclear input
-    #if defined(__MM0P1)
-        #define COMP_CSR_OUT_TIM8_OCREFCLR  (0x0FU << COMP_CSR_OUT_Pos)         ///< Timer8 ocrefclear input
-    #endif
+
+#if defined(__MM3O1) || defined(__MM0P1)
+    #define COMP_CSR_OUT_TIM8_BRAKE     (0x03U << COMP_CSR_OUT_Pos)             ///< Timer8 brake input
+    #define COMP_CSR_OUT_TIM8_OCREFCLR  (0x0FU << COMP_CSR_OUT_Pos)             ///< Timer8 ocrefclear input
+#endif
 
     #define COMP_CSR_POL_Pos            (15)
     #define COMP_CSR_POL                (0x01U << COMP_CSR_POL_Pos)             ///< Comparator output polarity
+
     #define COMP_CSR_HYST_Pos           (16)
     #define COMP_CSR_HYST               (0x03U << COMP_CSR_HYST_Pos)            ///< Comparator hysteresis
-    #define COMP_CSR_HYST_0             (0x00U << COMP_CSR_HYST_Pos)            ///< Hysteresis Voltage: 0mV
-    #define COMP_CSR_HYST_15            (0x01U << COMP_CSR_HYST_Pos)            ///< Hysteresis Voltage: 15mV
-    #define COMP_CSR_HYST_30            (0x02U << COMP_CSR_HYST_Pos)            ///< Hysteresis Voltage: 30mV
-    #define COMP_CSR_HYST_90            (0x03U << COMP_CSR_HYST_Pos)            ///< Hysteresis Voltage: 90mV
 
+    #define COMP_CSR_HYST_NONE          (0x00U << COMP_CSR_HYST_Pos)            ///< Hysteresis Voltage: 0mV(old)  0mV(new)
+    #define COMP_CSR_HYST_LOW           (0x01U << COMP_CSR_HYST_Pos)            ///< Hysteresis Voltage: 9mV(old)  15mV(new)
+    #define COMP_CSR_HYST_MID           (0x02U << COMP_CSR_HYST_Pos)            ///< Hysteresis Voltage: 18mV(old) 30mV(new)
+    #define COMP_CSR_HYST_HIGH          (0x03U << COMP_CSR_HYST_Pos)            ///< Hysteresis Voltage: 27mV(old) 90mV(new)
+
+#if defined(__MM3O1) || defined(__MM0P1) || defined(__MM0Q1) || defined(__MM0S1) || defined(__MM3U1)
     #define COMP_CSR_OFLT_Pos           (18)
     #define COMP_CSR_OFLT               (0x07U << COMP_CSR_OFLT_Pos)            ///< Comparator output filter
     #define COMP_CSR_OFLT_0             (0x00U << COMP_CSR_OFLT_Pos)            ///< 1 clock cycle   or  1 clock cycle
@@ -4112,85 +4092,13 @@ typedef struct {
     #define COMP_CSR_OFLT_5             (0x05U << COMP_CSR_OFLT_Pos)            ///< 32 clock cycle  or  64 clock cycle
     #define COMP_CSR_OFLT_6             (0x06U << COMP_CSR_OFLT_Pos)            ///< 64 clock cycle  or  128 clock cycle
     #define COMP_CSR_OFLT_7             (0x07U << COMP_CSR_OFLT_Pos)            ///< 128 clock cycle or  256 clock cycle
+#endif
+
 
     #define COMP_CSR_STA_Pos            (30)
     #define COMP_CSR_STA                (0x01U << COMP_CSR_STA_Pos)             ///< Comparator output status
     #define COMP_CSR_LOCK_Pos           (31)
     #define COMP_CSR_LOCK               (0x01U << COMP_CSR_LOCK_Pos)            ///< Comparator lock
-#endif
-
-#if defined(__MM3O1)
-////////////////////////////////////////////////////////////////////////////////
-/// @brief COMP_CSR Register Bit Definition
-////////////////////////////////////////////////////////////////////////////////
-    #define COMP_CSR_EN_Pos             (0)
-    #define COMP_CSR_EN                 (0x01U << COMP_CSR_EN_Pos)              ///< Comparator enable
-    #define COMP_CSR_MODE_Pos           (2)
-    #define COMP_CSR_MODE               (0x03U << COMP_CSR_MODE_Pos)            ///< Comparator mode
-    #define COMP_CSR_MODE_LOWESTPOWER   (0x00U << COMP_CSR_MODE_Pos)            ///< Comparator lowest power mode
-    #define COMP_CSR_MODE_LOWPOWER      (0x01U << COMP_CSR_MODE_Pos)            ///< Comparator low power mode
-    #define COMP_CSR_MODE_MEDIUMRATE    (0x02U << COMP_CSR_MODE_Pos)            ///< Comparator medium rate mode
-    #define COMP_CSR_MODE_HIGHRATE      (0x03U << COMP_CSR_MODE_Pos)            ///< Comparator high rate mode
-
-    #define COMP_CSR_INM_Pos            (4)
-    #define COMP_CSR_INM                (0x07U << COMP_CSR_INM_Pos)             ///< Comparator inverting input selection
-    #define COMP_CSR_INM_VREFINT_1_4    (0x00U << COMP_CSR_INM_Pos)             ///< Vrefint 1/4 as COMP inverting input
-    #define COMP_CSR_INM_VREFINT_1_2    (0x01U << COMP_CSR_INM_Pos)             ///< Vrefint 1/2 as COMP inverting input
-    #define COMP_CSR_INM_VREFINT_3_4    (0x02U << COMP_CSR_INM_Pos)             ///< Vrefint 3/4 as COMP inverting input
-    #define COMP_CSR_INM_VREFINT        (0x03U << COMP_CSR_INM_Pos)             ///< Vrefint 1 as COMP inverting input
-    #define COMP_CSR_INM_INM4           (0x04U << COMP_CSR_INM_Pos)             ///< INM4 as COMP inverting input
-    #define COMP_CSR_INM_INM5           (0x05U << COMP_CSR_INM_Pos)             ///< INM5 as COMP inverting input
-    #define COMP_CSR_INM_INM6           (0x06U << COMP_CSR_INM_Pos)             ///< INM6 as COMP inverting input
-    #define COMP_CSR_INM_INM7           (0x07U << COMP_CSR_INM_Pos)             ///< INM7 as COMP inverting input
-
-    #define COMP_CSR_INP_Pos            (7)
-    #define COMP_CSR_INP                (0x07U << COMP_CSR_INP_Pos)             ///< Comparator non-inverting input selection
-    #define COMP_CSR_INP_INP0           (0x00U << COMP_CSR_INP_Pos)             ///< INP0 as COMP non-inverting input
-    #define COMP_CSR_INP_INP1           (0x01U << COMP_CSR_INP_Pos)             ///< INP1 as COMP non-inverting input
-    #define COMP_CSR_INP_INP2           (0x02U << COMP_CSR_INP_Pos)             ///< INP2 as COMP non-inverting input
-    #define COMP_CSR_INP_INP3           (0x03U << COMP_CSR_INP_Pos)             ///< INP3 as COMP non-inverting input
-    #define COMP_CSR_INP_INP4           (0x04U << COMP_CSR_INP_Pos)             ///< INP4 as COMP non-inverting input
-    #define COMP_CSR_INP_INP5           (0x05U << COMP_CSR_INP_Pos)             ///< INP5 as COMP non-inverting input
-    #define COMP_CSR_INP_INP6           (0x06U << COMP_CSR_INP_Pos)             ///< INP6 as COMP non-inverting input
-    #define COMP_CSR_INP_INP7           (0x07U << COMP_CSR_INP_Pos)             ///< INP7 as COMP non-inverting input
-
-    #define COMP_CSR_OUT_Pos            (10)
-    #define COMP_CSR_OUT                (0x0FU << COMP_CSR_OUT_Pos)             ///< Comparator output selection
-    #define COMP_CSR_OUT_TIM1_BRAKE     (0x02U << COMP_CSR_OUT_Pos)             ///< Timer1 brake input
-    #define COMP_CSR_OUT_TIM8_BRAKE     (0x03U << COMP_CSR_OUT_Pos)             ///< Timer8 brake input
-    #define COMP_CSR_OUT_TIM1_OCREFCLR  (0x06U << COMP_CSR_OUT_Pos)             ///< Timer1 ocrefclear input
-    #define COMP_CSR_OUT_TIM1_CAPTURE1  (0x07U << COMP_CSR_OUT_Pos)             ///< Timer1 input capture 1
-    #define COMP_CSR_OUT_TIM2_CAPTURE4  (0x08U << COMP_CSR_OUT_Pos)             ///< Timer2 input capture 4
-    #define COMP_CSR_OUT_TIM2_OCREFCLR  (0x09U << COMP_CSR_OUT_Pos)             ///< Timer2 ocrefclear input
-    #define COMP_CSR_OUT_TIM3_CAPTURE1  (0x0AU << COMP_CSR_OUT_Pos)             ///< Timer3 input capture 1
-    #define COMP_CSR_OUT_TIM3_OCREFCLR  (0x0BU << COMP_CSR_OUT_Pos)             ///< Timer3 ocrefclear input
-    #define COMP_CSR_OUT_TIM8_OCREFCLR  (0x0FU << COMP_CSR_OUT_Pos)             ///< Timer8 ocrefclear input
-
-    #define COMP_CSR_POL_Pos            (15)
-    #define COMP_CSR_POL                (0x01U << COMP_CSR_POL_Pos)             ///< Comparator output polarity
-    #define COMP_CSR_HYST_Pos           (16)
-    #define COMP_CSR_HYST               (0x03U << COMP_CSR_HYST_Pos)            ///< Comparator hysteresis
-    #define COMP_CSR_HYST_0             (0x00U << COMP_CSR_HYST_Pos)            ///< Hysteresis Voltage: 0mV
-    #define COMP_CSR_HYST_15            (0x01U << COMP_CSR_HYST_Pos)            ///< Hysteresis Voltage: 15mV
-    #define COMP_CSR_HYST_30            (0x02U << COMP_CSR_HYST_Pos)            ///< Hysteresis Voltage: 30mV
-    #define COMP_CSR_HYST_90            (0x03U << COMP_CSR_HYST_Pos)            ///< Hysteresis Voltage: 90mV
-
-    #define COMP_CSR_OFLT_Pos           (18)
-    #define COMP_CSR_OFLT               (0x07U << COMP_CSR_OFLT_Pos)            ///< Comparator output filter
-    #define COMP_CSR_OFLT_0             (0x00U << COMP_CSR_OFLT_Pos)            ///< 1 clock cycle
-    #define COMP_CSR_OFLT_1             (0x01U << COMP_CSR_OFLT_Pos)            ///< 4 clock cycle
-    #define COMP_CSR_OFLT_2             (0x02U << COMP_CSR_OFLT_Pos)            ///< 16 clock cycle
-    #define COMP_CSR_OFLT_3             (0x03U << COMP_CSR_OFLT_Pos)            ///< 32 clock cycle
-    #define COMP_CSR_OFLT_4             (0x04U << COMP_CSR_OFLT_Pos)            ///< 64 clock cycle
-    #define COMP_CSR_OFLT_5             (0x05U << COMP_CSR_OFLT_Pos)            ///< 128 clock cycle
-    #define COMP_CSR_OFLT_6             (0x06U << COMP_CSR_OFLT_Pos)            ///< 256 clock cycle
-    #define COMP_CSR_OFLT_7             (0x07U << COMP_CSR_OFLT_Pos)            ///< 512 clock cycle
-
-    #define COMP_CSR_STA_Pos            (30)
-    #define COMP_CSR_STA                (0x01U << COMP_CSR_STA_Pos)             ///< Comparator output status
-    #define COMP_CSR_LOCK_Pos           (31)
-    #define COMP_CSR_LOCK               (0x01U << COMP_CSR_LOCK_Pos)            ///< Comparator lock
-#endif
 
 #if defined(__MM0P1) || defined(__MM0Q1) || defined(__MM0S1) || defined(__MM3U1)
 ////////////////////////////////////////////////////////////////////////////////
@@ -4255,6 +4163,8 @@ typedef struct {
     #define COMP_POLL_POUT              (0x01U << COMP_POL_POUT_Pos)            ///< Polling output
     #define COMP_POLL_POUT_Low          (0x00U << COMP_POL_POUT_Pos)            ///< Non-inverting input is lower than inverting input
     #define COMP_POLL_POUT_High         (0x01U << COMP_POL_POUT_Pos)            ///< Non-inverting input is higher than inverting input
+#endif
+
 #endif
 #if defined(CRC_BASE)
 ////////////////////////////////////////////////////////////////////////////////

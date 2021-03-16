@@ -4102,24 +4102,24 @@ typedef struct {
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief COMP_CRV Register Bit Definition
 ////////////////////////////////////////////////////////////////////////////////
-    #define COMP_CRV_Pos                (0)
-    #define COMP_CRV                    (0x0FU << COMP_CRV_Pos)                 ///< Comparator external reference voltage select
-    #define COMP_CRV_1_20               (0x00U << COMP_CRV_Pos)                 ///< Comparator external reference voltage select
-    #define COMP_CRV_2_20               (0x01U << COMP_CRV_Pos)                 ///< Comparator external reference voltage select
-    #define COMP_CRV_3_20               (0x02U << COMP_CRV_Pos)                 ///< Comparator external reference voltage select
-    #define COMP_CRV_4_20               (0x03U << COMP_CRV_Pos)                 ///< Comparator external reference voltage select
-    #define COMP_CRV_5_20               (0x04U << COMP_CRV_Pos)                 ///< Comparator external reference voltage select
-    #define COMP_CRV_6_20               (0x05U << COMP_CRV_Pos)                 ///< Comparator external reference voltage select
-    #define COMP_CRV_7_20               (0x06U << COMP_CRV_Pos)                 ///< Comparator external reference voltage select
-    #define COMP_CRV_8_20               (0x07U << COMP_CRV_Pos)                 ///< Comparator external reference voltage select
-    #define COMP_CRV_9_20               (0x08U << COMP_CRV_Pos)                 ///< Comparator external reference voltage select
-    #define COMP_CRV_10_20              (0x09U << COMP_CRV_Pos)                 ///< Comparator external reference voltage select
-    #define COMP_CRV_11_20              (0x0AU << COMP_CRV_Pos)                 ///< Comparator external reference voltage select
-    #define COMP_CRV_12_20              (0x0BU << COMP_CRV_Pos)                 ///< Comparator external reference voltage select
-    #define COMP_CRV_13_20              (0x0CU << COMP_CRV_Pos)                 ///< Comparator external reference voltage select
-    #define COMP_CRV_14_20              (0x0DU << COMP_CRV_Pos)                 ///< Comparator external reference voltage select
-    #define COMP_CRV_15_20              (0x0EU << COMP_CRV_Pos)                 ///< Comparator external reference voltage select
-    #define COMP_CRV_16_20              (0x0FU << COMP_CRV_Pos)                 ///< Comparator external reference voltage select
+    #define COMP_CRV_SEL_Pos            (0)
+    #define COMP_CRV_SEL                (0x0FU << COMP_CRV_SEL_Pos)             ///< Comparator external reference voltage select
+    #define COMP_CRV_SEL_1_20           (0x00U << COMP_CRV_SEL_Pos)             ///< Comparator external reference voltage select
+    #define COMP_CRV_SEL_2_20           (0x01U << COMP_CRV_SEL_Pos)             ///< Comparator external reference voltage select
+    #define COMP_CRV_SEL_3_20           (0x02U << COMP_CRV_SEL_Pos)             ///< Comparator external reference voltage select
+    #define COMP_CRV_SEL_4_20           (0x03U << COMP_CRV_SEL_Pos)             ///< Comparator external reference voltage select
+    #define COMP_CRV_SEL_5_20           (0x04U << COMP_CRV_SEL_Pos)             ///< Comparator external reference voltage select
+    #define COMP_CRV_SEL_6_20           (0x05U << COMP_CRV_SEL_Pos)             ///< Comparator external reference voltage select
+    #define COMP_CRV_SEL_7_20           (0x06U << COMP_CRV_SEL_Pos)             ///< Comparator external reference voltage select
+    #define COMP_CRV_SEL_8_20           (0x07U << COMP_CRV_SEL_Pos)             ///< Comparator external reference voltage select
+    #define COMP_CRV_SEL_9_20           (0x08U << COMP_CRV_SEL_Pos)             ///< Comparator external reference voltage select
+    #define COMP_CRV_SEL_10_20          (0x09U << COMP_CRV_SEL_Pos)             ///< Comparator external reference voltage select
+    #define COMP_CRV_SEL_11_20          (0x0AU << COMP_CRV_SEL_Pos)             ///< Comparator external reference voltage select
+    #define COMP_CRV_SEL_12_20          (0x0BU << COMP_CRV_SEL_Pos)             ///< Comparator external reference voltage select
+    #define COMP_CRV_SEL_13_20          (0x0CU << COMP_CRV_SEL_Pos)             ///< Comparator external reference voltage select
+    #define COMP_CRV_SEL_14_20          (0x0DU << COMP_CRV_SEL_Pos)             ///< Comparator external reference voltage select
+    #define COMP_CRV_SEL_15_20          (0x0EU << COMP_CRV_SEL_Pos)             ///< Comparator external reference voltage select
+    #define COMP_CRV_SEL_16_20          (0x0FU << COMP_CRV_SEL_Pos)             ///< Comparator external reference voltage select
 
     #define COMP_CRV_EN_Pos             (4)
     #define COMP_CRV_EN                 (0x01U << COMP_CRV_EN_Pos)              ///< Comparator external reference voltage enable

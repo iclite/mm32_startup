@@ -4050,18 +4050,18 @@ typedef struct {
     #define COMP_CSR_INP_INP1           (0x03U << COMP_CSR_INP_Pos)             ///< INP3 as COMP non-inverting input
 #endif
 
-    #define COMP_CSR_OUT_Pos            (10)
-    #define COMP_CSR_OUT                (0x0FU << COMP_CSR_OUT_Pos)             ///< Comparator output selection
-    #define COMP_CSR_OUT_TIM1_BRAKE     (0x02U << COMP_CSR_OUT_Pos)             ///< Timer1 brake input
-    #define COMP_CSR_OUT_TIM1_OCREFCLR  (0x06U << COMP_CSR_OUT_Pos)             ///< Timer1 ocrefclear input
-    #define COMP_CSR_OUT_TIM1_CAPTURE1  (0x07U << COMP_CSR_OUT_Pos)             ///< Timer1 input capture 1
-    #define COMP_CSR_OUT_TIM2_CAPTURE4  (0x08U << COMP_CSR_OUT_Pos)             ///< Timer2 input capture 4
-    #define COMP_CSR_OUT_TIM2_OCREFCLR  (0x09U << COMP_CSR_OUT_Pos)             ///< Timer2 ocrefclear input
-    #define COMP_CSR_OUT_TIM3_CAPTURE1  (0x0AU << COMP_CSR_OUT_Pos)             ///< Timer3 input capture 1
-    #define COMP_CSR_OUT_TIM3_OCREFCLR  (0x0BU << COMP_CSR_OUT_Pos)             ///< Timer3 ocrefclear input
+    #define COMP_CSR_OUTSEL_Pos         (10)
+    #define COMP_CSR_OUTSEL             (0x0FU << COMP_CSR_OUTSEL_Pos)          ///< Comparator output selection
+    #define COMP_CSR_OUTSEL_TIM1_BRAKE  (0x02U << COMP_CSR_OUTSEL_Pos)          ///< Timer1 brake input
+    #define COMP_CSR_OUTSEL_TIM1_OCREFCLR   (0x06U << COMP_CSR_OUTSEL_Pos)      ///< Timer1 ocrefclear input
+    #define COMP_CSR_OUTSEL_TIM1_CAPTURE1   (0x07U << COMP_CSR_OUTSEL_Pos)      ///< Timer1 input capture 1
+    #define COMP_CSR_OUTSEL_TIM2_CAPTURE4   (0x08U << COMP_CSR_OUTSEL_Pos)      ///< Timer2 input capture 4
+    #define COMP_CSR_OUTSEL_TIM2_OCREFCLR   (0x09U << COMP_CSR_OUTSEL_Pos)      ///< Timer2 ocrefclear input
+    #define COMP_CSR_OUTSEL_TIM3_CAPTURE1   (0x0AU << COMP_CSR_OUTSEL_Pos)      ///< Timer3 input capture 1
+    #define COMP_CSR_OUTSEL_TIM3_OCREFCLR   (0x0BU << COMP_CSR_OUTSEL_Pos)      ///< Timer3 ocrefclear input
 #if defined(__MM3O1) || defined(__MM0P1)
-    #define COMP_CSR_OUT_TIM8_BRAKE     (0x03U << COMP_CSR_OUT_Pos)             ///< Timer8 brake input
-    #define COMP_CSR_OUT_TIM8_OCREFCLR  (0x0FU << COMP_CSR_OUT_Pos)             ///< Timer8 ocrefclear input
+    #define COMP_CSR_OUTSEL_TIM8_BRAKE  (0x03U << COMP_CSR_OUTSEL_Pos)          ///< Timer8 brake input
+    #define COMP_CSR_OUTSEL_TIM8_OCREFCLR   (0x0FU << COMP_CSR_OUTSEL_Pos)      ///< Timer8 ocrefclear input
 #endif
 
     #define COMP_CSR_POL_Pos            (15)
@@ -4090,8 +4090,11 @@ typedef struct {
 #endif
 
 
-    #define COMP_CSR_STA_Pos            (30)
-    #define COMP_CSR_STA                (0x01U << COMP_CSR_STA_Pos)             ///< Comparator output status
+    #define COMP_CSR_OUTPUT_Pos         (30)
+    #define COMP_CSR_OUTPUT             (0x01U << COMP_CSR_OUTPUT_Pos)          ///< Comparator output status
+    #define COMP_CSR_OUTPUT_LOW         (0x00U << COMP_CSR_OUTPUT_Pos)          ///< Comparator output low (noninvert > invert)
+    #define COMP_CSR_OUTPUT_HIGH        (0x01U << COMP_CSR_OUTPUT_Pos)          ///< Comparator output high (noninvert < invert)
+
     #define COMP_CSR_LOCK_Pos           (31)
     #define COMP_CSR_LOCK               (0x01U << COMP_CSR_LOCK_Pos)            ///< Comparator lock
 

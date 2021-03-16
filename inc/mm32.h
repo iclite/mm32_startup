@@ -479,11 +479,13 @@ typedef enum IRQn {
     #define COMP3_BASE                  (COMP_BASE + 0x14)                      ///< COMP3 Base Address
     #define COMP4_POLL_BASE             (COMP_BASE + 0x1C)                      ///< COMP1 POLL Base Address
     #define COMP5_POLL_BASE             (COMP_BASE + 0x20)                      ///< COMP2 POLL Base Address
+    #define COMP_END_BASE               COMP5_POLL_BASE
 #endif
 
 #if defined(__MM0Q1)
     #define COMP1_BASE                  (COMP_BASE)                             ///< COMP1 Base Address
     #define COMP1_POLL_BASE             (COMP_BASE + 0x1C)                      ///< COMP1 POLL Base Address
+    #define COMP_END_BASE               COMP1_POLL_BASE
 #endif
 
 #if defined(__MM0S1)
@@ -491,6 +493,7 @@ typedef enum IRQn {
     #define COMP2_BASE                  (COMP_BASE + 0x04)                      ///< COMP2 Base Address
     #define COMP1_POLL_BASE             (COMP_BASE + 0x1C)                      ///< COMP1 POLL Base Address
     #define COMP2_POLL_BASE             (COMP_BASE + 0x20)                      ///< COMP2 POLL Base Address
+    #define COMP_END_BASE               COMP2_POLL_BASE
 #endif
 
 #if defined(__MM3U1)
@@ -498,6 +501,7 @@ typedef enum IRQn {
     #define COMP2_BASE                  (COMP_BASE + 0x10)                      ///< COMP2 Base Address
     #define COMP1_POLL_BASE             (COMP_BASE + 0x1C)                      ///< COMP1 POLL Base Address
     #define COMP2_POLL_BASE             (COMP_BASE + 0x20)                      ///< COMP2 POLL Base Address
+    #define COMP_END_BASE               COMP2_POLL_BASE
 #endif
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -1260,10 +1264,6 @@ typedef struct {
 
 typedef struct {
     __IO uint32_t CSR;
-} COMPx_TypeDef;
-
-typedef struct {
-    __IO uint32_t CSR;
 
 #if defined(__MM0P1) || defined(__MM0Q1) || defined(__MM0S1)
     __IO uint32_t RESERVED[6];
@@ -1274,7 +1274,7 @@ typedef struct {
     __IO uint32_t RESERVED[3];
     __IO uint32_t POLL;                                                         ///< COMP polling register
 #endif
-} COMPx_POLL_TypeDef;
+} COMPx_TypeDef;
 #endif
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -2230,43 +2230,23 @@ typedef struct {
 #endif
 
 #if defined(COMP1_BASE)
-#if defined(COMP1_POLL_BASE)
-    #define COMP1                       ((COMPx_POLL_TypeDef*) COMP1_BASE)
-#else
     #define COMP1                       ((COMPx_TypeDef*) COMP1_BASE)
-#endif
 #endif
 
 #if defined(COMP2_BASE)
-#if defined(COMP2_POLL_BASE)
-    #define COMP2                       ((COMPx_POLL_TypeDef*) COMP2_BASE)
-#else
     #define COMP2                       ((COMPx_TypeDef*) COMP2_BASE)
-#endif
 #endif
 
 #if defined(COMP3_BASE)
-#if defined(COMP3_POLL_BASE)
-    #define COMP3                       ((COMPx_POLL_TypeDef*) COMP3_BASE)
-#else
     #define COMP3                       ((COMPx_TypeDef*) COMP3_BASE)
-#endif
 #endif
 
 #if defined(COMP4_BASE)
-#if defined(COMP4_POLL_BASE)
-    #define COMP4                       ((COMPx_POLL_TypeDef*) COMP4_BASE)
-#else
     #define COMP4                       ((COMPx_TypeDef*) COMP4_BASE)
-#endif
 #endif
 
 #if defined(COMP5_BASE)
-#if defined(COMP5_POLL_BASE)
-    #define COMP5                       ((COMPx_POLL_TypeDef*) COMP5_BASE)
-#else
     #define COMP5                       ((COMPx_TypeDef*) COMP5_BASE)
-#endif
 #endif
 
 ////////////////////////////////////////////////////////////////////////////////

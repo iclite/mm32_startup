@@ -4017,10 +4017,10 @@ typedef struct {
 #endif
 #if defined(__MM0P1) || defined(__MM0Q1) || defined(__MM0S1) || defined(__MM3U1)
     #define COMP_CSR_INM                (0x03U << COMP_CSR_INM_Pos)             ///< Comparator inverting input selection
-    #define COMP_CSR_INM_0              (0x00U << COMP_CSR_INM_Pos)             ///< INM0 as COMP inverting input
-    #define COMP_CSR_INM_1              (0x01U << COMP_CSR_INM_Pos)             ///< INM1 as COMP inverting input
-    #define COMP_CSR_INM_2              (0x02U << COMP_CSR_INM_Pos)             ///< INM2 as COMP inverting input
-    #define COMP_CSR_INM_3              (0x03U << COMP_CSR_INM_Pos)             ///< INM3 as COMP inverting input
+    #define COMP_CSR_INM_INM0           (0x00U << COMP_CSR_INM_Pos)             ///< INM0 as COMP inverting input
+    #define COMP_CSR_INM_INM1           (0x01U << COMP_CSR_INM_Pos)             ///< INM1 as COMP inverting input
+    #define COMP_CSR_INM_INM2           (0x02U << COMP_CSR_INM_Pos)             ///< INM2 as COMP inverting input
+    #define COMP_CSR_INM_INM3           (0x03U << COMP_CSR_INM_Pos)             ///< INM3 as COMP inverting input
 #endif
 
     #define COMP_CSR_INP_Pos            (7)

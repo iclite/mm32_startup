@@ -4004,7 +4004,6 @@ typedef struct {
 #endif
 
     #define COMP_CSR_INM_Pos            (4)
-
 #if defined(__MM0N1) || defined(__MM3O1)
     #define COMP_CSR_INM                (0x07U << COMP_CSR_INM_Pos)             ///< Comparator inverting input selection
     #define COMP_CSR_INM_VREFINT_1_4    (0x00U << COMP_CSR_INM_Pos)             ///< Vrefint 1/4 as COMP inverting input
@@ -4016,7 +4015,6 @@ typedef struct {
     #define COMP_CSR_INM_INM6           (0x06U << COMP_CSR_INM_Pos)             ///< INM6 as COMP inverting input
     #define COMP_CSR_INM_INM7           (0x07U << COMP_CSR_INM_Pos)             ///< INM7 as COMP inverting input
 #endif
-
 #if defined(__MM0P1) || defined(__MM0Q1) || defined(__MM0S1) || defined(__MM3U1)
     #define COMP_CSR_INM                (0x03U << COMP_CSR_INM_Pos)             ///< Comparator inverting input selection
     #define COMP_CSR_INM_0              (0x00U << COMP_CSR_INM_Pos)             ///< INM0 as COMP inverting input
@@ -4026,7 +4024,6 @@ typedef struct {
 #endif
 
     #define COMP_CSR_INP_Pos            (7)
-
 #if defined(__MM0N1) || defined(__MM3O1)
     #define COMP_CSR_INP                (0x07U << COMP_CSR_INP_Pos)             ///< Comparator non-inverting input selection
     #define COMP_CSR_INP_INP0           (0x00U << COMP_CSR_INP_Pos)             ///< INP0 as COMP non-inverting input
@@ -4038,7 +4035,6 @@ typedef struct {
     #define COMP_CSR_INP_INP6           (0x06U << COMP_CSR_INP_Pos)             ///< INP6 as COMP non-inverting input
     #define COMP_CSR_INP_INP7           (0x07U << COMP_CSR_INP_Pos)             ///< INP7 as COMP non-inverting input
 #endif
-
 #if defined(__MM0Q1) || defined(__MM3U1)
     #define COMP_CSR_INP                (0x03U << COMP_CSR_INP_Pos)             ///< Comparator non-inverting input selection
     #define COMP_CSR_INP_INP0           (0x00U << COMP_CSR_INP_Pos)             ///< INP0 as COMP non-inverting input
@@ -4046,7 +4042,6 @@ typedef struct {
     #define COMP_CSR_INP_INP2           (0x02U << COMP_CSR_INP_Pos)             ///< INP2 as COMP non-inverting input
     #define COMP_CSR_INP_INP3           (0x03U << COMP_CSR_INP_Pos)             ///< INP3 as COMP non-inverting input
 #endif
-
 #if defined(__MM0P1) || defined(__MM0S1)
     #define COMP_CSR_INP                (0x03U << COMP_CSR_INP_Pos)             ///< Comparator non-inverting input selection
     #define COMP_CSR_INP_INP0           (0x00U << COMP_CSR_INP_Pos)             ///< INP0 as COMP non-inverting input
@@ -4064,7 +4059,6 @@ typedef struct {
     #define COMP_CSR_OUT_TIM2_OCREFCLR  (0x09U << COMP_CSR_OUT_Pos)             ///< Timer2 ocrefclear input
     #define COMP_CSR_OUT_TIM3_CAPTURE1  (0x0AU << COMP_CSR_OUT_Pos)             ///< Timer3 input capture 1
     #define COMP_CSR_OUT_TIM3_OCREFCLR  (0x0BU << COMP_CSR_OUT_Pos)             ///< Timer3 ocrefclear input
-
 #if defined(__MM3O1) || defined(__MM0P1)
     #define COMP_CSR_OUT_TIM8_BRAKE     (0x03U << COMP_CSR_OUT_Pos)             ///< Timer8 brake input
     #define COMP_CSR_OUT_TIM8_OCREFCLR  (0x0FU << COMP_CSR_OUT_Pos)             ///< Timer8 ocrefclear input
@@ -4072,10 +4066,11 @@ typedef struct {
 
     #define COMP_CSR_POL_Pos            (15)
     #define COMP_CSR_POL                (0x01U << COMP_CSR_POL_Pos)             ///< Comparator output polarity
+    #define COMP_CSR_POL_NONINVERT      (0x00U << COMP_CSR_POL_Pos)             ///< Comparator output polarity: Non-inverting output
+    #define COMP_CSR_POL_INVERT         (0x01U << COMP_CSR_POL_Pos)             ///< Comparator output polarity: Inverting output
 
     #define COMP_CSR_HYST_Pos           (16)
     #define COMP_CSR_HYST               (0x03U << COMP_CSR_HYST_Pos)            ///< Comparator hysteresis
-
     #define COMP_CSR_HYST_NONE          (0x00U << COMP_CSR_HYST_Pos)            ///< Hysteresis Voltage: 0mV(old)  0mV(new)
     #define COMP_CSR_HYST_LOW           (0x01U << COMP_CSR_HYST_Pos)            ///< Hysteresis Voltage: 9mV(old)  15mV(new)
     #define COMP_CSR_HYST_MID           (0x02U << COMP_CSR_HYST_Pos)            ///< Hysteresis Voltage: 18mV(old) 30mV(new)

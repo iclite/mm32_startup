@@ -4136,31 +4136,31 @@ typedef struct {
 /// @brief COMP_POL Register Bit Definition
 ////////////////////////////////////////////////////////////////////////////////
     #define COMP_POLL_EN_Pos            (0)
-    #define COMP_POLL_EN                (0x01U << COMP_POL_EN_Pos)              ///< Comparator polling enable
-    #define COMP_POLL_EN_DISABLE        (0x00U << COMP_POL_EN_Pos)              ///< Disable comparator polling mode
-    #define COMP_POLL_EN_ENABLE         (0x01U << COMP_POL_EN_Pos)              ///< Enable comparator polling mode
+    #define COMP_POLL_EN                (0x01U << COMP_POLL_EN_Pos)             ///< Comparator polling enable
+    #define COMP_POLL_EN_DISABLE        (0x00U << COMP_POLL_EN_Pos)             ///< Disable comparator polling mode
+    #define COMP_POLL_EN_ENABLE         (0x01U << COMP_POLL_EN_Pos)             ///< Enable comparator polling mode
     #define COMP_POLL_CH_Pos            (1)
-    #define COMP_POLL_CH                (0x01U << COMP_POL_CH_Pos)              ///< Comparator polling channel
-    #define COMP_POLL_CH_1_2            (0x00U << COMP_POL_CH_Pos)              ///< Polling channel 1/2
-    #define COMP_POLL_CH_1_2_3          (0x01U << COMP_POL_CH_Pos)              ///< Polling channel 1/2/3
+    #define COMP_POLL_CH                (0x01U << COMP_POLL_CH_Pos)             ///< Comparator polling channel
+    #define COMP_POLL_CH_1_2            (0x00U << COMP_POLL_CH_Pos)             ///< Polling channel 1/2
+    #define COMP_POLL_CH_1_2_3          (0x01U << COMP_POLL_CH_Pos)             ///< Polling channel 1/2/3
     #define COMP_POLL_FIXN_Pos          (2)
-    #define COMP_POLL_FIXN              (0x01U << COMP_POL_FIXN_Pos)            ///< Polling inverting input fix
-    #define COMP_POLL_FIXN_NOTFIXED     (0x00U << COMP_POL_FIXN_Pos)            ///< Polling channel inverting input is not fixed
-    #define COMP_POLL_FIXN_FIXED        (0x01U << COMP_POL_FIXN_Pos)            ///< Polling channel inverting input fixed
+    #define COMP_POLL_FIXN              (0x01U << COMP_POLL_FIXN_Pos)           ///< Polling inverting input fix
+    #define COMP_POLL_FIXN_NOTFIXED     (0x00U << COMP_POLL_FIXN_Pos)           ///< Polling channel inverting input is not fixed
+    #define COMP_POLL_FIXN_FIXED        (0x01U << COMP_POLL_FIXN_Pos)           ///< Polling channel inverting input fixed
     #define COMP_POLL_PERIOD_Pos        (4)
-    #define COMP_POLL_PERIOD            (0x07U << COMP_POL_PERIOD_Pos)          ///< polling wait cycle
-    #define COMP_POLL_PERIOD_1          (0x00U << COMP_POL_PERIOD_Pos)          ///< 1 clock cycle
-    #define COMP_POLL_PERIOD_2          (0x01U << COMP_POL_PERIOD_Pos)          ///< 2 clock cycle
-    #define COMP_POLL_PERIOD_4          (0x02U << COMP_POL_PERIOD_Pos)          ///< 4 clock cycle
-    #define COMP_POLL_PERIOD_8          (0x03U << COMP_POL_PERIOD_Pos)          ///< 8 clock cycle
-    #define COMP_POLL_PERIOD_16         (0x04U << COMP_POL_PERIOD_Pos)          ///< 16 clock cycle
-    #define COMP_POLL_PERIOD_32         (0x05U << COMP_POL_PERIOD_Pos)          ///< 32 clock cycle
-    #define COMP_POLL_PERIOD_64         (0x06U << COMP_POL_PERIOD_Pos)          ///< 64 clock cycle
-    #define COMP_POLL_PERIOD_128        (0x07U << COMP_POL_PERIOD_Pos)          ///< 128 clock cycle
+    #define COMP_POLL_PERIOD            (0x07U << COMP_POLL_PERIOD_Pos)         ///< polling wait cycle
+    #define COMP_POLL_PERIOD_1          (0x00U << COMP_POLL_PERIOD_Pos)         ///< 1 clock cycle
+    #define COMP_POLL_PERIOD_2          (0x01U << COMP_POLL_PERIOD_Pos)         ///< 2 clock cycle
+    #define COMP_POLL_PERIOD_4          (0x02U << COMP_POLL_PERIOD_Pos)         ///< 4 clock cycle
+    #define COMP_POLL_PERIOD_8          (0x03U << COMP_POLL_PERIOD_Pos)         ///< 8 clock cycle
+    #define COMP_POLL_PERIOD_16         (0x04U << COMP_POLL_PERIOD_Pos)         ///< 16 clock cycle
+    #define COMP_POLL_PERIOD_32         (0x05U << COMP_POLL_PERIOD_Pos)         ///< 32 clock cycle
+    #define COMP_POLL_PERIOD_64         (0x06U << COMP_POLL_PERIOD_Pos)         ///< 64 clock cycle
+    #define COMP_POLL_PERIOD_128        (0x07U << COMP_POLL_PERIOD_Pos)         ///< 128 clock cycle
     #define COMP_POLL_POUT_Pos          (8)
-    #define COMP_POLL_POUT              (0x01U << COMP_POL_POUT_Pos)            ///< Polling output
-    #define COMP_POLL_POUT_Low          (0x00U << COMP_POL_POUT_Pos)            ///< Non-inverting input is lower than inverting input
-    #define COMP_POLL_POUT_High         (0x01U << COMP_POL_POUT_Pos)            ///< Non-inverting input is higher than inverting input
+    #define COMP_POLL_POUT              (0x01U << COMP_POLL_POUT_Pos)           ///< Polling output
+    #define COMP_POLL_POUT_Low          (0x00U << COMP_POLL_POUT_Pos)           ///< Non-inverting input is lower than inverting input
+    #define COMP_POLL_POUT_High         (0x01U << COMP_POLL_POUT_Pos)           ///< Non-inverting input is higher than inverting input
 #endif
 
 #endif

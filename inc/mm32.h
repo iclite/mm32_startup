@@ -4225,9 +4225,20 @@ typedef struct {
     #define CRS_CFGR_FELIM              (0xFFU << CRS_CFGR_FELIM_Pos)           ///< Frequency error limit
     #define CRS_CFGR_DIV_Pos            (24)
     #define CRS_CFGR_DIV                (0x07U << CRS_CFGR_DIV_Pos)             ///< SYNC divider
+    #define CRS_CFGR_DIV_1              (0x00U << CRS_CFGR_DIV_Pos)             ///< SYNC divider 1
+    #define CRS_CFGR_DIV_2              (0x01U << CRS_CFGR_DIV_Pos)             ///< SYNC divider 2
+    #define CRS_CFGR_DIV_4              (0x02U << CRS_CFGR_DIV_Pos)             ///< SYNC divider 4
+    #define CRS_CFGR_DIV_8              (0x03U << CRS_CFGR_DIV_Pos)             ///< SYNC divider 8
+    #define CRS_CFGR_DIV_16             (0x04U << CRS_CFGR_DIV_Pos)             ///< SYNC divider 16
+    #define CRS_CFGR_DIV_32             (0x05U << CRS_CFGR_DIV_Pos)             ///< SYNC divider 32
+    #define CRS_CFGR_DIV_64             (0x06U << CRS_CFGR_DIV_Pos)             ///< SYNC divider 64
+    #define CRS_CFGR_DIV_128            (0x07U << CRS_CFGR_DIV_Pos)             ///< SYNC divider 128
     #define CRS_CFGR_SRC_Pos            (28)
     #define CRS_CFGR_SRC                (0x03U << CRS_CFGR_SRC_Pos)             ///< SYNC signal source selection
     #define CRS_CFGR_SRC_MCO            (0x00U << CRS_CFGR_SRC_Pos)
+#if defined(__MM3U1)
+    #define CRS_CFGR_SRC_LSE            (0x01U << CRS_CFGR_SRC_Pos)
+#endif
     #define CRS_CFGR_SRC_USBSOF         (0x02U << CRS_CFGR_SRC_Pos)
     #define CRS_CFGR_POL_Pos            (31)
     #define CRS_CFGR_POL                (0x01U << CRS_CFGR_POL_Pos)             ///< SYNC polarity selection

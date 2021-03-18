@@ -1335,7 +1335,7 @@ typedef struct {
 typedef struct {
     __IO uint32_t IDCODE;                                                       ///< Code ID            offset: 0x00
     __IO uint32_t CR;                                                           ///< Control Register   offset: 0x04
-}DBGMCU_TypeDef;
+} DBG_TypeDef;
 
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief DIV Register Structure Definition
@@ -2271,9 +2271,9 @@ typedef struct {
 #endif
 
 ////////////////////////////////////////////////////////////////////////////////
-/// @brief DBGMCU type pointer Definition
+/// @brief DBG type pointer Definition
 ////////////////////////////////////////////////////////////////////////////////
-#define DBGMCU                          ((DBGMCU_TypeDef*) DBG_BASE)
+#define DBG                             ((DBG_TypeDef*) DBG_BASE)
 
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief HWDIV type pointer Definition
@@ -4436,87 +4436,87 @@ typedef struct {
 
 #endif
 ////////////////////////////////////////////////////////////////////////////////
-/// @brief DBGMCU_IDCODE Register Bit Definition
+/// @brief DBG_IDCODE Register Bit Definition
 ////////////////////////////////////////////////////////////////////////////////
-#define DBGMCU_IDCODE_DEV_ID_Pos        (0)
-#define DBGMCU_IDCODE_DEV_ID            (0xFFFFFFFFU << DBGMCU_IDCODE_DEV_ID_Pos)   ///< Device identifier
+#define DBG_IDCODE_DEV_ID_Pos           (0)
+#define DBG_IDCODE_DEV_ID               (0xFFFFFFFFU << DBG_IDCODE_DEV_ID_Pos)  ///< Device identifier
 
 ////////////////////////////////////////////////////////////////////////////////
-/// @brief DBGMCU_CR Register Bit Definition
+/// @brief DBG_CR Register Bit Definition
 ////////////////////////////////////////////////////////////////////////////////
-#define DBGMCU_CR_SLEEP_Pos             (0)
-#define DBGMCU_CR_SLEEP                 (0x01U << DBGMCU_CR_SLEEP_Pos)          ///< Debug Sleep mode
-#define DBGMCU_CR_STOP_Pos              (1)
-#define DBGMCU_CR_STOP                  (0x01U << DBGMCU_CR_STOP_Pos)           ///< Debug Stop mode
-#define DBGMCU_CR_STANDBY_Pos           (2)
-#define DBGMCU_CR_STANDBY               (0x01U << DBGMCU_CR_STANDBY_Pos)        ///< Debug Standby mode
-#define DBGMCU_CR_STOP_LDO_Pos          (3)
-#define DBGMCU_CR_STOP_LDO              (0x01U << DBGMCU_CR_STOP_LDO_Pos)       ///< Debug STOP for LDO mode
+#define DBG_CR_SLEEP_Pos                (0)
+#define DBG_CR_SLEEP                    (0x01U << DBG_CR_SLEEP_Pos)             ///< Debug Sleep mode
+#define DBG_CR_STOP_Pos                 (1)
+#define DBG_CR_STOP                     (0x01U << DBG_CR_STOP_Pos)              ///< Debug Stop mode
+#define DBG_CR_STANDBY_Pos              (2)
+#define DBG_CR_STANDBY                  (0x01U << DBG_CR_STANDBY_Pos)           ///< Debug Standby mode
+#define DBG_CR_STOP_LDO_Pos             (3)
+#define DBG_CR_STOP_LDO                 (0x01U << DBG_CR_STOP_LDO_Pos)          ///< Debug STOP for LDO mode
 
 #if defined(__MM3U1)
-    #define DBGMCU_TRACE_IOEN_Pos       (5)
-    #define DBGMCU_TRACE_IOEN           (0x01U << DBGMCU_TRACE_IOEN_Pos)        ///< Debug tracking pin assignment control enable
-    #define DBGMCU_TRACE_MODE_Pos       (6)
-    #define DBGMCU_TRACE_MODE           (0x03U << DBGMCU_TRACE_MODE_Pos)        ///< Debug tracking pin working mode
+    #define DBG_TRACE_IOEN_Pos          (5)
+    #define DBG_TRACE_IOEN              (0x01U << DBG_TRACE_IOEN_Pos)           ///< Debug tracking pin assignment control enable
+    #define DBG_TRACE_MODE_Pos          (6)
+    #define DBG_TRACE_MODE              (0x03U << DBG_TRACE_MODE_Pos)           ///< Debug tracking pin working mode
 #endif
 
-#define DBGMCU_CR_IWDG_STOP_Pos         (8)
-#define DBGMCU_CR_IWDG_STOP             (0x01U << DBGMCU_CR_IWDG_STOP_Pos)      ///< Debug independent watchdog stopped when core is halted
-#define DBGMCU_CR_WWDG_STOP_Pos         (9)
-#define DBGMCU_CR_WWDG_STOP             (0x01U << DBGMCU_CR_WWDG_STOP_Pos)      ///< Debug window watchdog stopped when core is halted
+#define DBG_CR_IWDG_STOP_Pos            (8)
+#define DBG_CR_IWDG_STOP                (0x01U << DBG_CR_IWDG_STOP_Pos)         ///< Debug independent watchdog stopped when core is halted
+#define DBG_CR_WWDG_STOP_Pos            (9)
+#define DBG_CR_WWDG_STOP                (0x01U << DBG_CR_WWDG_STOP_Pos)         ///< Debug window watchdog stopped when core is halted
 
 #if defined(TIM1_BASE)
-    #define DBGMCU_CR_TIM1_STOP_Pos     (10)
-    #define DBGMCU_CR_TIM1_STOP         (0x01U << DBGMCU_CR_TIM1_STOP_Pos)      ///< TIM1 counter stopped when core is halted
+    #define DBG_CR_TIM1_STOP_Pos        (10)
+    #define DBG_CR_TIM1_STOP            (0x01U << DBG_CR_TIM1_STOP_Pos)         ///< TIM1 counter stopped when core is halted
 #endif
 
 #if defined(TIM2_BASE)
-    #define DBGMCU_CR_TIM2_STOP_Pos     (11)
-    #define DBGMCU_CR_TIM2_STOP         (0x01U << DBGMCU_CR_TIM2_STOP_Pos)      ///< TIM2 counter stopped when core is halted
+    #define DBG_CR_TIM2_STOP_Pos        (11)
+    #define DBG_CR_TIM2_STOP            (0x01U << DBG_CR_TIM2_STOP_Pos)         ///< TIM2 counter stopped when core is halted
 #endif
 
 #if defined(TIM3_BASE)
-    #define DBGMCU_CR_TIM3_STOP_Pos     (12)
-    #define DBGMCU_CR_TIM3_STOP         (0x01U << DBGMCU_CR_TIM3_STOP_Pos)      ///< TIM3 counter stopped when core is halted
+    #define DBG_CR_TIM3_STOP_Pos        (12)
+    #define DBG_CR_TIM3_STOP            (0x01U << DBG_CR_TIM3_STOP_Pos)         ///< TIM3 counter stopped when core is halted
 #endif
 
 #if defined(TIM4_BASE)
-    #define DBGMCU_CR_TIM4_STOP_Pos     (13)
-    #define DBGMCU_CR_TIM4_STOP         (0x01U << DBGMCU_CR_TIM4_STOP_Pos)      ///< TIM4 counter stopped when core is halted
+    #define DBG_CR_TIM4_STOP_Pos        (13)
+    #define DBG_CR_TIM4_STOP            (0x01U << DBG_CR_TIM4_STOP_Pos)         ///< TIM4 counter stopped when core is halted
 #endif
 
 #if defined(CAN1_BASE)
-    #define DBGMCU_CR_CAN_STOP_Pos      (14)
-    #define DBGMCU_CR_CAN_STOP          (0x01U << DBGMCU_CR_CAN_STOP_Pos)       ///< Debug CAN mode
+    #define DBG_CR_CAN_STOP_Pos         (14)
+    #define DBG_CR_CAN_STOP             (0x01U << DBG_CR_CAN_STOP_Pos)          ///< Debug CAN mode
 #endif
 
 #if defined(__MM3N1) || defined(__MM0N1) ||defined(__MM3O1) || defined(__MM0P1) || defined(__MM0Q1) || defined(__MM0S1)
-    #define DBGMCU_CR_TIM14_STOP_Pos    (16)
-    #define DBGMCU_CR_TIM14_STOP        (0x01U << DBGMCU_CR_TIM14_STOP_Pos)     ///< TIM14 counter stopped when core is halted
-    #define DBGMCU_CR_TIM17_STOP_Pos    (17)
-    #define DBGMCU_CR_TIM17_STOP        (0x01U << DBGMCU_CR_TIM17_STOP_Pos)     ///< TIM17 counter stopped when core is halted
-    #define DBGMCU_CR_TIM16_STOP_Pos    (18)
-    #define DBGMCU_CR_TIM16_STOP        (0x01U << DBGMCU_CR_TIM16_STOP_Pos)     ///< TIM16 counter stopped when core is halted
+    #define DBG_CR_TIM14_STOP_Pos       (16)
+    #define DBG_CR_TIM14_STOP           (0x01U << DBG_CR_TIM14_STOP_Pos)        ///< TIM14 counter stopped when core is halted
+    #define DBG_CR_TIM17_STOP_Pos       (17)
+    #define DBG_CR_TIM17_STOP           (0x01U << DBG_CR_TIM17_STOP_Pos)        ///< TIM17 counter stopped when core is halted
+    #define DBG_CR_TIM16_STOP_Pos       (18)
+    #define DBG_CR_TIM16_STOP           (0x01U << DBG_CR_TIM16_STOP_Pos)        ///< TIM16 counter stopped when core is halted
 #endif
 
 #if defined(__MM0T1)
-    #define DBGMCU_CR_TIM14_STOP_Pos    (18)
-    #define DBGMCU_CR_TIM14_STOP        (0x01U << DBGMCU_CR_TIM14_STOP_Pos)     ///< TIM14 counter stopped when core is halted
+    #define DBG_CR_TIM14_STOP_Pos       (18)
+    #define DBG_CR_TIM14_STOP           (0x01U << DBG_CR_TIM14_STOP_Pos)        ///< TIM14 counter stopped when core is halted
 #endif
 
 #if defined(__MM3U1)
-    #define DBGMCU_I2C1_STOP_Pos        (15)
-    #define DBGMCU_I2C1_STOP            (0x01U << DBGMCU_I2C1_STOP_Pos)         ///< Debug STOP for I2C1 mode
-    #define DBGMCU_I2C2_STOP_Pos        (16)
-    #define DBGMCU_I2C2_STOP            (0x01U << DBGMCU_I2C2_STOP_Pos)         ///< Debug STOP for I2C2 mode
-    #define DBGMCU_TIM5_STOP_Pos        (17)
-    #define DBGMCU_TIM5_STOP            (0x01U << DBGMCU_TIM5_STOP_Pos)         ///< Debug STOP for TIM5 mode
-    #define DBGMCU_TIM6_STOP_Pos        (18)
-    #define DBGMCU_TIM6_STOP            (0x01U << DBGMCU_TIM6_STOP_Pos)         ///< Debug STOP for TIM6 mode
-    #define DBGMCU_TIM7_STOP_Pos        (19)
-    #define DBGMCU_TIM7_STOP            (0x01U << DBGMCU_TIM7_STOP_Pos)         ///< Debug STOP for TIM7 mode
-    #define DBGMCU_TIM8_STOP_Pos        (20)
-    #define DBGMCU_TIM8_STOP            (0x01U << DBGMCU_TIM8_STOP_Pos)         ///< Debug STOP for TIM8 mode
+    #define DBG_I2C1_STOP_Pos           (15)
+    #define DBG_I2C1_STOP               (0x01U << DBG_I2C1_STOP_Pos)            ///< Debug STOP for I2C1 mode
+    #define DBG_I2C2_STOP_Pos           (16)
+    #define DBG_I2C2_STOP               (0x01U << DBG_I2C2_STOP_Pos)            ///< Debug STOP for I2C2 mode
+    #define DBG_TIM5_STOP_Pos           (17)
+    #define DBG_TIM5_STOP               (0x01U << DBG_TIM5_STOP_Pos)            ///< Debug STOP for TIM5 mode
+    #define DBG_TIM6_STOP_Pos           (18)
+    #define DBG_TIM6_STOP               (0x01U << DBG_TIM6_STOP_Pos)            ///< Debug STOP for TIM6 mode
+    #define DBG_TIM7_STOP_Pos           (19)
+    #define DBG_TIM7_STOP               (0x01U << DBG_TIM7_STOP_Pos)            ///< Debug STOP for TIM7 mode
+    #define DBG_TIM8_STOP_Pos           (20)
+    #define DBG_TIM8_STOP               (0x01U << DBG_TIM8_STOP_Pos)            ///< Debug STOP for TIM8 mode
 #endif
 #if defined(DIV_BASE)
 ////////////////////////////////////////////////////////////////////////////////
@@ -8014,8 +8014,8 @@ typedef struct {
     #define RCC_APB2RSTR_TIM16          (0x01U << RCC_APB2RSTR_TIM16_Pos)       ///< TIM16 Timer reset
     #define RCC_APB2RSTR_TIM17_Pos      (18)
     #define RCC_APB2RSTR_TIM17          (0x01U << RCC_APB2RSTR_TIM17_Pos)       ///< TIM17 Timer reset
-    #define RCC_APB2RSTR_DBGMCU_Pos     (22)
-    #define RCC_APB2RSTR_DBGMCU         (0x01U << RCC_APB2RSTR_DBGMCU_Pos)      ////< DBGMCU reset
+    #define RCC_APB2RSTR_DBG_Pos        (22)
+    #define RCC_APB2RSTR_DBG            (0x01U << RCC_APB2RSTR_DBG_Pos)         ////< DBG reset
 #endif
 
 #if defined(__MM0P1) || defined(__MM0Q1)
@@ -8175,8 +8175,8 @@ typedef struct {
 #endif
 
 #if defined(__MM0T1)
-    #define RCC_APB1RSTR_DBGMCU_Pos     (29)
-    #define RCC_APB1RSTR_DBGMCU         (0x01U << RCC_APB1RSTR_DBGMCU_Pos)      ///< DBGMCU reset
+    #define RCC_APB1RSTR_DBG_Pos        (29)
+    #define RCC_APB1RSTR_DBG            (0x01U << RCC_APB1RSTR_DBG_Pos)         ///< DBG reset
 #endif
 
 #if defined(__MM0T1)
@@ -8534,8 +8534,8 @@ typedef struct {
 #endif
 
 #if defined(__MM0N1) || defined(__MM0P1) || defined(__MM0Q1) || defined(__MM0S1)
-    #define RCC_APB2ENR_DBGMCU_Pos      (22)
-    #define RCC_APB2ENR_DBGMCU          (0x01U << RCC_APB2ENR_DBGMCU_Pos)       ///< DBGMCU clock enable
+    #define RCC_APB2ENR_DBG_Pos         (22)
+    #define RCC_APB2ENR_DBG             (0x01U << RCC_APB2ENR_DBG_Pos)          ///< DBG clock enable
 #endif
 
 #if defined(__MM0P1) || defined(__MM0Q1)
@@ -8716,19 +8716,14 @@ typedef struct {
     #define RCC_APB1ENR_PWR             (0x01U << RCC_APB1ENR_PWR_Pos)          ///< Power interface clock enable
 #endif
 
-#if defined(__MM3N1)
+#if defined(__MM3N1) || defined(__MM3U1)
     #define RCC_APB1ENR_DAC_Pos         (29)
     #define RCC_APB1ENR_DAC             (0x01U << RCC_APB1ENR_DAC_Pos)          ///< DAC interface clock enable
 #endif
 
 #if defined(__MM0T1)
-    #define RCC_APB1ENR_DBGMCU_Pos      (29)
-    #define RCC_APB1ENR_DBGMCU          (0x01U << RCC_APB1ENR_DBGMCU_Pos)       ///< DBGMCU enable
-#endif
-
-#if defined(__MM3U1)
-    #define RCC_APB1ENR_DAC_Pos         (29)
-    #define RCC_APB1ENR_DAC             (0x01U << RCC_APB1ENR_DAC_Pos)          ///< DAC enable
+    #define RCC_APB1ENR_DBG_Pos         (29)
+    #define RCC_APB1ENR_DBG             (0x01U << RCC_APB1ENR_DBG_Pos)          ///< DBG enable
 #endif
 
 #if defined(__MM0T1)

@@ -8285,13 +8285,13 @@ typedef struct {
 #endif
 
 #if defined(__MM0P1)
-    #define RCC_AHB1ENR_HWSQRT_Pos      (25)
-    #define RCC_AHB1ENR_HWSQRT          (0x01U << RCC_AHB1ENR_HWSQRT_Pos)       ///< HWSQRT clock enable
+    #define RCC_AHB1ENR_SQRT_Pos        (25)
+    #define RCC_AHB1ENR_SQRT            (0x01U << RCC_AHB1ENR_SQRT_Pos)         ///< HWSQRT clock enable
 #endif
 
 #if defined(__MM0Q1) || defined(__MM0P1) || defined(__MM0S1)
-    #define RCC_AHB1ENR_HWDIV_Pos       (26)
-    #define RCC_AHB1ENR_HWDIV           (0x01U << RCC_AHB1ENR_HWDIV_Pos)        ///< HWDIV clock enable
+    #define RCC_AHB1ENR_DIV_Pos         (26)
+    #define RCC_AHB1ENR_DIV             (0x01U << RCC_AHB1ENR_DIV_Pos)          ///< HWDIV clock enable
 #endif
 
 ////////////////////////////////////////////////////////////////////////////////

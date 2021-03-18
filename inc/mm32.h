@@ -4235,7 +4235,7 @@ typedef struct {
     #define CRS_CFGR_DIV_128            (0x07U << CRS_CFGR_DIV_Pos)             ///< SYNC divider 128
     #define CRS_CFGR_SRC_Pos            (28)
     #define CRS_CFGR_SRC                (0x03U << CRS_CFGR_SRC_Pos)             ///< SYNC signal source selection
-    #define CRS_CFGR_SRC_MCO            (0x00U << CRS_CFGR_SRC_Pos)
+    #define CRS_CFGR_SRC_GPIO           (0x00U << CRS_CFGR_SRC_Pos)
 #if defined(__MM3U1)
     #define CRS_CFGR_SRC_LSE            (0x01U << CRS_CFGR_SRC_Pos)
 #endif

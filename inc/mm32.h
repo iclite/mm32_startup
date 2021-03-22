@@ -579,7 +579,7 @@ typedef enum IRQn {
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief EXTI Base Address Definition
 ////////////////////////////////////////////////////////////////////////////////
-#define EXTI_BASE                       (0x40010000U)                           ///< Base Address: 0x40010000
+#define EXTI_BASE                       (0x40010400U)                           ///< Base Address: 0x40010400
 
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief FLASH Register Base Address Definition
@@ -1437,38 +1437,6 @@ typedef struct {
 /// @brief EXTI Registers Structure Definition
 ////////////////////////////////////////////////////////////////////////////////
 typedef struct {
-#if defined(__MM0N1) || defined(__MM3O1) || defined(__MM0P1) || defined(__MM0Q1) || defined(__MM0S1) || defined(__MM0T1)
-    __IO uint32_t CFGR;                                                         ///< SYSCFG configuration register,             offset: 0x00
-    uint32_t Reserved;                                                          ///< Reserved                                   offset: 0x04
-#endif
-#if defined(__MM3N1)
-    uint32_t Reserved;                                                          ///< Reserved                                   offset: 0x00
-    __IO uint32_t MAPR;                                                         ///< Multiplexed remapping registers,           offset: 0x04
-#endif
-
-#if defined(__MM3U1)
-    __IO uint32_t CFGR1;                                                        ///< SYSCFG configuration register 1,           offset: 0x00
-    uint32_t Reserved;                                                          ///< Reserved                                   offset: 0x04
-#endif
-
-    __IO uint32_t CR[4];                                                        ///< External interrupt configuration register, offset: 0x08 - 0x17
-
-#if defined(__MM3U1)
-    __IO uint32_t CFGR2;                                                        ///< SYSCFG configuration register 2,           offset: 0x18
-    __IO uint32_t PDETCSR;                                                      ///< Power detect configuration state reigster  offset: 0x1c
-    __IO uint32_t VOSDLY;                                                       ///< VOS Delay                                  offset: 0x20
-    uint32_t Reserved1[0x100 - 0x09];                                           ///< Reserved space 0x04 * 0x100 = 0x400
-#endif
-
-#if defined(__MM0S1) || defined(__MM0T1)
-    __IO uint32_t PADHYS;                                                       ///< PAD configutation register,                offset: 0x18
-    uint32_t Reserved1[0x100 - 0x07];                                           ///< Reserved space 0x04 * 0x100 = 0x400
-#endif
-
-#if defined(__MM3N1) || defined(__MM0N1) || defined(__MM3O1) || defined(__MM0P1) || defined(__MM0Q1)
-    uint32_t Reserved1[0x100 - 0x06];                                           ///< Reserved space
-#endif
-
     __IO uint32_t IMR;                                                          ///< Interrupt Mask Register                    offset: 0x00 + 0x400
     __IO uint32_t EMR;                                                          ///< Event Mask Register                        offset: 0x04 + 0x400
     __IO uint32_t RTSR;                                                         ///< Rising Trigger Status Register             offset: 0x08 + 0x400
@@ -5249,291 +5217,6 @@ typedef struct {
 
 #endif
 ////////////////////////////////////////////////////////////////////////////////
-/// @brief EXTI_CFGR Register Bit Definition
-////////////////////////////////////////////////////////////////////////////////
-#if defined(__MM0N1) || defined(__MM3O1) || defined(__MM0P1) || defined(__MM0Q1) || defined(__MM0S1)
-    #define EXTI_CFGR_MEMMODE_Pos       (0)
-    #define EXTI_CFGR_MEMMODE           (0x03U << EXTI_CFGR_MEMMODE_Pos)        ///< EXTI_Memory Remap Config
-    #define EXTI_CFGR_MEMMODE_0         (0x01U << EXTI_CFGR_MEMMODE_Pos)        ///< EXTI_Memory Remap Config Bit 0
-    #define EXTI_CFGR_MEMMODE_1         (0x02U << EXTI_CFGR_MEMMODE_Pos)        ///< EXTI_Memory Remap Config Bit 1
-    #define EXTI_CFGR_ADCDMA_Pos        (8)
-    #define EXTI_CFGR_ADCDMA_           (0x01U << EXTI_CFGR_ADCDMA_Pos)         ///< ADC DMA remap
-    #define EXTI_CFGR_TIM16DMA_Pos      (11)
-    #define EXTI_CFGR_TIM16DMA_         (0x01U << EXTI_CFGR_TIM16DMA_Pos)       ///< Timer 16 DMA remap
-    #define EXTI_CFGR_TIM17DMA_Pos      (12)
-    #define EXTI_CFGR_TIM17DMA_         (0x01U << EXTI_CFGR_TIM17DMA_Pos)       ///< Timer 17 DMA remap
-#endif
-
-#if defined(__MM0N1) || defined(__MM3O1) || defined(__MM0Q1) || defined(__MM0S1)
-    #define EXTI_CFGR_UART1TXDMA_Pos    (9)
-    #define EXTI_CFGR_UART1TXDMA_       (0x01U << EXTI_CFGR_UART1TXDMA_Pos)     ///< UART1 TX DMA Remap
-    #define EXTI_CFGR_UART1RXDMA_Pos    (10)
-    #define EXTI_CFGR_UART1RXDMA_       (0x01U << EXTI_CFGR_UART1RXDMA_Pos)     ///< UART1 RX DMA Remap
-#endif
-
-#if defined(__MM0S1)
-    #define EXTI_CFGR_CSMCH1DMA_Pos     (13)
-    #define EXTI_CFGR_CSMCH1DMA         (0x01U << EXTI_CFGR_CSMCH1DMA_Pos)      ///< CSMCH1 DMA Remap
-    #define EXTI_CFGR_CSMCH2DMA_Pos     (14)
-    #define EXTI_CFGR_CSMCH2DMA         (0x01U << EXTI_CFGR_CSMCH2DMA_Pos)      ///< CSMCH2 DMA Remap
-    #define EXTI_CFGR_PA11_Pos          (3)
-    #define EXTI_CFGR_PA11              (0x01U << EXTI_CFGR_PA11_Pos)           ///< PA11 Remap
-    #define EXTI_CFGR_PA12_Pos          (4)
-    #define EXTI_CFGR_PA12              (0x01U << EXTI_CFGR_PA12_Pos)           ///< PA12 Remap
-#endif
-
-#if defined(__MM0T1)
-    #define EXTI_CFGR_MEMMODE_Pos       (0)
-    #define EXTI_CFGR_MEMMODE           (0x03U << EXTI_CFGR_MEMMODE_Pos)        ///< EXTI_Memory Remap Config
-    #define EXTI_CFGR_MEMMODE_0         (0x01U << EXTI_CFGR_MEMMODE_Pos)        ///< EXTI_Memory Remap Config Bit 0
-    #define EXTI_CFGR_MEMMODE_1         (0x02U << EXTI_CFGR_MEMMODE_Pos)        ///< EXTI_Memory Remap Config Bit 1
-#endif
-
-#if defined(__MM3U1)
-    #define EXTI_CFGR1_MEMMODE_Pos      (0)
-    #define EXTI_CFGR1_MEMMODE          (0x03U << EXTI_CFGR1_MEMMODE_Pos)       ///< EXTI_Memory Remap Config
-    #define EXTI_CFGR1_MEMMODE_0        (0x01U << EXTI_CFGR1_MEMMODE_Pos)       ///< EXTI_Memory Remap Config Bit 0
-    #define EXTI_CFGR1_MEMMODE_1        (0x02U << EXTI_CFGR1_MEMMODE_Pos)       ///< EXTI_Memory Remap Config Bit 1
-    #define EXTI_CFGR1_FCSYNCEN_Pos     (27)
-    #define EXTI_CFGR1_FCSYNCEN         (0x01 << EXTI_CFGR1_FCSYNCEN_Pos)       ///< FSMC synchronize enable
-    #define EXTI_CFGR1_FCODATAEN_Pos    (28)
-    #define EXTI_CFGR1_FCODATAEN        (0x01 << EXTI_CFGR1_FCODATAEN_Pos)      ///< FSMC address data
-    #define EXTI_CFGR1_MODESEL_Pos      (29)
-    #define EXTI_CFGR1_MODESEL          (0x03 << EXTI_CFGR1_MODESEL_Pos)        ///< FSMC mode selection
-    #define EXTI_CFGR1_MODESEL_FLASH    (0x00 << EXTI_CFGR1_MODESEL_Pos)        ///< interface of NOR FLASH protocol
-    #define EXTI_CFGR1_MODESEL_8080     (0x01 << EXTI_CFGR1_MODESEL_Pos)        ///< interface of 8080 protocol
-#endif
-
-////////////////////////////////////////////////////////////////////////////////
-/// @brief EXTI_MAPR Register Bit Definition
-////////////////////////////////////////////////////////////////////////////////
-    #define EXTI_MAPR_SPI1_Pos          (0)
-    #define EXTI_MAPR_SPI1              (0x01U << EXTI_MAPR_SPI1_Pos)           ///< SPI1 remapping
-    #define EXTI_MAPR_I2C1_Pos          (1)
-    #define EXTI_MAPR_I2C1              (0x01U << EXTI_MAPR_I2C1_Pos)           ///< I2C1 remapping
-    #define EXTI_MAPR_UART1_Pos         (2)
-    #define EXTI_MAPR_UART1             (0x01U << EXTI_MAPR_UART1_Pos)          ///< UART1 remapping
-    #define EXTI_MAPR_UART3_Pos         (4)
-    #define EXTI_MAPR_UART3_MASK        (0x03U << EXTI_MAPR_UART3_Pos)          ///< UART3[1:0] bits (UART3 remapping)
-    #define EXTI_MAPR_UART3             (0x01U << EXTI_MAPR_UART3_Pos)          ///< UART3_Partial REMAP[1:0] bits (UART3 remapping)
-    #define EXTI_MAPR_TIM1_Pos          (6)
-    #define EXTI_MAPR_TIM1_MASK         (0x03U << EXTI_MAPR_TIM1_Pos)           ///< TIM1[1:0] bits (TIM1 remapping)
-    #define EXTI_MAPR_TIM1              (0x03U << EXTI_MAPR_TIM1_Pos)           ///< TIM1[1:0] bits (TIM1 remapping)
-    #define EXTI_MAPR_TIM1_PARTIAL      (0x01U << EXTI_MAPR_TIM1_Pos)           ///< Partial remap (ETR/PA12, CH1/PA8, CH2/PA9, CH3/PA10, CH4/PA11, BKIN/PA6, CH1N/PA7, CH2N/PB0, CH3N/PB1)
-    #define EXTI_MAPR_TIM2_Pos          (8)
-    #define EXTI_MAPR_TIM2_MASK         (0x03U << EXTI_MAPR_TIM2_Pos)           ///< TIM2[1:0] bits (TIM2 remapping)
-    #define EXTI_MAPR_TIM2              (0x03U << EXTI_MAPR_TIM2_Pos)           ///< Full remap (CH1/ETR/PA15, CH2/PB3, CH3/PB10, CH4/PB11)
-    #define EXTI_MAPR_TIM2_PARTIAL1     (0x01U << EXTI_MAPR_TIM2_Pos)           ///< Partial remap (CH1/ETR/PA15, CH2/PB3, CH3/PA2, CH4/PA3)
-    #define EXTI_MAPR_TIM2_PARTIAL2     (0x02U << EXTI_MAPR_TIM2_Pos)           ///< Partial remap (CH1/ETR/PA0, CH2/PA1, CH3/PB10, CH4/PB11)
-    #define EXTI_MAPR_TIM3_Pos          (10)
-    #define EXTI_MAPR_TIM3_MASK         (0x03U << EXTI_MAPR_TIM3_Pos)           ///< TIM3[1:0] bits (TIM3 remapping)
-    #define EXTI_MAPR_TIM3              (0x03U << EXTI_MAPR_TIM3_Pos)           ///< Full remap (CH1/PC6, CH2/PC7, CH3/PC8, CH4/PC9)
-    #define EXTI_MAPR_TIM3_PARTIAL      (0x02U << EXTI_MAPR_TIM3_Pos)           ///< Partial remap (CH1/PB4, CH2/PB5, CH3/PB0, CH4/PB1)
-    #define EXTI_MAPR_CAN_Pos           (13)
-    #define EXTI_MAPR_CAN_MASK          (0x03U << EXTI_MAPR_CAN_Pos)            ///< CAN[1:0] bits (CAN Alternate function remapping)
-    #define EXTI_MAPR_CAN               (0x02U << EXTI_MAPR_CAN_Pos)            ///< CANRX mapped to PB8, CANTX mapped to PB9
-    #define EXTI_MAPR_PD01_Pos          (15)
-    #define EXTI_MAPR_PD01              (0x01U << EXTI_MAPR_PD01_Pos)           ///< Port D0/Port D1 mapping on OSC_IN/OSC_OUT
-    #define EXTI_MAPR_SWJ_Pos           (24)
-    #define EXTI_MAPR_SWJ_MASK          (0x07U << EXTI_MAPR_SWJ_Pos)            ///< SWJ_CFG[2:0] bits (Serial Wire JTAG configuration)
-    #define EXTI_MAPR_SWJ               (0x00U << EXTI_MAPR_SWJ_Pos)            ///< Full SWJ (JTAG-DP + SW-DP), Reset state
-    #define EXTI_MAPR_SWJ_NOJNTRST      (0x01U << EXTI_MAPR_SWJ_Pos)            ///< Full SWJ (JTAG-DP + SW-DP) but without JNTRST
-    #define EXTI_MAPR_SWJ_JTAGDISABLE   (0x02U << EXTI_MAPR_SWJ_Pos)            ///< JTAG-DP Disabled and SW-DP Enabled
-    #define EXTI_MAPR_SWJ_DISABLE       (0x04U << EXTI_MAPR_SWJ_Pos)            ///< JTAG-DP Disabled and SW-DP Disabled
-
-////////////////////////////////////////////////////////////////////////////////
-/// @brief EXTI_CR1 Register Bit Definition
-////////////////////////////////////////////////////////////////////////////////
-    #define EXTI_CR1_EXTI0_Pos          (0)
-    #define EXTI_CR1_EXTI0              (0x0FU << EXTI_CR1_EXTI0_Pos)           ///< EXTI 0 configuration
-    #define EXTI_CR1_EXTI0_PA           (0x00U << EXTI_CR1_EXTI0_Pos)           ///< PA[0] pin
-    #define EXTI_CR1_EXTI0_PB           (0x01U << EXTI_CR1_EXTI0_Pos)           ///< PB[0] pin
-    #define EXTI_CR1_EXTI0_PC           (0x02U << EXTI_CR1_EXTI0_Pos)           ///< PC[0] pin
-    #define EXTI_CR1_EXTI0_PD           (0x03U << EXTI_CR1_EXTI0_Pos)           ///< PD[0] pin
-
-    #define EXTI_CR1_EXTI1_Pos          (4)
-    #define EXTI_CR1_EXTI1              (0x0FU << EXTI_CR1_EXTI1_Pos)           ///< EXTI 1 configuration
-    #define EXTI_CR1_EXTI1_PA           (0x00U << EXTI_CR1_EXTI1_Pos)           ///< PA[1] pin
-    #define EXTI_CR1_EXTI1_PB           (0x01U << EXTI_CR1_EXTI1_Pos)           ///< PB[1] pin
-    #define EXTI_CR1_EXTI1_PC           (0x02U << EXTI_CR1_EXTI1_Pos)           ///< PC[1] pin
-    #define EXTI_CR1_EXTI1_PD           (0x03U << EXTI_CR1_EXTI1_Pos)           ///< PD[1] pin
-
-    #define EXTI_CR1_EXTI2_Pos          (8)
-    #define EXTI_CR1_EXTI2              (0x0FU << EXTI_CR1_EXTI2_Pos)           ///< EXTI 2 configuration
-    #define EXTI_CR1_EXTI2_PA           (0x00U << EXTI_CR1_EXTI2_Pos)           ///< PA[2] pin
-    #define EXTI_CR1_EXTI2_PB           (0x01U << EXTI_CR1_EXTI2_Pos)           ///< PB[2] pin
-    #define EXTI_CR1_EXTI2_PC           (0x02U << EXTI_CR1_EXTI2_Pos)           ///< PC[2] pin
-    #define EXTI_CR1_EXTI2_PD           (0x03U << EXTI_CR1_EXTI2_Pos)           ///< PD[2] pin
-
-    #define EXTI_CR1_EXTI3_Pos          (12)
-    #define EXTI_CR1_EXTI3              (0x0FU << EXTI_CR1_EXTI3_Pos)           ///< EXTI 3 configuration
-    #define EXTI_CR1_EXTI3_PA           (0x00U << EXTI_CR1_EXTI3_Pos)           ///< PA[3] pin
-    #define EXTI_CR1_EXTI3_PB           (0x01U << EXTI_CR1_EXTI3_Pos)           ///< PB[3] pin
-    #define EXTI_CR1_EXTI3_PC           (0x02U << EXTI_CR1_EXTI3_Pos)           ///< PC[3] pin
-    #define EXTI_CR1_EXTI3_PD           (0x03U << EXTI_CR1_EXTI3_Pos)           ///< PD[3] pin
-
-////////////////////////////////////////////////////////////////////////////////
-/// @brief EXTI_CR2 Register Bit Definition
-////////////////////////////////////////////////////////////////////////////////
-    #define EXTI_CR2_EXTI4_Pos          (0)
-    #define EXTI_CR2_EXTI4              (0x0FU << EXTI_CR2_EXTI4_Pos)           ///< EXTI 4 configuration
-    #define EXTI_CR2_EXTI4_PA           (0x00U << EXTI_CR2_EXTI4_Pos)           ///< PA[4] pin
-    #define EXTI_CR2_EXTI4_PB           (0x01U << EXTI_CR2_EXTI4_Pos)           ///< PB[4] pin
-    #define EXTI_CR2_EXTI4_PC           (0x02U << EXTI_CR2_EXTI4_Pos)           ///< PC[4] pin
-    #define EXTI_CR2_EXTI4_PD           (0x03U << EXTI_CR2_EXTI4_Pos)           ///< PD[4] pin
-
-    #define EXTI_CR2_EXTI5_Pos          (4)
-    #define EXTI_CR2_EXTI5              (0x0FU << EXTI_CR2_EXTI5_Pos)           ///< EXTI 5 configuration
-    #define EXTI_CR2_EXTI5_PA           (0x00U << EXTI_CR2_EXTI5_Pos)           ///< PA[5] pin
-    #define EXTI_CR2_EXTI5_PB           (0x01U << EXTI_CR2_EXTI5_Pos)           ///< PB[5] pin
-    #define EXTI_CR2_EXTI5_PC           (0x02U << EXTI_CR2_EXTI5_Pos)           ///< PC[5] pin
-    #define EXTI_CR2_EXTI5_PD           (0x03U << EXTI_CR2_EXTI5_Pos)           ///< PD[5] pin
-
-    #define EXTI_CR2_EXTI6_Pos          (8)
-    #define EXTI_CR2_EXTI6              (0x0FU << EXTI_CR2_EXTI6_Pos)           ///< EXTI 6 configuration
-    #define EXTI_CR2_EXTI6_PA           (0x00U << EXTI_CR2_EXTI6_Pos)           ///< PA[6] pin
-    #define EXTI_CR2_EXTI6_PB           (0x01U << EXTI_CR2_EXTI6_Pos)           ///< PB[6] pin
-    #define EXTI_CR2_EXTI6_PC           (0x02U << EXTI_CR2_EXTI6_Pos)           ///< PC[6] pin
-    #define EXTI_CR2_EXTI6_PD           (0x03U << EXTI_CR2_EXTI6_Pos)           ///< PD[6] pin
-
-    #define EXTI_CR2_EXTI7_Pos          (12)
-    #define EXTI_CR2_EXTI7              (0x0FU << EXTI_CR2_EXTI7_Pos)           ///< EXTI 7 configuration
-    #define EXTI_CR2_EXTI7_PA           (0x00U << EXTI_CR2_EXTI7_Pos)           ///< PA[7] pin
-    #define EXTI_CR2_EXTI7_PB           (0x01U << EXTI_CR2_EXTI7_Pos)           ///< PB[7] pin
-    #define EXTI_CR2_EXTI7_PC           (0x02U << EXTI_CR2_EXTI7_Pos)           ///< PC[7] pin
-    #define EXTI_CR2_EXTI7_PD           (0x03U << EXTI_CR2_EXTI7_Pos)           ///< PD[7] pin
-
-////////////////////////////////////////////////////////////////////////////////
-/// @brief EXTI_CR3 Register Bit Definition
-////////////////////////////////////////////////////////////////////////////////
-    #define EXTI_CR3_EXTI8_Pos          (0)
-    #define EXTI_CR3_EXTI8              (0x0FU << EXTI_CR3_EXTI8_Pos)           ///< EXTI 8 configuration
-    #define EXTI_CR3_EXTI8_PA           (0x00U << EXTI_CR3_EXTI8_Pos)           ///< PA[8] pin
-    #define EXTI_CR3_EXTI8_PB           (0x01U << EXTI_CR3_EXTI8_Pos)           ///< PB[8] pin
-    #define EXTI_CR3_EXTI8_PC           (0x02U << EXTI_CR3_EXTI8_Pos)           ///< PC[8] pin
-    #define EXTI_CR3_EXTI8_PD           (0x03U << EXTI_CR3_EXTI8_Pos)           ///< PD[8] pin
-
-    #define EXTI_CR3_EXTI9_Pos          (4)
-    #define EXTI_CR3_EXTI9              (0x0FU << EXTI_CR3_EXTI9_Pos)           ///< EXTI 9 configuration
-    #define EXTI_CR3_EXTI9_PA           (0x00U << EXTI_CR3_EXTI9_Pos)           ///< PA[9] pin
-    #define EXTI_CR3_EXTI9_PB           (0x01U << EXTI_CR3_EXTI9_Pos)           ///< PB[9] pin
-    #define EXTI_CR3_EXTI9_PC           (0x02U << EXTI_CR3_EXTI9_Pos)           ///< PC[9] pin
-    #define EXTI_CR3_EXTI9_PD           (0x03U << EXTI_CR3_EXTI9_Pos)           ///< PD[9] pin
-
-    #define EXTI_CR3_EXTI10_Pos         (8)
-    #define EXTI_CR3_EXTI10             (0x0FU << EXTI_CR3_EXTI10_Pos)          ///< EXTI 10 configuration
-    #define EXTI_CR3_EXTI10_PA          (0x00U << EXTI_CR3_EXTI10_Pos)          ///< PA[10] pin
-    #define EXTI_CR3_EXTI10_PB          (0x01U << EXTI_CR3_EXTI10_Pos)          ///< PB[10] pin
-    #define EXTI_CR3_EXTI10_PC          (0x02U << EXTI_CR3_EXTI10_Pos)          ///< PC[10] pin
-    #define EXTI_CR3_EXTI10_PD          (0x03U << EXTI_CR3_EXTI10_Pos)          ///< PD[10] pin
-
-    #define EXTI_CR3_EXTI11_Pos         (12)
-    #define EXTI_CR3_EXTI11             (0x0FU << EXTI_CR3_EXTI11_Pos)          ///< EXTI 11 configuration
-    #define EXTI_CR3_EXTI11_PA          (0x00U << EXTI_CR3_EXTI11_Pos)          ///< PA[11] pin
-    #define EXTI_CR3_EXTI11_PB          (0x01U << EXTI_CR3_EXTI11_Pos)          ///< PB[11] pin
-    #define EXTI_CR3_EXTI11_PC          (0x02U << EXTI_CR3_EXTI11_Pos)          ///< PC[11] pin
-    #define EXTI_CR3_EXTI11_PD          (0x03U << EXTI_CR3_EXTI11_Pos)          ///< PD[11] pin
-
-////////////////////////////////////////////////////////////////////////////////
-/// @brief EXTI_CR4 Register Bit Definition
-////////////////////////////////////////////////////////////////////////////////
-    #define EXTI_CR4_EXTI12_Pos         (0)
-    #define EXTI_CR4_EXTI12             (0x0FU << EXTI_CR4_EXTI12_Pos)          ///< EXTI 12 configuration
-    #define EXTI_CR4_EXTI12_PA          (0x00U << EXTI_CR4_EXTI12_Pos)          ///< PA[12] pin
-    #define EXTI_CR4_EXTI12_PB          (0x01U << EXTI_CR4_EXTI12_Pos)          ///< PB[12] pin
-    #define EXTI_CR4_EXTI12_PC          (0x02U << EXTI_CR4_EXTI12_Pos)          ///< PC[12] pin
-    #define EXTI_CR4_EXTI12_PD          (0x03U << EXTI_CR4_EXTI12_Pos)          ///< PD[12] pin
-
-    #define EXTI_CR4_EXTI13_Pos         (4)
-    #define EXTI_CR4_EXTI13             (0x0FU << EXTI_CR4_EXTI13_Pos)          ///< EXTI 13 configuration
-    #define EXTI_CR4_EXTI13_PA          (0x00U << EXTI_CR4_EXTI13_Pos)          ///< PA[13] pin
-    #define EXTI_CR4_EXTI13_PB          (0x01U << EXTI_CR4_EXTI13_Pos)          ///< PB[13] pin
-    #define EXTI_CR4_EXTI13_PC          (0x02U << EXTI_CR4_EXTI13_Pos)          ///< PC[13] pin
-    #define EXTI_CR4_EXTI13_PD          (0x03U << EXTI_CR4_EXTI13_Pos)          ///< PD[13] pin
-
-    #define EXTI_CR4_EXTI14_Pos         (8)
-    #define EXTI_CR4_EXTI14             (0x0FU << EXTI_CR4_EXTI14_Pos)          ///< EXTI 14 configuration
-    #define EXTI_CR4_EXTI14_PA          (0x00U << EXTI_CR4_EXTI14_Pos)          ///< PA[14] pin
-    #define EXTI_CR4_EXTI14_PB          (0x01U << EXTI_CR4_EXTI14_Pos)          ///< PB[14] pin
-    #define EXTI_CR4_EXTI14_PC          (0x02U << EXTI_CR4_EXTI14_Pos)          ///< PC[14] pin
-    #define EXTI_CR4_EXTI14_PD          (0x03U << EXTI_CR4_EXTI14_Pos)          ///< PD[14] pin
-
-    #define EXTI_CR4_EXTI15_Pos         (12)
-    #define EXTI_CR4_EXTI15             (0x0FU << EXTI_CR4_EXTI15_Pos)          ///< EXTI 15 configuration
-    #define EXTI_CR4_EXTI15_PA          (0x00U << EXTI_CR4_EXTI15_Pos)          ///< PA[15] pin
-    #define EXTI_CR4_EXTI15_PB          (0x01U << EXTI_CR4_EXTI15_Pos)          ///< PB[15] pin
-    #define EXTI_CR4_EXTI15_PC          (0x02U << EXTI_CR4_EXTI15_Pos)          ///< PC[15] pin
-    #define EXTI_CR4_EXTI15_PD          (0x03U << EXTI_CR4_EXTI15_Pos)          ///< PD[15] pin
-
-////////////////////////////////////////////////////////////////////////////////
-/// @brief PADHYS Register Bit Definition
-////////////////////////////////////////////////////////////////////////////////
-#if defined(__MM0S1) || defined(__MM0T1)
-    #define EXTI_PADHYS_I2C1MODE_Pos    (16)
-    #define EXTI_PADHYS_I2C1MODE        (0x01U << EXTI_CR4_EXTI12_Pos)          ///< I2C1MODESEL configuration
-#endif
-
-////////////////////////////////////////////////////////////////////////////////
-/// @brief EXTI_CFGR2 Register Bit Definition
-////////////////////////////////////////////////////////////////////////////////
-
-#if defined(__MM3U1)
-    #define EXTI_CFGR2_I2C1SEL_Pos      (16)
-    #define EXTI_CFGR2_I2C1SEL          (0x01 << EXTI_CFGR2_I2C1SEL_Pos)        ///< I2C1 port mode selection
-    #define EXTI_CFGR2_I2C2SEL_Pos      (17)
-    #define EXTI_CFGR2_I2C2SEL          (0x01 << EXTI_CFGR2_I2C2SEL_Pos)        ///< I2C2 port mode selection
-    #define EXTI_CFGR2_MIIRMIISEL_Pos   (20)
-    #define EXTI_CFGR2_MIIRMIISEL       (0x01 << EXTI_CFGR2_MIIRMIISEL_Pos)     ///< Interface selection of Ethernet PHY
-    #define EXTI_CFGR2_MACSPDSEL_Pos    (21)
-    #define EXTI_CFGR2_MACSPDSEL        (0x01 << EXTI_CFGR2_MACSPDSEL_Pos)      ///< MAC simplify media indipendent interface speed selection
-#endif
-
-////////////////////////////////////////////////////////////////////////////////
-/// @brief EXTI_PDETCSR Register Bit Definition
-////////////////////////////////////////////////////////////////////////////////
-
-#if defined(__MM3U1)
-    #define EXTI_PDETCSR_PVDE_Pos       (0)
-    #define EXTI_PDETCSR_PVDE           (0x01 << EXTI_PDETCSR_PVDE_Pos)         ///< PVD enable
-    #define EXTI_PDETCSR_PLS_Pos        (1)
-    #define EXTI_PDETCSR_PLS            (0x0F << EXTI_PDETCSR_PLS_Pos)          ///< PVD threshold selection
-    #define EXTI_PDETCSR_PLS_1_7        (0x00 << EXTI_PDETCSR_PLS_Pos)          ///< PVD threshold selection 1.7mV
-    #define EXTI_PDETCSR_PLS_2_0        (0x01 << EXTI_PDETCSR_PLS_Pos)          ///< PVD threshold selection 2.0mV
-    #define EXTI_PDETCSR_PLS_2_3        (0x02 << EXTI_PDETCSR_PLS_Pos)          ///< PVD threshold selection 2.3mV
-    #define EXTI_PDETCSR_PLS_2_6        (0x03 << EXTI_PDETCSR_PLS_Pos)          ///< PVD threshold selection 2.6mV
-    #define EXTI_PDETCSR_PLS_2_9        (0x04 << EXTI_PDETCSR_PLS_Pos)          ///< PVD threshold selection 2.9mV
-    #define EXTI_PDETCSR_PLS_3_2        (0x05 << EXTI_PDETCSR_PLS_Pos)          ///< PVD threshold selection 3.2mV
-    #define EXTI_PDETCSR_PLS_3_5        (0x06 << EXTI_PDETCSR_PLS_Pos)          ///< PVD threshold selection 3.5mV
-    #define EXTI_PDETCSR_PLS_3_8        (0x07 << EXTI_PDETCSR_PLS_Pos)          ///< PVD threshold selection 3.8mV
-    #define EXTI_PDETCSR_PLS_4_1        (0x08 << EXTI_PDETCSR_PLS_Pos)          ///< PVD threshold selection 4.1mV
-    #define EXTI_PDETCSR_PLS_4_4        (0x09 << EXTI_PDETCSR_PLS_Pos)          ///< PVD threshold selection 4.4mV
-    #define EXTI_PDETCSR_PLS_4_7        (0x0A << EXTI_PDETCSR_PLS_Pos)          ///< PVD threshold selection 4.7mV
-    #define EXTI_PDETCSR_PVDO_Pos       (5)
-    #define EXTI_PDETCSR_PVDO           (0x01 << EXTI_PDETCSR_PVDO_Pos)         ///< PVD output state
-    #define EXTI_PDETCSR_VDTO_Pos       (6)
-    #define EXTI_PDETCSR_VDTO           (0x01 << EXTI_PDETCSR_VDTO_Pos)         ///< VDT output state
-    #define EXTI_PDETCSR_VDTE_Pos       (8)
-    #define EXTI_PDETCSR_VDTE           (0x01 << EXTI_PDETCSR_VDTE_Pos)         ///< VDTE enable
-    #define EXTI_PDETCSR_VDTLS_Pos      (9)
-    #define EXTI_PDETCSR_VDTLS          (0x03 << EXTI_PDETCSR_VDTLS_Pos)        ///< VDT detect threshold selection
-    #define EXTI_PDETCSR_VDTLS_1_2      (0x00 << EXTI_PDETCSR_VDTLS_Pos)        ///< VDT detect threshold selection 1.2V
-    #define EXTI_PDETCSR_VDTLS_1_1      (0x01 << EXTI_PDETCSR_VDTLS_Pos)        ///< VDT detect threshold selection 1.1V
-    #define EXTI_PDETCSR_VDTLS_1_0      (0x02 << EXTI_PDETCSR_VDTLS_Pos)        ///< VDT detect threshold selection 1.0V
-    #define EXTI_PDETCSR_VDTLS_0_9      (0x03 << EXTI_PDETCSR_VDTLS_Pos)        ///< VDT detect threshold selection 0.9V
-    #define EXTI_PDETCSR_VBATDIV3_Pos   (11)
-    #define EXTI_PDETCSR_VBATDIV3       (0x01 << EXTI_PDETCSR_VBATDIV3_Pos)     ///< ADC detect VBat_DIV3 enable
-#endif
-
-////////////////////////////////////////////////////////////////////////////////
-/// @brief EXTI_VOSDLY Register Bit Definition
-////////////////////////////////////////////////////////////////////////////////
-
-#if defined(__MM3U1)
-    #define EXTI_VOSDLY_VOSDLYCNT_Pos   (0)
-    #define EXTI_VOSDLY_VOSDLYCNT       (0x1F << EXTI_VOSDLY_VOSDLYCNT_Pos)     ///< VOS delay time
-#endif
-
-////////////////////////////////////////////////////////////////////////////////
 /// @brief EXTI_IMR Register Bit Definition
 ////////////////////////////////////////////////////////////////////////////////
 #define EXTI_IMR_0_Pos                  (0)
@@ -5586,6 +5269,20 @@ typedef struct {
 #define EXTI_IMR_23                     (0x01U << EXTI_IMR_23_Pos)              ///< Interrupt Mask on line 23
 #define EXTI_IMR_24_Pos                 (24)
 #define EXTI_IMR_24                     (0x01U << EXTI_IMR_24_Pos)              ///< Interrupt Mask on line 24
+#define EXTI_IMR_25_Pos                 (25)
+#define EXTI_IMR_25                     (0x01U << EXTI_IMR_25_Pos)              ///< Interrupt Mask on line 25
+#define EXTI_IMR_26_Pos                 (26)
+#define EXTI_IMR_26                     (0x01U << EXTI_IMR_26_Pos)              ///< Interrupt Mask on line 26
+#define EXTI_IMR_27_Pos                 (27)
+#define EXTI_IMR_27                     (0x01U << EXTI_IMR_27_Pos)              ///< Interrupt Mask on line 27
+#define EXTI_IMR_28_Pos                 (28)
+#define EXTI_IMR_28                     (0x01U << EXTI_IMR_28_Pos)              ///< Interrupt Mask on line 28
+#define EXTI_IMR_29_Pos                 (29)
+#define EXTI_IMR_29                     (0x01U << EXTI_IMR_29_Pos)              ///< Interrupt Mask on line 29
+#define EXTI_IMR_30_Pos                 (30)
+#define EXTI_IMR_30                     (0x01U << EXTI_IMR_30_Pos)              ///< Interrupt Mask on line 30
+#define EXTI_IMR_31_Pos                 (31)
+#define EXTI_IMR_31                     (0x01U << EXTI_IMR_31_Pos)              ///< Interrupt Mask on line 31
 
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief EXTI_EMR Register Bit Definition
@@ -5640,6 +5337,20 @@ typedef struct {
 #define EXTI_EMR_23                     (0x01U << EXTI_EMR_23_Pos)              ///< Event Mask on line 23
 #define EXTI_EMR_24_Pos                 (24)
 #define EXTI_EMR_24                     (0x01U << EXTI_EMR_24_Pos)              ///< Event Mask on line 24
+#define EXTI_EMR_25_Pos                 (25)
+#define EXTI_EMR_25                     (0x01U << EXTI_EMR_25_Pos)              ///< Event Mask on line 25
+#define EXTI_EMR_26_Pos                 (26)
+#define EXTI_EMR_26                     (0x01U << EXTI_EMR_26_Pos)              ///< Event Mask on line 26
+#define EXTI_EMR_27_Pos                 (27)
+#define EXTI_EMR_27                     (0x01U << EXTI_EMR_27_Pos)              ///< Event Mask on line 27
+#define EXTI_EMR_28_Pos                 (28)
+#define EXTI_EMR_28                     (0x01U << EXTI_EMR_28_Pos)              ///< Event Mask on line 28
+#define EXTI_EMR_29_Pos                 (29)
+#define EXTI_EMR_29                     (0x01U << EXTI_EMR_29_Pos)              ///< Event Mask on line 29
+#define EXTI_EMR_30_Pos                 (30)
+#define EXTI_EMR_30                     (0x01U << EXTI_EMR_30_Pos)              ///< Event Mask on line 30
+#define EXTI_EMR_31_Pos                 (31)
+#define EXTI_EMR_31                     (0x01U << EXTI_EMR_31_Pos)              ///< Event Mask on line 31
 
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief EXTI_RTSR Register Bit Definition
@@ -5694,6 +5405,20 @@ typedef struct {
 #define EXTI_RTSR_23                    (0x01U << EXTI_RTSR_23_Pos)             ///< Rising trigger event configuration bit of line 23
 #define EXTI_RTSR_24_Pos                (24)
 #define EXTI_RTSR_24                    (0x01U << EXTI_RTSR_24_Pos)             ///< Rising trigger event configuration bit of line 24
+#define EXTI_RTSR_25_Pos                (25)
+#define EXTI_RTSR_25                    (0x01U << EXTI_RTSR_25_Pos)             ///< Rising trigger event configuration bit of line 25
+#define EXTI_RTSR_26_Pos                (26)
+#define EXTI_RTSR_26                    (0x01U << EXTI_RTSR_26_Pos)             ///< Rising trigger event configuration bit of line 26
+#define EXTI_RTSR_27_Pos                (27)
+#define EXTI_RTSR_27                    (0x01U << EXTI_RTSR_27_Pos)             ///< Rising trigger event configuration bit of line 27
+#define EXTI_RTSR_28_Pos                (28)
+#define EXTI_RTSR_28                    (0x01U << EXTI_RTSR_28_Pos)             ///< Rising trigger event configuration bit of line 28
+#define EXTI_RTSR_29_Pos                (29)
+#define EXTI_RTSR_29                    (0x01U << EXTI_RTSR_29_Pos)             ///< Rising trigger event configuration bit of line 29
+#define EXTI_RTSR_30_Pos                (30)
+#define EXTI_RTSR_30                    (0x01U << EXTI_RTSR_30_Pos)             ///< Rising trigger event configuration bit of line 30
+#define EXTI_RTSR_31_Pos                (31)
+#define EXTI_RTSR_31                    (0x01U << EXTI_RTSR_31_Pos)             ///< Rising trigger event configuration bit of line 31
 
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief EXTI_FTSR Register Bit Definition
@@ -5748,6 +5473,20 @@ typedef struct {
 #define EXTI_FTSR_23                    (0x01U << EXTI_FTSR_23_Pos)             ///< Falling trigger event configuration bit of line 23
 #define EXTI_FTSR_24_Pos                (24)
 #define EXTI_FTSR_24                    (0x01U << EXTI_FTSR_24_Pos)             ///< Falling trigger event configuration bit of line 24
+#define EXTI_FTSR_25_Pos                (25)
+#define EXTI_FTSR_25                    (0x01U << EXTI_FTSR_25_Pos)             ///< Falling trigger event configuration bit of line 25
+#define EXTI_FTSR_26_Pos                (26)
+#define EXTI_FTSR_26                    (0x01U << EXTI_FTSR_26_Pos)             ///< Falling trigger event configuration bit of line 26
+#define EXTI_FTSR_27_Pos                (27)
+#define EXTI_FTSR_27                    (0x01U << EXTI_FTSR_27_Pos)             ///< Falling trigger event configuration bit of line 27
+#define EXTI_FTSR_28_Pos                (28)
+#define EXTI_FTSR_28                    (0x01U << EXTI_FTSR_28_Pos)             ///< Falling trigger event configuration bit of line 28
+#define EXTI_FTSR_29_Pos                (29)
+#define EXTI_FTSR_29                    (0x01U << EXTI_FTSR_29_Pos)             ///< Falling trigger event configuration bit of line 29
+#define EXTI_FTSR_30_Pos                (30)
+#define EXTI_FTSR_30                    (0x01U << EXTI_FTSR_30_Pos)             ///< Falling trigger event configuration bit of line 30
+#define EXTI_FTSR_31_Pos                (31)
+#define EXTI_FTSR_31                    (0x01U << EXTI_FTSR_31_Pos)             ///< Falling trigger event configuration bit of line 31
 
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief EXTI_SWIER Register Bit Definition
@@ -5802,6 +5541,20 @@ typedef struct {
 #define EXTI_SWIER_23                   (0x01U << EXTI_SWIER_23_Pos)            ///< Software Interrupt on line  23
 #define EXTI_SWIER_24_Pos               (24)
 #define EXTI_SWIER_24                   (0x01U << EXTI_SWIER_24_Pos)            ///< Software Interrupt on line  24
+#define EXTI_SWIER_25_Pos               (25)
+#define EXTI_SWIER_25                   (0x01U << EXTI_SWIER_25_Pos)            ///< Software Interrupt on line  25
+#define EXTI_SWIER_26_Pos               (26)
+#define EXTI_SWIER_26                   (0x01U << EXTI_SWIER_26_Pos)            ///< Software Interrupt on line  26
+#define EXTI_SWIER_27_Pos               (27)
+#define EXTI_SWIER_27                   (0x01U << EXTI_SWIER_27_Pos)            ///< Software Interrupt on line  27
+#define EXTI_SWIER_28_Pos               (28)
+#define EXTI_SWIER_28                   (0x01U << EXTI_SWIER_28_Pos)            ///< Software Interrupt on line  28
+#define EXTI_SWIER_29_Pos               (29)
+#define EXTI_SWIER_29                   (0x01U << EXTI_SWIER_29_Pos)            ///< Software Interrupt on line  29
+#define EXTI_SWIER_30_Pos               (30)
+#define EXTI_SWIER_30                   (0x01U << EXTI_SWIER_30_Pos)            ///< Software Interrupt on line  30
+#define EXTI_SWIER_31_Pos               (31)
+#define EXTI_SWIER_31                   (0x01U << EXTI_SWIER_31_Pos)            ///< Software Interrupt on line  31
 
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief EXTI_PR Register Bit Definition
@@ -5856,6 +5609,20 @@ typedef struct {
 #define EXTI_PR_23                      (0x01U << EXTI_PR_23_Pos)               ///< Pending bit 23
 #define EXTI_PR_24_Pos                  (24)
 #define EXTI_PR_24                      (0x01U << EXTI_PR_24_Pos)               ///< Pending bit 24
+#define EXTI_PR_25_Pos                  (25)
+#define EXTI_PR_25                      (0x01U << EXTI_PR_25_Pos)               ///< Pending bit 25
+#define EXTI_PR_26_Pos                  (26)
+#define EXTI_PR_26                      (0x01U << EXTI_PR_26_Pos)               ///< Pending bit 26
+#define EXTI_PR_27_Pos                  (27)
+#define EXTI_PR_27                      (0x01U << EXTI_PR_27_Pos)               ///< Pending bit 27
+#define EXTI_PR_28_Pos                  (28)
+#define EXTI_PR_28                      (0x01U << EXTI_PR_28_Pos)               ///< Pending bit 28
+#define EXTI_PR_29_Pos                  (29)
+#define EXTI_PR_29                      (0x01U << EXTI_PR_29_Pos)               ///< Pending bit 29
+#define EXTI_PR_30_Pos                  (30)
+#define EXTI_PR_30                      (0x01U << EXTI_PR_30_Pos)               ///< Pending bit 30
+#define EXTI_PR_31_Pos                  (31)
+#define EXTI_PR_31                      (0x01U << EXTI_PR_31_Pos)               ///< Pending bit 31
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief FLASH_ACR Register Bit Definition
 ////////////////////////////////////////////////////////////////////////////////

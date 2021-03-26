@@ -587,6 +587,12 @@ typedef enum IRQn {
 #define FLASH_REG_BASE                  (0x40022000U)                           ///< Base Address: AHB 0x40022000
 
 ////////////////////////////////////////////////////////////////////////////////
+/// @brief FLASH OPTB Base Address Definition
+////////////////////////////////////////////////////////////////////////////////
+#define FLASH_OB_BASE                   (0x1FFFF800U)                           ///< Flash Option Bytes base address
+#define FLASH_PROTECT_BASE              (0x1FFE0000U)                           ///< Flash Protect Bytes base address
+
+////////////////////////////////////////////////////////////////////////////////
 /// @brief GPIO Base Address Definition
 ////////////////////////////////////////////////////////////////////////////////
 #if defined(__MM3N1)
@@ -641,12 +647,6 @@ typedef enum IRQn {
 #if defined(__MM0P1)
     #define OPAMP_BASE                  (0x40013C10U)                           ///< Base Address: APB2 0x40013C10
 #endif
-
-////////////////////////////////////////////////////////////////////////////////
-/// @brief OPTB Base Address Definition
-////////////////////////////////////////////////////////////////////////////////
-#define OB_BASE                         (0x1FFFF800U)                           ///< Flash Option Bytes base address
-#define PROTECT_BASE                    (0x1FFE0000U)                           ///< Flash Protect Bytes base address
 
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief OTG_FS Base Address Definition
@@ -1469,6 +1469,34 @@ typedef struct {
 } FLASH_TypeDef;
 
 ////////////////////////////////////////////////////////////////////////////////
+/// @brief  OPT Structure Definition
+////////////////////////////////////////////////////////////////////////////////
+typedef struct {
+    __IO uint16_t RDP;                                                          ///< Read Protect,                          offset: 0x00
+    __IO uint16_t USER;                                                         ///< User option byte,                      offset: 0x02
+    __IO uint16_t DR0;                                                          ///< User data 0,                           offset: 0x04
+    __IO uint16_t DR1;                                                          ///< User data 1,                           offset: 0x06
+    __IO uint16_t WRP0;                                                         ///< Flash write protection option byte 0,  offset: 0x08
+    __IO uint16_t WRP1;                                                         ///< Flash write protection option byte 1,  offset: 0x0A
+    __IO uint16_t WRP2;                                                         ///< Flash write protection option byte 2,  offset: 0x0C
+    __IO uint16_t WRP3;                                                         ///< Flash write protection option byte 3,  offset: 0x0E
+} FLASH_OB_TypeDef;
+
+////////////////////////////////////////////////////////////////////////////////
+/// @brief  PROTECT BYTES Structure Definition
+////////////////////////////////////////////////////////////////////////////////
+typedef struct {
+    __IO uint16_t LEN0;                                                         ///< The length of Protect byte 0,  offset: 0x00
+    __IO uint16_t ADDR0;                                                        ///< Data of Protect byte 0,        offset: 0x02
+    __IO uint16_t LEN1;                                                         ///< The length of Protect byte 1,  offset: 0x04
+    __IO uint16_t ADDR1;                                                        ///< Data of Protect byte 1,        offset: 0x06
+    __IO uint16_t LEN2;                                                         ///< The length of Protect byte 2,  offset: 0x08
+    __IO uint16_t ADDR2;                                                        ///< Data of Protect byte 2,        offset: 0x0A
+    __IO uint16_t LEN3;                                                         ///< The length of Protect byte 3,  offset: 0x0C
+    __IO uint16_t ADDR3;                                                        ///< Data of Protect byte 3,        offset: 0x0E
+} FLASH_PROTECT_TypeDef;
+
+////////////////////////////////////////////////////////////////////////////////
 /// @brief GPIO Registers Structure Definition
 ////////////////////////////////////////////////////////////////////////////////
 typedef struct {
@@ -1569,34 +1597,6 @@ typedef struct {
     __IO uint32_t CSR;                                                          ///< OPAMP Control Status Register                  Offset: 0x00
 }OPAMP_TypeDef;
 #endif
-
-////////////////////////////////////////////////////////////////////////////////
-/// @brief  OPT Structure Definition
-////////////////////////////////////////////////////////////////////////////////
-typedef struct {
-    __IO uint16_t RDP;                                                          ///< Read Protect,                          offset: 0x00
-    __IO uint16_t USER;                                                         ///< User option byte,                      offset: 0x02
-    __IO uint16_t Data0;                                                        ///< User data 0,                           offset: 0x04
-    __IO uint16_t Data1;                                                        ///< User data 1,                           offset: 0x06
-    __IO uint16_t WRP0;                                                         ///< Flash write protection option byte 0,  offset: 0x08
-    __IO uint16_t WRP1;                                                         ///< Flash write protection option byte 1,  offset: 0x0A
-    __IO uint16_t WRP2;                                                         ///< Flash write protection option byte 2,  offset: 0x0C
-    __IO uint16_t WRP3;                                                         ///< Flash write protection option byte 3,  offset: 0x0E
-} OB_TypeDef;
-
-////////////////////////////////////////////////////////////////////////////////
-/// @brief  PROTECT BYTES Structure Definition
-////////////////////////////////////////////////////////////////////////////////
-typedef struct {
-    __IO uint16_t PROTECT_LEN0;                                                 ///< The length of Protect byte 0,  offset: 0x00
-    __IO uint16_t PROTECT_ADDR0;                                                ///< Data of Protect byte 0,        offset: 0x02
-    __IO uint16_t PROTECT_LEN1;                                                 ///< The length of Protect byte 1,  offset: 0x04
-    __IO uint16_t PROTECT_ADDR1;                                                ///< Data of Protect byte 1,        offset: 0x06
-    __IO uint16_t PROTECT_LEN2;                                                 ///< The length of Protect byte 2,  offset: 0x08
-    __IO uint16_t PROTECT_ADDR2;                                                ///< Data of Protect byte 2,        offset: 0x0A
-    __IO uint16_t PROTECT_LEN3;                                                 ///< The length of Protect byte 3,  offset: 0x0C
-    __IO uint16_t PROTECT_ADDR3;                                                ///< Data of Protect byte 3,        offset: 0x0E
-} PROTECT_TypeDef;
 
 #if defined(OTG_FS_BASE)
 ////////////////////////////////////////////////////////////////////////////////
@@ -2297,6 +2297,12 @@ typedef struct {
 #define FLASH                           ((FLASH_TypeDef*) FLASH_REG_BASE)
 
 ////////////////////////////////////////////////////////////////////////////////
+/// @brief OPTB type pointer Definition
+////////////////////////////////////////////////////////////////////////////////
+#define FLASH_OB                        ((FLASH_OB_TypeDef*) FLASH_OB_BASE)
+#define FLASH_PROTECT                   ((FLASH_PROTECT_TypeDef*) FLASH_PROTECT_BASE)
+
+////////////////////////////////////////////////////////////////////////////////
 /// @brief GPIO type pointer Definition
 ////////////////////////////////////////////////////////////////////////////////
 #define GPIOA                           ((GPIO_TypeDef*) GPIOA_BASE)
@@ -2345,12 +2351,6 @@ typedef struct {
 #if defined(OPAMP_BASE)
     #define OPAMP                       ((OPAMP_TypeDef*) OPAMP_BASE)
 #endif
-
-////////////////////////////////////////////////////////////////////////////////
-/// @brief OPTB type pointer Definition
-////////////////////////////////////////////////////////////////////////////////
-#define OB                              ((OB_TypeDef*) OB_BASE)
-#define PROTECT                         ((PROTECT_TypeDef*) PROTECT_BASE)
 
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief OTG_FS type pointer Definition

@@ -5628,20 +5628,26 @@ typedef struct {
 ////////////////////////////////////////////////////////////////////////////////
 #define FLASH_ACR_LATENCY_Pos           (0)
 #define FLASH_ACR_LATENCY               (0x07U << FLASH_ACR_LATENCY_Pos)        ///< LATENCY[2:0] bits (Latency)
-#define FLASH_ACR_LATENCY_0             (0x00U << FLASH_ACR_LATENCY_Pos)        ///< 0 waiting state
-#define FLASH_ACR_LATENCY_1             (0x01U << FLASH_ACR_LATENCY_Pos)        ///< 1 waiting state
-#define FLASH_ACR_LATENCY_2             (0x02U << FLASH_ACR_LATENCY_Pos)        ///< 2 waiting state
-#define FLASH_ACR_LATENCY_3             (0x03U << FLASH_ACR_LATENCY_Pos)        ///< 3 waiting state
+#define FLASH_ACR_LATENCY_0             (0x00U << FLASH_ACR_LATENCY_Pos)        ///< 0 waiting state 0   ~ 24 MHz
+#define FLASH_ACR_LATENCY_1             (0x01U << FLASH_ACR_LATENCY_Pos)        ///< 1 waiting state 24  ~ 48 MHz
+#define FLASH_ACR_LATENCY_2             (0x02U << FLASH_ACR_LATENCY_Pos)        ///< 2 waiting state 48  ~ 72 MHz
+#define FLASH_ACR_LATENCY_3             (0x03U << FLASH_ACR_LATENCY_Pos)        ///< 3 waiting state 72  ~ 96 MHz
+#define FLASH_ACR_LATENCY_4             (0x04U << FLASH_ACR_LATENCY_Pos)        ///< 4 waiting state 96  ~ 120 MHz
+#define FLASH_ACR_LATENCY_5             (0x05U << FLASH_ACR_LATENCY_Pos)        ///< 5 waiting state 120 ~ 144 MHz
+#define FLASH_ACR_LATENCY_6             (0x06U << FLASH_ACR_LATENCY_Pos)        ///< 6 waiting state 144 ~ 168 MHz
+#define FLASH_ACR_LATENCY_7             (0x07U << FLASH_ACR_LATENCY_Pos)        ///< 7 waiting state 168 ~ 192 MHz
 
 #if defined(__MM3N1) || defined(__MM0N1) || defined(__MM3O1) ||defined(__MM0P1) || defined(__MM0Q1)
     #define FLASH_ACR_HLFCYA_Pos        (3)
     #define FLASH_ACR_HLFCYA            (0x01U << FLASH_ACR_HLFCYA_Pos)         ///< Flash Half Cycle Access Enable
 #endif
 
-#define FLASH_ACR_PRFTBE_Pos            (4)
-#define FLASH_ACR_PRFTBE                (0x01U << FLASH_ACR_PRFTBE_Pos)         ///< Prefetch Buffer Enable
+#if defined(__MM3N1) || defined(__MM0N1) || defined(__MM3O1) || defined(__MM0Q1) || defined(__MM0S1) || defined(__MM3U1)
+    #define FLASH_ACR_PRFTBE_Pos        (4)
+    #define FLASH_ACR_PRFTBE            (0x01U << FLASH_ACR_PRFTBE_Pos)         ///< Prefetch Buffer Enable
+#endif
 
-#if !defined(__MM0T1)
+#if defined(__MM0S1) || defined(__MM3U1)
     #define FLASH_ACR_PRFTBS_Pos        (5)
     #define FLASH_ACR_PRFTBS            (0x01U << FLASH_ACR_PRFTBS_Pos)         ///< Prefetch Buffer Status
 #endif

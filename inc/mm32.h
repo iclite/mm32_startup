@@ -5846,9 +5846,9 @@ typedef struct {
 
 #define FSMC_CR_DWSET0_Pos              (7)
 #define FSMC_CR_DWSET0                  ((0x07U) << FSMC_CR_DWSET0_Pos)
-#define FSMC_CR_DWSET0_16B              ((0x00U) << FSMC_CR_DWSET0_Pos)
-#define FSMC_CR_DWSET0_32B              ((0x01U) << FSMC_CR_DWSET0_Pos)
-#define FSMC_CR_DWSET0_8B               ((0x04U) << FSMC_CR_DWSET0_Pos)
+#define FSMC_CR_DWSET0_16b              ((0x00U) << FSMC_CR_DWSET0_Pos)
+#define FSMC_CR_DWSET0_32b              ((0x01U) << FSMC_CR_DWSET0_Pos)
+#define FSMC_CR_DWSET0_8b               ((0x04U) << FSMC_CR_DWSET0_Pos)
 
 #define FSMC_CR_DWSET1_Pos              (10)
 #define FSMC_CR_DWSET1                  ((0x07U) << FSMC_CR_DWSET1_Pos)

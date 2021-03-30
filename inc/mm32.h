@@ -5807,7 +5807,7 @@ typedef struct {
 #define FSMC_MR_MEMTYPE                 ((0x07U) << FSMC_MR_MEMTYPE_Pos)
 #define FSMC_MR_MEMTYPE_SRAM            ((0x01U) << FSMC_MR_MEMTYPE_Pos)
 #define FSMC_MR_MEMTYPE_FLASH           ((0x02U) << FSMC_MR_MEMTYPE_Pos)
-#define FSMC_MR_MEMTYPE_FPSRAM          ((0x03U) << FSMC_MR_MEMTYPE_Pos)
+#define FSMC_MR_MEMTYPE_PSRAM           ((0x03U) << FSMC_MR_MEMTYPE_Pos)
 
 #define FSMC_MR_REGSEL_Pos              (8)
 #define FSMC_MR_REGSEL                  ((0x07U) << FSMC_MR_REGSEL_Pos)

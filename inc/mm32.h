@@ -10424,6 +10424,8 @@ typedef struct {
     #define SYSCFG_CFGR_FSMCODATA       (0x01U << SYSCFG_CFGR_FSMCODATA_Pos)    ///< FSMC address data multiplexing pin enable
     #define SYSCFG_CFGR_FSMCMODE_Pos    (29)
     #define SYSCFG_CFGR_FSMCMODE        (0x03U << SYSCFG_CFGR_FSMCMODE_Pos)     ///< FSMC mode selection
+    #define SYSCFG_CFGR_FSMCMODE_NORFLASH   (0x00U << SYSCFG_CFGR_FSMCMODE_Pos) ///< FSMC mode selection
+    #define SYSCFG_CFGR_FSMCMODE_8080   (0x01U << SYSCFG_CFGR_FSMCMODE_Pos)     ///< FSMC mode selection
 #endif
 
 #if defined(__MM3O1)

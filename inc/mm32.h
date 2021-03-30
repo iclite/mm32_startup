@@ -593,6 +593,18 @@ typedef enum IRQn {
 #define FLASH_PROTECT_BASE              (0x1FFE0000U)                           ///< Flash Protect Bytes base address
 
 ////////////////////////////////////////////////////////////////////////////////
+/// @brief FSMC type pointer Definition
+////////////////////////////////////////////////////////////////////////////////
+#if defined(__MM3O1) || defined(__MM3U1)
+    #define FSMC_BASE                   (0xA0000000U)
+    #define FSMC_REG_BASE               (0xA0000000U)                           ///< Flexible Static Memory Controller register base address.
+    #define FSMC_BANK1_BASE             (0x60000000U)
+    #define FSMC_BANK2_BASE             (0x64000000U)
+    #define FSMC_BANK3_BASE             (0x68000000U)
+    #define FSMC_BANK4_BASE             (0x6C000000U)
+#endif
+
+////////////////////////////////////////////////////////////////////////////////
 /// @brief GPIO Base Address Definition
 ////////////////////////////////////////////////////////////////////////////////
 #if defined(__MM3N1)
@@ -1497,6 +1509,22 @@ typedef struct {
 } FLASH_PROTECT_TypeDef;
 
 ////////////////////////////////////////////////////////////////////////////////
+/// @brief FSMC Register Structure Definition
+////////////////////////////////////////////////////////////////////////////////
+#if defined(FSMC_BASE)
+typedef struct {
+    __IO uint32_t RESERVED0[21];                                                ///<                    offset address: 0x00 ~ 0x50
+    __IO uint32_t MR;                                                           ///< Mask Register,     offset address: 0x54
+    __IO uint32_t RESERVED1[15];                                                ///<                    offset address: 0x58 ~ 0x90
+    __IO uint32_t TR0;                                                          ///< Timing Register 0, offset address: 0x94
+    __IO uint32_t TR1;                                                          ///< Timing Register 1, offset address: 0x98
+    __IO uint32_t TR2;                                                          ///< Timing Register 2, offset address: 0x9C
+    __IO uint32_t RESERVED2[15];                                                ///<                    offset address: 0xA0
+    __IO uint32_t CR;                                                           ///< Control Register,  offset address: 0xA4
+} FSMC_TypeDef;
+#endif
+
+////////////////////////////////////////////////////////////////////////////////
 /// @brief GPIO Registers Structure Definition
 ////////////////////////////////////////////////////////////////////////////////
 typedef struct {
@@ -2301,6 +2329,11 @@ typedef struct {
 ////////////////////////////////////////////////////////////////////////////////
 #define FLASH_OB                        ((FLASH_OB_TypeDef*) FLASH_OB_BASE)
 #define FLASH_PROTECT                   ((FLASH_PROTECT_TypeDef*) FLASH_PROTECT_BASE)
+
+////////////////////////////////////////////////////////////////////////////////
+/// @brief FSMC type pointer Definition
+////////////////////////////////////////////////////////////////////////////////
+#define FSMC                            ((FSMC_TypeDef*) FSMC_BASE)
 
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief GPIO type pointer Definition
@@ -5754,6 +5787,89 @@ typedef struct {
     #define FLASH_WRPR_WRP_Pos          (0)
     #define FLASH_WRPR_WRP              (0x0FU << FLASH_WRPR_WRP_Pos)           ///< Write Protect
 #endif
+////////////////////////////////////////////////////////////////////////////////
+/// @brief FSMC_MR Register Bit Definition
+////////////////////////////////////////////////////////////////////////////////
+#define FSMC_MR_MEMSIZE_Pos             (0)
+#define FSMC_MR_MEMSIZE                 ((0x1FU) << FSMC_MR_MEMSIZE_Pos)
+#define FSMC_MR_MEMSIZE_NoDevice        ((0x00U) << FSMC_MR_MEMSIZE_Pos)
+#define FSMC_MR_MEMSIZE_64KB            ((0x01U) << FSMC_MR_MEMSIZE_Pos)
+#define FSMC_MR_MEMSIZE_128KB           ((0x02U) << FSMC_MR_MEMSIZE_Pos)
+#define FSMC_MR_MEMSIZE_256KB           ((0x03U) << FSMC_MR_MEMSIZE_Pos)
+#define FSMC_MR_MEMSIZE_512KB           ((0x04U) << FSMC_MR_MEMSIZE_Pos)
+#define FSMC_MR_MEMSIZE_1MB             ((0x05U) << FSMC_MR_MEMSIZE_Pos)
+#define FSMC_MR_MEMSIZE_2MB             ((0x06U) << FSMC_MR_MEMSIZE_Pos)
+#define FSMC_MR_MEMSIZE_4MB             ((0x07U) << FSMC_MR_MEMSIZE_Pos)
+#define FSMC_MR_MEMSIZE_8MB             ((0x08U) << FSMC_MR_MEMSIZE_Pos)
+#define FSMC_MR_MEMSIZE_16MB            ((0x09U) << FSMC_MR_MEMSIZE_Pos)
+#define FSMC_MR_MEMSIZE_32MB            ((0x0AU) << FSMC_MR_MEMSIZE_Pos)
+#define FSMC_MR_MEMSIZE_64MB            ((0x0BU) << FSMC_MR_MEMSIZE_Pos)
+#define FSMC_MR_MEMSIZE_128MB           ((0x0CU) << FSMC_MR_MEMSIZE_Pos)
+#define FSMC_MR_MEMSIZE_256MB           ((0x0DU) << FSMC_MR_MEMSIZE_Pos)
+#define FSMC_MR_MEMSIZE_512MB           ((0x0EU) << FSMC_MR_MEMSIZE_Pos)
+#define FSMC_MR_MEMSIZE_1GB             ((0x0FU) << FSMC_MR_MEMSIZE_Pos)
+#define FSMC_MR_MEMSIZE_2GB             ((0x10U) << FSMC_MR_MEMSIZE_Pos)
+#define FSMC_MR_MEMSIZE_4GB             ((0x11U) << FSMC_MR_MEMSIZE_Pos)
+
+#define FSMC_MR_MEMTYPE_Pos             (5)
+#define FSMC_MR_MEMTYPE                 ((0x07U) << FSMC_MR_MEMTYPE_Pos)
+#define FSMC_MR_MEMTYPE_SRAM            ((0x01U) << FSMC_MR_MEMTYPE_Pos)
+#define FSMC_MR_MEMTYPE_FLASH           ((0x02U) << FSMC_MR_MEMTYPE_Pos)
+#define FSMC_MR_MEMTYPE_FPSRAM          ((0x03U) << FSMC_MR_MEMTYPE_Pos)
+
+#define FSMC_MR_REGSEL_Pos              (8)
+#define FSMC_MR_REGSEL                  ((0x07U) << FSMC_MR_REGSEL_Pos)
+#define FSMC_MR_REGSEL_SET0             ((0x00U) << FSMC_MR_REGSEL_Pos)
+#define FSMC_MR_REGSEL_SET1             ((0x01U) << FSMC_MR_REGSEL_Pos)
+#define FSMC_MR_REGSEL_SET2             ((0x02U) << FSMC_MR_REGSEL_Pos)
+
+////////////////////////////////////////////////////////////////////////////////
+/// @brief FSMC_TR Register Bit Definition
+////////////////////////////////////////////////////////////////////////////////
+#define FSMC_TR_TR_Pos                  (0)
+#define FSMC_TR_TR                      ((0x3FU) << FSMC_TR_TR_Pos)
+
+#define FSMC_TR_TASET_Pos               (6)
+#define FSMC_TR_TASET                   ((0x03U) << FSMC_TR_TASET_Pos)
+
+#define FSMC_TR_TWREC_Pos               (8)
+#define FSMC_TR_TWREC                   ((0x03U) << FSMC_TR_TWREC_Pos)
+
+#define FSMC_TR_TWPULSE_Pos             (10)
+#define FSMC_TR_TWPULSE                 ((0x3FU) << FSMC_TR_TWPULSE_Pos)
+
+#define FSMC_TR_RMODE_Pos               (26)
+#define FSMC_TR_RMODE                   ((0x01U) << FSMC_TR_RMODE_Pos)
+#define FSMC_TR_RMODE_FSMC              ((0x00U) << FSMC_TR_RMODE_Pos)
+#define FSMC_TR_RMODE_DEVICE            ((0x01U) << FSMC_TR_RMODE_Pos)
+
+#define FSMC_TR_RPIPE_Pos               (26)
+#define FSMC_TR_RPIPE                   ((0x03U) << FSMC_TR_RPIPE_Pos)
+
+////////////////////////////////////////////////////////////////////////////////
+/// @brief FSMC_CR Register Bit Definition
+////////////////////////////////////////////////////////////////////////////////
+#define FSMC_CR_FLASHRP_Pos             (0)
+#define FSMC_CR_FLASHRP                 ((0x01U) << FSMC_CR_FLASHRP_Pos)
+
+#define FSMC_CR_DWSET0_Pos              (7)
+#define FSMC_CR_DWSET0                  ((0x07U) << FSMC_CR_DWSET0_Pos)
+#define FSMC_CR_DWSET0_16B              ((0x00U) << FSMC_CR_DWSET0_Pos)
+#define FSMC_CR_DWSET0_32B              ((0x01U) << FSMC_CR_DWSET0_Pos)
+#define FSMC_CR_DWSET0_8B               ((0x04U) << FSMC_CR_DWSET0_Pos)
+
+#define FSMC_CR_DWSET1_Pos              (10)
+#define FSMC_CR_DWSET1                  ((0x07U) << FSMC_CR_DWSET1_Pos)
+#define FSMC_CR_DWSET1_16B              ((0x00U) << FSMC_CR_DWSET1_Pos)
+#define FSMC_CR_DWSET1_32B              ((0x01U) << FSMC_CR_DWSET1_Pos)
+#define FSMC_CR_DWSET1_8B               ((0x04U) << FSMC_CR_DWSET1_Pos)
+
+#define FSMC_CR_DWSET2_Pos              (13)
+#define FSMC_CR_DWSET2                  ((0x07U) << FSMC_CR_DWSET2_Pos)
+#define FSMC_CR_DWSET2_16B              ((0x00U) << FSMC_CR_DWSET2_Pos)
+#define FSMC_CR_DWSET2_32B              ((0x01U) << FSMC_CR_DWSET2_Pos)
+#define FSMC_CR_DWSET2_8B               ((0x04U) << FSMC_CR_DWSET2_Pos)
+
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief GPIO_CRx Register Bit Definition
 ////////////////////////////////////////////////////////////////////////////////

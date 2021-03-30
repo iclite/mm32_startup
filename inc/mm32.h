@@ -2031,20 +2031,13 @@ typedef struct {
 ////////////////////////////////////////////////////////////////////////////////
 #if defined(SYSCFG_BASE)
 typedef struct {
-#if defined(__MM0N1) || defined (__MM3O1) || defined(__MM0P1) || defined(__MM0Q1) || defined(__MM0S1) || defined(__MM0T1)
     __IO uint32_t CFGR;                                                         ///< SYSCFG configuration register,                      offset: 0x00
-#endif
-#if defined(__MM3U1)
-    __IO uint32_t CFGR1;                                                        ///< SYSCFG configuration register 1,                    offset: 0x00
-#endif
-#if defined(__MM0N1) || defined (__MM3O1) || defined(__MM0P1) || defined(__MM0Q1) || defined(__MM0S1) || defined(__MM0T1) || defined(__MM3U1)
     __IO uint32_t RESERVED;
     __IO uint32_t EXTICR1;                                                      ///< External interrupt configuration register 1,        offset: 0x08
     __IO uint32_t EXTICR2;                                                      ///< External interrupt configuration register 2,        offset: 0x0C
     __IO uint32_t EXTICR3;                                                      ///< External interrupt configuration register 3,        offset: 0x10
     __IO uint32_t EXTICR4;                                                      ///< External interrupt configuration register 4,        offset: 0x14
-#endif
-#if defined(__MM0T1)
+#if defined(__MM0S1) || defined(__MM0T1)
     __IO uint32_t PADHYS;                                                       ///< SYSCFG  PAD configuration register ,                offset: 0x18
 #endif
 #if defined(__MM3U1)
@@ -2520,7 +2513,6 @@ typedef struct {
 #if defined(SYSCFG_BASE)
     #define SYSCFG                      ((SYSCFG_TypeDef*)SYSCFG_BASE)          ///< Base Address: 0x40010000
 #endif
-
 
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief UID type pointer Definition
@@ -10398,36 +10390,46 @@ typedef struct {
     #define UART_ABRCR_LATTEREDGE_Pos   (4)
     #define UART_ABRCR_LATTEREDGE       (0x01U << UART_ABRCR_LATTEREDGE_Pos)
 #endif
+#if defined(SYSCFG_BASE)
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief SYSCFG_CFGR1 Register Bit Definition
 ////////////////////////////////////////////////////////////////////////////////
 #define SYSCFG_CFGR_MEM_MODE_Pos        (0)
 #define SYSCFG_CFGR_MEM_MODE            (0x03U << SYSCFG_CFGR_MEM_MODE_Pos)     ///< Memory selection bit
-#define SYSCFG_CFGR_ADC_Pos             (8)
-#define SYSCFG_CFGR_ADC                 (0x01U << SYSCFG_CFGR_ADC_Pos)          ///< ADC DMA request remap-ping bit
-#define SYSCFG_CFGR_UART1_TX_Pos        (9)
-#define SYSCFG_CFGR_UART1_TX            (0x01U << SYSCFG_CFGR_UART1_TX_Pos)     ///< UART1  TX DMA request remap-ping bit
-#define SYSCFG_CFGR_UART1_RX_Pos        (10)
-#define SYSCFG_CFGR_UART1_RX            (0x01U << SYSCFG_CFGR_UART1_RX_Pos)     ///< UART1 RX DMA request remap-ping bit
-#define SYSCFG_CFGR_TIM16_Pos           (11)
-#define SYSCFG_CFGR_TIM16               (0x01U << SYSCFG_CFGR_TIM16_Pos)        ///< TIM16 DMA request remap-ping bit
-#define SYSCFG_CFGR_TIM17_Pos           (12)
-#define SYSCFG_CFGR_TIM17               (0x01U << SYSCFG_CFGR_TIM17_Pos)        ///< TIM17 DMA request remap-ping bit
 
-#define SYSCFG_CFGR_PD01_Pos            (31)
-#define SYSCFG_CFGR_PD01                (0x01U << SYSCFG_CFGR_PD01_Pos)         ///<Port D0/Port D1 are mapped to OSC_IN/OSC_OUT
+#if defined(__MM0N1) || defined(__MM3O1) || defined(__MM0P1) || defined(__MM0Q1) || defined(__MM0S1)
+    #define SYSCFG_CFGR_ADC_Pos         (8)
+    #define SYSCFG_CFGR_ADC             (0x01U << SYSCFG_CFGR_ADC_Pos)          ///< ADC DMA request remap-ping bit
+    #define SYSCFG_CFGR_UART1_TX_Pos    (9)
+    #define SYSCFG_CFGR_UART1_TX        (0x01U << SYSCFG_CFGR_UART1_TX_Pos)     ///< UART1  TX DMA request remap-ping bit
+    #define SYSCFG_CFGR_UART1_RX_Pos    (10)
+    #define SYSCFG_CFGR_UART1_RX        (0x01U << SYSCFG_CFGR_UART1_RX_Pos)     ///< UART1 RX DMA request remap-ping bit
+#endif
+#if defined(__MM0N1) || defined(__MM0P1) || defined(__MM0Q1) || defined(__MM0S1)
+    #define SYSCFG_CFGR_TIM16_Pos       (11)
+    #define SYSCFG_CFGR_TIM16           (0x01U << SYSCFG_CFGR_TIM16_Pos)        ///< TIM16 DMA request remap-ping bit
+    #define SYSCFG_CFGR_TIM17_Pos       (12)
+    #define SYSCFG_CFGR_TIM17           (0x01U << SYSCFG_CFGR_TIM17_Pos)        ///< TIM17 DMA request remap-ping bit
+#endif
+#if defined(__MM3O1)
+    #define SYSCFG_CFGR_TIM6_Pos        (11)
+    #define SYSCFG_CFGR_TIM6            (0x01U << SYSCFG_CFGR_TIM6_Pos)         ///< TIM16 DMA request remap-ping bit
+    #define SYSCFG_CFGR_TIM7_Pos        (12)
+    #define SYSCFG_CFGR_TIM7            (0x01U << SYSCFG_CFGR_TIM7_Pos)         ///< TIM17 DMA request remap-ping bit
+#endif
+#if defined(__MM3U1)
+    #define SYSCFG_CFGR_FSMCSYNC_Pos    (27)
+    #define SYSCFG_CFGR_FSMCSYNC        (0x01U << SYSCFG_CFGR_FSMCSYNC_Pos)     ///< FSMC synchronization enable
+    #define SYSCFG_CFGR_FSMCODATA_Pos   (28)
+    #define SYSCFG_CFGR_FSMCODATA       (0x01U << SYSCFG_CFGR_FSMCODATA_Pos)    ///< FSMC address data multiplexing pin enable
+    #define SYSCFG_CFGR_FSMCMODE_Pos    (29)
+    #define SYSCFG_CFGR_FSMCMODE        (0x03U << SYSCFG_CFGR_FSMCMODE_Pos)     ///< FSMC mode selection
+#endif
 
-////////////////////////////////////////////////////////////////////////////////
-/// @brief SYSCFG_CFGR1 Register Bit Definition
-////////////////////////////////////////////////////////////////////////////////
-#define SYSCFG_CFGR1_MEM_MODE_Pos       (0)
-#define SYSCFG_CFGR1_MEM_MODE           (0x03U << SYSCFG_CFGR1_MEM_MODE_Pos)    ///< Memory selection bit
-#define SYSCFG_CFGR1_FC_SYNC_Pos        (27)
-#define SYSCFG_CFGR1_FC_SYNC            (0x01U << SYSCFG_CFGR1_FC_SYNC_Pos)     ///< FSMC synchronization enable
-#define SYSCFG_CFGR1_FC_ODATA_Pos       (28)
-#define SYSCFG_CFGR1_FC_ODATA           (0x01U << SYSCFG_CFGR1_FC_ODATA_Pos)    ///< FSMC address data multiplexing pin  enable
-#define SYSCFG_CFGR1_MODESEL_Pos        (29)
-#define SYSCFG_CFGR1_MODESEL            (0x03U << SYSCFG_CFGR1_MODESEL_Pos)     ///< FSMC mode selection
+#if defined(__MM3O1)
+    #define SYSCFG_CFGR_PD01_Pos        (31)
+    #define SYSCFG_CFGR_PD01            (0x01U << SYSCFG_CFGR_PD01_Pos)         ///<Port D0/Port D1 are mapped to OSC_IN/OSC_OUT
+#endif
 
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief SYSCFG_EXTICR1 Register Bit Definition
@@ -10480,44 +10482,53 @@ typedef struct {
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief SYSCFG_PADHYS Register Bit Definition
 ////////////////////////////////////////////////////////////////////////////////
-#define SYSCFG_PADHYS_I2C_MODE_Pos      (0)
-#define SYSCFG_PADHYS_I2C_MODE          (0x01U << SYSCFG_PADHYS_I2C_MODE_Pos)   ///< EXTI I2C1 mode selection
+#if defined(__MM0S1) || defined(__MM0T1)
+    #define SYSCFG_PADHYS_I2C_MODE_Pos  (0)
+    #define SYSCFG_PADHYS_I2C_MODE      (0x01U << SYSCFG_PADHYS_I2C_MODE_Pos)   ///< EXTI I2C1 mode selection
+#endif
 
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief SYSCFG_CFGR2 Register Bit Definition
 ////////////////////////////////////////////////////////////////////////////////
-#define SYSCFG_CFGR2_I2C1_MODE_Pos      (16)
-#define SYSCFG_CFGR2_I2C1_MODE          (0x01U << SYSCFG_CFGR2_I2C1_MODE_Pos)   ///< I2C1 mode selection
-#define SYSCFG_CFGR2_I2C2_MODE_Pos      (17)
-#define SYSCFG_CFGR2_I2C2_MODE          (0x01U << SYSCFG_CFGR2_I2C2_MODE_Pos)   ///< I2C2 mode selection
-#define SYSCFG_CFGR2_MII_RMII_Pos       (20)
-#define SYSCFG_CFGR2_MII_RMII           (0x01U << SYSCFG_CFGR2_MII_RMII_Pos)    ///< Ethernet PHY interface selection
-#define SYSCFG_CFGR2_MAC_SPD_Pos        (21)
-#define SYSCFG_CFGR2_MAC_SPD            (0x01U << SYSCFG_CFGR2_MAC_SPD_Pos)     ///< MAC SPD selection
+#if defined(__MM3U1)
+    #define SYSCFG_CFGR2_I2C1MODE_Pos   (16)
+    #define SYSCFG_CFGR2_I2C1MODE       (0x01U << SYSCFG_CFGR2_I2C1MODE_Pos)    ///< I2C1 mode selection
+    #define SYSCFG_CFGR2_I2C2MODE_Pos   (17)
+    #define SYSCFG_CFGR2_I2C2MODE       (0x01U << SYSCFG_CFGR2_I2C2MODE_Pos)    ///< I2C2 mode selection
+    #define SYSCFG_CFGR2_MIIMODE_Pos    (20)
+    #define SYSCFG_CFGR2_MIIMODE        (0x01U << SYSCFG_CFGR2_MIIMODE_Pos)     ///< Ethernet PHY interface selection
+    #define SYSCFG_CFGR2_RMIISPD_Pos    (21)
+    #define SYSCFG_CFGR2_RMIISPD        (0x01U << SYSCFG_CFGR2_RMIISPD_Pos)     ///< MAC RMII Speed selection
+#endif
 
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief SYSCFG_PDETCSR Register Bit Definition
 ////////////////////////////////////////////////////////////////////////////////
-#define SYSCFG_PDETCSR_PVDE_Pos         (0)
-#define SYSCFG_PDETCSR_PVDE             (0x01U << SYSCFG_PDETCSR_PVDE_Pos)      ///< PVD enable
-#define SYSCFG_PDETCSR_PLS_Pos          (1)
-#define SYSCFG_PDETCSR_PLS              (0x0FU << SYSCFG_PDETCSR_PLS_Pos)       ///< PVD selsection
-#define SYSCFG_PDETCSR_PVDO_Pos         (5)
-#define SYSCFG_PDETCSR_PVDO             (0x01U << SYSCFG_PDETCSR_PVDO_Pos)      ///< PVD output status
-#define SYSCFG_PDETCSR_VDTO_Pos         (6)
-#define SYSCFG_PDETCSR_VDTO             (0x01U << SYSCFG_PDETCSR_VDTO_Pos)      ///< VDTO output status
-#define SYSCFG_PDETCSR_VDTE_Pos         (8)
-#define SYSCFG_PDETCSR_VDTE             (0x01U << SYSCFG_PDETCSR_VDTE_Pos)      ///< VDT enable
-#define SYSCFG_PDETCSR_VDTLS_Pos        (9)
-#define SYSCFG_PDETCSR_VDTLS            (0x03U << SYSCFG_PDETCSR_VDTLS_Pos)     ///< VDT detection threshold selection
-#define SYSCFG_PDETCSR_VBAT_DIV3EN_Pos  (11)
-#define SYSCFG_PDETCSR_VBAT_DIV3EN      (0x01U << SYSCFG_PDETCSR_VBAT_DIV3EN_Pos)   ///< ADC detection VBat_DIV3 partial pressure value enable
+#if defined(__MM3U1)
+    #define SYSCFG_PDETCSR_PVDE_Pos     (0)
+    #define SYSCFG_PDETCSR_PVDE         (0x01U << SYSCFG_PDETCSR_PVDE_Pos)      ///< PVD enable
+    #define SYSCFG_PDETCSR_PLS_Pos      (1)
+    #define SYSCFG_PDETCSR_PLS          (0x0FU << SYSCFG_PDETCSR_PLS_Pos)       ///< PVD selsection
+    #define SYSCFG_PDETCSR_PVDO_Pos     (5)
+    #define SYSCFG_PDETCSR_PVDO         (0x01U << SYSCFG_PDETCSR_PVDO_Pos)      ///< PVD output status
+    #define SYSCFG_PDETCSR_VDTO_Pos     (6)
+    #define SYSCFG_PDETCSR_VDTO         (0x01U << SYSCFG_PDETCSR_VDTO_Pos)      ///< VDTO output status
+    #define SYSCFG_PDETCSR_VDTE_Pos     (8)
+    #define SYSCFG_PDETCSR_VDTE         (0x01U << SYSCFG_PDETCSR_VDTE_Pos)      ///< VDT enable
+    #define SYSCFG_PDETCSR_VDTLS_Pos    (9)
+    #define SYSCFG_PDETCSR_VDTLS        (0x03U << SYSCFG_PDETCSR_VDTLS_Pos)     ///< VDT detection threshold selection
+    #define SYSCFG_PDETCSR_VBATDIV3_Pos (11)
+    #define SYSCFG_PDETCSR_VBATDIV3     (0x01U << SYSCFG_PDETCSR_VBATDIV3_Pos)  ///< ADC detection VBat_DIV3 partial pressure value enable
+#endif
 
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief SYSCFG_VOSDLY Register Bit Definition
 ////////////////////////////////////////////////////////////////////////////////
-#define SYSCFG_VOSDLY_CNT_Pos           (0)
-#define SYSCFG_VOSDLY_CNT               (0x01U << SYSCFG_VOSDLY_CNT_Pos)        ///< VOS delay time
+#if defined(__MM3U1)
+    #define SYSCFG_VOSDLY_CNT_Pos       (0)
+    #define SYSCFG_VOSDLY_CNT           (0x01U << SYSCFG_VOSDLY_CNT_Pos)        ///< VOS delay time
+#endif
+#endif
 #if defined(USB_BASE)
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief USB_TOP Register Bit Definition

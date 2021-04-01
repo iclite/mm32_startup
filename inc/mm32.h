@@ -1554,44 +1554,44 @@ typedef struct {
     __IO uint32_t CR;                                                           ///< Control Register                               offset: 0x00
     __IO uint32_t TAR;                                                          ///< Target Address Register                        offset: 0x04
     __IO uint32_t SAR;                                                          ///< Slave Address Register                         offset: 0x08
-    __IO uint32_t RESERVED3;
+    __IO uint32_t RESERVED3;                                                    //                                                  offset: 0x0C
     __IO uint32_t DR;                                                           ///< Data Command Register                          offset: 0x10
-    __IO uint32_t SSHR;                                                         ///< SCL High Period Count for Std. Speed Register  offset: 0x14
-    __IO uint32_t SSLR;                                                         ///< SCL Low Period Count for Std. Speed Register   offset: 0x18
+    __IO uint32_t SSHR;                                                         ///< SCL High Period Count for Stand Speed Register offset: 0x14
+    __IO uint32_t SSLR;                                                         ///< SCL Low Period Count for Stand Speed Register  offset: 0x18
     __IO uint32_t FSHR;                                                         ///< SCL High Period Count for Fast Speed Register  offset: 0x1C
     __IO uint32_t FSLR;                                                         ///< SCL Low Period Count for Fast Speed Register   offset: 0x20
-    __IO uint32_t RESERVED9;
-    __IO uint32_t RESERVED10;
+    __IO uint32_t RESERVED9;                                                    //                                                  offset: 0x24
+    __IO uint32_t RESERVED10;                                                   //                                                  offset: 0x28
     __IO uint32_t ISR;                                                          ///< Interrupt Status Register                      offset: 0x2C
     __IO uint32_t IMR;                                                          ///< Interrupt Mask Register                        offset: 0x30
     __IO uint32_t RAWISR;                                                       ///< RAW Interrupt Status Register                  offset: 0x34
     __IO uint32_t RXTLR;                                                        ///< Receive FIFO Threshold Level Register          offset: 0x38
     __IO uint32_t TXTLR;                                                        ///< Transmit FIFO Threshold Level Register         offset: 0x3C
-    __IO uint32_t ICR;                                                          ///< Clear All Interrupt Register                   offset: 0x40
-    __IO uint32_t RX_UNDER;                                                     ///< Clear RX_UNDER Interrupt Register              offset: 0x44
-    __IO uint32_t RX_OVER;                                                      ///< Clear RX_OVER Interrupt Register               offset: 0x48
-    __IO uint32_t TX_OVER;                                                      ///< Clear TX_OVER Interrupt Register               offset: 0x4C
-    __IO uint32_t RD_REQ;                                                       ///< Clear RD_REQ Interrupt Register                offset: 0x50
-    __IO uint32_t TX_ABRT;                                                      ///< Clear TX_ABRT Interrupt Register               offset: 0x54
-    __IO uint32_t RX_DONE;                                                      ///< Clear RX_DONE Interrupt Register               offset: 0x58
-    __IO uint32_t ACTIV;                                                        ///< Clear ACTIVITY Interrupt Register              offset: 0x5C
-    __IO uint32_t STOP;                                                         ///< Clear STOP_DET Interrupt Register              offset: 0x60
-    __IO uint32_t START;                                                        ///< Clear START_DET Interrupt Register             offset: 0x64
-    __IO uint32_t GC;                                                           ///< Clear GEN_CALL Interrupt Register              offset: 0x68
+    __IO uint32_t ICR;                                                          ///< Interrupt Clear All Register                   offset: 0x40
+    __IO uint32_t RXUNDERCR;                                                    ///< RX_UNDER Interrupt Clear Register              offset: 0x44
+    __IO uint32_t RXOVERCR;                                                     ///< RX_OVER Interrupt Clear Register               offset: 0x48
+    __IO uint32_t TXOVERCR;                                                     ///< TX_OVER Interrupt Clear Register               offset: 0x4C
+    __IO uint32_t RDREQCR;                                                      ///< RD_REQ Interrupt Clear Register                offset: 0x50
+    __IO uint32_t TXABRTCR;                                                     ///< TX_ABRT Interrupt Clear Register               offset: 0x54
+    __IO uint32_t RXDONECR;                                                     ///< RX_DONE Interrupt Clear Register               offset: 0x58
+    __IO uint32_t ACTIVCR;                                                      ///< ACTIVITY Interrupt Clear Register              offset: 0x5C
+    __IO uint32_t STOPCR;                                                       ///< STOP_DET Interrupt Clear Register              offset: 0x60
+    __IO uint32_t STARTCR;                                                      ///< START_DET Interrupt Clear Register             offset: 0x64
+    __IO uint32_t GCCR;                                                         ///< GEN_CALL Interrupt Clear Register              offset: 0x68
     __IO uint32_t ENR;                                                          ///< Enable Register                                offset: 0x6C
     __IO uint32_t SR;                                                           ///< Status Register                                offset: 0x70
     __IO uint32_t TXFLR;                                                        ///< Transmit FIFO Level Register                   offset: 0x74
     __IO uint32_t RXFLR;                                                        ///< Receive FIFO Level Register                    offset: 0x78
-    __IO uint32_t HOLD;                                                         ///< SDA Hold Time Register                         offset: 0x7C
-    __IO uint32_t RESERVED28;
-    __IO uint32_t RESERVED29;
-    __IO uint32_t DMA;                                                          ///< DMA Control Register                           offset: 0x88
-    __IO uint32_t RESERVED30;
-    __IO uint32_t RESERVED31;
-    __IO uint32_t SETUP;                                                        ///< SDA Setup Time Register                        offset: 0x94
-    __IO uint32_t GCR;                                                          ///< ACK General Call Register                      offset: 0x98
+    __IO uint32_t SHR;                                                          ///< SDA Hold Time Register                         offset: 0x7C
+    __IO uint32_t RESERVED28;                                                   //                                                  offset: 0x80
+    __IO uint32_t RESERVED29;                                                   //                                                  offset: 0x84
+    __IO uint32_t DMACR;                                                        ///< DMA Control Register                           offset: 0x88
+    __IO uint32_t RESERVED30;                                                   //                                                  offset: 0x8C
+    __IO uint32_t RESERVED31;                                                   //                                                  offset: 8x90
+    __IO uint32_t SSR;                                                          ///< SDA Setup Time Register                        offset: 0x94
+    __IO uint32_t GCAR;                                                         ///< General Call ACK Register                      offset: 0x98
     __IO uint32_t RESERVED32[5];                                                //                                                  offset: 0x9C, 0xA0, 0xA4, 0xA8, 0xAC
-    __IO uint32_t SMR;                                                          ///< Slave mask register                            offset: 0xB0
+    __IO uint32_t SAMR;                                                         ///< Slave address mask register                            offset: 0xB0
     __IO uint32_t SRAR;                                                         ///< Slave reviced address register                 offset: 0xB4
 } I2C_TypeDef;
 
@@ -6131,7 +6131,7 @@ typedef struct {
     #define GPIO_AFRH_AFR15             (0x0FU << GPIO_AFRH_AFR15_Pos)          ///< Multiplexing function selection for bit 15 of portx
 #endif
 ////////////////////////////////////////////////////////////////////////////////
-/// @brief I2C_CR Register Bit Definition
+/// @brief I2C Control Register Bit Definition
 ////////////////////////////////////////////////////////////////////////////////
 #define I2C_CR_MASTER_Pos               (0)
 #define I2C_CR_MASTER                   (0x01U << I2C_CR_MASTER_Pos)            ///< I2C master mode enable
@@ -6169,7 +6169,7 @@ typedef struct {
 #endif
 
 ////////////////////////////////////////////////////////////////////////////////
-/// @brief I2C_TAR Register Bit Definition
+/// @brief I2C Target Address Register Bit Definition
 ////////////////////////////////////////////////////////////////////////////////
 #define I2C_TAR_ADDR_Pos                (0)
 #define I2C_TAR_ADDR                    (0x03FFU << I2C_TAR_ADDR_Pos)           ///< Target address for master mode
@@ -6179,13 +6179,13 @@ typedef struct {
 #define I2C_TAR_SPECIAL                 (0x01U << I2C_TAR_SPECIAL_Pos)          ///< Special command enable like General Call or START byte
 
 ////////////////////////////////////////////////////////////////////////////////
-/// @brief I2C_SAR Register Bit Definition
+/// @brief I2C Slave Address Register Bit Definition
 ////////////////////////////////////////////////////////////////////////////////
 #define I2C_SAR_ADDR_Pos                (0)
 #define I2C_SAR_ADDR                    (0x03FFU << I2C_SAR_ADDR_Pos)           ///< Slave address
 
 ////////////////////////////////////////////////////////////////////////////////
-/// @brief I2C_DR Register Bit Definition
+/// @brief I2C Data Register Bit Definition
 ////////////////////////////////////////////////////////////////////////////////
 #define I2C_DR_DAT_Pos                  (0)
 #define I2C_DR_DAT                      (0xFFU << I2C_DR_DAT_Pos)               ///< The data to be transmitted or received
@@ -6200,48 +6200,48 @@ typedef struct {
 #endif
 
 ////////////////////////////////////////////////////////////////////////////////
-/// @brief I2C_SSHR Register Bit Definition
+/// @brief I2C Stand Speed SCL High Level Counter Register Bit Definition
 ////////////////////////////////////////////////////////////////////////////////
 #define I2C_SSHR_CNT_Pos                (0)
 #define I2C_SSHR_CNT                    (0xFFFFU << I2C_SSHR_CNT_Pos)           ///< SCL clock high period count for standard speed
 
 ////////////////////////////////////////////////////////////////////////////////
-/// @brief I2C_SSLR Register Bit Definition
+/// @brief I2C Stand Speed SCL Low Level Counter Register Bit Definition
 ////////////////////////////////////////////////////////////////////////////////
 #define I2C_SSLR_CNT_Pos                (0)
 #define I2C_SSLR_CNT                    (0xFFFFU << I2C_SSLR_CNT_Pos)           ///< SCL clock low period count for standard speed
 
 ////////////////////////////////////////////////////////////////////////////////
-/// @brief I2C_FSHR Register Bit Definition
+/// @brief I2C Fast Speed SCL High Level Counter Register Bit Definition
 ////////////////////////////////////////////////////////////////////////////////
 #define I2C_FSHR_CNT_Pos                (0)
 #define I2C_FSHR_CNT                    (0xFFFFU << I2C_FSHR_CNT_Pos)           ///< SCL clock high period count for fast speed
 
 ////////////////////////////////////////////////////////////////////////////////
-/// @brief I2C_FSLR Register Bit Definition
+/// @brief I2C Fast Speed SCL Low Level Counter Register Bit Definition
 ////////////////////////////////////////////////////////////////////////////////
 #define I2C_FSLR_CNT_Pos                (0)
 #define I2C_FSLR_CNT                    (0xFFFFU << I2C_FSLR_CNT_Pos)           ///< SCL clock low period count for fast speed
 
 ////////////////////////////////////////////////////////////////////////////////
-/// @brief I2C_ISR Register Bit Definition
+/// @brief I2C Interrupt Status Register Bit Definition
 ////////////////////////////////////////////////////////////////////////////////
-#define I2C_ISR_RX_UNDER_Pos            (0)
-#define I2C_ISR_RX_UNDER                (0x01U << I2C_ISR_RX_UNDER_Pos)         ///< RX_UNDER interrupt status
-#define I2C_ISR_RX_OVER_Pos             (1)
-#define I2C_ISR_RX_OVER                 (0x01U << I2C_ISR_RX_OVER_Pos)          ///< RX_OVER interrupt status
-#define I2C_ISR_RX_FULL_Pos             (2)
-#define I2C_ISR_RX_FULL                 (0x01U << I2C_ISR_RX_FULL_Pos)          ///< RX_FULL interrupt status
-#define I2C_ISR_TX_OVER_Pos             (3)
-#define I2C_ISR_TX_OVER                 (0x01U << I2C_ISR_TX_OVER_Pos)          ///< TX_OVER interrupt status
-#define I2C_ISR_TX_EMPTY_Pos            (4)
-#define I2C_ISR_TX_EMPTY                (0x01U << I2C_ISR_TX_EMPTY_Pos)         ///< TX_EMPTY interrupt status
-#define I2C_ISR_RX_REQ_Pos              (5)
-#define I2C_ISR_RX_REQ                  (0x01U << I2C_ISR_RX_REQ_Pos)           ///< RX_REQ interrupt status
-#define I2C_ISR_TX_ABRT_Pos             (6)
-#define I2C_ISR_TX_ABRT                 (0x01U << I2C_ISR_TX_ABRT_Pos)          ///< TX_ABRT interrupt status
-#define I2C_ISR_RX_DONE_Pos             (7)
-#define I2C_ISR_RX_DONE                 (0x01U << I2C_ISR_RX_DONE_Pos)          ///< RX_DONE interrupt status
+#define I2C_ISR_RXUNDER_Pos             (0)
+#define I2C_ISR_RXUNDER                 (0x01U << I2C_ISR_RXUNDER_Pos)          ///< RX_UNDER interrupt status
+#define I2C_ISR_RXOVER_Pos              (1)
+#define I2C_ISR_RXOVER                  (0x01U << I2C_ISR_RXOVER_Pos)           ///< RX_OVER interrupt status
+#define I2C_ISR_RXFULL_Pos              (2)
+#define I2C_ISR_RXFULL                  (0x01U << I2C_ISR_RXFULL_Pos)           ///< RX_FULL interrupt status
+#define I2C_ISR_TXOVER_Pos              (3)
+#define I2C_ISR_TXOVER                  (0x01U << I2C_ISR_TXOVER_Pos)           ///< TX_OVER interrupt status
+#define I2C_ISR_TXEMPTY_Pos             (4)
+#define I2C_ISR_TXEMPTY                 (0x01U << I2C_ISR_TXEMPTY_Pos)          ///< TX_EMPTY interrupt status
+#define I2C_ISR_RXREQ_Pos               (5)
+#define I2C_ISR_RXREQ                   (0x01U << I2C_ISR_RXREQ_Pos)            ///< RX_REQ interrupt status
+#define I2C_ISR_TXABRT_Pos              (6)
+#define I2C_ISR_TXABRT                  (0x01U << I2C_ISR_TXABRT_Pos)           ///< TX_ABRT interrupt status
+#define I2C_ISR_RXDONE_Pos              (7)
+#define I2C_ISR_RXDONE                  (0x01U << I2C_ISR_RXDONE_Pos)           ///< RX_DONE interrupt status
 #define I2C_ISR_ACTIV_Pos               (8)
 #define I2C_ISR_ACTIV                   (0x01U << I2C_ISR_ACTIV_Pos)            ///< ACTIVITY interrupt status
 #define I2C_ISR_STOP_Pos                (9)
@@ -6256,24 +6256,24 @@ typedef struct {
 #define I2C_ISR_HOLD                    (0x01U << I2C_ISR_HOLD_Pos)             ///< MST_ON_HOLD interrupt status
 
 ////////////////////////////////////////////////////////////////////////////////
-/// @brief I2C_IMR Register Bit Definition
+/// @brief I2C Interrrupt Mask Register Bit Definition
 ////////////////////////////////////////////////////////////////////////////////
-#define I2C_IMR_RX_UNDER_Pos            (0)
-#define I2C_IMR_RX_UNDER                (0x01U << I2C_IMR_RX_UNDER_Pos)         ///< RX_UNDER interrupt mask
-#define I2C_IMR_RX_OVER_Pos             (1)
-#define I2C_IMR_RX_OVER                 (0x01U << I2C_IMR_RX_OVER_Pos)          ///< RX_OVER interrupt mask
-#define I2C_IMR_RX_FULL_Pos             (2)
-#define I2C_IMR_RX_FULL                 (0x01U << I2C_IMR_RX_FULL_Pos)          ///< RX_FULL interrupt mask
-#define I2C_IMR_TX_OVER_Pos             (3)
-#define I2C_IMR_TX_OVER                 (0x01U << I2C_IMR_TX_OVER_Pos)          ///< TX_OVER interrupt mask
-#define I2C_IMR_TX_EMPTY_Pos            (4)
-#define I2C_IMR_TX_EMPTY                (0x01U << I2C_IMR_TX_EMPTY_Pos)         ///< TX_EMPTY interrupt mask
-#define I2C_IMR_RX_REQ_Pos              (5)
-#define I2C_IMR_RX_REQ                  (0x01U << I2C_IMR_RX_REQ_Pos)           ///< RX_REQ interrupt mask
-#define I2C_IMR_TX_ABRT_Pos             (6)
-#define I2C_IMR_TX_ABRT                 (0x01U << I2C_IMR_TX_ABRT_Pos)          ///< TX_ABRT interrupt mask
-#define I2C_IMR_RX_DONE_Pos             (7)
-#define I2C_IMR_RX_DONE                 (0x01U << I2C_IMR_RX_DONE_Pos)          ///< RX_DONE interrupt mask
+#define I2C_IMR_RXUNDER_Pos             (0)
+#define I2C_IMR_RXUNDER                 (0x01U << I2C_IMR_RXUNDER_Pos)          ///< RX_UNDER interrupt mask
+#define I2C_IMR_RXOVER_Pos              (1)
+#define I2C_IMR_RXOVER                  (0x01U << I2C_IMR_RXOVER_Pos)           ///< RX_OVER interrupt mask
+#define I2C_IMR_RXFULL_Pos              (2)
+#define I2C_IMR_RXFULL                  (0x01U << I2C_IMR_RXFULL_Pos)           ///< RX_FULL interrupt mask
+#define I2C_IMR_TXOVER_Pos              (3)
+#define I2C_IMR_TXOVER                  (0x01U << I2C_IMR_TXOVER_Pos)           ///< TX_OVER interrupt mask
+#define I2C_IMR_TXEMPTY_Pos             (4)
+#define I2C_IMR_TXEMPTY                 (0x01U << I2C_IMR_TXEMPTY_Pos)          ///< TX_EMPTY interrupt mask
+#define I2C_IMR_RXREQ_Pos               (5)
+#define I2C_IMR_RXREQ                   (0x01U << I2C_IMR_RXREQ_Pos)            ///< RX_REQ interrupt mask
+#define I2C_IMR_TXABRT_Pos              (6)
+#define I2C_IMR_TXABRT                  (0x01U << I2C_IMR_TXABRT_Pos)           ///< TX_ABRT interrupt mask
+#define I2C_IMR_RXDONE_Pos              (7)
+#define I2C_IMR_RXDONE                  (0x01U << I2C_IMR_RXDONE_Pos)           ///< RX_DONE interrupt mask
 
 #define I2C_IMR_ACTIV_Pos               (8)
 #define I2C_IMR_ACTIV                   (0x01U << I2C_IMR_ACTIV_Pos)            ///< ACTIVITY interrupt status
@@ -6289,24 +6289,24 @@ typedef struct {
 #define I2C_IMR_HOLD                    (0x01U << I2C_IMR_HOLD_Pos)             ///< MST_ON_HOLD interrupt status
 
 ////////////////////////////////////////////////////////////////////////////////
-/// @brief I2C_RAWISR Register Bit Definition
+/// @brief I2C Raw Interrupt Status Register Bit Definition
 ////////////////////////////////////////////////////////////////////////////////
-#define I2C_RAWISR_RX_UNDER_Pos         (0)
-#define I2C_RAWISR_RX_UNDER             (0x01U << I2C_RAWISR_RX_UNDER_Pos)      ///< RX_UNDER raw interrupt status
-#define I2C_RAWISR_RX_OVER_Pos          (1)
-#define I2C_RAWISR_RX_OVER              (0x01U << I2C_RAWISR_RX_OVER_Pos)       ///< RX_OVER raw interrupt status
-#define I2C_RAWISR_RX_FULL_Pos          (2)
-#define I2C_RAWISR_RX_FULL              (0x01U << I2C_RAWISR_RX_FULL_Pos)       ///< RX_FULL raw interrupt status
-#define I2C_RAWISR_TX_OVER_Pos          (3)
-#define I2C_RAWISR_TX_OVER              (0x01U << I2C_RAWISR_TX_OVER_Pos)       ///< TX_OVER raw interrupt status
-#define I2C_RAWISR_TX_EMPTY_Pos         (4)
-#define I2C_RAWISR_TX_EMPTY             (0x01U << I2C_RAWISR_TX_EMPTY_Pos)      ///< TX_EMPTY raw interrupt status
-#define I2C_RAWISR_RX_REQ_Pos           (5)
-#define I2C_RAWISR_RX_REQ               (0x01U << I2C_RAWISR_RX_REQ_Pos)        ///< RX_REQ raw interrupt status
-#define I2C_RAWISR_TX_ABRT_Pos          (6)
-#define I2C_RAWISR_TX_ABRT              (0x01U << I2C_RAWISR_TX_ABRT_Pos)       ///< TX_ABRT raw interrupt status
-#define I2C_RAWISR_RX_DONE_Pos          (7)
-#define I2C_RAWISR_RX_DONE              (0x01U << I2C_RAWISR_RX_DONE_Pos)       ///< RX_DONE raw interrupt status
+#define I2C_RAWISR_RXUNDER_Pos          (0)
+#define I2C_RAWISR_RXUNDER              (0x01U << I2C_RAWISR_RXUNDER_Pos)       ///< RX_UNDER raw interrupt status
+#define I2C_RAWISR_RXOVER_Pos           (1)
+#define I2C_RAWISR_RXOVER               (0x01U << I2C_RAWISR_RXOVER_Pos)        ///< RX_OVER raw interrupt status
+#define I2C_RAWISR_RXFULL_Pos           (2)
+#define I2C_RAWISR_RXFULL               (0x01U << I2C_RAWISR_RXFULL_Pos)        ///< RX_FULL raw interrupt status
+#define I2C_RAWISR_TXOVER_Pos           (3)
+#define I2C_RAWISR_TXOVER               (0x01U << I2C_RAWISR_TXOVER_Pos)        ///< TX_OVER raw interrupt status
+#define I2C_RAWISR_TXEMPTY_Pos          (4)
+#define I2C_RAWISR_TXEMPTY              (0x01U << I2C_RAWISR_TXEMPTY_Pos)       ///< TX_EMPTY raw interrupt status
+#define I2C_RAWISR_RXREQ_Pos            (5)
+#define I2C_RAWISR_RXREQ                (0x01U << I2C_RAWISR_RXREQ_Pos)         ///< RX_REQ raw interrupt status
+#define I2C_RAWISR_TXABRT_Pos           (6)
+#define I2C_RAWISR_TXABRT               (0x01U << I2C_RAWISR_TXABRT_Pos)        ///< TX_ABRT raw interrupt status
+#define I2C_RAWISR_RXDONE_Pos           (7)
+#define I2C_RAWISR_RXDONE               (0x01U << I2C_RAWISR_RXDONE_Pos)        ///< RX_DONE raw interrupt status
 
 #define I2C_RAWISR_ACTIV_Pos            (8)
 #define I2C_RAWISR_ACTIV                (0x01U << I2C_RAWISR_ACTIV_Pos)         ///< ACTIVITY interrupt status
@@ -6322,85 +6322,85 @@ typedef struct {
 #define I2C_RAWISR_HOLD                 (0x01U << I2C_RAWISR_HOLD_Pos)          ///< MST_ON_HOLD interrupt status
 
 ////////////////////////////////////////////////////////////////////////////////
-/// @brief I2C_RXTLR Register Bit Definition
+/// @brief I2C Rx FIFO Threshold Level  Register Bit Definition
 ////////////////////////////////////////////////////////////////////////////////
-#define I2C_RXTLR_Pos                   (0)
-#define I2C_RXTLR_TL                    (0xFFU << I2C_RXTLR_Pos)                ///< Receive FIFO threshold level
+#define I2C_RXTLR_TL_Pos                (0)
+#define I2C_RXTLR_TL                    (0xFFU << I2C_RXTLR_TL_Pos)             ///< Receive FIFO threshold level
 
 ////////////////////////////////////////////////////////////////////////////////
-/// @brief I2C_TXTLR Register Bit Definition
+/// @brief I2C Tx FIFO Threshold Level Register Bit Definition
 ////////////////////////////////////////////////////////////////////////////////
-#define I2C_TXTLR_Pos                   (0)
-#define I2C_TXTLR_TL                    (0xFFU << I2C_TXTLR_Pos)                ///< Transmit FIFO threshold level
+#define I2C_TXTLR_TL_Pos                (0)
+#define I2C_TXTLR_TL                    (0xFFU << I2C_TXTLR_TL_Pos)             ///< Transmit FIFO threshold level
 
 ////////////////////////////////////////////////////////////////////////////////
-/// @brief I2C_ICR Register Bit Definition
+/// @brief I2C Interrupt Clear Register Bit Definition
 ////////////////////////////////////////////////////////////////////////////////
-#define I2C_ICR_Pos                     (0)
-#define I2C_ICR                         (0x01U << I2C_ICR_Pos)                  ///< Read this register to clear the combined interrupt, all individual interrupts
+#define I2C_ICR_CLEARALL_Pos            (0)
+#define I2C_ICR_CLEARALL                (0x01U << I2C_ICR_CLEARALL_Pos)         ///< Read this register to clear the combined interrupt, all individual interrupts
 
 ////////////////////////////////////////////////////////////////////////////////
-/// @brief I2C_RX_UNDER Register Bit Definition
+/// @brief I2C Rx buffer Under Clear Register Bit Definition
 ////////////////////////////////////////////////////////////////////////////////
-#define I2C_RX_UNDER_Pos                (0)
-#define I2C_RX_UNDER                    (0x01U << I2C_RX_UNDER_Pos)             ///< Read this register to clear the RX_UNDER interrupt of the I2C_RAW_INTR_STAT register
+#define I2C_RXUNDERCR_CLEAR_Pos         (0)
+#define I2C_RXUNDERCR_CLEAR             (0x01U << I2C_RXUNDERCR_CLEAR_Pos)      ///< Read this register to clear the RX_UNDER interrupt of the I2C_RAW_INTR_STAT register
 
 ////////////////////////////////////////////////////////////////////////////////
-/// @brief I2C_RX_OVER Register Bit Definition
+/// @brief I2C Rx buffer Over Clear Register Bit Definition
 ////////////////////////////////////////////////////////////////////////////////
-#define I2C_RX_OVER_Pos                 (0)
-#define I2C_RX_OVER                     (0x01U << I2C_RX_OVER_Pos)              ///< Read this register to clear the RX_OVER interrupt of the I2C_RAW_INTR_STAT register
+#define I2C_RXOVERCR_CLEAR_Pos          (0)
+#define I2C_RXOVERCR_CLEAR              (0x01U << I2C_RXOVERCR_CLEAR_Pos)       ///< Read this register to clear the RX_OVER interrupt of the I2C_RAW_INTR_STAT register
 
 ////////////////////////////////////////////////////////////////////////////////
-/// @brief I2C_TX_OVER Register Bit Definition
+/// @brief I2C Tx buffer Over Clear Register Bit Definition
 ////////////////////////////////////////////////////////////////////////////////
-#define I2C_TX_OVER_Pos                 (0)
-#define I2C_TX_OVER                     (0x01U << I2C_TX_OVER_Pos)              ///< Read this register to clear the TX_OVER interrupt of the I2C_RAW_INTR_STAT register
+#define I2C_TXOVERCR_CLEAR_Pos          (0)
+#define I2C_TXOVERCR_CLEAR              (0x01U << I2C_TXOVERCR_CLEAR_Pos)       ///< Read this register to clear the TX_OVER interrupt of the I2C_RAW_INTR_STAT register
 
 ////////////////////////////////////////////////////////////////////////////////
-/// @brief I2C_RD_REQ Register Bit Definition
+/// @brief I2C Read Request Clear Register Bit Definition
 ////////////////////////////////////////////////////////////////////////////////
-#define I2C_RD_REQ_Pos                  (0)
-#define I2C_RD_REQ                      (0x01U << I2C_RD_REQ_Pos)               ///< Read this register to clear the RD_REQ interrupt of the I2C_RAW_INTR_STAT register
+#define I2C_RDREQCR_CLEAR_Pos           (0)
+#define I2C_RDREQCR_CLEAR               (0x01U << I2C_RDREQCR_CLEAR_Pos)        ///< Read this register to clear the RD_REQ interrupt of the I2C_RAW_INTR_STAT register
 
 ////////////////////////////////////////////////////////////////////////////////
-/// @brief I2C_TX_ABRT Register Bit Definition
+/// @brief I2C Tx Abort Clear Register Bit Definition
 ////////////////////////////////////////////////////////////////////////////////
-#define I2C_TX_ABRT_Pos                 (0)
-#define I2C_TX_ABRT                     (0x01U << I2C_TX_ABRT_Pos)              ///< Read this register to clear the TX_ABRT interrupt of the I2C_RAW_INTR_STAT register
+#define I2C_TXABRTCR_CLEAR_Pos          (0)
+#define I2C_TXABRTCR_CLEAR              (0x01U << I2C_TXABRTCR_CLEAR_Pos)       ///< Read this register to clear the TX_ABRT interrupt of the I2C_RAW_INTR_STAT register
 
 ////////////////////////////////////////////////////////////////////////////////
-/// @brief I2C_RX_DONE Register Bit Definition
+/// @brief I2C Rx Done Clear Register Bit Definition
 ////////////////////////////////////////////////////////////////////////////////
-#define I2C_RX_DONE_Pos                 (0)
-#define I2C_RX_DONE                     (0x01U << I2C_RX_DONE_Pos)              ///< Read this register to clear the RX_DONE interrupt of the I2C_RAW_INTR_STAT register
+#define I2C_RXDONECR_CLEAR_Pos          (0)
+#define I2C_RXDONECR_CLEAR              (0x01U << I2C_RXDONECR_CLEAR_Pos)       ///< Read this register to clear the RX_DONE interrupt of the I2C_RAW_INTR_STAT register
 
 ////////////////////////////////////////////////////////////////////////////////
-/// @brief I2C_ACTIV Register Bit Definition
+/// @brief I2C Activity Clear Register Bit Definition
 ////////////////////////////////////////////////////////////////////////////////
-#define I2C_ACTIV_Pos                   (0)
-#define I2C_ACTIV                       (0x01U << I2C_ACTIV_Pos)                ///< Read this register to clear the ACTIVITY interrupt of the I2C_RAW_INTR_STAT register
+#define I2C_ACTIVCR_CLEAR_Pos           (0)
+#define I2C_ACTIVCR_CLEAR               (0x01U << I2C_ACTIVCR_CLEAR_Pos)        ///< Read this register to clear the ACTIVITY interrupt of the I2C_RAW_INTR_STAT register
 
 ////////////////////////////////////////////////////////////////////////////////
-/// @brief I2C_STOP Register Bit Definition
+/// @brief I2C Stop Clear Register Bit Definition
 ////////////////////////////////////////////////////////////////////////////////
-#define I2C_STOP_Pos                    (0)
-#define I2C_STOP                        (0x01U << I2C_STOP_Pos)                 ///< Read this register to clear the STOP_DET interrupt of the I2C_RAW_INTR_STAT register
+#define I2C_STOPCR_CLEAR_Pos            (0)
+#define I2C_STOPCR_CLEAR                (0x01U << I2C_STOPCR_CLEAR_Pos)         ///< Read this register to clear the STOP_DET interrupt of the I2C_RAW_INTR_STAT register
 
 ////////////////////////////////////////////////////////////////////////////////
-/// @brief I2C_START Register Bit Definition
+/// @brief I2C Start Clear Register Bit Definition
 ////////////////////////////////////////////////////////////////////////////////
-#define I2C_START_Pos                   (0)
-#define I2C_START                       (0x01U << I2C_START_Pos)                ///< Read this register to clear the START_DET interrupt of the I2C_RAW_INTR_STAT register
+#define I2C_STARTCR_CLEAR_Pos           (0)
+#define I2C_STARTCR_CLEAR               (0x01U << I2C_STARTCR_CLEAR_Pos)        ///< Read this register to clear the START_DET interrupt of the I2C_RAW_INTR_STAT register
 
 ////////////////////////////////////////////////////////////////////////////////
-/// @brief I2C_GC Register Bit Definition
+/// @brief I2C Genernal Call Register Bit Definition
 ////////////////////////////////////////////////////////////////////////////////
-#define I2C_GC_Pos                      (0)
-#define I2C_GC                          (0x01U << I2C_GC_Pos)                   ///< Read this register to clear the GEN_CALL interrupt of the I2C_RAW_INTR_STAT register
+#define I2C_GCCR_CLEAR_Pos              (0)
+#define I2C_GCCR_CLEAR                  (0x01U << I2C_GCCR_CLEAR_Pos)           ///< Read this register to clear the GEN_CALL interrupt of the I2C_RAW_INTR_STAT register
 
 ////////////////////////////////////////////////////////////////////////////////
-/// @brief I2C_ENR Register Bit Definition
+/// @brief I2C Enable Register Bit Definition
 ////////////////////////////////////////////////////////////////////////////////
 #define I2C_ENR_ENABLE_Pos              (0)
 #define I2C_ENR_ENABLE                  (0x01U << I2C_ENR_ENABLE_Pos)           ///< I2C mode enable
@@ -6408,7 +6408,7 @@ typedef struct {
 #define I2C_ENR_ABORT                   (0x01U << I2C_ENR_ABORT_Pos)            ///< I2C transfer abort
 
 ////////////////////////////////////////////////////////////////////////////////
-/// @brief I2C_SR Register Bit Definition
+/// @brief I2C Status Register Bit Definition
 ////////////////////////////////////////////////////////////////////////////////
 #define I2C_SR_ACTIV_Pos                (0)
 #define I2C_SR_ACTIV                    (0x01U << I2C_SR_ACTIV_Pos)             ///< I2C activity status
@@ -6420,62 +6420,62 @@ typedef struct {
 #define I2C_SR_RFNE                     (0x01U << I2C_SR_RFNE_Pos)              ///< Receive FIFO not empty
 #define I2C_SR_RFF_Pos                  (4)
 #define I2C_SR_RFF                      (0x01U << I2C_SR_RFF_Pos)               ///< Receive FIFO completely full
-#define I2C_SR_MST_ACTIV_Pos            (5)
-#define I2C_SR_MST_ACTIV                (0x01U << I2C_SR_MST_ACTIV_Pos)         ///< Master FSM activity status
-#define I2C_SR_SLV_ACTIV_Pos            (6)
-#define I2C_SR_SLV_ACTIV                (0x01U << I2C_SR_SLV_ACTIV_Pos)         ///< Slave FSM activity status
+#define I2C_SR_MSTACTIV_Pos             (5)
+#define I2C_SR_MSTACTIV                 (0x01U << I2C_SR_MSTACTIV_Pos)          ///< Master FSM activity status
+#define I2C_SR_SLVACTIV_Pos             (6)
+#define I2C_SR_SLVACTIV                 (0x01U << I2C_SR_SLVACTIV_Pos)          ///< Slave FSM activity status
 
 ////////////////////////////////////////////////////////////////////////////////
-/// @brief I2C_TXFLR Register Bit Definition
+/// @brief I2C_Tx FIFO Level Register Bit Definition
 ////////////////////////////////////////////////////////////////////////////////
 #define I2C_TXFLR_CNT_Pos               (0)
 #define I2C_TXFLR_CNT                   (0x03U << I2C_TXFLR_CNT_Pos)            ///< Number of valid data in the transmit FIFO
 
 ////////////////////////////////////////////////////////////////////////////////
-/// @brief I2C_RXFLR Register Bit Definition
+/// @brief I2C Rx FIFO Level Register Bit Definition
 ////////////////////////////////////////////////////////////////////////////////
 #define I2C_RXFLR_CNT_Pos               (0)
 #define I2C_RXFLR_CNT                   (0x03U << I2C_RXFLR_CNT_Pos)            ///< Number of valid data in the receive FIFO
 
 ////////////////////////////////////////////////////////////////////////////////
-/// @brief I2C_HOLD Register Bit Definition
+/// @brief I2C SDA Hold Register Bit Definition
 ////////////////////////////////////////////////////////////////////////////////
-#define I2C_HOLD_TXCNT_Pos              (0)
-#define I2C_HOLD_TXCNT                  (0xFFFFU << I2C_HOLD_TXCNT_Pos)         ///< SDA hold time when I2C acts as a transmit
-#define I2C_HOLD_RXCNT_Pos              (16)
-#define I2C_HOLD_RXCNT                  (0xFFFFU << I2C_HOLD_RXCNT_Pos)         ///< SDA hold time when I2C acts as a receiver
+#define I2C_SHR_TXCNT_Pos               (0)
+#define I2C_SHR_TXCNT                   (0xFFFFU << I2C_SHR_TXCNT_Pos)          ///< SDA Hold time when I2C acts as a transmit
+#define I2C_SHR_RXCNT_Pos               (16)
+#define I2C_SHR_RXCNT                   (0xFFFFU << I2C_SHR_RXCNT_Pos)          ///< SDA Hold time when I2C acts as a receiver
 
 ////////////////////////////////////////////////////////////////////////////////
-/// @brief I2C_DMA Register Bit Definition
+/// @brief I2C DMA Control Register Bit Definition
 ////////////////////////////////////////////////////////////////////////////////
-#define I2C_DMA_RXEN_Pos                (0)
-#define I2C_DMA_RXEN                    (0x01U << I2C_DMA_RXEN_Pos)             ///< Receive DMA enable
-#define I2C_DMA_TXEN_Pos                (1)
-#define I2C_DMA_TXEN                    (0x01U << I2C_DMA_TXEN_Pos)             ///< Transmit DMA enable
+#define I2C_DMACR_RXEN_Pos              (0)
+#define I2C_DMACR_RXEN                  (0x01U << I2C_DMACR_RXEN_Pos)           ///< Receive DMA enable
+#define I2C_DMACR_TXEN_Pos              (1)
+#define I2C_DMACR_TXEN                  (0x01U << I2C_DMACR_TXEN_Pos)           ///< Transmit DMA enable
 
 ////////////////////////////////////////////////////////////////////////////////
-/// @brief I2C_SETUP Register Bit Definition
+/// @brief I2C SDA Setup Register Bit Definition
 ////////////////////////////////////////////////////////////////////////////////
-#define I2C_SETUP_CNT_Pos               (0)
-#define I2C_SETUP_CNT                   (0xFFU << I2C_SETUP_CNT_Pos)            ///< SDA setup
+#define I2C_SSR_CNT_Pos                 (0)
+#define I2C_SSR_CNT                     (0xFFU << I2C_SSR_CNT_Pos)              ///< SDA setup
 
 ////////////////////////////////////////////////////////////////////////////////
-/// @brief I2C_GCR Register Bit Definition
+/// @brief I2C Genernal Call Acknowledge Register Bit Definition
 ////////////////////////////////////////////////////////////////////////////////
-#define I2C_GCR_GC_Pos                  (0)
-#define I2C_GCR_GC                      (0x01U << I2C_GCR_GC_Pos)               ///< ACK general call
+#define I2C_GCAR_GC_Pos                 (0)
+#define I2C_GCAR_GC                     (0x01U << I2C_GCAR_GC_Pos)              ///< ACK general call
 
 ////////////////////////////////////////////////////////////////////////////////
-/// @brief I2C_SMR Register Bit Definition
+/// @brief I2C Slave Address Mask Register Bit Definition
 ////////////////////////////////////////////////////////////////////////////////
-#define I2C_SMR_MASK_Pos                (0)
-#define I2C_SMR_MASK                    (0x3FF << I2C_SMR_MASK_Pos)
+#define I2C_SAMR_MASK_Pos               (0)
+#define I2C_SAMR_MASK                   (0x3FF << I2C_SAMR_MASK_Pos)            // Slave address mask code
 
 ////////////////////////////////////////////////////////////////////////////////
-/// @brief I2C_SRAR Register Bit Definition
+/// @brief I2C Slave Receive Address Register Bit Definition
 ////////////////////////////////////////////////////////////////////////////////
 #define I2C_SRAR_ADDR_Pos               (0)
-#define I2C_SRAR_ADDR                   (0x3FF << I2C_SRAR_ADDR_Pos)
+#define I2C_SRAR_ADDR                   (0x3FF << I2C_SRAR_ADDR_Pos)            // Slave receiving address
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief IWDG_KR Register Bit Definition
 ////////////////////////////////////////////////////////////////////////////////

@@ -10535,6 +10535,17 @@ typedef struct {
     #define SYSCFG_PDETCSR_PVDE         (0x01U << SYSCFG_PDETCSR_PVDE_Pos)      ///< PVD enable
     #define SYSCFG_PDETCSR_PLS_Pos      (1)
     #define SYSCFG_PDETCSR_PLS          (0x0FU << SYSCFG_PDETCSR_PLS_Pos)       ///< PVD selsection
+    #define SYSCFG_PDETCSR_PLS_1V8      (0x00U << SYSCFG_PDETCSR_PLS_Pos)
+    #define SYSCFG_PDETCSR_PLS_2V1      (0x01U << SYSCFG_PDETCSR_PLS_Pos)
+    #define SYSCFG_PDETCSR_PLS_2V4      (0x02U << SYSCFG_PDETCSR_PLS_Pos)
+    #define SYSCFG_PDETCSR_PLS_2V7      (0x03U << SYSCFG_PDETCSR_PLS_Pos)
+    #define SYSCFG_PDETCSR_PLS_3V0      (0x04U << SYSCFG_PDETCSR_PLS_Pos)
+    #define SYSCFG_PDETCSR_PLS_3V3      (0x05U << SYSCFG_PDETCSR_PLS_Pos)
+    #define SYSCFG_PDETCSR_PLS_3V6      (0x06U << SYSCFG_PDETCSR_PLS_Pos)
+    #define SYSCFG_PDETCSR_PLS_3V9      (0x07U << SYSCFG_PDETCSR_PLS_Pos)
+    #define SYSCFG_PDETCSR_PLS_4V2      (0x08U << SYSCFG_PDETCSR_PLS_Pos)
+    #define SYSCFG_PDETCSR_PLS_4V5      (0x09U << SYSCFG_PDETCSR_PLS_Pos)
+    #define SYSCFG_PDETCSR_PLS_4V8      (0x0AU << SYSCFG_PDETCSR_PLS_Pos)
     #define SYSCFG_PDETCSR_PVDO_Pos     (5)
     #define SYSCFG_PDETCSR_PVDO         (0x01U << SYSCFG_PDETCSR_PVDO_Pos)      ///< PVD output status
     #define SYSCFG_PDETCSR_VDTO_Pos     (6)

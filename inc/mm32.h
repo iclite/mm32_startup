@@ -7342,8 +7342,8 @@ typedef struct {
 /// @brief PWR_CR register Bit definition
 ////////////////////////////////////////////////////////////////////////////////
 #if defined(__MM0P1) || defined(__MM0S1) || defined(__MM0T1) || defined(__MM3U1)
-    #define PWR_CR_LDPS_Pos             (0)
-    #define PWR_CR_LDPS                 (0x01U  << PWR_CR_LDPS_Pos)             ///< Domain Write Protction
+    #define PWR_CR_LPDS_Pos             (0)
+    #define PWR_CR_LPDS                 (0x01U  << PWR_CR_LPDS_Pos)             ///< Low Power Deep Mode
 #endif
 
 #define PWR_CR_PDDS_Pos                 (1)

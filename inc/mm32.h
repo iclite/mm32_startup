@@ -1698,13 +1698,9 @@ typedef struct {
 /// @brief PWR Register Structure Definition
 ////////////////////////////////////////////////////////////////////////////////
 typedef struct {
-#if defined(__MM3N1) || defined(__MM0N1) || defined(__MM3O1) || defined(__MM0P1) || defined(__MM0Q1) || defined(__MM0S1) || defined(__MM0T1)
     __IO uint32_t CR;                                                           ///< Control register                               offset: 0x00
     __IO uint32_t CSR;                                                          ///< Control Status register                        offset: 0x04
-#endif
 #if defined(__MM3U1)
-    __IO uint32_t CR1;                                                          ///< Control register 1                             offset: 0x00
-    __IO uint32_t CSR;                                                          ///< Control Status register                        offset: 0x04
     __IO uint32_t CR2;                                                          ///< Control register 2                             offset: 0x08
     __IO uint32_t CR3;                                                          ///< Control register 3                             offset: 0x0C
     __IO uint32_t CR4;                                                          ///< Control register 4                             offset: 0x10
@@ -1715,6 +1711,7 @@ typedef struct {
     __IO uint32_t CFGR;                                                         ///< Configuration register                         offset: 0x24
 #endif
 } PWR_TypeDef;
+
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief RCC Register Structure Definition
 ////////////////////////////////////////////////////////////////////////////////
@@ -7344,51 +7341,59 @@ typedef struct {
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief PWR_CR register Bit definition
 ////////////////////////////////////////////////////////////////////////////////
-#if defined(__MM0P1) || defined(__MM0S1) || defined(__MM0T1)
+#if defined(__MM0P1) || defined(__MM0S1) || defined(__MM0T1) || defined(__MM3U1)
     #define PWR_CR_LDPS_Pos             (0)
     #define PWR_CR_LDPS                 (0x01U  << PWR_CR_LDPS_Pos)             ///< Domain Write Protction
 #endif
 
 #define PWR_CR_PDDS_Pos                 (1)
 #define PWR_CR_PDDS                     (0x01U  << PWR_CR_PDDS_Pos)             ///< Power Down Deepsleep
-#define PWR_CR_CWUF_Pos                 (2)
-#define PWR_CR_CWUF                     (0x01U  << PWR_CR_CWUF_Pos)             ///< Clear Standby Flag
+
+#if defined(__MM3N1) || defined(__MM0N1) || defined(__MM3O1) || defined(__MM0P1) || defined(__MM0Q1) || defined(__MM0S1) || defined(__MM0T1)
+    #define PWR_CR_CWUF_Pos             (2)
+    #define PWR_CR_CWUF                 (0x01U  << PWR_CR_CWUF_Pos)             ///< Clear Standby Flag
+#endif
+
 #define PWR_CR_CSBF_Pos                 (3)
 #define PWR_CR_CSBF                     (0x01U  << PWR_CR_CSBF_Pos)             ///< Clear Standby Flag
-#define PWR_CR_PVDE_Pos                 (4)
-#define PWR_CR_PVDE                     (0x01U  << PWR_CR_PVDE_Pos)             ///< Power Voltage Detector Enable
 
-#if defined(__MM3N1) || defined(__MM0N1) || defined(__MM3O1) || defined(__MM0P1) || defined(__MM0S1)
+#if defined(__MM3N1) || defined(__MM0N1) || defined(__MM3O1) || defined(__MM0P1) || defined(__MM0Q1) || defined(__MM0S1) || defined(__MM0T1)
+    #define PWR_CR_PVDE_Pos             (4)
+    #define PWR_CR_PVDE                 (0x01U  << PWR_CR_PVDE_Pos)             ///< Power Voltage Detector Enable
+#endif
+
+#if defined(__MM3N1) || defined(__MM3O1) || defined(__MM0S1)
     #define PWR_CR_DBP_Pos              (8)
     #define PWR_CR_DBP                  (0x01U  << PWR_CR_DBP_Pos)              ///< Domain Write Protction
 #endif
 
-#define PWR_CR_PLS_Pos                  (9)
-#define PWR_CR_PLS                      (0x0FU  << PWR_CR_PLS_Pos)
-#define PWR_CR_PLS_1V8                  (0x00U  << PWR_CR_PLS_Pos)              ///< PVD level 1.8V
-#define PWR_CR_PLS_2V1                  (0x01U  << PWR_CR_PLS_Pos)              ///< PVD level 2.1V
-#define PWR_CR_PLS_2V4                  (0x02U  << PWR_CR_PLS_Pos)              ///< PVD level 2.4V
-#define PWR_CR_PLS_2V7                  (0x03U  << PWR_CR_PLS_Pos)              ///< PVD level 2.7V
-#define PWR_CR_PLS_3V0                  (0x04U  << PWR_CR_PLS_Pos)              ///< PVD level 3.0V
-#define PWR_CR_PLS_3V3                  (0x05U  << PWR_CR_PLS_Pos)              ///< PVD level 3.3V
-#define PWR_CR_PLS_3V6                  (0x06U  << PWR_CR_PLS_Pos)              ///< PVD level 3.6V
-#define PWR_CR_PLS_3V9                  (0x07U  << PWR_CR_PLS_Pos)              ///< PVD level 3.9V
-#define PWR_CR_PLS_4V2                  (0x08U  << PWR_CR_PLS_Pos)              ///< PVD level 4.2V
-#define PWR_CR_PLS_4V5                  (0x09U  << PWR_CR_PLS_Pos)              ///< PVD level 4.5V
-#define PWR_CR_PLS_4V8                  (0x0AU  << PWR_CR_PLS_Pos)              ///< PVD level 4.8V
+#if defined(__MM3N1) || defined(__MM0N1) || defined(__MM3O1) || defined(__MM0P1) || defined(__MM0Q1) || defined(__MM0S1) || defined(__MM0T1)
+    #define PWR_CR_PLS_Pos              (9)
+    #define PWR_CR_PLS                  (0x0FU  << PWR_CR_PLS_Pos)
+    #define PWR_CR_PLS_1V8              (0x00U  << PWR_CR_PLS_Pos)              ///< PVD level 1.8V
+    #define PWR_CR_PLS_2V1              (0x01U  << PWR_CR_PLS_Pos)              ///< PVD level 2.1V
+    #define PWR_CR_PLS_2V4              (0x02U  << PWR_CR_PLS_Pos)              ///< PVD level 2.4V
+    #define PWR_CR_PLS_2V7              (0x03U  << PWR_CR_PLS_Pos)              ///< PVD level 2.7V
+    #define PWR_CR_PLS_3V0              (0x04U  << PWR_CR_PLS_Pos)              ///< PVD level 3.0V
+    #define PWR_CR_PLS_3V3              (0x05U  << PWR_CR_PLS_Pos)              ///< PVD level 3.3V
+    #define PWR_CR_PLS_3V6              (0x06U  << PWR_CR_PLS_Pos)              ///< PVD level 3.6V
+    #define PWR_CR_PLS_3V9              (0x07U  << PWR_CR_PLS_Pos)              ///< PVD level 3.9V
+    #define PWR_CR_PLS_4V2              (0x08U  << PWR_CR_PLS_Pos)              ///< PVD level 4.2V
+    #define PWR_CR_PLS_4V5              (0x09U  << PWR_CR_PLS_Pos)              ///< PVD level 4.5V
+    #define PWR_CR_PLS_4V8              (0x0AU  << PWR_CR_PLS_Pos)              ///< PVD level 4.8V
+#endif
 
-#if defined(__MM0S1) || defined(__MM0T1)
-    #define PWR_CR_STDBY_FS_WK_Pos      (14)
-    #define PWR_CR_STDBY_FS_WK          (0x03U  << PWR_CR_STDBY_FS_WK_Pos)
-    #define PWR_CR_STDBY_FS_WK_9        (0x00U  << PWR_CR_STDBY_FS_WK_Pos)
-    #define PWR_CR_STDBY_FS_WK_7        (0x01U  << PWR_CR_STDBY_FS_WK_Pos)
-    #define PWR_CR_STDBY_FS_WK_5        (0x02U  << PWR_CR_STDBY_FS_WK_Pos)
-    #define PWR_CR_STDBY_FS_WK_2        (0x03U  << PWR_CR_STDBY_FS_WK_Pos)
+#if defined(__MM3U1)
+    #define PWR_CR_LPR_Pos              (13)
+    #define PWR_CR_LPR                  (0x03U  << PWR_CR_LPR_Pos)              ///< Low Power Run Mode
+#endif
+
+#if defined(__MM3O1) || defined(__MM3U1)
+    #define PWR_CR_VOS_Pos              (14)
+    #define PWR_CR_VOS                  (0x03U  << PWR_CR_VOS_Pos)              ///< Modulator Voltage Output Selection
 #endif
 
 #if defined(__MM3O1)
-    #define PWR_CR_VOS_Pos              (14)
-    #define PWR_CR_VOS                  (0x03U  << PWR_CR_VOS_Pos)              ///< Modulator Voltage Output Selection
     #define PWR_CR_ODEN_Pos             (16)
     #define PWR_CR_ODEN                 (0x01U  << PWR_CR_ODEN_Pos)             ///< Overvoltage Enable
     #define PWR_CR_ODSWEN_Pos           (17)
@@ -7398,19 +7403,26 @@ typedef struct {
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief PWR_CSR register Bit definition
 ////////////////////////////////////////////////////////////////////////////////
-#define PWR_CSR_WUF_Pos                 (0)
-#define PWR_CSR_WUF                     (0x01U  << PWR_CSR_WUF_Pos)             ///< Wakeup Flag
+#if defined(__MM3N1) || defined(__MM0N1) || defined(__MM3O1) || defined(__MM0P1) || defined(__MM0Q1) || defined(__MM0S1) || defined(__MM0T1)
+    #define PWR_CSR_WUF_Pos             (0)
+    #define PWR_CSR_WUF                 (0x01U  << PWR_CSR_WUF_Pos)             ///< Wakeup Flag
+#endif
+
 #define PWR_CSR_SBF_Pos                 (1)
 #define PWR_CSR_SBF                     (0x01U  << PWR_CSR_SBF_Pos)             ///< Standby Flag
-#define PWR_CSR_PVDO_Pos                (2)
-#define PWR_CSR_PVDO                    (0x01U  << PWR_CSR_PVDO_Pos)            ///< PVD Output
-#define PWR_CSR_EWU_Pos                 (8)
-#define PWR_CSR_EWUP                    (0x01U  << PWR_CSR_EWU_Pos)             ///< Enable WKUP pin
+
+#if defined(__MM3N1) || defined(__MM0N1) || defined(__MM3O1) || defined(__MM0P1) || defined(__MM0Q1) || defined(__MM0S1) || defined(__MM0T1)
+    #define PWR_CSR_PVDO_Pos            (2)
+    #define PWR_CSR_PVDO                (0x01U  << PWR_CSR_PVDO_Pos)            ///< PVD Output
+    #define PWR_CSR_EWU_Pos             (8)
+    #define PWR_CSR_EWUP                (0x01U  << PWR_CSR_EWU_Pos)             ///< Enable WKUP pin
+#endif
 
 #if defined(__MM3O1) || defined(__MM3U1)
     #define PWR_CSR_VOSRDY_Pos          (14)
     #define PWR_CSR_VOSRDY              (0x01U  << PWR_CSR_VOSRDY_Pos)          ///< Voltage Modulator Output Selection Ready
 #endif
+
 #if defined(__MM3O1)
     #define PWR_CSR_ODRDY_Pos           (16)
     #define PWR_CSR_ODRDY               (0x01U  << PWR_CSR_ODRDY_Pos)           ///< Overvoltage Mode Ready
@@ -7418,25 +7430,6 @@ typedef struct {
     #define PWR_CSR_ODSWRDY             (0x01U  << PWR_CSR_ODSWRDY_Pos)         ///< Overvoltage Mode Selection Ready
 #endif
 
-////////////////////////////////////////////////////////////////////////////////
-/// @brief PWR_CR1 register Bit definition
-////////////////////////////////////////////////////////////////////////////////
-#if defined(__MM3U1)
-    #define PWR_CR1_LDPS_Pos            (0)
-    #define PWR_CR1_LDPS                (0x01U  << PWR_CR1_LDPS_Pos)            ///< Low power consumption in deep sleep
-    #define PWR_CR1_PDDS_Pos            (1)
-    #define PWR_CR1_PDDS                (0x01U  << PWR_CR1_PDDS_Pos)            ///< Power down deepsleep
-    #define PWR_CR1_CSBF_Pos            (3)
-    #define PWR_CR1_CSBF                (0x01U  << PWR_CR1_CSBF_Pos)            ///< Clear standby flag
-    #define PWR_CR1_LPR_Pos             (13)
-    #define PWR_CR1_LPR                 (0x01U  << PWR_CR1_LPR_Pos)             ///< Low power run
-    #define PWR_CR1_VOS_Pos             (14)
-    #define PWR_CR1_VOS                 (0x03U  << PWR_CR1_VOS_Pos)             ///< Voltage modulator,voltage output selection
-    #define PWR_CR1_VOS_1V55            (0x00U  << PWR_CR1_VOS_Pos)             ///< 1.55V
-    #define PWR_CR1_VOS_1V6             (0x01U  << PWR_CR1_VOS_Pos)             ///< 1.60VV
-    #define PWR_CR1_VOS_1V7             (0x02U  << PWR_CR1_VOS_Pos)             ///< 1.70V
-    #define PWR_CR1_VOS_1V8             (0x02U  << PWR_CR1_VOS_Pos)             ///< 1.80V
-#endif
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief PWR_CR2 register Bit definition
 ////////////////////////////////////////////////////////////////////////////////
@@ -7456,6 +7449,7 @@ typedef struct {
     #define PWR_CR2_EWUP_Pos            (15)
     #define PWR_CR2_EWUP                (0x01U  << PWR_CR2_EWUP_Pos)            ///< Enable wake-up module
 #endif
+
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief PWR_CR3 register Bit definition
 ////////////////////////////////////////////////////////////////////////////////
@@ -7473,6 +7467,7 @@ typedef struct {
     #define PWR_CR3_WP6_Pos             (5)
     #define PWR_CR3_WP6                 (0x01U  << PWR_CR3_WP6_Pos)             ///< Polarity on the WKUP6 external wake pin for event detection
 #endif
+
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief PWR_CR4 register Bit definition
 ////////////////////////////////////////////////////////////////////////////////
@@ -7484,48 +7479,51 @@ typedef struct {
     #define PWR_CR4_FILTSEL0_WKP3       (0x02U  << PWR_CR4_FILTSEL0_Pos)        ///< WKP3 serves as the arousal source
     #define PWR_CR4_FILTE0_Pos          (2)
     #define PWR_CR4_FILTE0              (0x03U  << PWR_CR4_FILTE0_Pos)          ///< Filter 0 enabled
-    #define PWR_CR4_FILTE0_invalid      (0x00U  << PWR_CR4_FILTE0_Pos)          ///< Filter 0 is invalid
-    #define PWR_CR4_FILTE0_rising       (0x01U  << PWR_CR4_FILTE0_Pos)          ///< Filter 0 rising edge filtering
-    #define PWR_CR4_FILTE0_falling      (0x02U  << PWR_CR4_FILTE0_Pos)          ///< Filter 0 Falling edge filtering
+    #define PWR_CR4_FILTE0_INVALID      (0x00U  << PWR_CR4_FILTE0_Pos)          ///< Filter 0 is invalid
+    #define PWR_CR4_FILTE0_RISING       (0x01U  << PWR_CR4_FILTE0_Pos)          ///< Filter 0 rising edge filtering
+    #define PWR_CR4_FILTE0_FALLING      (0x02U  << PWR_CR4_FILTE0_Pos)          ///< Filter 0 falling edge filtering
     #define PWR_CR4_FILTF0_Pos          (4)
-    #define PWR_CR4_FILTF0              (0x01U  << PWR_CR4_FILTE0_Pos)          ///< Whether the wake source passes through filter 0
+    #define PWR_CR4_FILTF0              (0x01U  << PWR_CR4_FILTF0_Pos)          ///< Whether the wake source passes through filter 0
     #define PWR_CR4_FILTCNT0_Pos        (8)
     #define PWR_CR4_FILTCNT0            (0xFFU  << PWR_CR4_FILTCNT0_Pos)        ///< Filter 0 counter
 #endif
+
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief PWR_CR5 register Bit definition
 ////////////////////////////////////////////////////////////////////////////////
 #if defined(__MM3U1)
     #define PWR_CR5_FILTSEL1_Pos        (0)
     #define PWR_CR5_FILTSEL1            (0x03U  << PWR_CR5_FILTSEL1_Pos)        ///< Wake-up source selection
-    #define PWR_CR5_FILTSEL1_WKP1       (0x00U  << PWR_CR5_FILTSEL1_Pos)        ///< WKP4 serves as the arousal source
-    #define PWR_CR5_FILTSEL1_WKP2       (0x01U  << PWR_CR5_FILTSEL1_Pos)        ///< WKP5 serves as the arousal source
-    #define PWR_CR5_FILTSEL1_WKP3       (0x02U  << PWR_CR5_FILTSEL1_Pos)        ///< WKP6 serves as the arousal source
+    #define PWR_CR5_FILTSEL1_WKP4       (0x00U  << PWR_CR5_FILTSEL1_Pos)        ///< WKP4 serves as the arousal source
+    #define PWR_CR5_FILTSEL1_WKP5       (0x01U  << PWR_CR5_FILTSEL1_Pos)        ///< WKP5 serves as the arousal source
+    #define PWR_CR5_FILTSEL1_WKP6       (0x02U  << PWR_CR5_FILTSEL1_Pos)        ///< WKP6 serves as the arousal source
     #define PWR_CR5_FILTE1_Pos          (2)
     #define PWR_CR5_FILTE1              (0x03U  << PWR_CR5_FILTE1_Pos)          ///< Filter 1 enabled
-    #define PWR_CR5_FILTE1_invalid      (0x00U  << PWR_CR5_FILTE1_Pos)          ///< Filter 1 is invalid
-    #define PWR_CR5_FILTE1_rising       (0x01U  << PWR_CR5_FILTE1_Pos)          ///< Filter 1 rising edge filtering
-    #define PWR_CR5_FILTE1_falling      (0x02U  << PWR_CR5_FILTE1_Pos)          ///< Filter 1 Falling edge filtering
+    #define PWR_CR5_FILTE1_INVALID      (0x00U  << PWR_CR5_FILTE1_Pos)          ///< Filter 1 is invalid
+    #define PWR_CR5_FILTE1_RISING       (0x01U  << PWR_CR5_FILTE1_Pos)          ///< Filter 1 rising edge filtering
+    #define PWR_CR5_FILTE1_FALLING      (0x02U  << PWR_CR5_FILTE1_Pos)          ///< Filter 1 Falling edge filtering
     #define PWR_CR5_FILTF1_Pos          (4)
-    #define PWR_CR5_FILTF1              (0x01U  << PWR_CR5_FILTE1_Pos)          ///< Whether the wake source passes through filter 1
+    #define PWR_CR5_FILTF1              (0x01U  << PWR_CR5_FILTF1_Pos)          ///< Whether the wake source passes through filter 1
     #define PWR_CR5_FILTCNT1_Pos        (8)
     #define PWR_CR5_FILTCNT1            (0xFFU  << PWR_CR5_FILTCNT1_Pos)        ///< Filter 1 counter
 #endif
+
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief PWR_CR6 register Bit definition
 ////////////////////////////////////////////////////////////////////////////////
 #if defined(__MM3U1)
-    #define PWR_CR6_STDBY_FS_WK_Pos     (0)
-    #define PWR_CR6_STDBY_FS_WK         (0x07U  << PWR_CR6_STDBY_FS_WK_Pos)     ///< Quick wake-up time selection
-    #define PWR_CR6_STDBY_FS_WK_one     (0x00U  << PWR_CR6_STDBY_FS_WK_Pos)     ///< 1 LSI cycle wake up
-    #define PWR_CR6_STDBY_FS_WK_two     (0x01U  << PWR_CR6_STDBY_FS_WK_Pos)     ///< 2 LSI cycle wake up
-    #define PWR_CR6_STDBY_FS_WK_three   (0x02U  << PWR_CR6_STDBY_FS_WK_Pos)     ///< 3 LSI cycle wake up
-    #define PWR_CR6_STDBY_FS_WK_four    (0x03U  << PWR_CR6_STDBY_FS_WK_Pos)     ///< 4 LSI cycle wake up
-    #define PWR_CR6_STDBY_FS_WK_five    (0x04U  << PWR_CR6_STDBY_FS_WK_Pos)     ///< 5 LSI cycle wake up
-    #define PWR_CR6_STDBY_FS_WK_six     (0x05U  << PWR_CR6_STDBY_FS_WK_Pos)     ///< 6 LSI cycle wake up
-    #define PWR_CR6_STDBY_FS_WK_seven   (0x06U  << PWR_CR6_STDBY_FS_WK_Pos)     ///< 7 LSI cycle wake up
-    #define PWR_CR6_STDBY_FS_WK_eight   (0x07U  << PWR_CR6_STDBY_FS_WK_Pos)     ///< 8 LSI cycle wake up
+    #define PWR_CR6_STDBTFSWK_Pos       (0)
+    #define PWR_CR6_STDBTFSWK           (0x07U  << PWR_CR6_STDBTFSWK_Pos)       ///< Standby mode fast speed wake-up time selection
+    #define PWR_CR6_STDBTFSWK_1         (0x00U  << PWR_CR6_STDBTFSWK_Pos)       ///< 1 LSI cycle wake up
+    #define PWR_CR6_STDBTFSWK_2         (0x01U  << PWR_CR6_STDBTFSWK_Pos)       ///< 2 LSI cycle wake up
+    #define PWR_CR6_STDBTFSWK_3         (0x02U  << PWR_CR6_STDBTFSWK_Pos)       ///< 3 LSI cycle wake up
+    #define PWR_CR6_STDBTFSWK_4         (0x03U  << PWR_CR6_STDBTFSWK_Pos)       ///< 4 LSI cycle wake up
+    #define PWR_CR6_STDBTFSWK_5         (0x04U  << PWR_CR6_STDBTFSWK_Pos)       ///< 5 LSI cycle wake up
+    #define PWR_CR6_STDBTFSWK_6         (0x05U  << PWR_CR6_STDBTFSWK_Pos)       ///< 6 LSI cycle wake up
+    #define PWR_CR6_STDBTFSWK_7         (0x06U  << PWR_CR6_STDBTFSWK_Pos)       ///< 7 LSI cycle wake up
+    #define PWR_CR6_STDBTFSWK_8         (0x07U  << PWR_CR6_STDBTFSWK_Pos)       ///< 8 LSI cycle wake up
 #endif
+
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief PWR_SR register Bit definition
 ////////////////////////////////////////////////////////////////////////////////
@@ -7543,6 +7541,7 @@ typedef struct {
     #define PWR_SR_WUF6_Pos             (5)
     #define PWR_SR_WUF6                 (0x01U  << PWR_SR_WUF6_Pos)             ///< Wake up flag 6
 #endif
+
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief PWR_SCR register Bit definition
 ////////////////////////////////////////////////////////////////////////////////
@@ -7560,6 +7559,7 @@ typedef struct {
     #define PWR_SCR_CWUF6_Pos           (5)
     #define PWR_SCR_CWUF6               (0x01U  << PWR_SCR_CWUF6_Pos)           ///< Clear wake flag 6
 #endif
+
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief PWR_CFGR register Bit definition
 ////////////////////////////////////////////////////////////////////////////////

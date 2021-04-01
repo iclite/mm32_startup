@@ -1603,10 +1603,10 @@ typedef struct {
     __IO uint32_t PR;                                                           ///< Prescaler Register                             offset: 0x04
     __IO uint32_t RLR;                                                          ///< Reload Register                                offset: 0x08
     __IO uint32_t SR;                                                           ///< Status Register                                offset: 0x0C
-#if defined(__MM3O1) || defined (__MM0P1) || defined (__MM0Q1) || defined (__MM0S1) || defined (__MM0T1) || defined (__MM3U1)
+#if defined(__MM3O1) || defined(__MM0P1) || defined(__MM0Q1) || defined(__MM0S1) || defined(__MM0T1) || defined(__MM3U1)
     __IO uint32_t CR;                                                           ///< Control Register                               offset: 0x10
 #endif
-#if defined(__MM0S1) || defined (__MM0T1) || defined(__MM3U1)
+#if defined(__MM0S1) || defined(__MM0T1) || defined(__MM3U1)
     __IO uint32_t IGEN;                                                         ///< Interrupt Generator Register                   offset: 0x14
 #endif
 #if defined(__MM0T1) || defined(__MM3U1)
@@ -6481,6 +6481,10 @@ typedef struct {
 ////////////////////////////////////////////////////////////////////////////////
 #define IWDG_KEYR_KEY_Pos               (0)
 #define IWDG_KEYR_KEY                   (0xFFFFU << IWDG_KEYR_KEY_Pos)          ///< Key Value
+#define IWDG_KEYR_KEY_REG               (0x5555U << IWDG_KEYR_KEY_Pos)          ///< Key Value Allow access to registers
+#define IWDG_KEYR_KEY_RELOAD            (0xAAAAU << IWDG_KEYR_KEY_Pos)          ///< Key Value Reload counter
+#define IWDG_KEYR_KEY_ENABLE            (0xCCCCU << IWDG_KEYR_KEY_Pos)          ///< Key Value Enable IWDG
+
 
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief IWDG_PR Register Bit Definition
@@ -6508,34 +6512,54 @@ typedef struct {
 #define IWDG_SR_PVU                     (0x01U << IWDG_SR_PVU_Pos)              ///< Watchdog prescaler value update
 #define IWDG_SR_RVU_Pos                 (1)
 #define IWDG_SR_RVU                     (0x01U << IWDG_SR_RVU_Pos)              ///< Watchdog counter reload value update
-#define IWDG_SR_IVU_Pos                 (2)
-#define IWDG_SR_IVU                     (0x01U << IWDG_SR_IVU_Pos)
+
+#if defined(__MM0S1) || defined(__MM0T1) || defined(__MM3U1)
+    #define IWDG_SR_IVU_Pos             (2)
+    #define IWDG_SR_IVU                 (0x01U << IWDG_SR_IVU_Pos)              ///< Watchdog Interrupt Generate value update
+    #define IWDG_SR_UPDATE_Pos          (3)
+    #define IWDG_SR_UPDATE              (0x01U << IWDG_SR_UPDATE_Pos)           ///< Watchdog Reload update flag
+#endif
 
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief IWDG_CR Register Bit Definition
 ////////////////////////////////////////////////////////////////////////////////
-#define IWDG_CR_IRQSEL_Pos              (0)
-#define IWDG_CR_IRQSEL                  (0x01U << IWDG_CR_IRQSEL_Pos)           ///< IWDG overflow operation selection
-#define IWDG_CR_IRQCLR_Pos              (1)
-#define IWDG_CR_IRQCLR                  (0x01U << IWDG_CR_IRQCLR_Pos)           ///< IWDG interrupt clear
+#if defined(__MM3O1) || defined(__MM0P1) || defined(__MM0Q1) || defined(__MM0S1) || defined(__MM0T1) || defined(__MM3U1)
+    #define IWDG_CR_IRQSEL_Pos          (0)
+    #define IWDG_CR_IRQSEL              (0x01U << IWDG_CR_IRQSEL_Pos)           ///< IWDG overflow operation selection
+    #define IWDG_CR_IRQCLR_Pos          (1)
+    #define IWDG_CR_IRQCLR              (0x01U << IWDG_CR_IRQCLR_Pos)           ///< IWDG interrupt clear
+#endif
 
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief IWDG_IGRN Register Bit Definition
 ////////////////////////////////////////////////////////////////////////////////
-#define IWDG_IGEN_IGEN_Pos              (0)
-#define IWDG_IGEN_IGEN                  (0xFFFU << IWDG_CR_IRQSEL_Pos)          ///< IWDG Interrupt Generate value
+#if defined(__MM0S1) || defined(__MM0T1) || defined(__MM3U1)
+    #define IWDG_IGEN_IGEN_Pos          (0)
+    #define IWDG_IGEN_IGEN              (0xFFFU << IWDG_IGEN_IGEN_Pos)          ///< IWDG Interrupt Generate value
+#endif
 
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief IWDG_CNT Register Bit Definition
 ////////////////////////////////////////////////////////////////////////////////
-#define IWDG_CNT_CNT_Pos                (0)
-#define IWDG_CNT_CNT                    (0xFFFU << IWDG_CNT_CNT_Pos)            ///< IWDG Interrupt Generate value
+#if defined(__MM0S1) || defined(__MM0T1)
+    #define IWDG_CNT_PS_Pos             (0)
+    #define IWDG_CNT_PS                 (0xFFU << IWDG_CNT_PS_Pos)              ///< IWDG counter current value
+    #define IWDG_CNT_CNT_Pos            (8)
+    #define IWDG_CNT_CNT                (0xFFFU << IWDG_CNT_PS_Pos)             ///< IWDG prescaler counter current value
+#endif
+
+#if defined(__MM3U1)
+    #define IWDG_CNT_CNT_Pos            (0)
+    #define IWDG_CNT_CNT                (0xFFFU << IWDG_CNT_CNT_Pos)            ///< IWDG counter current value
+#endif
 
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief IWDG_CNT Register Bit Definition
 ////////////////////////////////////////////////////////////////////////////////
-#define IWDG_PS_PS_Pos                  (0)
-#define IWDG_PS_PS                      (0xFFFU << IWDG_PS_PS_Pos)              ///< IWDG Interrupt Generate value
+#if defined(__MM3U1)
+    #define IWDG_PS_PS_Pos              (0)
+    #define IWDG_PS_PS                  (0xFFFU << IWDG_PS_PS_Pos)              ///< IWDG prescaler counter current value
+#endif
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief NVIC_ISER Register Bit Definition
 ////////////////////////////////////////////////////////////////////////////////

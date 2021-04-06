@@ -10304,14 +10304,8 @@ typedef struct {
 #define UART_CCR_PEN                    (0x01U << UART_CCR_PEN_Pos)             ///< Parity enable bit
 #define UART_CCR_PSEL_Pos               (1)
 #define UART_CCR_PSEL                   (0x01U << UART_CCR_PSEL_Pos)            ///< Parity selection bit
-#if defined(__MM3N1) || defined(__MM0N1)
 #define UART_CCR_SPB_Pos                (2)
 #define UART_CCR_SPB                    (0x01U << UART_CCR_SPB_Pos)             ///< Stop bit selection
-#endif
-#if defined(__MM3O1) || defined(__MM0P1) || defined(__MM0Q1) || defined(__MM0S1) || defined(__MM0T1) || defined(__MM3U1)
-    #define UART_CCR_SPB0_Pos           (2)
-    #define UART_CCR_SPB0               (0x01U << UART_CCR_SPB0_Pos)            ///< Stop bit 0 selection
-#endif
 #define UART_CCR_BRK_Pos                (3)
 #define UART_CCR_BRK                    (0x01U << UART_CCR_BRK_Pos)             ///< UART transmit frame break
 #define UART_CCR_CHAR_Pos               (4)

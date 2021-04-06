@@ -81,7 +81,7 @@ EM_MCUID DBGMCU_GetDEVID()
         RCC->APB1ENR |= RCC_APB1ENR_PWR;
     }
 
-    switch (DBGMCU->IDCODE) {
+    switch (DBG->IDCODE) {
     case MCUID_MM0N1:
         return emMCUID_MM32L073;        // emMCUID_MM0N1;
     case MCUID_MM0P1:

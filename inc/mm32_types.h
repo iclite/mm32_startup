@@ -102,4 +102,20 @@ typedef volatile const uint8_t          vuc8;                                   
     #define MIN(a,b)                    ((a)<(b)?(a):(b))                       ///< Min function
 #endif
 
+// Need To Remove !!!
+typedef enum {RESET = 0, SET = !RESET} FlagStatus, ITStatus;
+typedef enum {DISABLE = 0, ENABLE = !DISABLE} FunctionalState;
+typedef enum {ERROR = 0, SUCCESS = !ERROR} ErrorStatus;
+
+#define SET_BIT(reg, bit)     ((reg) |= (bit))
+#define CLEAR_BIT(reg, bit)   ((reg) &= ~(bit))
+#define READ_BIT(reg, bit)    ((reg) & (bit))
+#define CLEAR_REG(reg)        ((reg) = (0x0))
+#define WRITE_REG(reg, value)   ((reg) = (value))
+#define READ_REG(reg)         ((reg))
+#define MODIFY_REG(reg, CLEARMASK, SETMASK)     WRITE_REG((reg), (((READ_REG(reg)) & (~(CLEARMASK))) | (SETMASK)))
+#define POSITION_VAL(value)     (__CLZ(__RBIT(value)))
+
+#define LEFT_SHIFT_BIT(x)   (1 << x)
+
 #endif  // __MM32_TYPES_H

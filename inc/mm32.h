@@ -861,28 +861,30 @@ typedef struct {
 #endif
 #if defined(__MM3U1)
     __IO uint32_t CH9DR;                                                        ///< ADC channel9 data register,                    offset: 0x3C
-    __IO uint32_t CH10DR;                                                       ///< ADC channel9 data register,                    offset: 0x40
-    __IO uint32_t CH11DR;                                                       ///< ADC channel9 data register,                    offset: 0x44
-    __IO uint32_t CH12DR;                                                       ///< ADC channel9 data register,                    offset: 0x48
-    __IO uint32_t CH13DR;                                                       ///< ADC channel9 data register,                    offset: 0x4C
-    __IO uint32_t CH14DR;                                                       ///< ADC channel10 data register,                   offset: 0x50
-    __IO uint32_t CH15DR;                                                       ///< ADC channel11 data register,                   offset: 0x54
-    __IO uint32_t STA_EXT;                                                      ///< ADC channel11 data register,                   offset: 0x58
-    __IO uint32_t CHANY0;                                                       ///< ADC channel11 data register,                   offset: 0x5C
-    __IO uint32_t CHANY1;                                                       ///< ADC channel11 data register,                   offset: 0x60
-    __IO uint32_t ANY_CFG;                                                      ///< ADC channel11 data register,                   offset: 0x64
-    __IO uint32_t ANY_CR;                                                       ///< ADC channel11 data register,                   offset: 0x68
-    __IO uint32_t SMPR1;                                                        ///< ADC channel11 data register,                   offset: 0x70
-    __IO uint32_t SMPR2;                                                        ///< ADC channel11 data register,                   offset: 0x74
-    __IO uint32_t JOFR0;                                                        ///< ADC channel11 data register,                   offset: 0x7C
-    __IO uint32_t JOFR1;                                                        ///< ADC channel11 data register,                   offset: 0x80
-    __IO uint32_t JOFR2;                                                        ///< ADC channel11 data register,                   offset: 0x84
-    __IO uint32_t JOFR3;                                                        ///< ADC channel11 data register,                   offset: 0x88
-    __IO uint32_t JDATA;                                                        ///< ADC channel11 data register,                   offset: 0x8C
-    __IO uint32_t JDR0;                                                         ///< ADC channel11 data register,                   offset: 0xB0
-    __IO uint32_t JDR1;                                                         ///< ADC channel11 data register,                   offset: 0xB4
-    __IO uint32_t JDR2;                                                         ///< ADC channel11 data register,                   offset: 0xB8
-    __IO uint32_t JDR3;                                                         ///< ADC channel11 data register,                   offset: 0xBC
+    __IO uint32_t CH10DR;                                                       ///< ADC channel10 data register,                    offset: 0x40
+    __IO uint32_t CH11DR;                                                       ///< ADC channel11 data register,                    offset: 0x44
+    __IO uint32_t CH12DR;                                                       ///< ADC channel12 data register,                    offset: 0x48
+    __IO uint32_t CH13DR;                                                       ///< ADC channel13 data register,                    offset: 0x4C
+    __IO uint32_t CH14DR;                                                       ///< ADC channel14 data register,                   offset: 0x50
+    __IO uint32_t CH15DR;                                                       ///< ADC channel15 data register,                   offset: 0x54
+    __IO uint32_t SER;                                                          ///<                            ,                   offset: 0x58
+    __IO uint32_t CHANY0;                                                       ///<                            ,                   offset: 0x5C
+    __IO uint32_t CHANY1;                                                       ///<                            ,                   offset: 0x60
+    __IO uint32_t ANY_CFG;                                                      ///<                            ,                   offset: 0x64
+    __IO uint32_t ANY_CR;                                                       ///<                            ,                   offset: 0x68
+    __IO uint32_t SMPR1;                                                        ///<                            ,                   offset: 0x70
+    __IO uint32_t SMPR2;                                                        ///<                            ,                   offset: 0x74
+    __IO uint32_t JOFR0;                                                        ///<                            ,                   offset: 0x7C
+    __IO uint32_t JOFR1;                                                        ///<                            ,                   offset: 0x80
+    __IO uint32_t JOFR2;                                                        ///<                            ,                   offset: 0x84
+    __IO uint32_t JOFR3;                                                        ///<                            ,                   offset: 0x88
+    __IO uint32_t JSQR;                                                         ///<                            ,                   offset: 0x8C
+    __IO uint32_t JDATA;                                                        ///<                            ,                   offset: 0x90
+    __IO uint32_t RESERVED[7];                                                  ///<                            ,                   offset: 0x94 ~ 0xAC
+    __IO uint32_t JDR0;                                                         ///<                            ,                   offset: 0xB0
+    __IO uint32_t JDR1;                                                         ///<                            ,                   offset: 0xB4
+    __IO uint32_t JDR2;                                                         ///<                            ,                   offset: 0xB8
+    __IO uint32_t JDR3;                                                         ///<                            ,                   offset: 0xBC
 #endif
 } ADC_TypeDef;
 

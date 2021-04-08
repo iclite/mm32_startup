@@ -336,7 +336,7 @@ typedef enum IRQn {
 
 #if defined(__MM3N1) || defined(__MM3O1) || defined(__MM3U1)
     #define __MPU_PRESENT               (0)                                     ///< mm32f103/mm32l3xx does not provide a MPU present or not
-    #define __NVIC_PRIO_BITS            (4)                                     ///< mm32f103/mm32l3xx uses 4 Bits for the Priority Levels
+    #define __NVIC_PRIO_BITS            (3)                                     ///< mm32f103/mm32l3xx uses 3 Bits for the Priority Levels
     #define __Vendor_SysTickConfig      (0)                                     ///< Set to 1 if different SysTick Config is used
     #include <core_cm3.h>
 #elif defined(__MM0N1) || defined(__MM0P1) || defined(__MM0Q1) || defined(__MM0S1) || defined(__MM0T1)

@@ -122,6 +122,13 @@ EM_MCUID SystemInit(EM_SystemClock ClockSource, EM_SYSTICK tickEn , AppTick_fun 
     // Configure the System clock frequency, HCLK, PCLK2 and PCLK1 prescalers
     // Configure the Flash Latency cycles and enable prefetch buffer
 
+    // Cache Mode: Auto Mode
+    CACHE->CCR &= ~(CACHE_CCR_SET_MAN_INV | CACHE_CCR_SET_MAN_POW);
+    // Enable Cache
+    CACHE->CCR |= CAHCE_CCR_EN;
+    // Wait for Cache Enable
+    while((CACHE->SR & CACHE_SR_CS) != CACHE_SR_CS_ENABLED);
+
     // Flash
     if ((ClockSource >> 16) <= 4) {
         FLASH->ACR |= FLASH_ACR_PRFTBE;

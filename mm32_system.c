@@ -43,6 +43,11 @@
 //  #define VECT_TAB_SRAM
     #define VECT_TAB_OFFSET  0x0000
 #endif
+
+#ifndef __WEAK
+    #define __WEAK __attribute__((weak))
+#endif
+
 /// @}
 
 ////////////////////////////////////////////////////////////////////////////////

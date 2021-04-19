@@ -54,7 +54,7 @@
 /// @param  None.
 /// @retval None.
 ////////////////////////////////////////////////////////////////////////////////
-void SysTick_Handler(void)
+__WEAK void SysTick_Handler (void)
 {
     nTimeOutCnt++;
     sysTickFlag1mS = true;

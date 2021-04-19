@@ -19,7 +19,6 @@ __WEAK void NMI_Handler                 (void)  { while(1) {} }
 __WEAK void HardFault_Handler           (void)  { while(1) {} }
 __WEAK void SVC_Handler                 (void)  { while(1) {} }
 __WEAK void PendSV_Handler              (void)  { while(1) {} }
-__WEAK void SysTick_Handler             (void)  { while(1) {} }
 #endif
 
 // Cortex-M3 core handlers
@@ -32,7 +31,6 @@ __WEAK void UsageFault_Handler          (void)  { while(1) {} }
 __WEAK void SVC_Handler                 (void)  { while(1) {} }
 __WEAK void DebugMon_Handler            (void)  { while(1) {} }
 __WEAK void PendSV_Handler              (void)  { while(1) {} }
-__WEAK void SysTick_Handler             (void)  { while(1) {} }
 #endif
 
 // Peripherals handlers

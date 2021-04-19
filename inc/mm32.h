@@ -3480,8 +3480,12 @@ typedef struct {
 /// @brief CACHE_SR Register Bit Definition
 ////////////////////////////////////////////////////////////////////////////////
     #define CACHE_SR_CS_Pos             (0)
-    #define CACHE_SR_CS                 (0x01U << CACHE_SR_CS_Pos)              ///< Cache status
-    #define CACHE_INV_STAT_Pos          (1)
+    #define CACHE_SR_CS                 (0x03U << CACHE_SR_CS_Pos)              ///< Cache status: disabled
+    #define CACHE_SR_CS_DISABLED        (0x00U << CACHE_SR_CS_Pos)              ///< Cache status: disabled
+    #define CACHE_SR_CS_ENBALING        (0x01U << CACHE_SR_CS_Pos)              ///< Cache status: enabling
+    #define CACHE_SR_CS_ENABLED         (0x02U << CACHE_SR_CS_Pos)              ///< Cache status: enabled
+    #define CACHE_SR_CS_DISABLING       (0x03U << CACHE_SR_CS_Pos)              ///< Cache status: disabling
+    #define CACHE_INV_STAT_Pos          (2)
     #define CACHE_INV_STAT              (0x01U << CACHE_INV_STAT_Pos)           ///< Invalid status
     #define CACHE_POW_STAT_Pos          (3)
     #define CACHE_POW_STAT              (0x01U << CACHE_POW_STAT_Pos)           ///< Power status

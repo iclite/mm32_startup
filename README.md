@@ -46,11 +46,12 @@ For VS Code `.vscode/settings.json`:
 {
     "C_Cpp.default.compilerPath": "arm-none-eabi-gcc.exe",
     "C_Cpp.default.compilerPath": [
-        "${workspaceFolder}\\inc\\",
-        "C:\\Users\\Kismet\\AppData\\Local\\Arm\\Packs\\ARM\\CMSIS\\5.7.0\\CMSIS\\Core\\Include\\"
+        "${workspaceFolder}/inc/",
+        "${GITWORK_PATH}/github.com/ARM-software/CMSIS_5/CMSIS/Core/Include/**"
     ],
     "C_Cpp.default.defines": [
         "__MM0Q1",
         "CLOCK=8000000"
     ]
 }
+```

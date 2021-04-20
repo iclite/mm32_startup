@@ -119,15 +119,34 @@ EM_MCUID DBGMCU_GetDEVID()
 ////////////////////////////////////////////////////////////////////////////////
 EM_MCUID SystemInit(EM_SystemClock ClockSource, EM_SYSTICK tickEn , AppTick_fun pCallback)
 {
+    u32 clock = 8000000;
+    u32 pre   = 1000000;
+
+    // Calculate the clock frequency
+    if (((ClockSource & 0x000F0) >> 4) == 2) {
+        clock =  ((ClockSource & 0x0000F) == 0) ? 12000000 : HSE_VALUE;
+        if (!(ClockSource & 0x0F000) && (ClockSource & 0xF0000)) {
+            clock = ((ClockSource & 0xF0000) == 0x10000) ? 48000000 : 72000000;
+        } else {
+            clock *= ((ClockSource & 0x0F000) >> 12) + 1;
+            clock /= ((ClockSource & 0x00F00) >> 8)  + 1;
+        }
+    } else if (((ClockSource & 0x000F0) >> 4) == 3) {
+        clock = 40000;
+        pre   = 10000;
+    }
+
     // Configure the System clock frequency, HCLK, PCLK2 and PCLK1 prescalers
     // Configure the Flash Latency cycles and enable prefetch buffer
 
+#if defined(CACHE)
     // Cache Mode: Auto Mode
     CACHE->CCR &= ~(CACHE_CCR_SET_MAN_INV | CACHE_CCR_SET_MAN_POW);
     // Enable Cache
     CACHE->CCR |= CAHCE_CCR_EN;
     // Wait for Cache Enable
     while((CACHE->SR & CACHE_SR_CS) != CACHE_SR_CS_ENABLED);
+#endif
 
     // Flash
     if ((ClockSource >> 16) <= 4) {
@@ -166,6 +185,14 @@ EM_MCUID SystemInit(EM_SystemClock ClockSource, EM_SYSTICK tickEn , AppTick_fun 
         while (1);                                                              // Clock Source not in range
     }
 
+#if defined(PWR_CR_VOS)
+    // Enable PWR VOS
+    if (clock > 96000000) {
+        RCC->APB1ENR |= RCC_APB1ENR_PWR;
+        PWR->CR |= PWR_CR_VOS;
+    }
+#endif
+
 #if defined(RCC_CR_PLLON)
     // PLL on
     if ((ClockSource & 0x000F0) >> 4 == 2) {
@@ -196,34 +223,24 @@ EM_MCUID SystemInit(EM_SystemClock ClockSource, EM_SYSTICK tickEn , AppTick_fun 
     RCC->CFGR |= (((ClockSource & 0x000F0) >> 4) << RCC_CFGR_SW_Pos) & RCC_CFGR_SW;
     while (((RCC->CFGR & RCC_CFGR_SWS) >> 2) != ((ClockSource & 0x000F0) >> 4));
 
-    if (tickEn && pCallback != NULL)
-        AppTickPtr = pCallback;
-
+    // SysTick Configuration
     if (tickEn) {
-        u32 clock = 8000000;
-        u32 pre   = 1000000;
-        if (((ClockSource & 0x000F0) >> 4) == 2) {
-            clock =  ((ClockSource & 0x0000F) == 0) ? 12000000 : HSE_VALUE;
-            if (!(ClockSource & 0x0F000) && (ClockSource & 0xF0000)) {
-                clock = ((ClockSource & 0xF0000) == 0x10000) ? 48000000 : 72000000;
-            } else {
-                clock *= ((ClockSource & 0x0F000) >> 12) + 1;
-                clock /= ((ClockSource & 0x00F00) >> 8)  + 1;
-            }
-        } else if (((ClockSource & 0x000F0) >> 4) == 3) {
-            clock = 40000;
-            pre   = 10000;
+        // SysTick Callback Function
+        if (pCallback != NULL) {
+            AppTickPtr = pCallback;
         }
+
         SysTick_Config(clock / pre * 1000);
     } else {
+        // Disable SysTick
         SysTick->CTRL &= ~SysTick_CTRL_ENABLE_Msk;
     }
 
 #if (__CORTEX_M == 3U)
     #ifdef VECT_TAB_SRAM
-        SCB->VTOR = SRAM_BASE | VECT_TAB_OFFSET; /* Vector Table Relocation in Internal SRAM. */
+        SCB->VTOR = SRAM_BASE | VECT_TAB_OFFSET;                                // Vector Table Relocation in Internal SRAM.
     #else
-        SCB->VTOR = FLASH_BASE | VECT_TAB_OFFSET; /* Vector Table Relocation in Internal FLASH. */
+        SCB->VTOR = FLASH_BASE | VECT_TAB_OFFSET;                               // Vector Table Relocation in Internal FLASH.
     #endif
 #endif
 

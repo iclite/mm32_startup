@@ -17,7 +17,6 @@
 /// <H2><CENTER>&COPY; COPYRIGHT 2018-2021 MINDMOTION </CENTER></H2>
 ////////////////////////////////////////////////////////////////////////////////
 
-
 // Define to prevent recursive inclusion  --------------------------------------
 #ifndef __MM32_SYSTEM_H
 #define __MM32_SYSTEM_H
@@ -26,19 +25,18 @@
 #include "mm32_types.h"
 
 ////////////////////////////////////////////////////////////////////////////////
-/// @defgroup MM32_Example_Layer
-/// @brief MM32 Example Layer
+/// @defgroup MM32_Startup_Layer
+/// @brief MM32 Startup Layer
 /// @{
 
 ////////////////////////////////////////////////////////////////////////////////
-/// @defgroup MM32_RESOURCE
-/// @brief MM32 Examples resource modules
+/// @defgroup MM32_System
+/// @brief MM32 System Resource
 /// @{
 
 ////////////////////////////////////////////////////////////////////////////////
 /// @defgroup MM32_Exported_Constants
 /// @{
-
 
 #define IDCODE_DEVID_MASK               (0x00000FFFU)
 #define COREID_MASK                     (0x00000070U)
@@ -98,7 +96,6 @@ typedef enum {
     emSYSTICK_Off,
     emSYSTICK_On = !emSYSTICK_Off
 } EM_SYSTICK;
-
 
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief  System clock configuration
@@ -160,6 +157,15 @@ typedef enum {
 #endif
 } EM_SystemClock;
 
+/// @}
+
+////////////////////////////////////////////////////////////////////////////////
+/// @defgroup MM32_Exported_TypeDef
+/// @{
+
+////////////////////////////////////////////////////////////////////////////////
+/// @brief  SysTick Callback Type Definition
+////////////////////////////////////////////////////////////////////////////////
 typedef void (*AppTick_fun)(void);
 
 /// @}
@@ -167,30 +173,26 @@ typedef void (*AppTick_fun)(void);
 ////////////////////////////////////////////////////////////////////////////////
 /// @defgroup MM32_Exported_Variables
 /// @{
+
 #ifdef _MM32_SYSTEM_C_
 #define GLOBAL
 
 GLOBAL int nTimeOutCnt = 0;
 
-GLOBAL bool sysTickFlag1mS = false;
-GLOBAL u32 sysTickCnt1mS = 0;
-
-GLOBAL bool sysTickFlag = false;
-GLOBAL u32 sysTickCnt = 0;
+GLOBAL bool sysTickFlag1mS  = false;
+GLOBAL bool sysTickFlag     = false;
+GLOBAL u32  sysTickCnt      = 0;
 
 GLOBAL bool tickFlag = false;
-GLOBAL u32 tickCnt = 0;
 
 #else
 #define GLOBAL extern
 
 GLOBAL bool sysTickFlag1mS;
-GLOBAL u32 sysTickCnt1mS;
 GLOBAL int nTimeOutCnt;
 GLOBAL bool sysTickFlag;
 GLOBAL u32 sysTickCnt;
 GLOBAL bool tickFlag;
-GLOBAL u32 tickCnt;
 
 #endif
 
@@ -208,20 +210,15 @@ GLOBAL AppTick_fun AppTickPtr;
 /// @defgroup MM32_Exported_Functions
 /// @{
 
-//void PutKeyBuffer(u8 key);
-
-void SysTickLED(void);
-
-EM_MCUID DBGMCU_GetDEVID(void);
-EM_MCUID SystemInit(EM_SystemClock ClockSoucre, EM_SYSTICK enable , AppTick_fun address);
-EM_MCUID SetSystemClock(EM_SYSTICK enable , AppTick_fun callbackPtr);
+EM_MCUID DBG_GetDEVID(void);
+EM_MCUID SystemInit(EM_SystemClock clockConfig, EM_SYSTICK tickEn , AppTick_fun callback);
+EM_MCUID SetSystemClock(EM_SYSTICK enable , AppTick_fun callback);
 
 /// @}
 
 /// @}
 
 /// @}
-
 
 ////////////////////////////////////////////////////////////////////////////////
 #endif

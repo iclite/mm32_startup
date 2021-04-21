@@ -120,26 +120,26 @@ EM_MCUID DBG_GetDEVID()
 ///         Initialize the Embedded Flash Interface, the PLL and update the
 ///         SystemCoreClock variable.
 /// @note   This function should be used only after reset.
-/// @param  ClockSoucre : Select system clock source.
+/// @param  clockConfig : Select system clock source.
 /// @param  tickEn : Enable or disable the systick.
-/// @param  pCallback : The pointer point to the systick callback function.
+/// @param  callback : The pointer point to the systick callback function.
 /// @retval MCU ID.
 ////////////////////////////////////////////////////////////////////////////////
-EM_MCUID SystemInit(EM_SystemClock ClockSource, EM_SYSTICK tickEn , AppTick_fun pCallback)
+EM_MCUID SystemInit(EM_SystemClock clockConfig, EM_SYSTICK tickEn , AppTick_fun callback)
 {
     uint32_t clock = 8000000;
     uint32_t pre   = 1000000;
 
     // Calculate the clock frequency
-    if (((ClockSource & 0x000F0) >> 4) == 2) {
-        clock =  ((ClockSource & 0x0000F) == 0) ? 12000000 : HSE_VALUE;
-        if (!(ClockSource & 0x0F000) && (ClockSource & 0xF0000)) {
-            clock = ((ClockSource & 0xF0000) == 0x10000) ? 48000000 : 72000000;
+    if (((clockConfig & 0x000F0) >> 4) == 2) {
+        clock =  ((clockConfig & 0x0000F) == 0) ? 12000000 : HSE_VALUE;
+        if (!(clockConfig & 0x0F000) && (clockConfig & 0xF0000)) {
+            clock = ((clockConfig & 0xF0000) == 0x10000) ? 48000000 : 72000000;
         } else {
-            clock *= ((ClockSource & 0x0F000) >> 12) + 1;
-            clock /= ((ClockSource & 0x00F00) >> 8)  + 1;
+            clock *= ((clockConfig & 0x0F000) >> 12) + 1;
+            clock /= ((clockConfig & 0x00F00) >> 8)  + 1;
         }
-    } else if (((ClockSource & 0x000F0) >> 4) == 3) {
+    } else if (((clockConfig & 0x000F0) >> 4) == 3) {
         clock = 40000;
         pre   = 10000;
     }
@@ -157,18 +157,18 @@ EM_MCUID SystemInit(EM_SystemClock ClockSource, EM_SYSTICK tickEn , AppTick_fun 
 #endif
 
     // Flash
-    if ((ClockSource >> 16) <= 4) {
+    if ((clockConfig >> 16) <= 4) {
         FLASH->ACR |= FLASH_ACR_PRFTBE;
         FLASH->ACR &=~FLASH_ACR_LATENCY;
-        FLASH->ACR |= ClockSource >> 16;
+        FLASH->ACR |= clockConfig >> 16;
     } else {
         while(1);                                                               // Flash Latency not in range.
     }
 
     // Set Oscillator
-    if ((ClockSource & 0x0000F) == 0) {                                         // HSI
+    if ((clockConfig & 0x0000F) == 0) {                                         // HSI
 #if defined(RCC_CR_HSI_72M)
-        (((ClockSource & 0xF0000) >> 16) == 1) ? (RCC->CR &= ~RCC_CR_HSI_72M) :
+        (((clockConfig & 0xF0000) >> 16) == 1) ? (RCC->CR &= ~RCC_CR_HSI_72M) :
                                                  (RCC->CR |=  RCC_CR_HSI_72M);
 #endif
         RCC->CR |= RCC_CR_HSION;
@@ -178,7 +178,7 @@ EM_MCUID SystemInit(EM_SystemClock ClockSource, EM_SYSTICK tickEn , AppTick_fun 
 #elif defined(RCC_PLLCFGR_PLLSRC)
         RCC->PLLCFGR &= ~RCC_PLLCFGR_PLLSRC;
 #endif
-    } else if ((ClockSource & 0x0000F) == 1) {                                  // HSE
+    } else if ((clockConfig & 0x0000F) == 1) {                                  // HSE
         RCC->CR |= RCC_CR_HSEON;
         while (!(RCC->CR & RCC_CR_HSERDY));                                     // Wait for PLL ready!
 #if defined(RCC_CFGR_PLLSRC)
@@ -186,7 +186,7 @@ EM_MCUID SystemInit(EM_SystemClock ClockSource, EM_SYSTICK tickEn , AppTick_fun 
 #elif defined(RCC_PLLCFGR_PLLSRC)
         RCC->PLLCFGR |= RCC_PLLCFGR_PLLSRC;
 #endif
-    } else if ((ClockSource & 0x0000F) == 2) {                                  // LSE
+    } else if ((clockConfig & 0x0000F) == 2) {                                  // LSE
         RCC->CSR |= RCC_CSR_LSION;
         while (!(RCC->CR & RCC_CSR_LSIRDY));                                    // Wait for PLL ready!
     } else {
@@ -203,14 +203,14 @@ EM_MCUID SystemInit(EM_SystemClock ClockSource, EM_SYSTICK tickEn , AppTick_fun 
 
 #if defined(RCC_CR_PLLON)
     // PLL on
-    if ((ClockSource & 0x000F0) >> 4 == 2) {
+    if ((clockConfig & 0x000F0) >> 4 == 2) {
 #if defined(RCC_PLLCFGR_PLLSRC)
         RCC->PLLCFGR &= ~(RCC_PLLCFGR_PLLMUL | RCC_PLLCFGR_PLLDIV);
-        RCC->PLLCFGR |= (((ClockSource & 0x0F000) >> 12) << RCC_PLLCFGR_PLLMUL_Pos);
-        RCC->PLLCFGR |= ((ClockSource & 0x00F00) << RCC_PLLCFGR_PLLDIV_Pos);
+        RCC->PLLCFGR |= (((clockConfig & 0x0F000) >> 12) << RCC_PLLCFGR_PLLMUL_Pos);
+        RCC->PLLCFGR |= ((clockConfig & 0x00F00) << RCC_PLLCFGR_PLLDIV_Pos);
 #else
-        RCC->CR |= ((ClockSource & 0x0F000) << 14);
-        RCC->CR |= ((ClockSource & 0x00F00) << 12);
+        RCC->CR |= ((clockConfig & 0x0F000) << 14);
+        RCC->CR |= ((clockConfig & 0x00F00) << 12);
 #endif
         RCC->CR |= RCC_CR_PLLON;
         while (!(RCC->CR & RCC_CR_PLLRDY)); // Wait for PLL ready!
@@ -228,14 +228,14 @@ EM_MCUID SystemInit(EM_SystemClock ClockSource, EM_SYSTICK tickEn , AppTick_fun 
     RCC->CFGR |= RCC_CFGR_PPRE2_DIV1;
 #endif
     // Clock Switch to
-    RCC->CFGR |= (((ClockSource & 0x000F0) >> 4) << RCC_CFGR_SW_Pos) & RCC_CFGR_SW;
-    while (((RCC->CFGR & RCC_CFGR_SWS) >> 2) != ((ClockSource & 0x000F0) >> 4));
+    RCC->CFGR |= (((clockConfig & 0x000F0) >> 4) << RCC_CFGR_SW_Pos) & RCC_CFGR_SW;
+    while (((RCC->CFGR & RCC_CFGR_SWS) >> 2) != ((clockConfig & 0x000F0) >> 4));
 
     // SysTick Configuration
     if (tickEn) {
         // SysTick Callback Function
-        if (pCallback != NULL) {
-            AppTickPtr = pCallback;
+        if (callback != NULL) {
+            AppTickPtr = callback;
         }
 
         SysTick_Config(clock / pre * 1000);
@@ -261,9 +261,9 @@ EM_MCUID SystemInit(EM_SystemClock ClockSource, EM_SYSTICK tickEn , AppTick_fun 
 ///  @param  callbackPtr: The pointer point to the systick callback function.
 ///  @retval None.
 ////////////////////////////////////////////////////////////////////////////////
-EM_MCUID SetSystemClock(EM_SYSTICK enable , AppTick_fun callbackPtr)
+EM_MCUID SetSystemClock(EM_SYSTICK enable , AppTick_fun callback)
 {
-    return SystemInit(SYSCLK_HSI_72MHz, enable, callbackPtr);
+    return SystemInit(SYSCLK_HSI_72MHz, enable, callback);
 }
 
 /// @}

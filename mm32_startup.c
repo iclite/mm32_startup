@@ -1,13 +1,42 @@
+////////////////////////////////////////////////////////////////////////////////
+/// @file    MM32_STARTUP.C
+/// @author  Nanjing AE Team
+/// @version 1.0.0
+/// @date    2021-04-21
+/// @brief   THIS FILE PROVIDES ALL THE STARTUP FUNCTIONS.
+////////////////////////////////////////////////////////////////////////////////
+/// @attention
+///
+/// THE EXISTING FIRMWARE IS ONLY FOR REFERENCE, WHICH IS DESIGNED TO PROVIDE
+/// CUSTOMERS WITH CODING INFORMATION ABOUT THEIR PRODUCTS SO THEY CAN SAVE
+/// TIME. THEREFORE, MINDMOTION SHALL NOT BE LIABLE FOR ANY DIRECT, INDIRECT OR
+/// CONSEQUENTIAL DAMAGES ABOUT ANY CLAIMS ARISING OUT OF THE CONTENT OF SUCH
+/// HARDWARE AND/OR THE USE OF THE CODING INFORMATION CONTAINED HEREIN IN
+/// CONNECTION WITH PRODUCTS MADE BY CUSTOMERS.
+///
+/// <H2><CENTER>&COPY; COPYRIGHT 2021 MINDMOTION </CENTER></H2>
+////////////////////////////////////////////////////////////////////////////////
+
+// Define to prevent recursive inclusion  --------------------------------------
 #define _MM32_STARTUP_C_
 
-#include "stdint.h"
+// Files includes  -------------------------------------------------------------
+#include <stdint.h>
+
 #include "mm32_startup.h"
 
 ////////////////////////////////////////////////////////////////////////////////
-///
-/// Compiler Configuration
-///
+/// @addtogroup MM32_Example_Layer
+/// @{
+
 ////////////////////////////////////////////////////////////////////////////////
+/// @addtogroup MM32_RESOURCE
+/// @{
+
+////////////////////////////////////////////////////////////////////////////////
+/// @addtogroup MM32_Exported_Constants
+/// @{
+
 #if defined ( __ICCARM__ )
     #pragma segment  = "CSTACK"                                                 // IAR
     #define __initial_sp __sfe("CSTACK")
@@ -25,9 +54,7 @@
 #endif
 
 ////////////////////////////////////////////////////////////////////////////////
-///
-/// Interrupt Vector Table
-///
+///  @brief  Interrupt Vector Table
 ////////////////////////////////////////////////////////////////////////////////
 const intvec_elem __vector_table[] __attribute__((section(".vector_table"))) = {
     { .__ptr = __initial_sp },
@@ -41,10 +68,16 @@ const intvec_elem __vector_table[] __attribute__((section(".vector_table"))) = {
 #endif
 };
 
+/// @}
+
 ////////////////////////////////////////////////////////////////////////////////
-///
-/// Reset Handler
-///
+/// @addtogroup MM32_Exported_Functions
+/// @{
+
+////////////////////////////////////////////////////////////////////////////////
+///  @brief  System Reset Function.
+///  @param  None.
+///  @retval None.
 ////////////////////////////////////////////////////////////////////////////////
 void Reset_Handler(void)
 {
@@ -55,7 +88,7 @@ void Reset_Handler(void)
 #elif defined ( __GNUC__ )
     _start();
 #else
-    #error "Error: Unknown Compiler!"
+    #error Unknown compiler.
 #endif
 
     while (1) {}

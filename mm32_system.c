@@ -1,8 +1,8 @@
 ////////////////////////////////////////////////////////////////////////////////
 /// @file    MM32_SYSTEM.C
-/// @author  AE TEAM
-/// @version 2.0.0
-/// @date    2018-08-01
+/// @author  Nanjing AE Team
+/// @version 1.0.0
+/// @date    2021-04-21
 /// @brief   THIS FILE PROVIDES ALL THE SYSTEM FUNCTIONS.
 ////////////////////////////////////////////////////////////////////////////////
 /// @attention
@@ -14,7 +14,7 @@
 /// HARDWARE AND/OR THE USE OF THE CODING INFORMATION CONTAINED HEREIN IN
 /// CONNECTION WITH PRODUCTS MADE BY CUSTOMERS.
 ///
-/// <H2><CENTER>&COPY; COPYRIGHT 2018 MINDMOTION </CENTER></H2>
+/// <H2><CENTER>&COPY; COPYRIGHT 2018-2021 MINDMOTION </CENTER></H2>
 ////////////////////////////////////////////////////////////////////////////////
 
 // Define to prevent recursive inclusion  --------------------------------------
@@ -22,9 +22,9 @@
 
 // Files includes  -------------------------------------------------------------
 #include <string.h>
-#include "mm32_types.h"
-#include "mm32.h"
+#include <stdint.h>
 
+#include "mm32.h"
 #include "mm32_system.h"
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -116,19 +116,19 @@ EM_MCUID DBG_GetDEVID()
 }
 
 ////////////////////////////////////////////////////////////////////////////////
-// @brief  Setup the microcontroller system
-//         Initialize the Embedded Flash Interface, the PLL and update the
-//         SystemCoreClock variable.
-// @note   This function should be used only after reset.
-// @param  ClockSoucre : Select system clock source.
-// @param  tickEn : Enable or disable the systick.
-// @param  pCallback : The pointer point to the systick callback function.
-// @retval  MCU ID.
+/// @brief  Setup the microcontroller system
+///         Initialize the Embedded Flash Interface, the PLL and update the
+///         SystemCoreClock variable.
+/// @note   This function should be used only after reset.
+/// @param  ClockSoucre : Select system clock source.
+/// @param  tickEn : Enable or disable the systick.
+/// @param  pCallback : The pointer point to the systick callback function.
+/// @retval MCU ID.
 ////////////////////////////////////////////////////////////////////////////////
 EM_MCUID SystemInit(EM_SystemClock ClockSource, EM_SYSTICK tickEn , AppTick_fun pCallback)
 {
-    u32 clock = 8000000;
-    u32 pre   = 1000000;
+    uint32_t clock = 8000000;
+    uint32_t pre   = 1000000;
 
     // Calculate the clock frequency
     if (((ClockSource & 0x000F0) >> 4) == 2) {
@@ -255,12 +255,11 @@ EM_MCUID SystemInit(EM_SystemClock ClockSource, EM_SYSTICK tickEn , AppTick_fun 
     return DBG_GetDEVID();
 }
 
-
 ////////////////////////////////////////////////////////////////////////////////
-//  @brief  System clock configuration
-//  @param  enable: Enable or disable the systick.
-//  @param  callbackPtr: The pointer point to the systick callback function.
-//  @retval None.
+///  @brief  System clock configuration
+///  @param  enable: Enable or disable the systick.
+///  @param  callbackPtr: The pointer point to the systick callback function.
+///  @retval None.
 ////////////////////////////////////////////////////////////////////////////////
 EM_MCUID SetSystemClock(EM_SYSTICK enable , AppTick_fun callbackPtr)
 {
@@ -269,9 +268,6 @@ EM_MCUID SetSystemClock(EM_SYSTICK enable , AppTick_fun callbackPtr)
 
 /// @}
 
-
 /// @}
 
 /// @}
-
-

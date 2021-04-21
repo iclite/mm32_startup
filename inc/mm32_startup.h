@@ -1,3 +1,22 @@
+////////////////////////////////////////////////////////////////////////////////
+/// @file     MM32_STARTUP.H
+/// @author   Nanjing AE Team
+/// @version  1.0.0
+/// @date     2021-04-21
+/// @brief    THIS FILE CONTAINS ALL THE FUNCTIONS PROTOTYPES FOR THE ADC
+///           FIRMWARE LIBRARY.
+////////////////////////////////////////////////////////////////////////////////
+/// @attention
+///
+/// THE EXISTING FIRMWARE IS ONLY FOR REFERENCE, WHICH IS DESIGNED TO PROVIDE
+/// CUSTOMERS WITH CODING INFORMATION ABOUT THEIR PRODUCTS SO THEY CAN SAVE
+/// TIME. THEREFORE, MINDMOTION SHALL NOT BE LIABLE FOR ANY DIRECT, INDIRECT OR
+/// CONSEQUENTIAL DAMAGES ABOUT ANY CLAIMS ARISING OUT OF THE CONTENT OF SUCH
+/// HARDWARE AND/OR THE USE OF THE CODING INFORMATION CONTAINED HEREIN IN
+/// CONNECTION WITH PRODUCTS MADE BY CUSTOMERS.
+///
+/// <H2><CENTER>&COPY; COPYRIGHT 2021 MINDMOTION </CENTER></H2>
+////////////////////////////////////////////////////////////////////////////////
 #ifndef __MM32_STARTUP_H__
 #define __MM32_STARTUP_H__
 

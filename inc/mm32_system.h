@@ -77,14 +77,17 @@
 /// @anchor EM_MCUID
 ////////////////////////////////////////////////////////////////////////////////
 typedef enum {
-    Unknown,
+    emMCUID_Unknown,
     emMCUID_MM32L073,
     emMCUID_MM32SPIN27,
     emMCUID_MM32F031,
     emMCUID_MM32F031_OLD,
     emMCUID_MM32L395,
     emMCUID_MM32F103_OLD,
-    emMCUID_MM32L373
+    emMCUID_MM32L373,
+    emMCUID_MM32F0130,
+    emMCUID_MM32F0010,
+    emMCUID_MM32F3270
 }EM_MCUID;
 
 ////////////////////////////////////////////////////////////////////////////////

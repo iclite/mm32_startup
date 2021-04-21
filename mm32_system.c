@@ -79,7 +79,7 @@ __WEAK void SysTick_Handler (void)
 /// @param  None.
 /// @retval  MCU ID.
 ////////////////////////////////////////////////////////////////////////////////
-EM_MCUID DBGMCU_GetDEVID()
+EM_MCUID DBG_GetDEVID()
 {
     if ((SCB->CPUID & SCB_CPUID_PARTNO_Msk) == CORTEX_M3_PARTNO) {
         RCC->APB1ENR &= ~RCC_APB1ENR_PWR;
@@ -87,6 +87,8 @@ EM_MCUID DBGMCU_GetDEVID()
     }
 
     switch (DBG->IDCODE) {
+    case MCUID_MM0M1:
+        return emMCUID_MM32F031_OLD;    // emMCUID_MM0M1;
     case MCUID_MM0N1:
         return emMCUID_MM32L073;        // emMCUID_MM0N1;
     case MCUID_MM0P1:
@@ -94,16 +96,22 @@ EM_MCUID DBGMCU_GetDEVID()
         return emMCUID_MM32SPIN27;      // emMCUID_MM0P1;
     case MCUID_MM0Q1:
         return emMCUID_MM32F031;        // emMCUID_MM0Q1;
-    case MCUID_MM0M1:
-        return emMCUID_MM32F031_OLD;    // emMCUID_MM0M1;
-    case MCUID_MM3O1:
-        return emMCUID_MM32L395;        // emMCUID_MM3O1;
-    case MCUID_MM3N1:
-        return emMCUID_MM32L373;        // emMCUID_MM3N1;
+    case MCUID_MM0S1:
+        return emMCUID_MM32F0130;
+    case MCUID_MM0T1:
+        return emMCUID_MM32F0010;
+
     case MCUID_MM3M1:
         return emMCUID_MM32F103_OLD;    // emMCUID_MM3M1;
+    case MCUID_MM3N1:
+        return emMCUID_MM32L373;        // emMCUID_MM3N1;
+    case MCUID_MM3O1:
+        return emMCUID_MM32L395;        // emMCUID_MM3O1;
+    case MCUID_MM3U1:
+        return emMCUID_MM32F3270;
+
     default:
-        return Unknown;
+        return emMCUID_Unknown;
     }
 }
 
@@ -244,7 +252,7 @@ EM_MCUID SystemInit(EM_SystemClock ClockSource, EM_SYSTICK tickEn , AppTick_fun 
     #endif
 #endif
 
-    return DBGMCU_GetDEVID();
+    return DBG_GetDEVID();
 }
 
 

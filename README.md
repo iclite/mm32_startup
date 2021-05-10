@@ -14,7 +14,7 @@ This repository contains / 本仓库包含：
 
 ### Recommend / 推荐
 
-Add to the project via Git submodule. 
+Add to the project via Git submodule.
 
 通过 Git 子模块方式添加到项目中。
 
@@ -22,7 +22,7 @@ Add to the project via Git submodule.
 git submodule add https://github.com/PYGC/mm32_startup.git
 ```
 
-If you want to add to the specified path, please append the path at the end of the above command. 
+If you want to add to the specified path, please append the path at the end of the above command.
 
 如果想要添加到指定路径，请在上面的命令最后追加路径，例如：
 

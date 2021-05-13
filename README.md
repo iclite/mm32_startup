@@ -10,6 +10,19 @@ This repository contains / 本仓库包含：
 - header files / 头文件
 - clock initialization files / 时钟初始化文件
 
+## Chip Core Version Define
+
+| Core Version | Chip                           |
+| :----------: | :----------------------------- |
+|  \_\_MM0N1   | MM32L0xx, MM32F031             |
+|  \_\_MM3N1   | MM32F103                       |
+|  \_\_MM3O1   | MM32F103                       |
+|  \_\_MM0P1   | MM32SPIN2x                     |
+|  \_\_MM0Q1   | MM32F003, MM32F031, MM32SPIN0x |
+|  \_\_MM0S1   | MM32F032, MM32F013x            |
+|  \_\_MM0T1   | MM32F0010                      |
+|  \_\_MM0U1   | MM32F327x                      |
+
 ## How to use / 使用方式
 
 ### Recommend / 推荐
@@ -49,9 +62,6 @@ For VS Code `.vscode/settings.json`:
         "${workspaceFolder}/inc/",
         "${GITWORK_PATH}/github.com/ARM-software/CMSIS_5/CMSIS/Core/Include/**"
     ],
-    "C_Cpp.default.defines": [
-        "__MM0Q1",
-        "CLOCK=8000000"
-    ]
+    "C_Cpp.default.defines": ["__MM0Q1", "CLOCK=8000000"]
 }
 ```

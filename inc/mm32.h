@@ -30,15 +30,29 @@
 /// @brief  MM32 MCU Interrupt Handle
 ////////////////////////////////////////////////////////////////////////////////
 typedef enum IRQn {
-    NonMaskableInt_IRQn                 = -14,                                  ///< 2 Non Maskable Interrupt
-    HardFault_IRQn                      = -13,                                  ///< 3 Cortex-M0 Hard Fault Interrupt
-    MemoryManagement_IRQn               = -12,                                  ///< 4 Cortex-M0 Memory Management Interrupt
-    BusFault_IRQn                       = -11,                                  ///< 5 Cortex-M0 Bus Fault Interrupt
-    UsageFault_IRQn                     = -10,                                  ///< 6 Cortex-M0 Usage Fault Interrupt
-    SVC_IRQn                            = -5,                                   ///< 11 Cortex-M0 SV Call Interrupt
-    DebugMonitor_IRQn                   = -4,                                   ///< 12 Cortex-M0 Debug Monitor Interrupt
-    PendSV_IRQn                         = -2,                                   ///< 14 Cortex-M0 Pend SV Interrupt
-    SysTick_IRQn                        = -1,                                   ///< 15 Cortex-M0 System Tick Interrupt
+// ARMv6M Core handlers
+#if defined(__MM0N1) || defined(__MM0P1) || defined(__MM0Q1) || defined(__MM0S1) || defined(__MM0T1)
+    Reset_IRQn                          = -15,                                  ///< 1 Reset exception
+    NonMaskableInt_IRQn                 = -14,                                  ///< 2 Non Maskable Interrupt exception
+    HardFault_IRQn                      = -13,                                  ///< 3 Hard Fault exception
+    SVCall_IRQn                         = -5,                                   ///< 11 SV Call exception
+    PendSV_IRQn                         = -2,                                   ///< 14 Pend SV interrupt
+    SysTick_IRQn                        = -1,                                   ///< 15 System Tick interrupt
+#endif
+
+// ARMv7M Core handlers
+#if defined(__MM3N1) || defined(__MM3O1) || defined(__MM3U1)
+    Reset_IRQn                          = -15,                                  ///< 1  Reset exception
+    NonMaskableInt_IRQn                 = -14,                                  ///< 2  Non Maskable Interrupt exception
+    HardFault_IRQn                      = -13,                                  ///< 3  Hard Fault exception
+    MemoryManagement_IRQn               = -12,                                  ///< 4  Memory Management exception
+    BusFault_IRQn                       = -11,                                  ///< 5  Bus Fault exception
+    UsageFault_IRQn                     = -10,                                  ///< 6  Usage Fault exception
+    SVCall_IRQn                         = -5,                                   ///< 11 SV Call exception
+    DebugMonitor_IRQn                   = -4,                                   ///< 12 Debug Monitor exception
+    PendSV_IRQn                         = -2,                                   ///< 14 Pend SV interrupt
+    SysTick_IRQn                        = -1,                                   ///< 15 System Tick interrupt
+#endif
 
 #if defined(__MM3N1)
     WDG_IRQn                            = 0,                                    ///< Window WatchDog Interrupt
@@ -356,13 +370,13 @@ typedef enum IRQn {
 } IRQn_Type;
 
 #if defined(__MM3N1) || defined(__MM3O1) || defined(__MM3U1)
-    #define __MPU_PRESENT               (0)                                     ///< mm32f103/mm32l3xx does not provide a MPU present or not
-    #define __NVIC_PRIO_BITS            (3)                                     ///< mm32f103/mm32l3xx uses 3 Bits for the Priority Levels
+    #define __MPU_PRESENT               (0)                                     ///< MM32 Cortex-M3 does not provide a MPU present or not
+    #define __NVIC_PRIO_BITS            (3)                                     ///< MM32 Cortex-M3 uses 3 Bits for the Priority Levels
     #define __Vendor_SysTickConfig      (0)                                     ///< Set to 1 if different SysTick Config is used
     #include <core_cm3.h>
 #elif defined(__MM0N1) || defined(__MM0P1) || defined(__MM0Q1) || defined(__MM0S1) || defined(__MM0T1)
-    #define __MPU_PRESENT               (0)                                     ///< mm32f031/mm32l0xx does not provide a MPU present or not
-    #define __NVIC_PRIO_BITS            (2)                                     ///< mm32f031/mm32l0xx uses 4 Bits for the Priority Levels
+    #define __MPU_PRESENT               (0)                                     ///< MM32 Cortex-M0 does not provide a MPU present or not
+    #define __NVIC_PRIO_BITS            (2)                                     ///< MM32 Cortex-M0 uses 4 Bits for the Priority Levels
     #define __Vendor_SysTickConfig      (0)                                     ///< Set to 1 if different SysTick Config is used
     #include <core_cm0.h>
 #else

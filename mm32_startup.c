@@ -56,7 +56,13 @@
 ////////////////////////////////////////////////////////////////////////////////
 ///  @brief  Interrupt Vector Table
 ////////////////////////////////////////////////////////////////////////////////
+#if defined ( __ICCARM__ )
+const intvec_elem __vector_table[] __attribute__((section(".intvec"))) = {
+#elif defined ( __CC_ARM ) || (defined ( __ARMCC_VERSION ) && ( __ARMCC_VERSION >= 6010050 ))
 const intvec_elem __vector_table[] __attribute__((section(".vector_table"))) = {
+#elif defined ( __GNUC__ )
+const intvec_elem __vector_table[] __attribute__((section(".vector_table"))) = {
+#endif
     { .__ptr = __initial_sp },
 
 #if defined( __CORTEX_M_CORE_HANDLERS__ )

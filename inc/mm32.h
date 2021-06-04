@@ -799,7 +799,7 @@ typedef enum IRQn {
     #define UART3_BASE                  (0x40004800U)                           ///< Base Address: APB1 0x40004800
     #define UART4_BASE                  (0x40004C00U)                           ///< Base Address: APB1 0x40004C00
     #define UART5_BASE                  (0x40005000U)                           ///< Base Address: APB1 0x40005000
-    #define UART6_BASE                  (0x40003C00U)                           ///< Base Address: APB2 0x40003C00
+    #define UART6_BASE                  (0x40013C00U)                           ///< Base Address: APB2 0x40003C00
     #define UART7_BASE                  (0x40007800U)                           ///< Base Address: APB1 0x40007800
     #define UART8_BASE                  (0x40007C00U)                           ///< Base Address: APB1 0x40007C00
 #endif
@@ -1551,13 +1551,28 @@ typedef struct {
 #if defined(FSMC_BASE)
 typedef struct {
     __IO uint32_t RESERVED0[21];                                                ///<                    offset address: 0x00 ~ 0x50
-    __IO uint32_t MR;                                                           ///< Mask Register,     offset address: 0x54
+    union {
+        __IO uint32_t MR;                                                       ///< Mask Register,     offset address: 0x54
+        __IO uint32_t SMSKR0;
+    };
     __IO uint32_t RESERVED1[15];                                                ///<                    offset address: 0x58 ~ 0x90
-    __IO uint32_t TR0;                                                          ///< Timing Register 0, offset address: 0x94
-    __IO uint32_t TR1;                                                          ///< Timing Register 1, offset address: 0x98
-    __IO uint32_t TR2;                                                          ///< Timing Register 2, offset address: 0x9C
+    union {
+        __IO uint32_t TR0;                                                      ///< Timing Register 0, offset address: 0x94
+        __IO uint32_t SMTMGR_SET0;
+    };
+    union {
+        __IO uint32_t TR1;                                                      ///< Timing Register 0, offset address: 0x98
+        __IO uint32_t SMTMGR_SET1;
+    };
+    union {
+        __IO uint32_t TR2;                                                      ///< Timing Register 0, offset address: 0x9C
+        __IO uint32_t SMTMGR_SET2;
+    };
     __IO uint32_t RESERVED2[15];                                                ///<                    offset address: 0xA0
-    __IO uint32_t CR;                                                           ///< Control Register,  offset address: 0xA4
+    union {
+        __IO uint32_t CR;                                                       ///< Control Register,  offset address: 0xA4
+        __IO uint32_t SMCTLR;
+    };
 } FSMC_TypeDef;
 #endif
 

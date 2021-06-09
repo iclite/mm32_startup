@@ -233,7 +233,7 @@ typedef enum IRQn {
     EXTI0_1_IRQn                        = 5,                                    ///< EXTI Line 0 and 1 Interrupts
     EXTI2_3_IRQn                        = 6,                                    ///< EXTI Line 2 and 3 Interrupts
     EXTI4_15_IRQn                       = 7,                                    ///< EXTI Line 4 to 15 Interrupts
-    HWDIV_IRQn                          = 8,                                    ///< HWDIV Global Interuupt
+    HWDIV_IRQn                          = 8,                                    ///< HWDIV Global Interrupt
     DMA1_Channel1_IRQn                  = 9,                                    ///< DMA Channel 1 Interrupt
     DMA1_Channel2_3_IRQn                = 10,                                   ///< DMA Channel 2 and Channel 3 Interrupts
     DMA1_Channel4_5_IRQn                = 11,                                   ///< DMA Channel 4 and Channel 5 Interrupts
@@ -1207,7 +1207,7 @@ typedef struct {
     __IO uint32_t TXID0;
     __IO uint32_t TXID1;
     __IO uint32_t TXDATA0;
-    __IO uint32_t TXDAYA1;
+    __IO uint32_t TXDATA1;
     __IO uint32_t AFM0;
     __IO uint32_t AFM1;
     __IO uint32_t AFM2;
@@ -1742,7 +1742,7 @@ typedef struct {
 typedef struct {
     __IO uint32_t CSR;                                                          ///< Control PWM output status register,            offset: 0x00
     __IO uint32_t APMSKR;                                                       ///< Auto phase mask register,                      offset: 0x04
-    __IO uint32_t APMDLR;                                                       ///< Auto phase mask dalay register,                offset: 0x08
+    __IO uint32_t APMDLR;                                                       ///< Auto phase mask delay register,                offset: 0x08
 } PWM_TypeDef;
 #endif
 
@@ -1758,7 +1758,7 @@ typedef struct {
     __IO uint32_t CR4;                                                          ///< Control register 4                             offset: 0x10
     __IO uint32_t CR5;                                                          ///< Control register 5                             offset: 0x14
     __IO uint32_t CR6;                                                          ///< Control register 6                             offset: 0x18
-    __IO uint32_t SR;                                                           ///< Satae register                                 offset: 0x1C
+    __IO uint32_t SR;                                                           ///< State register                                 offset: 0x1C
     __IO uint32_t SCR;                                                          ///< State clear register                           offset: 0x20
     __IO uint32_t CFGR;                                                         ///< Configuration register                         offset: 0x24
 #endif
@@ -1935,46 +1935,46 @@ typedef struct {
     __IO uint32_t MMC_CTRL;                                                     ///< SDIO transmit data register,       offset: 0x00
     __IO uint32_t MMC_IO;                                                       ///< SDIO receive data register,        offset: 0x04
     __IO uint32_t MMC_BYTECNTL;                                                 ///< SDIO current state register,       offset: 0x08
-    __IO uint32_t MMC_TR_BLOCKCNT;                                              ///< SDIO interruput state register,    offset: 0x0C
-    __IO uint32_t MMC_CRCCTL;                                                   ///< SDIO interruput enable register,   offset: 0x10
-    __IO uint32_t CMD_CRC;                                                      ///< SDIO interruput control register,  offset: 0x14
+    __IO uint32_t MMC_TR_BLOCKCNT;                                              ///< SDIO interrupt state register,     offset: 0x0C
+    __IO uint32_t MMC_CRCCTL;                                                   ///< SDIO interrupt enable register,    offset: 0x10
+    __IO uint32_t CMD_CRC;                                                      ///< SDIO interrupt control register,   offset: 0x14
     __IO uint32_t DAT_CRCL;                                                     ///< SDIO global control register,      offset: 0x18
     __IO uint32_t DAT_CRCH;                                                     ///< SDIO common control register,      offset: 0x1C
     __IO uint32_t MMC_PORT;                                                     ///< SDIO baud rate control register,   offset: 0x20
     __IO uint32_t MMC_INT_MASK;                                                 ///< SDIO receive data number register, offset: 0x24
     __IO uint32_t CLR_MMC_INT;                                                  ///< SDIO chip select register,         offset: 0x28
     __IO uint32_t MMC_CARDSEL;                                                  ///< SDIO extand control register,      offset: 0x2C
-    __IO uint32_t MMC_SIG;                                                      ///<                                    0ffset: 0x30
-    __IO uint32_t MMC_IO_MBCTL;                                                 ///<                                    0ffset: 0x34
-    __IO uint32_t MMC_BLOCKCNT;                                                 ///<                                    0ffset: 0x38
-    __IO uint32_t MMC_TIMEOUTCNT;                                               ///<                                    0ffset: 0x3C
-    __IO uint32_t CMD_BUF0;                                                     ///<                                    0ffset: 0x40
-    __IO uint32_t CMD_BUF1;                                                     ///<                                    0ffset: 0x44
-    __IO uint32_t CMD_BUF2;                                                     ///<                                    0ffset: 0x48
-    __IO uint32_t CMD_BUF3;                                                     ///<                                    0ffset: 0x4C
-    __IO uint32_t CMD_BUF4;                                                     ///<                                    0ffset: 0x50
-    __IO uint32_t CMD_BUF5;                                                     ///<                                    0ffset: 0x54
-    __IO uint32_t CMD_BUF6;                                                     ///<                                    0ffset: 0x58
-    __IO uint32_t CMD_BUF7;                                                     ///<                                    0ffset: 0x5C
-    __IO uint32_t CMD_BUF8;                                                     ///<                                    0ffset: 0x60
-    __IO uint32_t CMD_BUF9;                                                     ///<                                    0ffset: 0x64
-    __IO uint32_t CMD_BUF10;                                                    ///<                                    0ffset: 0x68
-    __IO uint32_t CMD_BUF11;                                                    ///<                                    0ffset: 0x6C
-    __IO uint32_t CMD_BUF12;                                                    ///<                                    0ffset: 0x70
-    __IO uint32_t CMD_BUF13;                                                    ///<                                    0ffset: 0x74
-    __IO uint32_t CMD_BUF14;                                                    ///<                                    0ffset: 0x78
-    __IO uint32_t CMD_BUF15;                                                    ///<                                    0ffset: 0x7C
-    __IO uint32_t BUF_CTL;                                                      ///<                                    0ffset: 0x80
+    __IO uint32_t MMC_SIG;                                                      ///<                                    offset: 0x30
+    __IO uint32_t MMC_IO_MBCTL;                                                 ///<                                    offset: 0x34
+    __IO uint32_t MMC_BLOCKCNT;                                                 ///<                                    offset: 0x38
+    __IO uint32_t MMC_TIMEOUTCNT;                                               ///<                                    offset: 0x3C
+    __IO uint32_t CMD_BUF0;                                                     ///<                                    offset: 0x40
+    __IO uint32_t CMD_BUF1;                                                     ///<                                    offset: 0x44
+    __IO uint32_t CMD_BUF2;                                                     ///<                                    offset: 0x48
+    __IO uint32_t CMD_BUF3;                                                     ///<                                    offset: 0x4C
+    __IO uint32_t CMD_BUF4;                                                     ///<                                    offset: 0x50
+    __IO uint32_t CMD_BUF5;                                                     ///<                                    offset: 0x54
+    __IO uint32_t CMD_BUF6;                                                     ///<                                    offset: 0x58
+    __IO uint32_t CMD_BUF7;                                                     ///<                                    offset: 0x5C
+    __IO uint32_t CMD_BUF8;                                                     ///<                                    offset: 0x60
+    __IO uint32_t CMD_BUF9;                                                     ///<                                    offset: 0x64
+    __IO uint32_t CMD_BUF10;                                                    ///<                                    offset: 0x68
+    __IO uint32_t CMD_BUF11;                                                    ///<                                    offset: 0x6C
+    __IO uint32_t CMD_BUF12;                                                    ///<                                    offset: 0x70
+    __IO uint32_t CMD_BUF13;                                                    ///<                                    offset: 0x74
+    __IO uint32_t CMD_BUF14;                                                    ///<                                    offset: 0x78
+    __IO uint32_t CMD_BUF15;                                                    ///<                                    offset: 0x7C
+    __IO uint32_t BUF_CTL;                                                      ///<                                    offset: 0x80
 
-    __IO uint32_t RESERVED[31];                                                 ///<                                    0ffset: 0x84
+    __IO uint32_t RESERVED[31];                                                 ///<                                    offset: 0x84
     union {
-        __IO uint32_t DATA_BUF0;                                                ///<                                    0ffset: 0x100
+        __IO uint32_t DATA_BUF0;                                                ///<                                    offset: 0x100
         __IO uint32_t FIFO;
     };
-    __IO uint32_t DATA_BUF1;                                                    ///<                                    0ffset: 0x104
-    __IO uint32_t DATA_BUF2;                                                    ///<                                    0ffset: 0x108
-    __IO uint32_t DATA_BUF3;                                                    ///<                                    0ffset: 0x10C
-    __IO uint32_t DATA_BUF4;                                                    ///<                                    0ffset: 0x110
+    __IO uint32_t DATA_BUF1;                                                    ///<                                    offset: 0x104
+    __IO uint32_t DATA_BUF2;                                                    ///<                                    offset: 0x108
+    __IO uint32_t DATA_BUF3;                                                    ///<                                    offset: 0x10C
+    __IO uint32_t DATA_BUF4;                                                    ///<                                    offset: 0x110
 } SDIO_TypeDef;
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -1982,7 +1982,7 @@ typedef struct {
 ////////////////////////////////////////////////////////////////////////////////
 typedef struct {
     union {
-        __IO uint32_t TDR;                                                      ///< SPI transmit data register,        offset: 0x00
+        __IO uint32_t TDR;                                                      ///< SPI transmit data register,            offset: 0x00
         __IO uint32_t TXREG;
     };
     union {
@@ -1994,15 +1994,15 @@ typedef struct {
         __IO uint32_t CSTAT;
     };
     union {
-        __IO uint32_t ISR;                                                      ///< SPI interruput state register,     offset: 0x0C
+        __IO uint32_t ISR;                                                      ///< SPI interrupt state register,      offset: 0x0C
         __IO uint32_t INTSTAT;
     };
     union {
-        __IO uint32_t IER;                                                      ///< SPI interruput enable register,    offset: 0x10
+        __IO uint32_t IER;                                                      ///< SPI interrupt enable register,     offset: 0x10
         __IO uint32_t INTEN;
     };
     union {
-        __IO uint32_t ICR;                                                      ///< SPI interruput control register,   offset: 0x14
+        __IO uint32_t ICR;                                                      ///< SPI interrupt control register,    offset: 0x14
         __IO uint32_t INTCLR;
     };
     union {
@@ -2172,9 +2172,9 @@ typedef struct {
     __IO uint32_t RESERVED9[4];                                                 ///< Reserved                           offset: 0x68
 #endif
 #if defined(__MM0S1)
-    __IO uint32_t EP_DMA_DIR ;                                                  ///< USB Starte die kasse durch DMA     offset: 0x68
+    __IO uint32_t EP_DMA_DIR ;                                                  ///< USB Endpoint DMA direction register offset: 0x68
     __IO uint32_t EP_TYPE    ;                                                  ///< USB Endpoint type register         offset: 0x6c
-    __IO uint32_t EP_INDEXI1_2;                                                 ///< USB Endpoint 12 index register     offset: 0x70
+    __IO uint32_t EP_INDEX1_2;                                                  ///< USB Endpoint 12 index register     offset: 0x70
     __IO uint32_t EP_INDEX3_4;                                                  ///< USB Endpoint 12 index register     offset: 0x74
 #endif
     __IO uint32_t TOG_CTRL1_4;                                                  ///< Toggle Control Register            offset: 0x78
@@ -2197,7 +2197,7 @@ typedef struct {
     __IO uint32_t SETUP7;                                                       ///< SETUP Packet Byte 7 Register       offset: 0x9C
 #endif
     __IO uint32_t PACKET_SIZE0;                                                 ///< DMA Max Packet Size 0 Register     offset: 0xA0
-    __IO uint32_t PAKCET_SIZE1;                                                 ///< DMA Max Packet Size 1 Register     offset: 0xA4
+    __IO uint32_t PACKET_SIZE1;                                                 ///< DMA Max Packet Size 1 Register     offset: 0xA4
     __IO uint32_t RESERVED14[22];                                               ///< Reserved                           offset: 0xA8
     __IO uint32_t EP0_AVIL;                                                     ///< EP0 Available Data Register        offset: 0x100
     __IO uint32_t EP1_AVIL;                                                     ///< EP1 Available Data Register        offset: 0x104
@@ -2215,7 +2215,7 @@ typedef struct {
     __IO uint32_t DMA_ADDR3;                                                    ///< Endpoint 2DMA address 3 register       offset: 0x12c
     __IO uint32_t DMA_NUML;                                                     ///< Endpoint 2DMA address data register    offset: 0x130
     __IO uint32_t DMA_NUMH;                                                     ///< Endpoint 2DMA address data register    offset: 0x134
-    __IO uint32_t RSSERVED46[2];                                                ///< Reserved                               offset: 0x138
+    __IO uint32_t RESERVED46[2];                                                ///< Reserved                               offset: 0x138
 #endif
     __IO uint32_t EP0_CTRL;                                                     ///< EP0 Control Register   offset: 0x140
     __IO uint32_t EP1_CTRL;                                                     ///< EP1 Control Register   offset: 0x144
@@ -2817,7 +2817,7 @@ typedef struct {
 #define  ADC_CR_ADWIE_Pos               (1)
 #define  ADC_CR_ADWIE                   (0x01U << ADC_CR_ADWIE_Pos)             ///< ADC window compare interrupt enable
 #define  ADC_CR_TRGEN_Pos               (2)
-#define  ADC_CR_TRGEN                   (0x01U << ADC_CR_TRGEN_Pos)             ///< extranal trigger single start AD convert
+#define  ADC_CR_TRGEN                   (0x01U << ADC_CR_TRGEN_Pos)             ///< external trigger single start AD convert
 #if !defined(__MM0T1)
     #define  ADC_CR_DMAEN_Pos           (3)
     #define  ADC_CR_DMAEN               (0x01U << ADC_CR_DMAEN_Pos)             ///< ADC DMA enable
@@ -3426,7 +3426,7 @@ typedef struct {
     #define AES_CR_EN                   (0x01U << AES_CR_EN_Pos)                ///< AES Enable
     #define AES_CR_DATATYPE_Pos         (1)
     #define AES_CR_DATATYPE             (0x03U << AES_CR_DATATYPE_Pos)          ///< Data type selection
-    #define AES_CR_UNREVERSE            (0x00U << AES_CR_DATATYPE_Pos)          ///< Unreverse
+    #define AES_CR_NOREVERSE            (0x00U << AES_CR_DATATYPE_Pos)          ///< No reverse
     #define AES_CR_HALFREVERSE          (0x01U << AES_CR_DATATYPE_Pos)          ///< Half reverse
     #define AES_CR_BYTEREVERSE          (0x02U << AES_CR_DATATYPE_Pos)          ///< Byte reverse
     #define AES_CR_BITREVERSE           (0x03U << AES_CR_DATATYPE_Pos)          ///< Bit reverse
@@ -3549,7 +3549,7 @@ typedef struct {
 /// @brief CACHE_CCR Register Bit Definition
 ////////////////////////////////////////////////////////////////////////////////
     #define CACHE_CCR_EN_Pos            (0)
-    #define CAHCE_CCR_EN                (0x01U << CACHE_CCR_EN_Pos)             ///< CACHE Enable
+    #define CACHE_CCR_EN                (0x01U << CACHE_CCR_EN_Pos)             ///< CACHE Enable
     #define CACHE_CCR_INV_REQ_Pos       (1)
     #define CACHE_CCR_INV_REQ           (0x01U << CACHE_CCR_INV_REQ_Pos)        ///< Invalid request
     #define CACHE_CCR_POW_REQ_Pos       (2)
@@ -3569,7 +3569,7 @@ typedef struct {
     #define CACHE_SR_CS_Pos             (0)
     #define CACHE_SR_CS                 (0x03U << CACHE_SR_CS_Pos)              ///< Cache status: disabled
     #define CACHE_SR_CS_DISABLED        (0x00U << CACHE_SR_CS_Pos)              ///< Cache status: disabled
-    #define CACHE_SR_CS_ENBALING        (0x01U << CACHE_SR_CS_Pos)              ///< Cache status: enabling
+    #define CACHE_SR_CS_ENABLING        (0x01U << CACHE_SR_CS_Pos)              ///< Cache status: enabling
     #define CACHE_SR_CS_ENABLED         (0x02U << CACHE_SR_CS_Pos)              ///< Cache status: enabled
     #define CACHE_SR_CS_DISABLING       (0x03U << CACHE_SR_CS_Pos)              ///< Cache status: disabling
     #define CACHE_INV_STAT_Pos          (2)
@@ -4190,8 +4190,8 @@ typedef struct {
     #define COMP_CRV_EN_ENABLE          (0x01U << COMP_CRV_EN_Pos)              ///< Enable comparator external reference voltage
     #define COMP_CRV_SRC_Pos            (5)
     #define COMP_CRV_SRC                (0x01U << COMP_CRV_SRC_Pos)             ///< Comparator external reference voltage source select
-    #define COMP_CRV_SRC_VREF           (0x00U << COMP_CRV_SRC_Pos)             ///< Select AVDD
-    #define COMP_CRV_SRC_AVDD           (0x01U << COMP_CRV_SRC_Pos)             ///< Select VREF
+    #define COMP_CRV_SRC_VREF           (0x00U << COMP_CRV_SRC_Pos)             ///< Select VREF
+    #define COMP_CRV_SRC_VDDA           (0x01U << COMP_CRV_SRC_Pos)             ///< Select VDDA
 #endif
 
 #if defined(__MM0P1) || defined(__MM0Q1) || defined(__MM0S1) || defined(__MM3U1)
@@ -4638,7 +4638,7 @@ typedef struct {
     #define  DIV_CR_USIGN_Pos           (0)
     #define  DIV_CR_USIGN               (0x01U << DIV_CR_USIGN_Pos)             ///< Unsigned enable
     #define  DIV_CR_OVFE_Pos            (1)
-    #define  DIV_CR_OVFE                (0x01U << DIV_CR_OVFE_Pos)              ///< Overflow interruput enable
+    #define  DIV_CR_OVFE                (0x01U << DIV_CR_OVFE_Pos)              ///< Overflow interrupt enable
 #endif
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief DMA_ISR Register Bit Definition
@@ -4713,7 +4713,7 @@ typedef struct {
 ////////////////////////////////////////////////////////////////////////////////
 #if defined(DMA1_BASE) || defined(DMA2_BASE)
     #define DMA_IFCR_CGIF1_Pos          (0)
-    #define DMA_IFCR_CGIF1              (0x01U << DMA_IFCR_CGIF1_Pos)           ///< Channel 1 Global interrupt clearr
+    #define DMA_IFCR_CGIF1              (0x01U << DMA_IFCR_CGIF1_Pos)           ///< Channel 1 Global interrupt clear
     #define DMA_IFCR_CTCIF1_Pos         (1)
     #define DMA_IFCR_CTCIF1             (0x01U << DMA_IFCR_CTCIF1_Pos)          ///< Channel 1 Transfer Complete clear
     #define DMA_IFCR_CHTIF1_Pos         (2)
@@ -4781,7 +4781,7 @@ typedef struct {
 ////////////////////////////////////////////////////////////////////////////////
 #if defined(DMA1_BASE) || defined(DMA2_BASE)
     #define DMA_CCR_EN_Pos              (0)
-    #define DMA_CCR_EN                  (0x01U << DMA_CCR_EN_Pos)               ///< Channel enabl
+    #define DMA_CCR_EN                  (0x01U << DMA_CCR_EN_Pos)               ///< Channel enable
     #define DMA_CCR_TCIE_Pos            (1)
     #define DMA_CCR_TCIE                (0x01U << DMA_CCR_TCIE_Pos)             ///< Transfer complete interrupt enable
     #define DMA_CCR_HTIE_Pos            (2)
@@ -4905,7 +4905,7 @@ typedef struct {
 #define ETH_MACFFR_BFD_Pos              (5)
 #define ETH_MACFFR_BFD                  (0x01U << ETH_MACFFR_BFD_Pos)           ///< Broadcast frame disable
 #define ETH_MACFFR_PAM_Pos              (4)
-#define ETH_MACFFR_PAM                  (0x01U << ETH_MACFFR_PAM_Pos)           ///< Pass all mutlicast
+#define ETH_MACFFR_PAM                  (0x01U << ETH_MACFFR_PAM_Pos)           ///< Pass all multicast
 #define ETH_MACFFR_DAIF_Pos             (3)
 #define ETH_MACFFR_DAIF                 (0x01U << ETH_MACFFR_DAIF_Pos)          ///< DA Inverse filtering
 #define ETH_MACFFR_HM_Pos               (2)
@@ -5093,7 +5093,7 @@ typedef struct {
 #define ETH_MACANAR_HD_Pos              (6)
 #define ETH_MACANAR_HD                  (0x01U << ETH_MACANAR_HD_Pos)           ///< support Half-Duplex
 #define ETH_MACANAR_FD_Pos              (5)
-#define ETH_MACANAR_FD                  (0x01U << ETH_MACANAR_FD_Pos)           ///< support Full-Durplex
+#define ETH_MACANAR_FD                  (0x01U << ETH_MACANAR_FD_Pos)           ///< support Full-Duplex
 
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief ETH_MACANLPAR Register Bit Definition
@@ -5109,7 +5109,7 @@ typedef struct {
 #define ETH_MACANLPAR_HD_Pos            (6)
 #define ETH_MACANLPAR_HD                (0x01U << ETH_MACANLPAR_HD_Pos)         ///< support Half-Duplex
 #define ETH_MACANLPAR_FD_Pos            (5)
-#define ETH_MACANLPAR_FD                (0x01U << ETH_MACANLPAR_FD_Pos)         ///< support Full-Durplex
+#define ETH_MACANLPAR_FD                (0x01U << ETH_MACANLPAR_FD_Pos)         ///< support Full-Duplex
 
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief ETH_MACANER Register Bit Definition
@@ -5161,7 +5161,7 @@ typedef struct {
 /// @brief ETH_MMCRIR Registers bits definition
 ////////////////////////////////////////////////////////////////////////////////
 #define ETH_MMCRIR_RGUF_Pos             (17)
-#define ETH_MMCRIR_RGUFS                (0x01U << ETH_MMCRIR_RGUF_Pos)          ///< Set when Rx good unicast frames counter reaches half the maximum value
+#define ETH_MMCRIR_RGUF                 (0x01U << ETH_MMCRIR_RGUF_Pos)          ///< Set when Rx good unicast frames counter reaches half the maximum value
 #define ETH_MMCRIR_RFAES_Pos            (6)
 #define ETH_MMCRIR_RFAES                (0x01U << ETH_MMCRIR_RFAES_Pos)         ///< Set when Rx alignment error counter reaches half the maximum value
 #define ETH_MMCRIR_RFCES_Pos            (5)
@@ -5293,7 +5293,7 @@ typedef struct {
 #define ETH_DMASR_EBS_Pos               (23)
 #define ETH_DMASR_EBS                   (0x07U << ETH_DMASR_EBS_Pos)            ///< Error bits status
 #define ETH_DMASR_EBS_DescAccess        (0x04U << ETH_DMASR_EBS_Pos)            ///< Error bits 0-data buffer, 1-desc. access
-#define ETH_DMASR_EBS_ReadTransf        (0x02U << ETH_DMASR_EBS_Pos)            ///< Error bits 0-write trnsf, 1-read transfr
+#define ETH_DMASR_EBS_ReadTransf        (0x02U << ETH_DMASR_EBS_Pos)            ///< Error bits 0-write transfor, 1-read transfor
 #define ETH_DMASR_EBS_DataTransfTx      (0x01U << ETH_DMASR_EBS_Pos)            ///< Error bits 0-Rx DMA, 1-Tx DMA
 #define ETH_DMASR_TPS_Pos               (20)
 #define ETH_DMASR_TPS                   (0x007U << ETH_DMASR_TPS_Pos)           ///< Transmit process state
@@ -5310,7 +5310,7 @@ typedef struct {
 #define ETH_DMASR_RPS_Waiting           (0x03U << ETH_DMASR_RPS_Pos)            ///< Running - waiting for packet
 #define ETH_DMASR_RPS_Suspended         (0x04U << ETH_DMASR_RPS_Pos)            ///< Suspended - Rx Descriptor unavailable
 #define ETH_DMASR_RPS_Closing           (0x05U << ETH_DMASR_RPS_Pos)            ///< Running - closing descriptor
-#define ETH_DMASR_RPS_Queuing           (0x07U << ETH_DMASR_RPS_Pos)            ///< Running - queuing the recieve frame into host memory
+#define ETH_DMASR_RPS_Queuing           (0x07U << ETH_DMASR_RPS_Pos)            ///< Running - queuing the receieve frame into host memory
 #define ETH_DMASR_NIS_Pos               (16)
 #define ETH_DMASR_NIS                   (0x01U << ETH_DMASR_NIS_Pos )           ///< Normal interrupt summary
 #define ETH_DMASR_AIS_Pos               (15)
@@ -6471,7 +6471,7 @@ typedef struct {
 #define I2C_ISR_HOLD                    (0x01U << I2C_ISR_HOLD_Pos)             ///< MST_ON_HOLD interrupt status
 
 ////////////////////////////////////////////////////////////////////////////////
-/// @brief I2C Interrrupt Mask Register Bit Definition
+/// @brief I2C Interrupt Mask Register Bit Definition
 ////////////////////////////////////////////////////////////////////////////////
 #define I2C_IMR_RXUNDER_Pos             (0)
 #define I2C_IMR_RXUNDER                 (0x01U << I2C_IMR_RXUNDER_Pos)          ///< RX_UNDER interrupt mask
@@ -6609,7 +6609,7 @@ typedef struct {
 #define I2C_STARTCR_CLEAR               (0x01U << I2C_STARTCR_CLEAR_Pos)        ///< Read this register to clear the START_DET interrupt of the I2C_RAW_INTR_STAT register
 
 ////////////////////////////////////////////////////////////////////////////////
-/// @brief I2C Genernal Call Register Bit Definition
+/// @brief I2C General Call Register Bit Definition
 ////////////////////////////////////////////////////////////////////////////////
 #define I2C_GCCR_CLEAR_Pos              (0)
 #define I2C_GCCR_CLEAR                  (0x01U << I2C_GCCR_CLEAR_Pos)           ///< Read this register to clear the GEN_CALL interrupt of the I2C_RAW_INTR_STAT register
@@ -6675,7 +6675,7 @@ typedef struct {
 #define I2C_SSR_CNT                     (0xFFU << I2C_SSR_CNT_Pos)              ///< SDA setup
 
 ////////////////////////////////////////////////////////////////////////////////
-/// @brief I2C Genernal Call Acknowledge Register Bit Definition
+/// @brief I2C General Call Acknowledge Register Bit Definition
 ////////////////////////////////////////////////////////////////////////////////
 #define I2C_GCAR_GC_Pos                 (0)
 #define I2C_GCAR_GC                     (0x01U << I2C_GCAR_GC_Pos)              ///< ACK general call
@@ -6746,7 +6746,7 @@ typedef struct {
 #endif
 
 ////////////////////////////////////////////////////////////////////////////////
-/// @brief IWDG_IGRN Register Bit Definition
+/// @brief IWDG_IGEN Register Bit Definition
 ////////////////////////////////////////////////////////////////////////////////
 #if defined(__MM0S1) || defined(__MM0T1) || defined(__MM3U1)
     #define IWDG_IGEN_IGEN_Pos          (0)
@@ -7096,14 +7096,14 @@ typedef struct {
 #define SCB_AIRCR_PRIGROUP_1            (0x00000200U)                           ///< Bit 1
 #define SCB_AIRCR_PRIGROUP_2            (0x00000400U)                           ///< Bit 2
 
-#define SCB_AIRCR_PRIGROUP0             (0x00000000U)                           ///< Priority group=0 (7 bits of pre-emption priority, 1 bit of subpriority)
-#define SCB_AIRCR_PRIGROUP1             (0x00000100U)                           ///< Priority group=1 (6 bits of pre-emption priority, 2 bits of subpriority)
-#define SCB_AIRCR_PRIGROUP2             (0x00000200U)                           ///< Priority group=2 (5 bits of pre-emption priority, 3 bits of subpriority)
-#define SCB_AIRCR_PRIGROUP3             (0x00000300U)                           ///< Priority group=3 (4 bits of pre-emption priority, 4 bits of subpriority)
-#define SCB_AIRCR_PRIGROUP4             (0x00000400U)                           ///< Priority group=4 (3 bits of pre-emption priority, 5 bits of subpriority)
-#define SCB_AIRCR_PRIGROUP5             (0x00000500U)                           ///< Priority group=5 (2 bits of pre-emption priority, 6 bits of subpriority)
-#define SCB_AIRCR_PRIGROUP6             (0x00000600U)                           ///< Priority group=6 (1 bit of pre-emption priority, 7 bits of subpriority)
-#define SCB_AIRCR_PRIGROUP7             (0x00000700U)                           ///< Priority group=7 (no pre-emption priority, 8 bits of subpriority)
+#define SCB_AIRCR_PRIGROUP0             (0x00000000U)                           ///< Priority group=0 (7 bits of preemption priority, 1 bit of subpriority)
+#define SCB_AIRCR_PRIGROUP1             (0x00000100U)                           ///< Priority group=1 (6 bits of preemption priority, 2 bits of subpriority)
+#define SCB_AIRCR_PRIGROUP2             (0x00000200U)                           ///< Priority group=2 (5 bits of preemption priority, 3 bits of subpriority)
+#define SCB_AIRCR_PRIGROUP3             (0x00000300U)                           ///< Priority group=3 (4 bits of preemption priority, 4 bits of subpriority)
+#define SCB_AIRCR_PRIGROUP4             (0x00000400U)                           ///< Priority group=4 (3 bits of preemption priority, 5 bits of subpriority)
+#define SCB_AIRCR_PRIGROUP5             (0x00000500U)                           ///< Priority group=5 (2 bits of preemption priority, 6 bits of subpriority)
+#define SCB_AIRCR_PRIGROUP6             (0x00000600U)                           ///< Priority group=6 (1 bit of preemption priority, 7 bits of subpriority)
+#define SCB_AIRCR_PRIGROUP7             (0x00000700U)                           ///< Priority group=7 (no preemption priority, 8 bits of subpriority)
 
 #define SCB_AIRCR_ENDIANESS             (0x00008000U)                           ///< Data endianness bit
 #define SCB_AIRCR_VECTKEY               (0xFFFF0000U)                           ///< Register key (VECTKEY) - Reads as 0xFA05 (VECTKEYSTAT)
@@ -7168,7 +7168,7 @@ typedef struct {
 #define SCB_CFSR_STKERR                 (0x00001000U)                           ///< Stacking error
 #define SCB_CFSR_BFARVALID              (0x00008000U)                           ///< Bus Fault Address Register address valid flag
 ///< UFSR
-#define SCB_CFSR_UNDEFINSTR             (0x00010000U)                           ///< The processor attempt to excecute an undefined instruction
+#define SCB_CFSR_UNDEFINSTR             (0x00010000U)                           ///< The processor attempt to execute an undefined instruction
 #define SCB_CFSR_INVSTATE               (0x00020000U)                           ///< Invalid combination of EPSR and instruction
 #define SCB_CFSR_INVPC                  (0x00040000U)                           ///< Attempt to load EXC_RETURN into pc illegally
 #define SCB_CFSR_NOCP                   (0x00080000U)                           ///< Attempt to use a coprocessor instruction
@@ -7178,7 +7178,7 @@ typedef struct {
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief SCB_HFSR Register Bit Definition
 ////////////////////////////////////////////////////////////////////////////////
-#define SCB_HFSR_VECTTBL                (0x00000002U)                           ///< Fault occures because of vector table read on exception processing
+#define SCB_HFSR_VECTTBL                (0x00000002U)                           ///< Fault occurs because of vector table read on exception processing
 #define SCB_HFSR_FORCED                 (0x40000000U)                           ///< Hard Fault activated when a configurable Fault was received and cannot activate
 #define SCB_HFSR_DEBUGEVT               (0x80000000U)                           ///< Fault related to debug
 
@@ -7541,7 +7541,7 @@ typedef struct {
     #define PWM_APMSKR_MSKEN_Pos        (8)
     #define PWM_APMSKR_MSKEN            (0x3FU << PWM_APMSKR_MSKEN_Pos)         ///< PWM Mask Function Enable
     #define PWM_APMSKR_APM_TRIGSEL_Pos  (16)
-    #define PWM_APMSKR_APM_TRIGSEL      (0x03U << PWM_APMSKR_APM_TRIGSEL_Pos)   ///< Auto Phase Mask Tigger Selection
+    #define PWM_APMSKR_APM_TRIGSEL      (0x03U << PWM_APMSKR_APM_TRIGSEL_Pos)   ///< Auto Phase Mask Trigger Selection
     #define PWM_APMSKR_APM_STRG_Pos     (18)
     #define PWM_APMSKR_APM_STRG         (0x01U << PWM_APMSKR_APM_STRG_Pos)      ///< Auto Phase Mask Software Trigger
     #define PWM_APMSKR_ENTRGI_Pos       (20)
@@ -7582,7 +7582,7 @@ typedef struct {
 
 #if defined(__MM3N1) || defined(__MM3O1) || defined(__MM0S1)
     #define PWR_CR_DBP_Pos              (8)
-    #define PWR_CR_DBP                  (0x01U  << PWR_CR_DBP_Pos)              ///< Domain Write Protction
+    #define PWR_CR_DBP                  (0x01U  << PWR_CR_DBP_Pos)              ///< Domain Write Protection
 #endif
 
 #if defined(__MM3N1) || defined(__MM0N1) || defined(__MM3O1) || defined(__MM0P1) || defined(__MM0Q1) || defined(__MM0S1) || defined(__MM0T1)
@@ -7632,8 +7632,8 @@ typedef struct {
 #if defined(__MM3N1) || defined(__MM0N1) || defined(__MM3O1) || defined(__MM0P1) || defined(__MM0Q1) || defined(__MM0S1) || defined(__MM0T1)
     #define PWR_CSR_PVDO_Pos            (2)
     #define PWR_CSR_PVDO                (0x01U  << PWR_CSR_PVDO_Pos)            ///< PVD Output
-    #define PWR_CSR_EWU_Pos             (8)
-    #define PWR_CSR_EWUP                (0x01U  << PWR_CSR_EWU_Pos)             ///< Enable WKUP pin
+    #define PWR_CSR_EWUP_Pos            (8)
+    #define PWR_CSR_EWUP                (0x01U  << PWR_CSR_EWUP_Pos)            ///< Enable WKUP pin
 #endif
 
 #if defined(__MM3O1) || defined(__MM3U1)
@@ -9247,14 +9247,14 @@ typedef struct {
 #define SDIO_MMC_CTRL_CLKSP12           (0x05U << SDIO_MMC_CTRL_CLKSP_Pos)      ///< SD/MMC/SDIO port CLK linespeedselection 1/12 baseclock
 #define SDIO_MMC_CTRL_CLKSP14           (0x06U << SDIO_MMC_CTRL_CLKSP_Pos)      ///< SD/MMC/SDIO port CLK linespeedselection 1/14 baseclock
 #define SDIO_MMC_CTRL_CLKSP16           (0x07U << SDIO_MMC_CTRL_CLKSP_Pos)      ///< SD/MMC/SDIO port CLK linespeedselection 1/16 baseclock
-#define SDIO_MMC_CTRL_SelPTSM_Pos       (6)
-#define SDIO_MMC_CTRL_SelPTSM           (0x01U << SDIO_MMC_CTRL_SelPTSM_Pos)    ///< SelectSD/MMC/SDIO port transfer high speed mode
+#define SDIO_MMC_CTRL_SELPTSM_Pos       (6)
+#define SDIO_MMC_CTRL_SELPTSM           (0x01U << SDIO_MMC_CTRL_SELPTSM_Pos)    ///< SelectSD/MMC/SDIO port transfer high speed mode
 #define SDIO_MMC_CTRL_DATWT_Pos         (7)
 #define SDIO_MMC_CTRL_DATWT             (0x01U << SDIO_MMC_CTRL_DATWT_Pos)      ///< Definethe bus width of SD/MMC/SDIO port DAT line
 #define SDIO_MMC_CTRL_MDEN_Pos          (8)
 #define SDIO_MMC_CTRL_MDEN              (0x01U << SDIO_MMC_CTRL_MDEN_Pos)       ///< SDIO mode enable
 #define SDIO_MMC_CTRL_INTEN_Pos         (9)
-#define SDIO_MMC_CTRL_INTEN             (0x01U << SDIO_MMC_CTRL_INTEN_Pos)      ///< SDIO interrupt enale signal
+#define SDIO_MMC_CTRL_INTEN             (0x01U << SDIO_MMC_CTRL_INTEN_Pos)      ///< SDIO interrupt enable signal
 #define SDIO_MMC_CTRL_RDWTEN_Pos        (10)
 #define SDIO_MMC_CTRL_RDWTEN            (0x01U << SDIO_MMC_CTRL_RDWTEN_Pos)     ///< SDIO read wait enable signal
 

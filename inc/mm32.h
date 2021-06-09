@@ -595,7 +595,7 @@ typedef enum IRQn {
     #define DMA1_Channel7_BASE          (0x40020080U)                           ///< Base Address: AHB 0x40020080
 #endif
 
-#if defined(__MM3O1)
+#if defined(__MM3O1) || defined(__MM3U1)
     #define DMA2_BASE                   (0x40020400U)                           ///< Base Address: AHB 0x40020400
     #define DMA2_Channel1_BASE          (0x40020408U)                           ///< Base Address: AHB 0x40020408
     #define DMA2_Channel2_BASE          (0x4002041CU)                           ///< Base Address: AHB 0x4002041C

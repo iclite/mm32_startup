@@ -9737,19 +9737,34 @@ typedef struct {
 /// @brief SPI_I2S_CFGR Register Bit Definition
 ////////////////////////////////////////////////////////////////////////////////
 #define SPI_I2SCFGR_CHLEN_Pos           (0)
-#define SPI_I2SCFGR_CHLEN               (0x01 << SPI_I2SCFGR_CHLEN_Pos)
+#define SPI_I2SCFGR_CHLEN               (0x01 << SPI_I2SCFGR_CHLEN_Pos)         ///< channel length
+#define SPI_I2SCFGR_CHLEN_16            (0x00 << SPI_I2SCFGR_CHLEN_Pos)         ///< channel length 16
+#define SPI_I2SCFGR_CHLEN_32            (0x01 << SPI_I2SCFGR_CHLEN_Pos)         ///< channel length 32
 #define SPI_I2SCFGR_DATLEN_Pos          (1)
-#define SPI_I2SCFGR_DATLEN              (0x03 << SPI_I2SCFGR_DATLEN_Pos)
+#define SPI_I2SCFGR_DATLEN              (0x03 << SPI_I2SCFGR_DATLEN_Pos)        ///< data length
+#define SPI_I2SCFGR_DATLEN_16           (0x00 << SPI_I2SCFGR_DATLEN_Pos)        ///< data length 16
+#define SPI_I2SCFGR_DATLEN_24           (0x01 << SPI_I2SCFGR_DATLEN_Pos)        ///< data length 24
+#define SPI_I2SCFGR_DATLEN_32           (0x02 << SPI_I2SCFGR_DATLEN_Pos)        ///< data length 32
 #define SPI_I2SCFGR_I2SSTD_Pos          (4)
-#define SPI_I2SCFGR_I2SSTD              (0x03 << SPI_I2SCFGR_I2SSTD_Pos)
+#define SPI_I2SCFGR_I2SSTD              (0x03 << SPI_I2SCFGR_I2SSTD_Pos)        ///< i2s standard
+#define SPI_I2SCFGR_I2SSTD_PHILIPS      (0x00 << SPI_I2SCFGR_I2SSTD_Pos)        ///< i2s standard philips
+#define SPI_I2SCFGR_I2SSTD_MSB          (0x01 << SPI_I2SCFGR_I2SSTD_Pos)        ///< i2s standard msb
+#define SPI_I2SCFGR_I2SSTD_LSB          (0x02 << SPI_I2SCFGR_I2SSTD_Pos)        ///< i2s standard lsb
+#define SPI_I2SCFGR_I2SSTD_PCM          (0x03 << SPI_I2SCFGR_I2SSTD_Pos)        ///< i2s standard pcm
 #define SPI_I2SCFGR_PCMSYNC_Pos         (6)
-#define SPI_I2SCFGR_PCMSYNC             (0x01 << SPI_I2SCFGR_PCMSYNC_Pos)
+#define SPI_I2SCFGR_PCMSYNC             (0x01 << SPI_I2SCFGR_PCMSYNC_Pos)       ///< PCM standard frame synchronization mode
+#define SPI_I2SCFGR_PCMSYNC_SHORT       (0x00 << SPI_I2SCFGR_PCMSYNC_Pos)       ///< PCM standard frame synchronization mode short frame sync
+#define SPI_I2SCFGR_PCMSYNC_LONG        (0x01 << SPI_I2SCFGR_PCMSYNC_Pos)       ///< PCM standard frame synchronization mode long frame sync
 #define SPI_I2SCFGR_SPII2S_Pos          (10)
-#define SPI_I2SCFGR_SPII2S              (0x01 << SPI_I2SCFGR_SPII2S_Pos)
+#define SPI_I2SCFGR_SPII2S              (0x01 << SPI_I2SCFGR_SPII2S_Pos)        ///< module function selection
+#define SPI_I2SCFGR_SPII2S_SPI          (0x00 << SPI_I2SCFGR_SPII2S_Pos)        ///< module function selection spi mode
+#define SPI_I2SCFGR_SPII2S_I2S          (0x01 << SPI_I2SCFGR_SPII2S_Pos)        ///< module function selection i2s mode
 #define SPI_I2SCFGR_MCKOE_Pos           (11)
-#define SPI_I2SCFGR_MCKOE               (0x01 << SPI_I2SCFGR_MCKOE_Pos)
+#define SPI_I2SCFGR_MCKOE               (0x01 << SPI_I2SCFGR_MCKOE_Pos)         ///< main clock output
+#define SPI_I2SCFGR_MCKOE_DISABLE       (0x00 << SPI_I2SCFGR_MCKOE_Pos)         ///< main clock output disable
+#define SPI_I2SCFGR_MCKOE_ENABLE        (0x01 << SPI_I2SCFGR_MCKOE_Pos)         ///< main clock output enable
 #define SPI_I2SCFGR_I2SDIV_Pos          (16)
-#define SPI_I2SCFGR_I2SDIV              (0x01FF << SPI_I2SCFGR_I2SDIV_Pos)
+#define SPI_I2SCFGR_I2SDIV              (0x01FF << SPI_I2SCFGR_I2SDIV_Pos)      ///< i2s prescaler division coefficient
 #if defined(SQRT_BASE)
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief HWSQRT Register Bit Definition

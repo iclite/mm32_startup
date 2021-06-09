@@ -1981,18 +1981,55 @@ typedef struct {
 /// @brief SPI Register Structure Definition
 ////////////////////////////////////////////////////////////////////////////////
 typedef struct {
-    __IO uint32_t TDR;                                                          ///< SPI transmit data register,        offset: 0x00
-    __IO uint32_t RDR;                                                          ///< SPI receive data register,         offset: 0x04
-    __IO uint32_t SR;                                                           ///< SPI current state register,        offset: 0x08
-    __IO uint32_t ISR;                                                          ///< SPI interruput state register,     offset: 0x0C
-    __IO uint32_t IER;                                                          ///< SPI interruput enable register,    offset: 0x10
-    __IO uint32_t ICR;                                                          ///< SPI interruput control register,   offset: 0x14
-    __IO uint32_t GCR;                                                          ///< SPI global control register,       offset: 0x18
-    __IO uint32_t CCR;                                                          ///< SPI common control register,       offset: 0x1C
-    __IO uint32_t BRR;                                                          ///< SPI baud rate control register,    offset: 0x20
-    __IO uint32_t RDNR;                                                         ///< SPI receive data number register,  offset: 0x24
-    __IO uint32_t NSSR;                                                         ///< SPI chip select register,          offset: 0x28
-    __IO uint32_t ECR;                                                          ///< SPI extand control register,       offset: 0x2C
+    union {
+        __IO uint32_t TDR;                                                      ///< SPI transmit data register,        offset: 0x00
+        __IO uint32_t TXREG;
+    };
+    union {
+        __IO uint32_t RDR;                                                      ///< SPI receive data register,         offset: 0x04
+        __IO uint32_t RXREG;
+    };
+    union {
+        __IO uint32_t SR;                                                       ///< SPI current state register,        offset: 0x08
+        __IO uint32_t CSTAT;
+    };
+    union {
+        __IO uint32_t ISR;                                                      ///< SPI interruput state register,     offset: 0x0C
+        __IO uint32_t INTSTAT;
+    };
+    union {
+        __IO uint32_t IER;                                                      ///< SPI interruput enable register,    offset: 0x10
+        __IO uint32_t INTEN;
+    };
+    union {
+        __IO uint32_t ICR;                                                      ///< SPI interruput control register,   offset: 0x14
+        __IO uint32_t INTCLR;
+    };
+    union {
+        __IO uint32_t GCR;                                                      ///< SPI global control register,       offset: 0x18
+        __IO uint32_t GCTL;
+    };
+    union {
+        __IO uint32_t CCR;                                                      ///< SPI common control register,       offset: 0x1C
+        __IO uint32_t CCTL;
+    };
+    union {
+        __IO uint32_t BRR;                                                      ///< SPI baud rate control register,    offset: 0x20
+        __IO uint32_t SPBRG;
+    };
+    union {
+        __IO uint32_t RDNR;                                                     ///< SPI receive data number register,  offset: 0x24
+        __IO uint32_t RXDNR;
+    };
+    union {
+        __IO uint32_t NSSR;                                                     ///< SPI chip select register,          offset: 0x28
+    };
+    union {
+        __IO uint32_t ECR;                                                      ///< SPI extand control register,       offset: 0x2C
+    };
+    union {
+        __IO uint32_t I2SCFGR;                                                  ///< I2S control register,              offset: 0x30
+    };
 } SPI_TypeDef;
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -9699,20 +9736,20 @@ typedef struct {
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief SPI_I2S_CFGR Register Bit Definition
 ////////////////////////////////////////////////////////////////////////////////
-#define SPI_I2S_CFGR_CHLEN_Pos          (0)
-#define SPI_I2S_CFGR_CHLEN              (0x01 << SPI_I2S_CFGR_CHLEN_Pos)
-#define SPI_I2S_CFGR_DATLEN_Pos         (1)
-#define SPI_I2S_CFGR_DATLEN             (0x03 << SPI_I2S_CFGR_DATLEN_Pos)
-#define SPI_I2S_CFGR_I2SSTD_Pos         (4)
-#define SPI_I2S_CFGR_I2SSTD             (0x03 << SPI_I2S_CFGR_I2SSTD_Pos)
-#define SPI_I2S_CFGR_PCMSYNC_Pos        (6)
-#define SPI_I2S_CFGR_PCMSYNC            (0x01 << SPI_I2S_CFGR_PCMSYNC_Pos)
-#define SPI_I2S_CFGR_SPI_I2S_Pos        (10)
-#define SPI_I2S_CFGR_SPI_I2S            (0x01 << SPI_I2S_CFGR_SPI_I2S_Pos)
-#define SPI_I2S_CFGR_MCKOE_Pos          (11)
-#define SPI_I2S_CFGR_MCKOE              (0x01 << SPI_I2S_CFGR_MCKOE_Pos)
-#define SPI_I2S_CFGR_I2SDIV_Pos         (16)
-#define SPI_I2S_CFGR_I2SDIV             (0x01FF << SPI_I2S_CFGR_I2SDIV_Pos)
+#define SPI_I2SCFGR_CHLEN_Pos           (0)
+#define SPI_I2SCFGR_CHLEN               (0x01 << SPI_I2SCFGR_CHLEN_Pos)
+#define SPI_I2SCFGR_DATLEN_Pos          (1)
+#define SPI_I2SCFGR_DATLEN              (0x03 << SPI_I2SCFGR_DATLEN_Pos)
+#define SPI_I2SCFGR_I2SSTD_Pos          (4)
+#define SPI_I2SCFGR_I2SSTD              (0x03 << SPI_I2SCFGR_I2SSTD_Pos)
+#define SPI_I2SCFGR_PCMSYNC_Pos         (6)
+#define SPI_I2SCFGR_PCMSYNC             (0x01 << SPI_I2SCFGR_PCMSYNC_Pos)
+#define SPI_I2SCFGR_SPII2S_Pos          (10)
+#define SPI_I2SCFGR_SPII2S              (0x01 << SPI_I2SCFGR_SPII2S_Pos)
+#define SPI_I2SCFGR_MCKOE_Pos           (11)
+#define SPI_I2SCFGR_MCKOE               (0x01 << SPI_I2SCFGR_MCKOE_Pos)
+#define SPI_I2SCFGR_I2SDIV_Pos          (16)
+#define SPI_I2SCFGR_I2SDIV              (0x01FF << SPI_I2SCFGR_I2SDIV_Pos)
 #if defined(SQRT_BASE)
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief HWSQRT Register Bit Definition

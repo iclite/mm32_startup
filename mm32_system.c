@@ -151,7 +151,7 @@ EM_MCUID SystemInit(EM_SystemClock clockConfig, EM_SYSTICK tickEn , AppTick_fun 
     // Cache Mode: Auto Mode
     CACHE->CCR &= ~(CACHE_CCR_SET_MAN_INV | CACHE_CCR_SET_MAN_POW);
     // Enable Cache
-    CACHE->CCR |= CAHCE_CCR_EN;
+    CACHE->CCR |= CACHE_CCR_EN;
     // Wait for Cache Enable
     while((CACHE->SR & CACHE_SR_CS) != CACHE_SR_CS_ENABLED);
 #endif

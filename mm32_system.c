@@ -132,7 +132,7 @@ EM_MCUID SystemInit(EM_SystemClock clockConfig, EM_SYSTICK tickEn , AppTick_fun 
 
     // Calculate the clock frequency
     if (((clockConfig & 0x000F0) >> 4) == 2) {
-        clock =  ((clockConfig & 0x0000F) == 0) ? 12000000 : HSE_VALUE;
+        clock =  ((clockConfig & 0x0000F) == 0) ? 8000000 : HSE_VALUE;
         if (!(clockConfig & 0x0F000) && (clockConfig & 0xF0000)) {
             clock = ((clockConfig & 0xF0000) == 0x10000) ? 48000000 : 72000000;
         } else {

@@ -9257,6 +9257,8 @@ typedef struct {
 #define SDIO_MMC_CTRL_INTEN             (0x01U << SDIO_MMC_CTRL_INTEN_Pos)      ///< SDIO interrupt enable signal
 #define SDIO_MMC_CTRL_RDWTEN_Pos        (10)
 #define SDIO_MMC_CTRL_RDWTEN            (0x01U << SDIO_MMC_CTRL_RDWTEN_Pos)     ///< SDIO read wait enable signal
+#define SDIO_MMC_CTRL_SelPTSM_Pos       SDIO_MMC_CTRL_SELPTSM_Pos
+#define SDIO_MMC_CTRL_SelPTSM           SDIO_MMC_CTRL_SELPTSM                   ///< SelectSD/MMC/SDIO port transfer high speed mode
 
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief SDIO_MMC_IO Register Bit Definition

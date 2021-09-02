@@ -23,6 +23,7 @@
 // Files includes  -------------------------------------------------------------
 #include <stdint.h>
 
+#include "mm32.h"
 #include "mm32_startup.h"
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -37,32 +38,18 @@
 /// @addtogroup MM32_Exported_Constants
 /// @{
 
-#if defined ( __ICCARM__ )
-    #pragma segment  = "CSTACK"                                                 // IAR
-    #define __initial_sp __sfe("CSTACK")
-    extern void __iar_program_start(void);
-#elif defined ( __CC_ARM ) || (defined ( __ARMCC_VERSION ) && ( __ARMCC_VERSION >= 6010050 ))
-    extern uint32_t         Image$$ARM_LIB_STACK$$ZI$$Limit;                    // KEIL
-    #define __initial_sp    &Image$$ARM_LIB_STACK$$ZI$$Limit
-    extern void __main      (void) __attribute__((noreturn));
-#elif defined ( __GNUC__ )
-    extern uint32_t         _estack;                                            // GNU
-    #define __initial_sp    &_estack
-    extern void _start      (void);
-#else
-    #error ("Error: Unknown Compiler!")                                         // UNKNOWN
-#endif
+extern uint32_t __INITIAL_SP;
+extern void __PROGRAM_START(void);
+#define __initial_sp &__INITIAL_SP
 
 ////////////////////////////////////////////////////////////////////////////////
 ///  @brief  Interrupt Vector Table
 ////////////////////////////////////////////////////////////////////////////////
-#if defined ( __ICCARM__ )
-const intvec_elem __vector_table[] __attribute__((section(".intvec"))) = {
-#elif defined ( __CC_ARM ) || (defined ( __ARMCC_VERSION ) && ( __ARMCC_VERSION >= 6010050 ))
-const intvec_elem __vector_table[] __attribute__((section(".vector_table"))) = {
-#elif defined ( __GNUC__ )
-const intvec_elem __vector_table[] __attribute__((section(".vector_table"))) = {
+#if defined(__ICCARM__)
+    #define __VECTOR_TABLE_ATTRIBUTE __attribute__((used, section(".intvec")))
 #endif
+
+const intvec_elem __VECTOR_TABLE[] __VECTOR_TABLE_ATTRIBUTE = {
     { .__ptr = __initial_sp },
 
 #if defined( __CORTEX_M_CORE_HANDLERS__ )
@@ -73,6 +60,7 @@ const intvec_elem __vector_table[] __attribute__((section(".vector_table"))) = {
     __MM32_IRQ_HANDLERS__
 #endif
 };
+
 
 /// @}
 
@@ -87,15 +75,7 @@ const intvec_elem __vector_table[] __attribute__((section(".vector_table"))) = {
 ////////////////////////////////////////////////////////////////////////////////
 void Reset_Handler(void)
 {
-#if defined ( __ICCARM__ )
-    __iar_program_start();
-#elif defined ( __CC_ARM ) || (defined ( __ARMCC_VERSION ) && ( __ARMCC_VERSION >= 6010050 ))
-    __main();
-#elif defined ( __GNUC__ )
-    _start();
-#else
-    #error Unknown compiler.
-#endif
+    __PROGRAM_START();
 
     while (1) {}
 }

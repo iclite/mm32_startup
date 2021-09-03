@@ -370,18 +370,21 @@ typedef enum IRQn {
 } IRQn_Type;
 
 #if defined(__MM3N1) || defined(__MM3O1) || defined(__MM3U1)
-    #define __MPU_PRESENT               (0)                                     ///< MM32 Cortex-M3 does not provide a MPU present or not
-    #define __NVIC_PRIO_BITS            (3)                                     ///< MM32 Cortex-M3 uses 3 Bits for the Priority Levels
-    #define __Vendor_SysTickConfig      (0)                                     ///< Set to 1 if different SysTick Config is used
-    #include <core_cm3.h>
+    #define __MPU_PRESENT               (0U)                                    ///< MM32 Cortex-M3 does not provide a MPU present or not
+    #define __VTOR_PRESENT              (1U)                                    ///< no VTOR present
+    #define __NVIC_PRIO_BITS            (3U)                                    ///< MM32 Cortex-M3 uses 3 Bits for the Priority Levels
+    #define __Vendor_SysTickConfig      (0U)                                    ///< Set to 1 if different SysTick Config is used
+    #include "core_cm3.h"
 #elif defined(__MM0N1) || defined(__MM0P1) || defined(__MM0Q1) || defined(__MM0S1) || defined(__MM0T1)
-    #define __MPU_PRESENT               (0)                                     ///< MM32 Cortex-M0 does not provide a MPU present or not
-    #define __NVIC_PRIO_BITS            (2)                                     ///< MM32 Cortex-M0 uses 4 Bits for the Priority Levels
-    #define __Vendor_SysTickConfig      (0)                                     ///< Set to 1 if different SysTick Config is used
-    #include <core_cm0.h>
+    #define __MPU_PRESENT               (0U)                                    ///< MM32 Cortex-M0 does not provide a MPU present or not
+    #define __VTOR_PRESENT              (0U)                                    ///< no VTOR present
+    #define __NVIC_PRIO_BITS            (2U)                                    ///< MM32 Cortex-M0 uses 4 Bits for the Priority Levels
+    #define __Vendor_SysTickConfig      (0U)                                    ///< Set to 1 if different SysTick Config is used
+    #include "core_cm0.h"
 #else
     #error "!!! Unknown Target !!! Please check chip macro definition."
 #endif
+
 
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief MM32 BUS Base Address Definition

@@ -244,7 +244,7 @@ EM_MCUID SystemInit(EM_SystemClock clockConfig, EM_SYSTICK tickEn , AppTick_fun 
         SysTick->CTRL &= ~SysTick_CTRL_ENABLE_Msk;
     }
 
-#if (__CORTEX_M == 3U)
+#if defined(__VTOR_PRESENT) && (__VTOR_PRESENT == 1U)
     #ifdef VECT_TAB_SRAM
         SCB->VTOR = SRAM_BASE | VECT_TAB_OFFSET;                                // Vector Table Relocation in Internal SRAM.
     #else

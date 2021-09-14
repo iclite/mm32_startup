@@ -451,6 +451,14 @@ typedef enum IRQn {
 #endif
 
 ////////////////////////////////////////////////////////////////////////////////
+/// @brief AFIO Base Address Definition
+////////////////////////////////////////////////////////////////////////////////
+#if defined(__MM3N1)
+    #define AFIO_BASE                   (0x40010000U)                           ///< Base Address: APB2 0x40010000
+#endif
+
+
+////////////////////////////////////////////////////////////////////////////////
 /// @brief BKP Base Address Definition
 ////////////////////////////////////////////////////////////////////////////////
 #if defined(__MM3N1)
@@ -952,6 +960,21 @@ typedef struct {
     __IO uint32_t KEYR7;                                                        ///< AES key register 7,                    offset: 0x3C
 } AES_TypeDef;
 #endif
+
+////////////////////////////////////////////////////////////////////////////////
+/// @brief AFIO Register Structure Definition
+////////////////////////////////////////////////////////////////////////////////
+#if defined(AFIO_BASE)
+typedef struct {
+    __IO uint32_t RESERVED;
+    __IO uint32_t MAPR;                                                         ///< Remap register,                                offset: 0x08
+    __IO uint32_t EXTICR1;                                                      ///< External interrupt configuration register 1,   offset: 0x0C
+    __IO uint32_t EXTICR2;                                                      ///< External interrupt configuration register 2,   offset: 0x0C
+    __IO uint32_t EXTICR3;                                                      ///< External interrupt configuration register 3,   offset: 0x10
+    __IO uint32_t EXTICR4;                                                      ///< External interrupt configuration register 4,   offset: 0x14
+} AFIO_TypeDef;
+#endif
+
 
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief BKP Register Structure Definition
@@ -2281,6 +2304,13 @@ typedef struct {
 #endif
 
 ////////////////////////////////////////////////////////////////////////////////
+/// @brief AFIO type pointer Definition
+////////////////////////////////////////////////////////////////////////////////
+#if defined(AFIO_BASE)
+    #define AFIO                        ((AFIO_TypeDef*)AFIO_BASE)              ///< Base Address: 0x40010000
+#endif
+
+////////////////////////////////////////////////////////////////////////////////
 /// @brief BKP type pointer Definition
 ////////////////////////////////////////////////////////////////////////////////
 #define BKP                             ((BKP_TypeDef*) BKP_BASE)
@@ -3505,6 +3535,92 @@ typedef struct {
 ////////////////////////////////////////////////////////////////////////////////
     #define AES_IVRn_Pos                (0)
     #define AES_IVRn                    (0xFFFFFFFFU << AES_IVRn_Pos)           ///< AES Initialization Vector Register n
+#endif
+#if defined(AFIO_BASE)
+////////////////////////////////////////////////////////////////////////////////
+/// @brief AFIO_MAPR Register Bit Definition
+////////////////////////////////////////////////////////////////////////////////
+#define AFIO_MAPR_SPI1_Pos              (0)
+#define AFIO_MAPR_SPI1                  (0x01U << AFIO_MAPR_SPI1_Pos)           ///< SPI1 remapping
+#define AFIO_MAPR_I2C1_Pos              (1)
+#define AFIO_MAPR_I2C1                  (0x01U << AFIO_MAPR_I2C1_Pos)           ///< I2C1 remapping
+#define AFIO_MAPR_UART1_Pos             (2)
+#define AFIO_MAPR_UART1                 (0x01U << AFIO_MAPR_UART1_Pos)          ///< UART1 remapping
+#define AFIO_MAPR_UART3_Pos             (4)
+#define AFIO_MAPR_UART3_MASK            (0x03U << AFIO_MAPR_UART3_Pos)          ///< UART3[1:0] bits (UART3 remapping)
+#define AFIO_MAPR_UART3                 (0x01U << AFIO_MAPR_UART3_Pos)          ///< UART3_Partial REMAP[1:0] bits (UART3 remapping)
+#define AFIO_MAPR_TIM1_Pos              (6)
+#define AFIO_MAPR_TIM1_MASK             (0x03U << AFIO_MAPR_TIM1_Pos)           ///< TIM1[1:0] bits (TIM1 remapping)
+#define AFIO_MAPR_TIM1                  (0x03U << AFIO_MAPR_TIM1_Pos)           ///< TIM1[1:0] bits (TIM1 remapping)
+#define AFIO_MAPR_TIM1_PARTIAL          (0x01U << AFIO_MAPR_TIM1_Pos)           ///< Partial remap (ETR/PA12, CH1/PA8, CH2/PA9, CH3/PA10, CH4/PA11, BKIN/PA6, CH1N/PA7, CH2N/PB0, CH3N/PB1)
+#define AFIO_MAPR_TIM2_Pos              (8)
+#define AFIO_MAPR_TIM2_MASK             (0x03U << AFIO_MAPR_TIM2_Pos)           ///< TIM2[1:0] bits (TIM2 remapping)
+#define AFIO_MAPR_TIM2                  (0x03U << AFIO_MAPR_TIM2_Pos)           ///< Full remap (CH1/ETR/PA15, CH2/PB3, CH3/PB10, CH4/PB11)
+#define AFIO_MAPR_TIM2_PARTIAL1         (0x01U << AFIO_MAPR_TIM2_Pos)           ///< Partial remap (CH1/ETR/PA15, CH2/PB3, CH3/PA2, CH4/PA3)
+#define AFIO_MAPR_TIM2_PARTIAL2         (0x02U << AFIO_MAPR_TIM2_Pos)           ///< Partial remap (CH1/ETR/PA0, CH2/PA1, CH3/PB10, CH4/PB11)
+#define AFIO_MAPR_TIM3_Pos              (10)
+#define AFIO_MAPR_TIM3_MASK             (0x03U << AFIO_MAPR_TIM3_Pos)           ///< TIM3[1:0] bits (TIM3 remapping)
+#define AFIO_MAPR_TIM3                  (0x03U << AFIO_MAPR_TIM3_Pos)           ///< Full remap (CH1/PC6, CH2/PC7, CH3/PC8, CH4/PC9)
+#define AFIO_MAPR_TIM3_PARTIAL          (0x02U << AFIO_MAPR_TIM3_Pos)           ///< Partial remap (CH1/PB4, CH2/PB5, CH3/PB0, CH4/PB1)
+#define AFIO_MAPR_CAN_Pos               (13)
+#define AFIO_MAPR_CAN_MASK              (0x03U << AFIO_MAPR_CAN_Pos)            ///< CAN[1:0] bits (CAN Alternate function remapping)
+#define AFIO_MAPR_CAN                   (0x02U << AFIO_MAPR_CAN_Pos)            ///< CANRX mapped to PB8, CANTX mapped to PB9
+#define AFIO_MAPR_PD01_Pos              (15)
+#define AFIO_MAPR_PD01                  (0x01U << AFIO_MAPR_PD01_Pos)           ///< Port D0/Port D1 mapping on OSC_IN/OSC_OUT
+#define AFIO_MAPR_SWJ_Pos               (24)
+#define AFIO_MAPR_SWJ_MASK              (0x07U << AFIO_MAPR_SWJ_Pos)            ///< SWJ_CFG[2:0] bits (Serial Wire JTAG configuration)
+#define AFIO_MAPR_SWJ                   (0x00U << AFIO_MAPR_SWJ_Pos)            ///< Full SWJ (JTAG-DP + SW-DP), Reset state
+#define AFIO_MAPR_SWJ_NOJNTRST          (0x01U << AFIO_MAPR_SWJ_Pos)            ///< Full SWJ (JTAG-DP + SW-DP) but without JNTRST
+#define AFIO_MAPR_SWJ_JTAGDISABLE       (0x02U << AFIO_MAPR_SWJ_Pos)            ///< JTAG-DP Disabled and SW-DP Enabled
+#define AFIO_MAPR_SWJ_DISABLE           (0x04U << AFIO_MAPR_SWJ_Pos)            ///< JTAG-DP Disabled and SW-DP Disabled
+
+////////////////////////////////////////////////////////////////////////////////
+/// @brief AFIO_EXTICR1 Register Bit Definition
+////////////////////////////////////////////////////////////////////////////////
+#define AFIO_EXTICR1_EXTI0_Pos          (0)
+#define AFIO_EXTICR1_EXTI0              (0x0FU << AFIO_EXTICR1_EXTI0_Pos)       ///< EXTI 0 configuration
+#define AFIO_EXTICR1_EXTI1_Pos          (4)
+#define AFIO_EXTICR1_EXTI1              (0x0FU << AFIO_EXTICR1_EXTI1_Pos)       ///< EXTI 1 configuration
+#define AFIO_EXTICR1_EXTI2_Pos          (8)
+#define AFIO_EXTICR1_EXTI2              (0x0FU << AFIO_EXTICR1_EXTI2_Pos)       ///< EXTI 2 configuration
+#define AFIO_EXTICR1_EXTI3_Pos          (12)
+#define AFIO_EXTICR1_EXTI3              (0x0FU << AFIO_EXTICR1_EXTI3_Pos)       ///< EXTI 3 configuration
+
+////////////////////////////////////////////////////////////////////////////////
+/// @brief AFIO_EXTICR2 Register Bit Definition
+////////////////////////////////////////////////////////////////////////////////
+#define AFIO_EXTICR2_EXTI4_Pos          (0)
+#define AFIO_EXTICR2_EXTI4              (0x0FU << AFIO_EXTICR2_EXTI4_Pos)       ///< EXTI 4 configuration
+#define AFIO_EXTICR2_EXTI5_Pos          (4)
+#define AFIO_EXTICR2_EXTI5              (0x0FU << AFIO_EXTICR2_EXTI5_Pos)       ///< EXTI 5 configuration
+#define AFIO_EXTICR2_EXTI6_Pos          (8)
+#define AFIO_EXTICR2_EXTI6              (0x0FU << AFIO_EXTICR2_EXTI6_Pos)       ///< EXTI 6 configuration
+#define AFIO_EXTICR2_EXTI7_Pos          (12)
+#define AFIO_EXTICR2_EXTI7              (0x0FU << AFIO_EXTICR2_EXTI7_Pos)       ///< EXTI 7 configuration
+
+////////////////////////////////////////////////////////////////////////////////
+/// @brief AFIO_EXTICR3 Register Bit Definition
+////////////////////////////////////////////////////////////////////////////////
+#define AFIO_EXTICR3_EXTI8_Pos          (0)
+#define AFIO_EXTICR3_EXTI8              (0x0FU << AFIO_EXTICR3_EXTI8_Pos)       ///< EXTI 8 configuration
+#define AFIO_EXTICR3_EXTI9_Pos          (4)
+#define AFIO_EXTICR3_EXTI9              (0x0FU << AFIO_EXTICR3_EXTI9_Pos)       ///< EXTI 9 configuration
+#define AFIO_EXTICR3_EXTI10_Pos         (8)
+#define AFIO_EXTICR3_EXTI10             (0x0FU << AFIO_EXTICR3_EXTI10_Pos)      ///< EXTI 10 configuration
+#define AFIO_EXTICR3_EXTI11_Pos         (12)
+#define AFIO_EXTICR3_EXTI11             (0x0FU << AFIO_EXTICR3_EXTI11_Pos)      ///< EXTI 11 configuration
+
+////////////////////////////////////////////////////////////////////////////////
+/// @brief AFIO_EXTICR4 Register Bit Definition
+////////////////////////////////////////////////////////////////////////////////
+#define AFIO_EXTICR4_EXTI12_Pos         (0)
+#define AFIO_EXTICR4_EXTI12             (0x0FU << AFIO_EXTICR4_EXTI12_Pos)      ///< EXTI 12 configuration
+#define AFIO_EXTICR4_EXTI13_Pos         (4)
+#define AFIO_EXTICR4_EXTI13             (0x0FU << AFIO_EXTICR4_EXTI13_Pos)      ///< EXTI 13 configuration
+#define AFIO_EXTICR4_EXTI14_Pos         (8)
+#define AFIO_EXTICR4_EXTI14             (0x0FU << AFIO_EXTICR4_EXTI14_Pos)      ///< EXTI 14 configuration
+#define AFIO_EXTICR4_EXTI15_Pos         (12)
+#define AFIO_EXTICR4_EXTI15             (0x0FU << AFIO_EXTICR4_EXTI15_Pos)      ///< EXTI 15 configuration
 #endif
 ////////////////////////////////////////////////////////////////////////////////
 /// @brief BKP_DRn Register Bit Definition

@@ -46,7 +46,9 @@ extern void __PROGRAM_START(void);
 ///  @brief  Interrupt Vector Table
 ////////////////////////////////////////////////////////////////////////////////
 #if defined(__ICCARM__)
+    #ifndef __VECTOR_TABLE_ATTRIBUTE
     #define __VECTOR_TABLE_ATTRIBUTE __attribute__((used, section(".intvec")))
+    #endif
 #endif
 
 const intvec_elem __VECTOR_TABLE[] __VECTOR_TABLE_ATTRIBUTE = {
@@ -60,7 +62,6 @@ const intvec_elem __VECTOR_TABLE[] __VECTOR_TABLE_ATTRIBUTE = {
     __MM32_IRQ_HANDLERS__
 #endif
 };
-
 
 /// @}
 

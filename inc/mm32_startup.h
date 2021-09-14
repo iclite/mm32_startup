@@ -21,7 +21,7 @@
 #define __MM32_STARTUP_H__
 
 typedef void( *intfunc )( void );
-typedef union { intfunc __fun; void * __ptr; } intvec_elem;
+typedef union _intvec_elem { intfunc __fun; void * __ptr; } intvec_elem;
 
 #ifndef __WEAK
     #define __WEAK __attribute__((weak))

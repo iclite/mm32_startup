@@ -12,7 +12,7 @@ This repository contains / 本仓库包含：
 
 ## Chip Core Version Define
 
-| Core Version | Chip                           |
+| Core Version |              Chip              |
 | :----------: | :----------------------------- |
 |  \_\_MM0N1   | MM32L0xx, MM32F031             |
 |  \_\_MM3N1   | MM32F103                       |
@@ -21,7 +21,14 @@ This repository contains / 本仓库包含：
 |  \_\_MM0Q1   | MM32F003, MM32F031, MM32SPIN0x |
 |  \_\_MM0S1   | MM32F032, MM32F013x            |
 |  \_\_MM0T1   | MM32F0010                      |
-|  \_\_MM3U1   | MM32F327x                      |
+|  \_\_MM3U1   | MM32F3270                      |
+|  \_\_MM0V1   | MM32F0270                      |
+|  \_\_MM0W1   | MM32SPIN0280                   |
+|  \_\_MM0Y1   | MM32F0140                      |
+|  \_\_MM0Z1   | MM32F0020                      |
+| \_\_MM33CA1  | MM32F5270                      |
+| \_\_MM0PB1   | MM32L0130                      |
+| \_\_MM0OTPM1 | MM32P021                       |
 
 ## How to use / 使用方式
 

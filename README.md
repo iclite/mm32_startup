@@ -39,7 +39,7 @@ Add to the project via Git submodule.
 通过 Git 子模块方式添加到项目中。
 
 ```bash
-git submodule add https://github.com/PYGC/mm32_startup.git
+git submodule add https://github.com/iclite/mm32_startup.git
 ```
 
 If you want to add to the specified path, please append the path at the end of the above command.
@@ -47,7 +47,7 @@ If you want to add to the specified path, please append the path at the end of t
 如果想要添加到指定路径，请在上面的命令最后追加路径，例如：
 
 ```bash
-git submodule add https://github.com/PYGC/mm32_startup.git lib/startup
+git submodule add https://github.com/iclite/mm32_startup.git lib/startup
 ```
 
 ### Not recommended / 不推荐
